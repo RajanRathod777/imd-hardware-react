@@ -1,4 +1,3 @@
-"use client";
 import { useEffect, useState, Suspense } from "react"; // Added Suspense import
 import ProfilePage from "./Profile";
 import Orders from "./Orders";

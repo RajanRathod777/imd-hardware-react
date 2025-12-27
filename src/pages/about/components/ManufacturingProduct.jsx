@@ -1,6 +1,3 @@
-"use client";
-// Standard img instead of next/image
-
 const ManufacturingProduct = () => {
   // Placeholder array of images. Ideally, these should be dynamically fetched or passed as props.
   // For now, we assume images are named 1.jpg, 2.jpg, etc. in the public/manufacturing-product folder.

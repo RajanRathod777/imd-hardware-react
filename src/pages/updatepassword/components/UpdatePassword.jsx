@@ -1,4 +1,3 @@
-"use client";
 import { useState } from "react";
 import Cookies from "js-cookie";
 import { Lock, Loader, CheckCircle } from "lucide-react";

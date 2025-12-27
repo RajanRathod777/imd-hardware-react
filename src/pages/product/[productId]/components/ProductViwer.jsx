@@ -1,4 +1,3 @@
-"use client";
 import { useEffect, useState, Suspense, lazy } from "react";
 import { useParams, useNavigate } from "react-router";
 import { useStore } from "../../../../stores/useStore";

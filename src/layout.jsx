@@ -5,11 +5,7 @@ import StoreInitializer from "./components/StoreInitializer";
 import ConditionalFooter from "./components/ConditionalFooter";
 import { schemaData } from "./seo/schemaDataSeo";
 
-export default function RootLayout({
-  children,
-}: Readonly<{
-  children: React.ReactNode;
-}>) {
+export default function RootLayout({ children }) {
   React.useEffect(() => {
     const script = document.createElement("script");
     script.type = "application/ld+json";

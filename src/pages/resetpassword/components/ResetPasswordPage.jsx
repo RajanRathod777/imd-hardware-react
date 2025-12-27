@@ -1,4 +1,3 @@
-"use client";
 import { useState, useEffect } from "react";
 import { Mail, Lock, Loader, CheckCircle, RefreshCw } from "lucide-react";
 import { Link } from "react-router";

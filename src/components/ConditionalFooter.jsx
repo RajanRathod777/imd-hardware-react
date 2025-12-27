@@ -1,5 +1,3 @@
-"use client";
-
 import { useLocation } from "react-router";
 import Footer from "./Footer";
 

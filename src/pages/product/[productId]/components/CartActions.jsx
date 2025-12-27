@@ -1,5 +1,4 @@
-"use client";
-import { ShoppingCart, Plus, Minus, Trash2 } from "lucide-react";
+import { Plus, Minus, Trash2 } from "lucide-react";
 import { useStore } from "../../../../stores/useStore";
 import { useState } from "react";
 

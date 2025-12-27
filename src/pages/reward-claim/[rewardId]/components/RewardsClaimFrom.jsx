@@ -1,4 +1,3 @@
-"use client";
 import { useState, useEffect } from "react";
 import Cookies from "js-cookie";
 import { useParams, useNavigate } from "react-router";

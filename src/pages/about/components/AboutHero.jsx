@@ -7,7 +7,7 @@ export default function AboutHero() {
           background: "var(--gradient-primary)",
         }}
       >
-        <div className="absolute inset-0 opacity-10 bg-[url('/pattern.png')]"></div>
+        <div className="absolute inset-0 opacity-10"></div>
         <div className="relative z-10 max-w-4xl mx-auto px-4">
           <h1
             className="text-5xl md:text-7xl font-bold mb-8 tracking-tight"

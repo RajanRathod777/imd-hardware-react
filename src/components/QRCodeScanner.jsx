@@ -1,8 +1,7 @@
-"use client";
 import { useEffect, useRef, useState } from "react";
 import { Html5Qrcode } from "html5-qrcode";
 import Cookies from "js-cookie";
-import { QrCode, X, Camera, RefreshCw } from "lucide-react";
+import { QrCode, X, Camera } from "lucide-react";
 
 const QRCodeScanner = () => {
   const apiUrl = import.meta.env.VITE_SERVER_API_URL;

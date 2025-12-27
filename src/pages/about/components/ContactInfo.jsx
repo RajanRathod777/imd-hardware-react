@@ -1,4 +1,3 @@
-"use client";
 import { Phone, Mail, MapPin } from "lucide-react";
 
 const ContactInfo = () => {

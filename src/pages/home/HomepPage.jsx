@@ -1,4 +1,3 @@
-"use client";
 import ProductViewer from "./components/ProductsViwer";
 import CategoryViewer from "./components/CategoryViwer";
 import AdvertiseSlider from "./components/AdvertiseSlider";

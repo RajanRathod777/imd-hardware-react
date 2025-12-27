@@ -1,5 +1,3 @@
-"use client";
-
 import AboutHero from "./AboutHero";
 import CompanyOverview from "./CompanyOverview";
 import TrendingProducts from "./TrendingProducts";

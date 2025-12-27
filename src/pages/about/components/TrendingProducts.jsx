@@ -1,4 +1,3 @@
-"use client";
 import { Lock, DoorOpen, Package, Wrench } from "lucide-react";
 
 const TrendingProducts = () => {

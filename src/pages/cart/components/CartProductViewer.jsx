@@ -1,5 +1,4 @@
-"use client";
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { useStore } from "../../../stores/useStore";
 import Cookies from "js-cookie";
 import {

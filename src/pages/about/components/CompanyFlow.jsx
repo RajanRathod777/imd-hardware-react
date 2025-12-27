@@ -1,4 +1,3 @@
-"use client";
 import { Package, Shield, Wrench, Mail, Truck, Phone } from "lucide-react";
 
 const CompanyFlow = () => {

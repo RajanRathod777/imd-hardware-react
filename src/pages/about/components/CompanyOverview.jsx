@@ -1,5 +1,3 @@
-"use client";
-
 const CompanyOverview = () => {
   const stats = [
     { value: "15K+", label: "Products Catalog" },

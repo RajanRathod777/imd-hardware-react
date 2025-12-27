@@ -1,4 +1,3 @@
-"use client";
 import { Shield, Wrench, Package, Truck } from "lucide-react";
 
 const QualityAssurance = () => {

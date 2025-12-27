@@ -1,4 +1,3 @@
-"use client";
 import { useState, useEffect } from "react";
 import { useStore } from "../../../stores/useStore";
 import { Swiper, SwiperSlide } from "swiper/react";

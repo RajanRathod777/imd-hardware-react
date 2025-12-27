@@ -1,4 +1,3 @@
-"use client";
 import { DoorOpen, Package, Shield } from "lucide-react";
 
 const ProductAssemblies = () => {
