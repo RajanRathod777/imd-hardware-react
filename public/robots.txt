@@ -1,0 +1,15 @@
+User-agent: *
+Allow: /
+Disallow: /review/*
+Disallow: /reward-claim/*
+
+User-agent: GPTBot
+Allow: /
+
+User-agent: CCBot
+Allow: /
+
+User-agent: Google-Extended
+Allow: /
+
+Sitemap: https://imdhardware.com/sitemap.xml
