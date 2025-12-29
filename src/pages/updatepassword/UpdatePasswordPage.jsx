@@ -1,8 +1,12 @@
 import UpdatePassword from "./components/UpdatePassword";
 import { updatePasswordPageMetadata } from "../../seo/updatePasswordSeo";
-
-export const metadata = updatePasswordPageMetadata;
+import SEO from "../../components/SEO";
 
 export default function Page() {
-  return <UpdatePassword />;
+  return (
+    <>
+      <SEO metadata={updatePasswordPageMetadata} />
+      <UpdatePassword />
+    </>
+  );
 }

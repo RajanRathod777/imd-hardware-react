@@ -1,8 +1,12 @@
 import Reward from "./components/Reward";
 import { rewardsPageMetadata } from "../../seo/rewardsSeo";
-
-export const metadata = rewardsPageMetadata;
+import SEO from "../../components/SEO";
 
 export default function RewardsPage() {
-  return <Reward />;
+  return (
+    <>
+      <SEO metadata={rewardsPageMetadata} />
+      <Reward />
+    </>
+  );
 }

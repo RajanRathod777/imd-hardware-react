@@ -1,8 +1,12 @@
 import ContactPage from "./components/ContactPage";
 import { contactPageMetadata } from "../../seo/contactSeo";
-
-export const metadata = contactPageMetadata;
+import SEO from "../../components/SEO";
 
 export default function Page() {
-  return <ContactPage />;
+  return (
+    <>
+      <SEO metadata={contactPageMetadata} />
+      <ContactPage />
+    </>
+  );
 }

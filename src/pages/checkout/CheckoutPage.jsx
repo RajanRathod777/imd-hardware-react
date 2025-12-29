@@ -1,8 +1,12 @@
 import Checkout from "./components/Checkout";
 import { checkoutPageMetadata } from "../../seo/checkoutSeo";
-
-export const metadata = checkoutPageMetadata;
+import SEO from "../../components/SEO";
 
 export default function Page() {
-  return <Checkout />;
+  return (
+    <>
+      <SEO metadata={checkoutPageMetadata} />
+      <Checkout />
+    </>
+  );
 }

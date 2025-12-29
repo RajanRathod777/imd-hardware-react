@@ -1,21 +1,100 @@
 {
-  "name": "IMD Hardware",
+  "name": "IMD Hardware - Premium Hardware Manufacturer & Supplier",
   "short_name": "IMD Hardware",
-  "description": "IMD Hardware offers top-quality hardware solutions for all your needs. Shop now for the best deals.",
-  "start_url": "/",
-  "display": "browser",
+  "description": "IMD Hardware is a leading manufacturer of locks, door handles, screws, bolts, and premium hardware accessories. Quality products since 1995.",
+  "start_url": "https://imdbazer.shop/",
+  "display": "standalone",
   "background_color": "#ffffff",
-  "theme_color": "#ffffff",
+  "theme_color": "#2563eb",
+  "orientation": "portrait-primary",
+  "scope": "https://imdbazer.shop/",
+  "lang": "en-IN",
+  "dir": "ltr",
+  "categories": ["business", "shopping", "utilities"],
   "icons": [
     {
-      "src": "/images/logo.jpeg",
-      "sizes": "192x192",
-      "type": "image/jpeg"
+      "src": "/favicon/favicon-16x16.png",
+      "sizes": "16x16",
+      "type": "image/png",
+      "purpose": "any"
     },
     {
-      "src": "/images/logo.jpeg",
+      "src": "/favicon/favicon-32x32.png",
+      "sizes": "32x32",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/favicon/favicon-96x96.png",
+      "sizes": "96x96",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/favicon/favicon-128x128.png",
+      "sizes": "128x128",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/favicon/favicon-192x192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/favicon/favicon-256x256.png",
+      "sizes": "256x256",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/favicon/favicon-512x512.png",
       "sizes": "512x512",
-      "type": "image/jpeg"
+      "type": "image/png",
+      "purpose": "any maskable"
     }
-  ]
+  ],
+  "screenshots": [
+    {
+      "src": "/images/screenshot-desktop.png",
+      "sizes": "1280x720",
+      "type": "image/png",
+      "form_factor": "wide"
+    },
+    {
+      "src": "/images/screenshot-mobile.png",
+      "sizes": "375x667",
+      "type": "image/png",
+      "form_factor": "narrow"
+    }
+  ],
+  "shortcuts": [
+    {
+      "name": "Browse Products",
+      "short_name": "Products",
+      "description": "Browse our hardware products catalog",
+      "url": "https://imdbazer.shop/products",
+      "icons": [
+        {
+          "src": "/favicon/favicon-96x96.png",
+          "sizes": "96x96"
+        }
+      ]
+    },
+    {
+      "name": "Contact Us",
+      "short_name": "Contact",
+      "description": "Get in touch with our team",
+      "url": "https://imdbazer.shop/contact",
+      "icons": [
+        {
+          "src": "/favicon/favicon-96x96.png",
+          "sizes": "96x96"
+        }
+      ]
+    }
+  ],
+  "related_applications": [],
+  "prefer_related_applications": false
 }

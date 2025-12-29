@@ -1,8 +1,12 @@
 import ProfileManager from "./components/ProfileManager";
 import { profilePageMetadata } from "../../seo/profileSeo";
-
-export const metadata = profilePageMetadata;
+import SEO from "../../components/SEO";
 
 export default function Page() {
-  return <ProfileManager />;
+  return (
+    <>
+      <SEO metadata={profilePageMetadata} />
+      <ProfileManager />
+    </>
+  );
 }

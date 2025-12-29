@@ -1,0 +1,26 @@
+/* HUMANS.TXT */
+/* IMD Hardware - Premium Hardware Manufacturer */
+
+TEAM:
+    Founder: Rajesh Rathod
+    Web Development: IMD Tech Team
+    Design: IMD Creative Team
+
+THANKS:
+    React.js
+    Vite
+    Tailwind CSS
+    Cloudflare
+
+SITE:
+    Language: English
+    Standards: HTML5, CSS3, JavaScript ES6+
+    Software: React, Node.js, Cloudflare Workers
+
+CONTACT:
+    Web: https://imdbazer.shop
+    Email: info@imdhardware.com
+    Phone: +91-XXXXXXXXXX
+    Address: 123 Industrial Area, MIDC, Mumbai, Maharashtra 400072, India
+
+/* END HUMANS.TXT */

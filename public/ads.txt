@@ -1,0 +1,8 @@
+# ADS.TXT
+# IMD Hardware Publisher Verification
+
+google.com, pub-XXXXXXXXXXXXXXXX, DIRECT, f08c47fec0942fa0
+
+# For advertising inquiries, contact:
+# Email: marketing@imdhardware.com
+# Phone: +91-XXXXXXXXXX

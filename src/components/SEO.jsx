@@ -10,7 +10,6 @@ const SEO = ({ metadata }) => {
     openGraph,
     twitter,
     alternates,
-    metadataBase,
   } = metadata;
 
   // Helper to resolve absolute URLs if needed, but metadata usually provides them or we use base

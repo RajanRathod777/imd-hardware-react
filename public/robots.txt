@@ -2,6 +2,14 @@ User-agent: *
 Allow: /
 Disallow: /review/*
 Disallow: /reward-claim/*
+Disallow: /api/
+Disallow: /login
+Disallow: /register
+Disallow: /profile
+Disallow: /checkout
+Disallow: /cart
+Disallow: /reset-password
+Disallow: /update-password
 
 User-agent: GPTBot
 Allow: /
@@ -12,4 +20,7 @@ Allow: /
 User-agent: Google-Extended
 Allow: /
 
-Sitemap: https://imdhardware.com/sitemap.xml
+User-agent: *
+Crawl-delay: 1
+
+Sitemap: https://imdbazer.shop/sitemap.xml

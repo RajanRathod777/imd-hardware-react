@@ -1,9 +1,13 @@
 
 import LoginForm from "./components/LoginForm";
 import { loginPageMetadata } from "../../seo/loginSeo";
-
-export const metadata = loginPageMetadata;
+import SEO from "../../components/SEO";
 
 export default function Page() {
-  return <LoginForm />;
+  return (
+    <>
+      <SEO metadata={loginPageMetadata} />
+      <LoginForm />
+    </>
+  );
 }

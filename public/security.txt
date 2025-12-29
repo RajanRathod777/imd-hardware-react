@@ -1,0 +1,19 @@
+# SECURITY.TXT
+# IMD Hardware Security Policy
+
+Contact Information:
+- Security Team Email: security@imdhardware.com
+- General Contact: info@imdhardware.com
+- Phone: +91-XXXXXXXXXX
+
+Policy:
+- We take security seriously and investigate all reports
+- Please report security vulnerabilities responsibly
+- Do not exploit vulnerabilities before reporting
+- We will respond within 48 hours
+
+Encryption:
+- All data transmission uses HTTPS/TLS
+- We use industry-standard encryption protocols
+
+# END SECURITY.TXT
