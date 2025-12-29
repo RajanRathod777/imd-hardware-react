@@ -6,5 +6,5 @@ directory = "./dist"
 binding = "ASSETS"
 
 [[routes]]
-pattern = "imdbazer.shop/*"
-zone_name = "imdbazer.shop"
+pattern = "imdhardware.com/*"
+zone_name = "imdhardware.com"
