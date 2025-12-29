@@ -1,5 +1,4 @@
 name = "imd-hardware-react"
-main = "src/index.js"
 compatibility_date = "2025-12-27"
 
 [assets]
