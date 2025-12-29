@@ -5,10 +5,10 @@ export const schemaData = [
   {
     "@context": "https://schema.org",
     "@type": "Organization",
-    "@id": "https://imdbazer.shop/#organization",
+    "@id": "https://imdhardware.com/#organization",
     name: "IMD Hardware",
-    url: "https://imdbazer.shop",
-    logo: "https://imdbazer.shop/images/logo.jpeg",
+    url: "https://imdhardware.com",
+    logo: "https://imdhardware.com/images/logo.jpeg",
     description:
       "IMD Hardware is a trusted manufacturer & supplier of locks, door handles, screws, bolts, basket stoppers, and premium hardware products.",
     foundingDate: "2010-05-15",
@@ -61,14 +61,14 @@ export const schemaData = [
   {
     "@context": "https://schema.org",
     "@type": "HardwareStore",
-    "@id": "https://imdbazer.shop/#store",
+    "@id": "https://imdhardware.com/#store",
     name: "IMD Hardware Store",
     image: [
-      "https://imdbazer.shop/store-front.jpg",
-      "https://imdbazer.shop/warehouse.jpg",
-      "https://imdbazer.shop/manufacturing-unit.jpg",
+      "https://imdhardware.com/store-front.jpg",
+      "https://imdhardware.com/warehouse.jpg",
+      "https://imdhardware.com/manufacturing-unit.jpg",
     ],
-    url: "https://imdbazer.shop",
+    url: "https://imdhardware.com",
     telephone: "+91-XXXXXXXXXX",
     email: "sales@imdhardware.com",
     priceRange: "₹₹",
@@ -121,20 +121,20 @@ export const schemaData = [
   {
     "@context": "https://schema.org",
     "@type": ["ProductCollection", "ItemList"],
-    "@id": "https://imdbazer.shop/products/locks#collection",
+    "@id": "https://imdhardware.com/products/locks#collection",
     name: "Premium Door Locks - Manufacturer & Supplier",
     description:
       "IMD Hardware manufactures a wide range of high-security door locks, including mortise locks, padlocks, digital locks, and lever handles for residential, commercial, and industrial use. Made with grade 304 stainless steel and advanced security mechanisms.",
-    url: "https://imdbazer.shop/products/locks",
+    url: "https://imdhardware.com/products/locks",
     brand: {
       "@type": "Brand",
       name: "IMD Hardware",
-      logo: "https://imdbazer.shop/images/logo.jpeg",
+      logo: "https://imdhardware.com/images/logo.jpeg",
     },
     manufacturer: {
       "@type": "Organization",
       name: "IMD Hardware",
-      url: "https://imdbazer.shop",
+      url: "https://imdhardware.com",
     },
     mainEntity: {
       "@type": "ItemList",
@@ -145,17 +145,17 @@ export const schemaData = [
           position: 1,
           item: {
             "@type": "Product",
-            "@id": "https://imdbazer.shop/products/mortise-lock-xl5#product",
+            "@id": "https://imdhardware.com/products/mortise-lock-xl5#product",
             name: "IMD Mortise Lock XL5 - Heavy Duty",
             description:
               "High-security mortise lock for main doors, manufactured with brass internal mechanism and grade 304 stainless steel body. Suitable for residential and commercial buildings.",
-            image: "https://imdbazer.shop/images/locks/mortise-lock-xl5.jpg",
+            image: "https://imdhardware.com/images/locks/mortise-lock-xl5.jpg",
             sku: "IMD-LOCK-XL5",
             mpn: "ML-XL5-2024",
             category: "Door Locks/Mortise Locks",
             offers: {
               "@type": "Offer",
-              url: "https://imdbazer.shop/products/mortise-lock-xl5",
+              url: "https://imdhardware.com/products/mortise-lock-xl5",
               priceCurrency: "INR",
               price: "1250",
               availability: "https://schema.org/InStock",
@@ -201,7 +201,7 @@ export const schemaData = [
             name: "IMD Digital Smart Lock Pro",
             description:
               "Advanced digital smart lock with fingerprint, PIN, and RFID access. IP65 waterproof rating for outdoor use.",
-            image: "https://imdbazer.shop/images/locks/digital-lock-pro.jpg",
+            image: "https://imdhardware.com/images/locks/digital-lock-pro.jpg",
             sku: "IMD-DIGI-PRO",
             category: "Digital Locks/Smart Locks",
             offers: {
@@ -233,7 +233,7 @@ export const schemaData = [
     name: "Premium Door Handles & Knobs Collection",
     description:
       "Manufacturer of premium door handles, lever handles, knobs, and pull handles in various finishes including stainless steel, brass, and powder-coated designs.",
-    url: "https://imdbazer.shop/products/door-handles",
+    url: "https://imdhardware.com/products/door-handles",
     brand: {
       "@type": "Brand",
       name: "IMD Hardware",
@@ -249,7 +249,7 @@ export const schemaData = [
             name: "Stainless Steel Lever Handle Set",
             description:
               "Complete lever handle set with latch and screws, anti-corrosion coating.",
-            image: "https://imdbazer.shop/images/handles/lever-set.jpg",
+            image: "https://imdhardware.com/images/handles/lever-set.jpg",
             sku: "IMD-HANDLE-LS100",
             offers: {
               "@type": "Offer",
@@ -273,21 +273,21 @@ export const schemaData = [
   {
     "@context": "https://schema.org",
     "@type": "Product",
-    "@id": "https://imdbazer.shop/products/heavy-duty-padlock#product",
+    "@id": "https://imdhardware.com/products/heavy-duty-padlock#product",
     name: "IMD Heavy Duty Security Padlock",
     description:
       "Industrial grade padlock with hardened boron steel shackle, anti-drill protection, and waterproof design. Ideal for warehouses, lockers, and industrial gates.",
     image: [
-      "https://imdbazer.shop/images/padlock-main.jpg",
-      "https://imdbazer.shop/images/padlock-side.jpg",
-      "https://imdbazer.shop/images/padlock-packaging.jpg",
+      "https://imdhardware.com/images/padlock-main.jpg",
+      "https://imdhardware.com/images/padlock-side.jpg",
+      "https://imdhardware.com/images/padlock-packaging.jpg",
     ],
     sku: "IMD-PADLOCK-HD50",
     mpn: "PD-HD50-2024",
     brand: {
       "@type": "Brand",
       name: "IMD Hardware",
-      logo: "https://imdbazer.shop/images/logo.jpeg",
+      logo: "https://imdhardware.com/images/logo.jpeg",
     },
     manufacturer: {
       "@type": "Organization",
@@ -298,7 +298,7 @@ export const schemaData = [
     model: "HD-50",
     offers: {
       "@type": "Offer",
-      url: "https://imdbazer.shop/products/heavy-duty-padlock",
+      url: "https://imdhardware.com/products/heavy-duty-padlock",
       priceCurrency: "INR",
       price: "650",
       priceValidUntil: "2024-12-31",
@@ -307,7 +307,7 @@ export const schemaData = [
       seller: {
         "@type": "Organization",
         name: "IMD Hardware",
-        url: "https://imdbazer.shop",
+        url: "https://imdhardware.com",
       },
       eligibleQuantity: {
         "@type": "QuantitativeValue",
@@ -371,7 +371,7 @@ export const schemaData = [
     countryOfAssembly: "India",
     countryOfOrigin: "India",
     inProductGroupWithID: "Hardware-Locks",
-    isRelatedTo: "https://imdbazer.shop/products/locks",
+    isRelatedTo: "https://imdhardware.com/products/locks",
   },
 
   // ---------------------------------------------------
@@ -380,15 +380,15 @@ export const schemaData = [
   {
     "@context": "https://schema.org",
     "@type": "LoyaltyProgram",
-    "@id": "https://imdbazer.shop/#loyalty-program",
+    "@id": "https://imdhardware.com/#loyalty-program",
     name: "IMD Hardware Rewards Program",
-    url: "https://imdbazer.shop/rewards",
+    url: "https://imdhardware.com/rewards",
     description:
       "Scan QR codes on IMD Hardware products to earn reward points. Redeem points for discounts, cashback, or free hardware products.",
     provider: {
       "@type": "Organization",
       name: "IMD Hardware",
-      url: "https://imdbazer.shop",
+      url: "https://imdhardware.com",
     },
     programType: "Points",
     membershipPointsEarned: {
@@ -397,7 +397,7 @@ export const schemaData = [
       value: 10,
       description: "Earn 10 points for every product scanned",
     },
-    termsOfService: "https://imdbazer.shop/rewards/terms",
+    termsOfService: "https://imdhardware.com/rewards/terms",
     startDate: "2024-01-01",
     awards: [
       "Discounts on future purchases",
@@ -440,7 +440,7 @@ export const schemaData = [
       "Users scan QR codes on IMD Hardware products to earn loyalty points.",
     target: {
       "@type": "EntryPoint",
-      urlTemplate: "https://imdbazer.shop/scan",
+      urlTemplate: "https://imdhardware.com/scan",
       actionPlatform: [
         "https://schema.org/MobileWebPlatform",
         "https://schema.org/AndroidPlatform",
@@ -472,7 +472,7 @@ export const schemaData = [
     name: "Redeem IMD Hardware Reward Points",
     description:
       "Users can redeem reward points to get discounts, cashback, or free hardware products.",
-    url: "https://imdbazer.shop/rewards/redeem",
+    url: "https://imdhardware.com/rewards/redeem",
     price: "0",
     priceCurrency: "INR",
     eligibleCustomerType: "LoyaltyMember",
@@ -505,22 +505,22 @@ export const schemaData = [
   {
     "@context": "https://schema.org",
     "@type": "WebSite",
-    "@id": "https://imdbazer.shop/#website",
+    "@id": "https://imdhardware.com/#website",
     name: "IMD Hardware",
-    url: "https://imdbazer.shop",
+    url: "https://imdhardware.com",
     description:
       "Online store for premium hardware products including locks, door handles, screws, bolts, and construction hardware. Manufacturer and supplier based in Mumbai.",
     publisher: {
       "@type": "Organization",
       name: "IMD Hardware",
-      logo: "https://imdbazer.shop/images/logo.jpeg",
+      logo: "https://imdhardware.com/images/logo.jpeg",
     },
     inLanguage: ["en-IN", "hi-IN", "mr-IN"],
     potentialAction: {
       "@type": "SearchAction",
       target: {
         "@type": "EntryPoint",
-        urlTemplate: "https://imdbazer.shop/search?q={search_term_string}",
+        urlTemplate: "https://imdhardware.com/search?q={search_term_string}",
       },
       "query-input": "required name=search_term_string",
     },
@@ -535,31 +535,31 @@ export const schemaData = [
   {
     "@context": "https://schema.org",
     "@type": "BreadcrumbList",
-    "@id": "https://imdbazer.shop/products/locks#breadcrumb",
+    "@id": "https://imdhardware.com/products/locks#breadcrumb",
     itemListElement: [
       {
         "@type": "ListItem",
         position: 1,
         name: "Home",
-        item: "https://imdbazer.shop",
+        item: "https://imdhardware.com",
       },
       {
         "@type": "ListItem",
         position: 2,
         name: "Products",
-        item: "https://imdbazer.shop/products",
+        item: "https://imdhardware.com/products",
       },
       {
         "@type": "ListItem",
         position: 3,
         name: "Locks",
-        item: "https://imdbazer.shop/products/locks",
+        item: "https://imdhardware.com/products/locks",
       },
       {
         "@type": "ListItem",
         position: 4,
         name: "Mortise Locks",
-        item: "https://imdbazer.shop/products/locks/mortise",
+        item: "https://imdhardware.com/products/locks/mortise",
       },
     ],
   },
@@ -641,7 +641,7 @@ export const schemaData = [
     provider: {
       "@type": "Organization",
       name: "IMD Hardware",
-      url: "https://imdbazer.shop",
+      url: "https://imdhardware.com",
     },
     description:
       "Custom hardware manufacturing services for bulk orders. We specialize in producing locks, door handles, and specialized hardware components as per client specifications. OEM manufacturing available.",
@@ -700,7 +700,7 @@ export const schemaData = [
         },
       ],
     },
-    termsOfService: "https://imdbazer.shop/terms/manufacturing",
+    termsOfService: "https://imdhardware.com/terms/manufacturing",
     providerMobility: "static",
   },
 
@@ -713,7 +713,7 @@ export const schemaData = [
     itemReviewed: {
       "@type": "Organization",
       name: "IMD Hardware",
-      image: "https://imdbazer.shop/images/logo.jpeg",
+      image: "https://imdhardware.com/images/logo.jpeg",
     },
     author: {
       "@type": "Person",
@@ -745,7 +745,7 @@ export const schemaData = [
       "Step-by-step guide to install IMD Hardware mortise lock properly",
     image: {
       "@type": "ImageObject",
-      url: "https://imdbazer.shop/guides/mortise-installation.jpg",
+      url: "https://imdhardware.com/guides/mortise-installation.jpg",
       height: "405",
       width: "720",
     },
@@ -779,19 +779,19 @@ export const schemaData = [
         "@type": "HowToStep",
         name: "Measure and Mark",
         text: "Measure and mark the position for the lock on your door",
-        image: "https://imdbazer.shop/guides/step1.jpg",
+        image: "https://imdhardware.com/guides/step1.jpg",
       },
       {
         "@type": "HowToStep",
         name: "Create Mortise",
         text: "Use a chisel to create the mortise cavity for the lock body",
-        image: "https://imdbazer.shop/guides/step2.jpg",
+        image: "https://imdhardware.com/guides/step2.jpg",
       },
       {
         "@type": "HowToStep",
         name: "Install Lock Body",
         text: "Place the lock body into the mortise and secure with screws",
-        image: "https://imdbazer.shop/guides/step3.jpg",
+        image: "https://imdhardware.com/guides/step3.jpg",
       },
     ],
     totalTime: "PT30M",

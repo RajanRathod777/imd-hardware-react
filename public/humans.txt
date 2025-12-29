@@ -18,7 +18,7 @@ SITE:
     Software: React, Node.js, Cloudflare Workers
 
 CONTACT:
-    Web: https://imdbazer.shop
+    Web: https://imdhardware.com
     Email: info@imdhardware.com
     Phone: +91-XXXXXXXXXX
     Address: 123 Industrial Area, MIDC, Mumbai, Maharashtra 400072, India

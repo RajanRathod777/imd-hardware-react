@@ -5,18 +5,18 @@ export const rewardsPageMetadata = {
   keywords:
     "IMD Hardware rewards, loyalty program, reward points, hardware discounts, QR code rewards, customer rewards",
   alternates: {
-    canonical: "https://imdbazer.shop/rewards",
+    canonical: "https://imdhardware.com/rewards",
   },
   openGraph: {
     title: "IMD Hardware Rewards Program",
     description:
       "Earn points by scanning QR codes on products. Redeem for exclusive benefits and discounts.",
-    url: "https://imdbazer.shop/rewards",
+    url: "https://imdhardware.com/rewards",
     type: "website",
     siteName: "IMD Hardware",
     images: [
       {
-        url: "https://imdbazer.shop/images/logo.jpeg",
+        url: "https://imdhardware.com/images/logo.jpeg",
         width: 1200,
         height: 630,
         alt: "IMD Hardware Rewards Program",
@@ -28,6 +28,6 @@ export const rewardsPageMetadata = {
     title: "Rewards Program | IMD Hardware",
     description:
       "Scan QR codes to earn points. Redeem for discounts and free products.",
-    images: ["https://imdbazer.shop/images/logo.jpeg"],
+    images: ["https://imdhardware.com/images/logo.jpeg"],
   },
 };

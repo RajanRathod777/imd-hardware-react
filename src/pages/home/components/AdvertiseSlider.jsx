@@ -9,7 +9,7 @@ import { ShoppingCart, Play, Image, Clock } from "lucide-react";
 
 const AdvertiseSlider = () => {
   const apiUrl =
-    import.meta.env.VITE_SERVER_API_URL || "https://imd.imdbazer.shop";
+    import.meta.env.VITE_SERVER_API_URL || "https://imd.imdhardware.com";
   console.log("NEXT_PUBLIC_SERVER_API_URL", apiUrl);
   const { products } = useStore();
   const [AdvertisedProducts, setAdvertisedProducts] = useState([]);

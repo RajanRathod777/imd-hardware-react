@@ -5,18 +5,18 @@ export const productsPageMetadata = {
   keywords:
     "hardware products, locks, door handles, screws, bolts, basket stopper, hardware catalog, IMD Hardware products",
   alternates: {
-    canonical: "https://imdbazer.shop/products",
+    canonical: "https://imdhardware.com/products",
   },
   openGraph: {
     title: "Hardware Products Catalog | IMD Hardware",
     description:
       "Explore our complete range of locks, handles, screws, bolts, and hardware components. Manufactured with precision and quality.",
-    url: "https://imdbazer.shop/products",
+    url: "https://imdhardware.com/products",
     type: "website",
     siteName: "IMD Hardware",
     images: [
       {
-        url: "https://imdbazer.shop/images/logo.jpeg",
+        url: "https://imdhardware.com/images/logo.jpeg",
         width: 1200,
         height: 630,
         alt: "Hardware Products Catalog | IMD Hardware",
@@ -28,6 +28,6 @@ export const productsPageMetadata = {
     title: "Hardware Products | IMD Hardware",
     description:
       "Browse our extensive collection of locks, handles, screws, bolts, and premium hardware products.",
-    images: ["https://imdbazer.shop/images/logo.jpeg"],
+    images: ["https://imdhardware.com/images/logo.jpeg"],
   },
 };

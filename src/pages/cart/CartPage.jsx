@@ -1,7 +1,6 @@
 import CartProductViewer from "./components/CartProductViewer";
-import { metadata as cartPageMetadata } from "../../seo/cartSeo";
+import { cartPageMetadata } from "../../seo/cartSeo";
 import SEO from "../../components/SEO";
-
 
 export default function Page() {
   return (
@@ -9,6 +8,5 @@ export default function Page() {
       <SEO metadata={cartPageMetadata} />
       <CartProductViewer />
     </>
-
   );
 }

@@ -5,18 +5,20 @@ export const registerPageMetadata = {
   keywords: "register, IMD Hardware, create account, rewards program",
   robots: "noindex, nofollow",
   alternates: {
-    canonical: "https://imdbazer.shop/register",
+    canonical: "https://imdhardware.com/register",
   },
   openGraph: {
     title: "Register | IMD Hardware",
-    description: "Create an account to access IMD Hardware rewards program and exclusive benefits.",
-    url: "https://imdbazer.shop/register",
+    description:
+      "Create an account to access IMD Hardware rewards program and exclusive benefits.",
+    url: "https://imdhardware.com/register",
     type: "website",
     siteName: "IMD Hardware",
   },
   twitter: {
     card: "summary",
     title: "Register | IMD Hardware",
-    description: "Create an account to access IMD Hardware rewards program and exclusive benefits.",
+    description:
+      "Create an account to access IMD Hardware rewards program and exclusive benefits.",
   },
 };

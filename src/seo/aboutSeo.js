@@ -5,18 +5,18 @@ export const metadata = {
   keywords:
     "IMD Hardware, hardware manufacturer, locks manufacturer, door handles, screws, bolts, hardware supplier, industrial hardware, construction hardware",
   alternates: {
-    canonical: "https://imdbazer.shop/about",
+    canonical: "https://imdhardware.com/about",
   },
   openGraph: {
     title: "About IMD Hardware - Premium Hardware Manufacturer",
     description:
       "Learn about IMD Hardware's journey as India's trusted hardware manufacturer and exporter of quality locks, handles, and hardware accessories.",
-    url: "https://imdbazer.shop/about",
+    url: "https://imdhardware.com/about",
     type: "website",
     siteName: "IMD Hardware",
     images: [
       {
-        url: "https://imdbazer.shop/images/logo.jpeg",
+        url: "https://imdhardware.com/images/logo.jpeg",
         width: 1200,
         height: 630,
         alt: "IMD Hardware - Leading Hardware Manufacturer",
@@ -28,7 +28,7 @@ export const metadata = {
     title: "About IMD Hardware - Premium Hardware Manufacturer",
     description:
       "Learn about IMD Hardware's journey as India's trusted hardware manufacturer and exporter.",
-    images: ["https://imdbazer.shop/images/logo.jpeg"],
+    images: ["https://imdhardware.com/images/logo.jpeg"],
     creator: "@imdhardware",
   },
 };

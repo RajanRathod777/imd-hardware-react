@@ -6,17 +6,17 @@ export async function generateProductMetadata({ params }) {
     keywords:
       "hardware product, IMD Hardware, locks, door handles, screws, bolts, product details",
     alternates: {
-      canonical: `https://imdbazer.shop/product/${productId}`,
+      canonical: `https://imdhardware.com/product/${productId}`,
     },
     openGraph: {
       title: `Product Details | IMD Hardware`,
       description: `Quality hardware product from IMD Hardware. Premium manufacturing and materials.`,
-      url: `https://imdbazer.shop/product/${productId}`,
+      url: `https://imdhardware.com/product/${productId}`,
       type: "website",
       siteName: "IMD Hardware",
       images: [
         {
-          url: "https://imdbazer.shop/images/logo.jpeg",
+          url: "https://imdhardware.com/images/logo.jpeg",
           width: 1200,
           height: 630,
           alt: "Product Details | IMD Hardware",
@@ -27,7 +27,7 @@ export async function generateProductMetadata({ params }) {
       card: "summary_large_image",
       title: `Product Details | IMD Hardware`,
       description: `View detailed information about this premium hardware product from IMD Hardware.`,
-      images: ["https://imdbazer.shop/images/logo.jpeg"],
+      images: ["https://imdhardware.com/images/logo.jpeg"],
     },
   };
 }

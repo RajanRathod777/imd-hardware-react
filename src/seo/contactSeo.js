@@ -5,18 +5,18 @@ export const contactPageMetadata = {
   keywords:
     "IMD Hardware contact, hardware manufacturer contact, locks supplier contact, hardware exporter contact, customer support",
   alternates: {
-    canonical: "https://imdbazer.shop/contact",
+    canonical: "https://imdhardware.com/contact",
   },
   openGraph: {
     title: "Contact IMD Hardware",
     description:
       "Reach out for product details, wholesale orders, or hardware manufacturing support. Fast response guaranteed.",
-    url: "https://imdbazer.shop/contact",
+    url: "https://imdhardware.com/contact",
     type: "website",
     siteName: "IMD Hardware",
     images: [
       {
-        url: "https://imdbazer.shop/images/logo.jpeg",
+        url: "https://imdhardware.com/images/logo.jpeg",
         width: 1200,
         height: 630,
         alt: "Contact IMD Hardware",
@@ -26,7 +26,8 @@ export const contactPageMetadata = {
   twitter: {
     card: "summary_large_image",
     title: "Contact IMD Hardware",
-    description: "Reach out for product details, wholesale orders, or hardware manufacturing support.",
-    images: ["https://imdbazer.shop/images/logo.jpeg"],
+    description:
+      "Reach out for product details, wholesale orders, or hardware manufacturing support.",
+    images: ["https://imdhardware.com/images/logo.jpeg"],
   },
 };

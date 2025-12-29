@@ -16,6 +16,11 @@ export default defineConfig({
   },
   server: {
     allowedHosts: true,
+    host: true,
     port: 5555,
+    hmr: {
+      host: "localhost",
+      protocol: "ws",
+    },
   },
 });
