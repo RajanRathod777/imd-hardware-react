@@ -69,7 +69,7 @@ export const schemaData = [
       "https://imdhardware.com/manufacturing-unit.jpg",
     ],
     url: "https://imdhardware.com",
-    telephone: "+91-XXXXXXXXXX",
+    telephone: "+91-6355953543",
     email: "sales@imdhardware.com",
     priceRange: "₹₹",
     description:

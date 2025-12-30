@@ -165,8 +165,11 @@ const Footer = () => {
 
             <div className="flex gap-3">
               <Mail className="w-4 h-4 text-[var(--color-primary)]" />
-              <a href="mailto:imd@imdhardware.com" className="hover:underline">
-                imd@imdhardware.com
+              <a
+                href="mailto:contact@imdhardware.com"
+                className="hover:underline"
+              >
+                contact@imdhardware.com
               </a>
             </div>
           </div>

@@ -68,7 +68,7 @@ const Navbar = () => {
         >
           {/* Logo */}
           <NavLink to="/" className="flex items-center gap-2">
-            <img src="/images/logo.jpeg" alt="Logo" className="h-8 w-8" />
+            <img src="/images/logo.jpeg" alt="Logo" className="h-6 w-10" />
             <p className="text-base font-semibold text-[var(--color-text-primary)]">
               IMD Hardware
             </p>
