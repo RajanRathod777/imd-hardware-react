@@ -17,6 +17,11 @@ import ProfileManager from "./pages/profile/ProfilePage";
 import ProductPage from "./pages/product/ProductPage";
 import RewardClaimPage from "./pages/reward-claim/RewardClaimPage";
 import ReviewPage from "./pages/review/ReviewPage";
+import PrivacyPolicyPage from "./pages/privacy-policy/PrivacyPolicyPage";
+import TermsConditionsPage from "./pages/terms-conditions/TermsConditionsPage";
+import ReturnPolicyPage from "./pages/return-policy/ReturnPolicyPage";
+import ShippingPolicyPage from "./pages/shipping-policy/ShippingPolicyPage";
+import CancellationPolicyPage from "./pages/cancellation-policy/CancellationPolicyPage";
 
 function App() {
   const router = createBrowserRouter([
@@ -137,6 +142,46 @@ function App() {
       element: (
         <RootLayout>
           <ReviewPage />
+        </RootLayout>
+      ),
+    },
+    {
+      path: "/privacy-policy",
+      element: (
+        <RootLayout>
+          <PrivacyPolicyPage />
+        </RootLayout>
+      ),
+    },
+    {
+      path: "/terms-conditions",
+      element: (
+        <RootLayout>
+          <TermsConditionsPage />
+        </RootLayout>
+      ),
+    },
+    {
+      path: "/return-policy",
+      element: (
+        <RootLayout>
+          <ReturnPolicyPage />
+        </RootLayout>
+      ),
+    },
+    {
+      path: "/shipping-policy",
+      element: (
+        <RootLayout>
+          <ShippingPolicyPage />
+        </RootLayout>
+      ),
+    },
+    {
+      path: "/cancellation-policy",
+      element: (
+        <RootLayout>
+          <CancellationPolicyPage />
         </RootLayout>
       ),
     },
