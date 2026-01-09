@@ -31,7 +31,7 @@ const ProfileManager = () => {
       <div className="mb-1 flex gap-1">
         <button
           onClick={() => setActiveTab("profile")}
-          className={`w-full rounded-lg border px-4 py-2 text-sm font-medium transition-all duration-200`}
+          className={`w-full rounded-lg border px-4 py-2 transition-all duration-200`}
           style={{
             backgroundColor:
               activeTab === "profile"
@@ -42,6 +42,8 @@ const ProfileManager = () => {
                 ? "var(--color-text-on-primary)"
                 : "var(--color-text-primary)",
             borderColor: "var(--color-border)",
+            fontSize: "var(--text-sm)",
+            fontWeight: "var(--font-medium)",
           }}
         >
           Profile
@@ -49,7 +51,7 @@ const ProfileManager = () => {
 
         <button
           onClick={() => setActiveTab("orders")}
-          className={`w-full rounded-lg border px-4 py-2 text-sm font-medium transition-all duration-200`}
+          className={`w-full rounded-lg border px-4 py-2 transition-all duration-200`}
           style={{
             backgroundColor:
               activeTab === "orders"
@@ -60,13 +62,15 @@ const ProfileManager = () => {
                 ? "var(--color-text-on-primary)"
                 : "var(--color-text-primary)",
             borderColor: "var(--color-border)",
+            fontSize: "var(--text-sm)",
+            fontWeight: "var(--font-medium)",
           }}
         >
           Orders
         </button>
         <button
           onClick={() => setActiveTab("rewrdPaymentRequest")}
-          className={`w-full rounded-lg whitespace-nowrap border px-4 py-2 text-sm font-medium transition-all duration-200`}
+          className={`w-full rounded-lg whitespace-nowrap border px-4 py-2 transition-all duration-200`}
           style={{
             backgroundColor:
               activeTab === "rewrdPaymentRequest"
@@ -77,6 +81,8 @@ const ProfileManager = () => {
                 ? "var(--color-text-on-primary)"
                 : "var(--color-text-primary)",
             borderColor: "var(--color-border)",
+            fontSize: "var(--text-sm)",
+            fontWeight: "var(--font-medium)",
           }}
         >
           Payment Request

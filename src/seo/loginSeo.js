@@ -21,4 +21,22 @@ export const loginPageMetadata = {
     description:
       "Sign in to your IMD Hardware account to access rewards and track orders.",
   },
+  schema: {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      {
+        "@type": "ListItem",
+        position: 1,
+        name: "Home",
+        item: "https://imdhardware.com",
+      },
+      {
+        "@type": "ListItem",
+        position: 2,
+        name: "Login",
+        item: "https://imdhardware.com/login",
+      },
+    ],
+  },
 };

@@ -31,4 +31,33 @@ export const metadata = {
     images: ["https://imdhardware.com/images/logo.jpeg"],
     creator: "@imdhardware",
   },
+  robots: "index, follow",
+  schema: [
+    {
+      "@context": "https://schema.org",
+      "@type": "AboutPage",
+      "@id": "https://imdhardware.com/about/#about",
+      mainEntityOfPage: "https://imdhardware.com/about",
+      name: "About IMD Hardware",
+      description: "Information about IMD Hardware manufacturer and supplier.",
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      itemListElement: [
+        {
+          "@type": "ListItem",
+          position: 1,
+          name: "Home",
+          item: "https://imdhardware.com",
+        },
+        {
+          "@type": "ListItem",
+          position: 2,
+          name: "About",
+          item: "https://imdhardware.com/about",
+        },
+      ],
+    },
+  ],
 };

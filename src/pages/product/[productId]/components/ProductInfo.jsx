@@ -1,5 +1,17 @@
 import CartActions from "./CartActions";
-import { Star, Check, Loader2, Shield, Truck, RotateCcw } from "lucide-react";
+import {
+  Star,
+  Check,
+  Loader2,
+  Shield,
+  Truck,
+  RotateCcw,
+  Ruler,
+  Component,
+  Palette,
+  Box,
+  Info,
+} from "lucide-react";
 import { useStore } from "../../../../stores/useStore";
 
 const ProductInfo = ({ product, extraDetails, loading }) => {
@@ -10,7 +22,7 @@ const ProductInfo = ({ product, extraDetails, loading }) => {
     return Array.from({ length: 5 }, (_, index) => (
       <Star
         key={index}
-        size={18}
+        size={16}
         className={index < rating ? "" : ""}
         style={
           index < rating
@@ -46,43 +58,55 @@ const ProductHeader = ({ product, inCart, renderStars }) => (
     {/* Category and Status Badges */}
     <div className="flex items-center gap-2 flex-wrap">
       <span
-        className="px-3 py-1.5 text-sm font-medium rounded-full shadow-sm"
+        className="px-3 py-1 rounded-lg border"
         style={{
-          background: "var(--gradient-primary)",
-          color: "var(--color-text-on-primary)",
+          fontSize: "var(--text-xs)",
+          backgroundColor: "var(--color-surface)",
+          borderColor: "var(--color-border)",
+          color: "var(--color-text-secondary)",
+          fontWeight: "var(--font-semibold)",
+          textTransform: "uppercase",
+          letterSpacing: "var(--tracking-wide)",
         }}
       >
         {product.category_name}
       </span>
       {inCart && (
         <span
-          className="flex items-center gap-1.5 px-3 py-1.5 text-sm font-medium rounded-full border"
+          className="flex items-center gap-1 px-3 py-1 rounded-lg border"
           style={{
+            fontSize: "var(--text-xs)",
             backgroundColor: "var(--color-success-light)",
             color: "var(--color-success)",
-            borderColor: "var(--color-success)",
+            borderColor: "rgba(40, 167, 69, 0.2)",
+            fontWeight: "var(--font-semibold)",
           }}
         >
-          <Check size={16} style={{ color: "var(--color-success)" }} />
-          Added to Cart
+          <Check size={12} />
+          In Cart
         </span>
       )}
     </div>
 
     {/* Title and Name */}
-    <div className="space-y-2">
+    <div className="space-y-1">
       <h1
-        className="text-4xl font-bold leading-tight"
+        className="leading-tight"
         style={{
+          fontSize: "var(--text-3xl)",
           color: "var(--color-text-primary)",
           fontFamily: "var(--font-heading)",
+          fontWeight: "var(--font-bold)",
         }}
       >
         {product.title}
       </h1>
       <p
-        className="text-xl font-medium"
-        style={{ color: "var(--color-text-secondary)" }}
+        style={{
+          fontSize: "var(--text-base)",
+          color: "var(--color-text-muted)",
+          fontWeight: "var(--font-medium)",
+        }}
       >
         {product.name}
       </p>
@@ -91,9 +115,9 @@ const ProductHeader = ({ product, inCart, renderStars }) => (
     {/* Rating and Emoji */}
     <div className="flex items-center gap-4">
       <div
-        className="flex items-center gap-2 border rounded-xl px-4 py-2 shadow-sm"
+        className="flex items-center gap-2 border rounded-lg px-3 py-1.5"
         style={{
-          backgroundColor: "var(--color-surface)",
+          backgroundColor: "var(--color-bg)",
           borderColor: "var(--color-border)",
         }}
       >
@@ -101,28 +125,38 @@ const ProductHeader = ({ product, inCart, renderStars }) => (
           {renderStars(product.star_rating || 0)}
         </div>
         <span
-          className="ml-1 text-sm font-semibold"
-          style={{ color: "var(--color-text-primary)" }}
+          className="ml-1"
+          style={{
+            fontSize: "var(--text-xs)",
+            color: "var(--color-text-secondary)",
+            fontWeight: "var(--font-semibold)",
+          }}
         >
-          {product.star_rating || 0}/5
+          {product.star_rating || 0} Rating
         </span>
       </div>
-      <span className="text-2xl">{product.emoji}</span>
+      <span style={{ fontSize: "var(--text-xl)" }}>{product.emoji}</span>
     </div>
 
     {/* Price and Stock */}
-    <div className="space-y-2">
-      <div className="flex items-baseline gap-3">
+    <div className="space-y-3">
+      <div className="flex items-baseline gap-2">
         <span
-          className="text-4xl font-bold"
-          style={{ color: "var(--color-text-primary)" }}
+          style={{
+            fontSize: "var(--text-3xl)",
+            color: "var(--color-text-primary)",
+            fontWeight: "var(--font-bold)",
+          }}
         >
           ${product.price}
         </span>
         {product.original_price && product.original_price > product.price && (
           <span
-            className="text-xl line-through"
-            style={{ color: "var(--color-text-muted)" }}
+            className="line-through"
+            style={{
+              fontSize: "var(--text-lg)",
+              color: "var(--color-text-light)",
+            }}
           >
             ${product.original_price}
           </span>
@@ -131,7 +165,7 @@ const ProductHeader = ({ product, inCart, renderStars }) => (
 
       <div className="flex items-center gap-2">
         <div
-          className="w-2 h-2 rounded-full"
+          className="w-1.5 h-1.5 rounded-full"
           style={{
             backgroundColor:
               product.max_quantity > 10
@@ -142,8 +176,11 @@ const ProductHeader = ({ product, inCart, renderStars }) => (
           }}
         ></div>
         <span
-          className="text-sm font-medium"
-          style={{ color: "var(--color-text-secondary)" }}
+          style={{
+            fontSize: "var(--text-sm)",
+            color: "var(--color-text-secondary)",
+            fontWeight: "var(--font-medium)",
+          }}
         >
           {product.max_quantity > 10
             ? `In Stock (${product.max_quantity} available)`
@@ -158,85 +195,113 @@ const ProductHeader = ({ product, inCart, renderStars }) => (
 
 const TrustBadges = () => (
   <div
-    className="grid grid-cols-3 gap-4 py-4 border-y"
-    style={{ borderColor: "var(--color-border)" }}
+    className="flex items-center justify-between py-6 border-y"
+    style={{ borderColor: "var(--color-border-light)" }}
   >
     <div
-      className="flex items-center gap-2 text-sm"
-      style={{ color: "var(--color-text-secondary)" }}
+      className="flex items-center gap-2"
+      style={{
+        fontSize: "var(--text-xs)",
+        color: "var(--color-text-secondary)",
+        textTransform: "uppercase",
+        letterSpacing: "var(--tracking-wide)",
+        fontWeight: "var(--font-medium)",
+      }}
     >
-      <Truck size={18} style={{ color: "var(--color-text-muted)" }} />
+      <Truck size={14} style={{ color: "var(--color-text-light)" }} />
       <span>Free Shipping</span>
     </div>
     <div
-      className="flex items-center gap-2 text-sm"
-      style={{ color: "var(--color-text-secondary)" }}
+      className="flex items-center gap-2"
+      style={{
+        fontSize: "var(--text-xs)",
+        color: "var(--color-text-secondary)",
+        textTransform: "uppercase",
+        letterSpacing: "var(--tracking-wide)",
+        fontWeight: "var(--font-medium)",
+      }}
     >
-      <Shield size={18} style={{ color: "var(--color-text-muted)" }} />
+      <Shield size={14} style={{ color: "var(--color-text-light)" }} />
       <span>2-Year Warranty</span>
     </div>
     <div
-      className="flex items-center gap-2 text-sm"
-      style={{ color: "var(--color-text-secondary)" }}
+      className="flex items-center gap-2"
+      style={{
+        fontSize: "var(--text-xs)",
+        color: "var(--color-text-secondary)",
+        textTransform: "uppercase",
+        letterSpacing: "var(--tracking-wide)",
+        fontWeight: "var(--font-medium)",
+      }}
     >
-      <RotateCcw size={18} style={{ color: "var(--color-text-muted)" }} />
+      <RotateCcw size={14} style={{ color: "var(--color-text-light)" }} />
       <span>30-Day Returns</span>
     </div>
   </div>
 );
 
 const ProductDetailsGrid = ({ product, extraDetails }) => (
-  <div
-    className="rounded-2xl p-6 border shadow-sm"
-    style={{
-      background:
-        "linear-gradient(to bottom right, var(--color-bg), var(--color-surface))",
-      borderColor: "var(--color-border)",
-    }}
-  >
-    <h3
-      className="text-lg font-semibold mb-4"
-      style={{
-        color: "var(--color-text-primary)",
-        fontFamily: "var(--font-heading)",
-      }}
-    >
-      Product Details
-    </h3>
-    <div className="grid grid-cols-2 gap-4">
-      <DetailItem label="Size" value={product.size} icon="📏" />
-      <DetailItem label="Material" value={product.material} icon="🔶" />
+  <div className="space-y-4">
+    <div className="flex items-center gap-2">
+      <div className="w-1 h-4 bg-[var(--color-primary)] rounded-full"></div>
+      <h3
+        style={{
+          fontSize: "var(--text-sm)",
+          color: "var(--color-text-secondary)",
+          textTransform: "uppercase",
+          letterSpacing: "var(--tracking-wide)",
+          fontWeight: "var(--font-bold)",
+        }}
+      >
+        Specifications
+      </h3>
+    </div>
+    <div className="grid grid-cols-2 gap-3">
+      <DetailItem label="Size" value={product.size} icon={Ruler} />
+      <DetailItem label="Material" value={product.material} icon={Component} />
       <DetailItem
         label="Color"
         value={extraDetails?.color || product.color}
-        icon="🎨"
+        icon={Palette}
       />
       <DetailItem
         label="Available Stock"
         value={`${product.max_quantity} units`}
-        icon="📦"
+        icon={Box}
       />
     </div>
   </div>
 );
 
-const DetailItem = ({ label, value, icon }) => (
+const DetailItem = ({ label, value, icon: Icon }) => (
   <div
-    className="flex items-start gap-3 p-3 rounded-lg border shadow-xs"
+    className="flex items-center gap-3 p-3 rounded-lg border transition-all duration-200 hover:border-[var(--color-border-strong)]"
     style={{
       backgroundColor: "var(--color-surface)",
-      borderColor: "var(--color-border)",
+      borderColor: "var(--color-border-light)",
     }}
   >
-    <span className="text-lg">{icon}</span>
-    <div className="space-y-1">
+    <div className="p-1.5 rounded-md bg-[var(--color-bg-alt)]">
+      <Icon size={12} style={{ color: "var(--color-text-secondary)" }} />
+    </div>
+    <div className="flex flex-col">
       <span
-        className="font-semibold text-sm block"
-        style={{ color: "var(--color-text-secondary)" }}
+        style={{
+          fontSize: "var(--text-xs)",
+          color: "var(--color-text-light)",
+          fontWeight: "var(--font-medium)",
+        }}
       >
         {label}
       </span>
-      <p className="font-medium" style={{ color: "var(--color-text-primary)" }}>
+      <p
+        className="truncate max-w-[120px]"
+        style={{
+          fontSize: "var(--text-xs)",
+          color: "var(--color-text-primary)",
+          fontWeight: "var(--font-semibold)",
+        }}
+      >
         {value}
       </p>
     </div>

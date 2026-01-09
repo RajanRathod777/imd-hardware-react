@@ -175,7 +175,15 @@ const QRCodeScanner = () => {
               <div className="flex justify-between items-center p-4 border-b border-[var(--color-border)] bg-[var(--color-surface-alt)]">
                 <div className="flex items-center gap-2 text-[var(--color-text-primary)]">
                   <Camera size={20} className="text-[var(--color-primary)]" />
-                  <h2 className="text-lg font-semibold">QR Scanner</h2>
+                  <h2
+                    className=""
+                    style={{
+                      fontSize: "var(--text-lg)",
+                      fontWeight: "var(--font-semibold)",
+                    }}
+                  >
+                    QR Scanner
+                  </h2>
                 </div>
                 <button
                   onClick={handleClosePopup}
@@ -201,7 +209,8 @@ const QRCodeScanner = () => {
                   {isScanning ? (
                     <button
                       onClick={stopScanner}
-                      className="w-full py-2.5 px-4 bg-[var(--color-surface)] border border-[var(--color-danger)] text-[var(--color-danger)] font-medium rounded-lg hover:bg-[var(--color-danger-light)] transition-all flex items-center justify-center gap-2"
+                      className="w-full py-2.5 px-4 bg-[var(--color-surface)] border border-[var(--color-danger)] text-[var(--color-danger)] rounded-lg hover:bg-[var(--color-danger-light)] transition-all flex items-center justify-center gap-2"
+                      style={{ fontWeight: "var(--font-medium)" }}
                     >
                       <X size={18} />
                       Stop Scanner
@@ -209,7 +218,8 @@ const QRCodeScanner = () => {
                   ) : (
                     <button
                       onClick={startScanner}
-                      className="w-full py-2.5 px-4 bg-[var(--color-primary)] text-[var(--color-text-on-primary)] font-medium rounded-lg hover:bg-[var(--color-primary-dark)] active:scale-[0.98] transition-all flex items-center justify-center gap-2 shadow-md hover:shadow-lg"
+                      className="w-full py-2.5 px-4 bg-[var(--color-primary)] text-[var(--color-text-on-primary)] rounded-lg hover:bg-[var(--color-primary-dark)] active:scale-[0.98] transition-all flex items-center justify-center gap-2 shadow-md hover:shadow-lg"
+                      style={{ fontWeight: "var(--font-medium)" }}
                     >
                       <Camera size={18} />
                       {cameraError ? "Retry Camera" : "Start Scanner"}
@@ -220,18 +230,25 @@ const QRCodeScanner = () => {
                 {/* API Response Message */}
                 {apiResponse && (
                   <div
-                    className={`mt-2 p-3 rounded-lg text-sm font-medium text-center flex items-center justify-center gap-2 animate-in fade-in slide-in-from-bottom-2 ${
+                    className={`mt-2 p-3 rounded-lg text-center flex items-center justify-center gap-2 animate-in fade-in slide-in-from-bottom-2 ${
                       apiResponse.status
                         ? "bg-[var(--color-success-light)] text-[var(--color-success)] border border-[var(--color-border-success)]"
                         : "bg-[var(--color-danger-light)] text-[var(--color-danger)] border border-[var(--color-border-danger)]"
                     }`}
+                    style={{
+                      fontSize: "var(--text-sm)",
+                      fontWeight: "var(--font-medium)",
+                    }}
                   >
                     {apiResponse.status ? (
                       <>
                         <span>🎉</span>
                         <div className="flex flex-col">
                           <span>{apiResponse.message}</span>
-                          <span className="text-xs opacity-90">
+                          <span
+                            className="opacity-90"
+                            style={{ fontSize: "var(--text-xs)" }}
+                          >
                             Points Earned: {apiResponse.total_points}
                           </span>
                         </div>
@@ -247,11 +264,22 @@ const QRCodeScanner = () => {
 
                 {/* Camera Error Message */}
                 {cameraError && !apiResponse && (
-                  <div className="p-3 bg-[var(--color-danger-light)] text-[var(--color-danger)] border border-[var(--color-border-danger)] rounded-lg text-sm text-center">
-                    <p className="font-semibold flex items-center justify-center gap-2">
+                  <div
+                    className="p-3 bg-[var(--color-danger-light)] text-[var(--color-danger)] border border-[var(--color-border-danger)] rounded-lg text-center"
+                    style={{ fontSize: "var(--text-sm)" }}
+                  >
+                    <p
+                      className="flex items-center justify-center gap-2"
+                      style={{ fontWeight: "var(--font-semibold)" }}
+                    >
                       <X size={16} /> Error Accessing Camera
                     </p>
-                    <p className="mt-1 opacity-90 text-xs">{cameraError}</p>
+                    <p
+                      className="mt-1 opacity-90"
+                      style={{ fontSize: "var(--text-xs)" }}
+                    >
+                      {cameraError}
+                    </p>
                   </div>
                 )}
               </div>
@@ -259,7 +287,7 @@ const QRCodeScanner = () => {
           </div>
         )}
       </div>
-      <style jsx global>{`
+      <style>{`
         @keyframes scan {
           0% {
             top: 0%;

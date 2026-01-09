@@ -3,7 +3,7 @@ import { Link } from "react-router";
 import { useNavigate } from "react-router";
 import Cookies from "js-cookie";
 import Loading from "../../../components/Loading";
-import DownloadeInvoice from "./DownloadeInvoice";
+import DownloadInvoice from "./DownloadInvoice";
 import {
   ChevronLeft,
   ChevronRight,
@@ -275,8 +275,12 @@ export default function Orders() {
               style={{ color: "var(--color-danger)" }}
             />
             <h3
-              className="text-lg font-medium mb-2"
-              style={{ color: "var(--color-text-primary)" }}
+              className="mb-2"
+              style={{
+                color: "var(--color-text-primary)",
+                fontWeight: "var(--font-medium)",
+                fontSize: "var(--text-lg)",
+              }}
             >
               Error Loading Orders
             </h3>
@@ -321,8 +325,12 @@ export default function Orders() {
               style={{ color: "var(--color-text-muted)" }}
             />
             <h3
-              className="text-lg font-medium mb-2"
-              style={{ color: "var(--color-text-primary)" }}
+              className="mb-2"
+              style={{
+                color: "var(--color-text-primary)",
+                fontWeight: "var(--font-medium)",
+                fontSize: "var(--text-lg)",
+              }}
             >
               No orders found
             </h3>
@@ -367,8 +375,12 @@ export default function Orders() {
                         <div>
                           <div className="flex flex-wrap items-center gap-2 mt-2 sm:mt-0">
                             <span
-                              className="inline-flex items-center px-3 py-1 text-sm font-medium rounded-lg"
-                              style={getStatusStyle(order.order_status)}
+                              className="inline-flex items-center px-3 py-1 rounded-lg"
+                              style={{
+                                fontSize: "var(--text-sm)",
+                                ...getStatusStyle(order.order_status),
+                                fontWeight: "var(--font-medium)",
+                              }}
                             >
                               {getStatusIcon(order.order_status)}
                               <span className="ml-1 capitalize">
@@ -376,10 +388,12 @@ export default function Orders() {
                               </span>
                             </span>
                             <span
-                              className="inline-flex items-center px-3 py-1 text-sm font-medium rounded-lg"
-                              style={getPaymentStatusStyle(
-                                order.payment_status
-                              )}
+                              className="inline-flex items-center px-3 py-1 rounded-lg"
+                              style={{
+                                fontSize: "var(--text-sm)",
+                                ...getPaymentStatusStyle(order.payment_status),
+                                fontWeight: "var(--font-medium)",
+                              }}
                             >
                               {getPaymentStatusIcon(order.payment_status)}
                               <span className="capitalize">
@@ -388,21 +402,25 @@ export default function Orders() {
                             </span>
                           </div>
                           <p
-                            className="text-sm"
-                            style={{ color: "var(--color-text-secondary)" }}
+                            style={{
+                              fontSize: "var(--text-sm)",
+                              color: "var(--color-text-secondary)",
+                            }}
                           >
                             Order Date : {formatDate(order.created_at)}
                           </p>
                           {order.tracking_number && (
                             <p
-                              className="text-sm"
-                              style={{ color: "var(--color-text-secondary)" }}
+                              style={{
+                                fontSize: "var(--text-sm)",
+                                color: "var(--color-text-secondary)",
+                              }}
                             >
                               Tracking: {order.tracking_number}
                             </p>
                           )}
                           <p>
-                            <DownloadeInvoice data={order} />
+                            <DownloadInvoice data={order} />
                           </p>
                         </div>
                       </div>
@@ -444,22 +462,29 @@ export default function Orders() {
                           </div>
                           <div className="flex-1 min-w-0">
                             <h4
-                              className="text-sm font-medium truncate"
-                              style={{ color: "var(--color-text-primary)" }}
+                              className="truncate"
+                              style={{
+                                fontSize: "var(--text-sm)",
+                                color: "var(--color-text-primary)",
+                                fontWeight: "var(--font-medium)",
+                              }}
                             >
                               {item.product_name}
                             </h4>
                             <p
-                              className="text-sm"
-                              style={{ color: "var(--color-text-secondary)" }}
+                              style={{
+                                fontSize: "var(--text-sm)",
+                                color: "var(--color-text-secondary)",
+                              }}
                             >
                               Qty: {item.quantity} ×{" "}
                               {formatCurrency(item.price)}
                             </p>
                             {item.discount && (
                               <span
-                                className="inline-block text-xs px-2 py-1 mt-1 rounded-lg"
+                                className="inline-block px-2 py-1 mt-1 rounded-lg"
                                 style={{
+                                  fontSize: "var(--text-xs)",
                                   backgroundColor: "var(--color-bg-alt)",
                                   color: "var(--color-text-primary)",
                                 }}
@@ -470,9 +495,12 @@ export default function Orders() {
 
                             <div>
                               <Link
-                                href={`/review/${order.order_id}/${item.product_id}`}
-                                className="inline-block text-xs px-2 py-1 mt-1"
-                                style={{ color: "var(--color-text-secondary)" }}
+                                to={`/review/${order.order_id}/${item.product_id}`}
+                                className="inline-block px-2 py-1 mt-1"
+                                style={{
+                                  fontSize: "var(--text-xs)",
+                                  color: "var(--color-text-secondary)",
+                                }}
                               >
                                 <u>Review</u>
                               </Link>
@@ -480,8 +508,11 @@ export default function Orders() {
                           </div>
                           <div className="text-right">
                             <p
-                              className="text-sm font-semibold"
-                              style={{ color: "var(--color-text-primary)" }}
+                              style={{
+                                fontSize: "var(--text-sm)",
+                                color: "var(--color-text-primary)",
+                                fontWeight: "var(--font-semibold)",
+                              }}
                             >
                               {formatCurrency(
                                 item.price *
@@ -490,8 +521,10 @@ export default function Orders() {
                               )}
                             </p>
                             <p
-                              className="text-xs"
-                              style={{ color: "var(--color-text-secondary)" }}
+                              style={{
+                                fontSize: "var(--text-xs)",
+                                color: "var(--color-text-secondary)",
+                              }}
                             >
                               GST: {item.gst_rate}%
                             </p>
@@ -508,8 +541,11 @@ export default function Orders() {
                   >
                     <div className="flex flex-col flex-wrap gap-2 sm:flex-row sm:items-center sm:justify-between">
                       <div
-                        className="flex  flex-wrap gap-2 items-center space-x-2 text-sm mb-3 sm:mb-0"
-                        style={{ color: "var(--color-text-secondary)" }}
+                        className="flex  flex-wrap gap-2 items-center space-x-2 mb-3 sm:mb-0"
+                        style={{
+                          fontSize: "var(--text-sm)",
+                          color: "var(--color-text-secondary)",
+                        }}
                       >
                         <MapPin className="w-4 h-4" />
                         <span>{order.shipping_address}</span>
@@ -533,7 +569,10 @@ export default function Orders() {
 
                             return (
                               <>
-                                <div className="flex items-center justify-between text-sm">
+                                <div
+                                  className="flex items-center justify-between"
+                                  style={{ fontSize: "var(--text-sm)" }}
+                                >
                                   <span
                                     style={{
                                       color: "var(--color-text-secondary)",
@@ -542,16 +581,19 @@ export default function Orders() {
                                     Total Amount:
                                   </span>
                                   <span
-                                    className="font-medium"
                                     style={{
                                       color: "var(--color-text-primary)",
+                                      fontWeight: "var(--font-medium)",
                                     }}
                                   >
                                     {formatCurrency(totalGross)}
                                   </span>
                                 </div>
                                 {totalDiscount > 0.01 && (
-                                  <div className="flex items-center justify-between text-sm">
+                                  <div
+                                    className="flex items-center justify-between"
+                                    style={{ fontSize: "var(--text-sm)" }}
+                                  >
                                     <span
                                       style={{
                                         color: "var(--color-text-secondary)",
@@ -560,9 +602,9 @@ export default function Orders() {
                                       Discount:
                                     </span>
                                     <span
-                                      className="font-medium"
                                       style={{
                                         color: "var(--color-text-primary)",
+                                        fontWeight: "var(--font-medium)",
                                       }}
                                     >
                                       -{formatCurrency(totalDiscount)}
@@ -574,14 +616,20 @@ export default function Orders() {
                           })()}
                           <div className="flex items-center justify-between">
                             <span
-                              className="text-base font-semibold"
-                              style={{ color: "var(--color-text-primary)" }}
+                              style={{
+                                fontSize: "var(--text-base)",
+                                color: "var(--color-text-primary)",
+                                fontWeight: "var(--font-semibold)",
+                              }}
                             >
                               Total:
                             </span>
                             <span
-                              className="text-lg font-bold"
-                              style={{ color: "var(--color-text-primary)" }}
+                              style={{
+                                fontSize: "var(--text-lg)",
+                                color: "var(--color-text-primary)",
+                                fontWeight: "var(--font-bold)",
+                              }}
                             >
                               {formatCurrency(order.final_amount)}
                             </span>
@@ -600,18 +648,33 @@ export default function Orders() {
                 <button
                   onClick={() => handlePageChange(currentPage - 1)}
                   disabled={!isPrev || isLoading}
-                  className={`w-8 h-8 items-center justify-center border text-sm font-medium flex items-center gap-2 ${
-                    isPrev && !isLoading
-                      ? "bg-white text-gray-700 hover:bg-gray-50 border-gray-300"
-                      : "bg-gray-100 text-gray-400 cursor-not-allowed border-gray-200"
-                  }`}
+                  className="w-8 h-8 items-center justify-center border flex items-center gap-2"
+                  style={{
+                    fontSize: "var(--text-sm)",
+                    backgroundColor:
+                      isPrev && !isLoading
+                        ? "var(--color-surface)"
+                        : "var(--color-bg-alt)",
+                    color:
+                      isPrev && !isLoading
+                        ? "var(--color-text-primary)"
+                        : "var(--color-text-muted)",
+                    borderColor: "var(--color-border)",
+                    cursor: isPrev && !isLoading ? "pointer" : "not-allowed",
+                    fontWeight: "var(--font-medium)",
+                  }}
                 >
                   <ChevronLeft />
                 </button>
 
                 {/* Page Input */}
                 <div className="flex items-center gap-2">
-                  <span className="text-sm text-gray-600"></span>
+                  <span
+                    style={{
+                      fontSize: "var(--text-sm)",
+                      color: "var(--color-text-secondary)",
+                    }}
+                  ></span>
                   <input
                     type="number"
                     value={currentPageInput}
@@ -620,10 +683,21 @@ export default function Orders() {
                     onChange={handlePageInputChange}
                     onKeyPress={handlePageInputSubmit}
                     onBlur={() => handlePageChange(currentPageInput)}
-                    className="h-8 border border-gray-300  text-center text-md"
+                    className="h-8 border text-center"
+                    style={{
+                      fontSize: "var(--text-base)",
+                      borderColor: "var(--color-border)",
+                      color: "var(--color-text-primary)",
+                      backgroundColor: "var(--color-surface)",
+                    }}
                     disabled={isLoading}
                   />
-                  <span className="text-sm text-gray-600">
+                  <span
+                    style={{
+                      fontSize: "var(--text-sm)",
+                      color: "var(--color-text-secondary)",
+                    }}
+                  >
                     / {pagination.totalPages}
                   </span>
                 </div>
@@ -632,11 +706,21 @@ export default function Orders() {
                 <button
                   onClick={() => handlePageChange(currentPage + 1)}
                   disabled={!isNext || isLoading}
-                  className={`w-8 h-8 items-center justify-center border text-sm font-medium flex items-center gap-2 ${
-                    isNext && !isLoading
-                      ? "bg-white text-gray-700 hover:bg-gray-50 border-gray-300"
-                      : "bg-gray-100 text-gray-400 cursor-not-allowed border-gray-200"
-                  }`}
+                  className="w-8 h-8 items-center justify-center border flex items-center gap-2"
+                  style={{
+                    fontSize: "var(--text-sm)",
+                    backgroundColor:
+                      isNext && !isLoading
+                        ? "var(--color-surface)"
+                        : "var(--color-bg-alt)",
+                    color:
+                      isNext && !isLoading
+                        ? "var(--color-text-primary)"
+                        : "var(--color-text-muted)",
+                    borderColor: "var(--color-border)",
+                    cursor: isNext && !isLoading ? "pointer" : "not-allowed",
+                    fontWeight: "var(--font-medium)",
+                  }}
                 >
                   <ChevronRight />
                 </button>

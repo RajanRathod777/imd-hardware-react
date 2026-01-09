@@ -21,4 +21,22 @@ export const checkoutPageMetadata = {
     description:
       "Complete your hardware purchase securely. Multiple payment options and fast delivery available.",
   },
+  schema: {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      {
+        "@type": "ListItem",
+        position: 1,
+        name: "Home",
+        item: "https://imdhardware.com",
+      },
+      {
+        "@type": "ListItem",
+        position: 2,
+        name: "Checkout",
+        item: "https://imdhardware.com/checkout",
+      },
+    ],
+  },
 };

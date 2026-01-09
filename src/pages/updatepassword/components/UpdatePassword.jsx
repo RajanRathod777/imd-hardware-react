@@ -99,17 +99,22 @@ export default function UpdatePassword() {
             </div>
             <div>
               <h1
-                className="text-xl font-semibold"
+                className=""
                 style={{
+                  fontSize: "var(--text-xl)",
                   color: "var(--color-text-primary)",
                   fontFamily: "var(--font-heading)",
+                  fontWeight: "var(--font-semibold)",
                 }}
               >
                 Update Password
               </h1>
               <p
-                className="text-sm"
-                style={{ color: "var(--color-text-secondary)" }}
+                className=""
+                style={{
+                  fontSize: "var(--text-sm)",
+                  color: "var(--color-text-secondary)",
+                }}
               >
                 Change your account password
               </p>
@@ -121,8 +126,11 @@ export default function UpdatePassword() {
           <form onSubmit={handleUpdatePassword} className="space-y-4">
             <div>
               <label
-                className="block text-sm mb-1"
-                style={{ color: "var(--color-text-secondary)" }}
+                className="block mb-1"
+                style={{
+                  fontSize: "var(--text-sm)",
+                  color: "var(--color-text-secondary)",
+                }}
               >
                 Email
               </label>
@@ -133,8 +141,11 @@ export default function UpdatePassword() {
 
             <div>
               <label
-                className="block text-sm mb-1"
-                style={{ color: "var(--color-text-secondary)" }}
+                className="block mb-1"
+                style={{
+                  fontSize: "var(--text-sm)",
+                  color: "var(--color-text-secondary)",
+                }}
               >
                 Current Password
               </label>
@@ -157,8 +168,11 @@ export default function UpdatePassword() {
 
             <div>
               <label
-                className="block text-sm mb-1"
-                style={{ color: "var(--color-text-secondary)" }}
+                className="block mb-1"
+                style={{
+                  fontSize: "var(--text-sm)",
+                  color: "var(--color-text-secondary)",
+                }}
               >
                 New Password
               </label>
@@ -197,14 +211,20 @@ export default function UpdatePassword() {
           </form>
 
           <div
-            className="p-2 text-center text-xs"
-            style={{ color: "var(--color-text-secondary)" }}
+            className="p-2 text-center"
+            style={{
+              fontSize: "var(--text-xs)",
+              color: "var(--color-text-secondary)",
+            }}
           >
             Profile{" "}
             <Link
               href="/profile"
-              className="hover:underline font-medium"
-              style={{ color: "var(--color-primary)" }}
+              className="hover:underline"
+              style={{
+                color: "var(--color-primary)",
+                fontWeight: "var(--font-medium)",
+              }}
             >
               Go to Profile
             </Link>
@@ -212,8 +232,9 @@ export default function UpdatePassword() {
 
           {message && (
             <div
-              className={`mt-4 p-3 text-sm flex items-center gap-2 border rounded-lg`}
+              className={`mt-4 p-3 flex items-center gap-2 border rounded-lg`}
               style={{
+                fontSize: "var(--text-sm)",
                 backgroundColor:
                   messageType === "success"
                     ? "var(--color-success-light)"
@@ -239,8 +260,11 @@ export default function UpdatePassword() {
                   style={{ borderColor: "var(--color-text-primary)" }}
                 >
                   <span
-                    className="text-xs"
-                    style={{ color: "var(--color-text-primary)" }}
+                    className=""
+                    style={{
+                      fontSize: "var(--text-xs)",
+                      color: "var(--color-text-primary)",
+                    }}
                   >
                     !
                   </span>

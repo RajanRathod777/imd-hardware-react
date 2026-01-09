@@ -30,4 +30,33 @@ export const contactPageMetadata = {
       "Reach out for product details, wholesale orders, or hardware manufacturing support.",
     images: ["https://imdhardware.com/images/logo.jpeg"],
   },
+  robots: "index, follow",
+  schema: [
+    {
+      "@context": "https://schema.org",
+      "@type": "ContactPage",
+      "@id": "https://imdhardware.com/contact/#contact",
+      mainEntityOfPage: "https://imdhardware.com/contact",
+      name: "Contact IMD Hardware",
+      description: "Contact information for IMD Hardware.",
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      itemListElement: [
+        {
+          "@type": "ListItem",
+          position: 1,
+          name: "Home",
+          item: "https://imdhardware.com",
+        },
+        {
+          "@type": "ListItem",
+          position: 2,
+          name: "Contact",
+          item: "https://imdhardware.com/contact",
+        },
+      ],
+    },
+  ],
 };

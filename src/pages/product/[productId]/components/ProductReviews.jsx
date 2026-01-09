@@ -25,7 +25,7 @@ const ProductReviews = ({
     return Array.from({ length: 5 }, (_, index) => (
       <Star
         key={index}
-        size={18}
+        size={16}
         className={index < rating ? "" : ""}
         style={
           index < rating
@@ -47,10 +47,12 @@ const ProductReviews = ({
       <div className="flex items-center justify-between mb-8">
         <div>
           <h2
-            className="text-3xl font-bold mb-2"
+            className="mb-2"
             style={{
+              fontSize: "var(--text-3xl)",
               color: "var(--color-text-primary)",
               fontFamily: "var(--font-heading)",
+              fontWeight: "var(--font-bold)",
             }}
           >
             Customer Reviews
@@ -62,8 +64,10 @@ const ProductReviews = ({
             >
               reviews
               <span
-                className="font-semibold"
-                style={{ color: "var(--color-text-primary)" }}
+                style={{
+                  color: "var(--color-text-primary)",
+                  fontWeight: "var(--font-semibold)",
+                }}
               >
                 {pagination.totalReviews}
               </span>
@@ -99,21 +103,24 @@ const ReviewsCarousel = ({
   if (!reviews || reviews.length === 0) {
     return (
       <div
-        className="text-center py-16 rounded-2xl border"
+        className="text-center py-16 rounded-lg border"
         style={{
-          background:
-            "linear-gradient(to bottom right, var(--color-bg), var(--color-surface))",
-          borderColor: "var(--color-border)",
+          backgroundColor: "var(--color-surface)",
+          borderColor: "var(--color-border-light)",
         }}
       >
         <Star
-          size={64}
+          size={48}
           className="mx-auto mb-4"
           style={{ color: "var(--color-border-strong)" }}
         />
         <p
-          className="text-xl font-semibold mb-2"
-          style={{ color: "var(--color-text-secondary)" }}
+          className="mb-2"
+          style={{
+            fontSize: "var(--text-xl)",
+            color: "var(--color-text-secondary)",
+            fontWeight: "var(--font-semibold)",
+          }}
         >
           No reviews yet
         </p>
@@ -159,8 +166,9 @@ const ReviewsCarousel = ({
           style={{ borderColor: "var(--color-border)" }}
         >
           <div
-            className="text-sm px-4 py-2 rounded-lg border"
+            className="px-4 py-2 rounded-lg border"
             style={{
+              fontSize: "var(--text-sm)",
               color: "var(--color-text-secondary)",
               backgroundColor: "var(--color-bg)",
               borderColor: "var(--color-border)",
@@ -168,22 +176,28 @@ const ReviewsCarousel = ({
           >
             Page{" "}
             <span
-              className="font-semibold"
-              style={{ color: "var(--color-text-primary)" }}
+              style={{
+                color: "var(--color-text-primary)",
+                fontWeight: "var(--font-semibold)",
+              }}
             >
               {currentReviewPage}
             </span>{" "}
             of{" "}
             <span
-              className="font-semibold"
-              style={{ color: "var(--color-text-primary)" }}
+              style={{
+                color: "var(--color-text-primary)",
+                fontWeight: "var(--font-semibold)",
+              }}
             >
               {pagination.totalPages}
             </span>
             {" • "}
             <span
-              className="font-semibold"
-              style={{ color: "var(--color-text-primary)" }}
+              style={{
+                color: "var(--color-text-primary)",
+                fontWeight: "var(--font-semibold)",
+              }}
             >
               {pagination.totalReviews}
             </span>{" "}
@@ -197,29 +211,32 @@ const ReviewsCarousel = ({
 
 const ReviewCard = ({ review, renderStars }) => (
   <div
-    className="rounded-2xl border p-6 shadow-sm hover:shadow-xl transition-all duration-300 group h-full"
+    className="rounded-lg border p-5 transition-all duration-300 group h-full"
     style={{
       backgroundColor: "var(--color-surface)",
-      borderColor: "var(--color-border)",
+      borderColor: "var(--color-border-light)",
     }}
   >
     <div className="flex flex-col gap-4">
-      <div className="w-45">
+      <div className="w-full">
         <div
-          className="flex items-center gap-2 border rounded-xl px-3 py-2"
+          className="flex items-center gap-1.5 border rounded-lg px-2 py-1 w-fit"
           style={{
-            backgroundColor: "var(--color-secondary-light)",
-            borderColor: "var(--color-secondary)",
+            backgroundColor: "var(--color-bg)",
+            borderColor: "var(--color-border-light)",
           }}
         >
-          <div className="flex items-center gap-1">
+          <div className="flex items-center gap-0.5">
             {renderStars(review.rating)}
           </div>
           <span
-            className="font-bold text-sm"
-            style={{ color: "var(--color-secondary-dark)" }}
+            style={{
+              fontSize: "var(--text-xs)",
+              color: "var(--color-text-secondary)",
+              fontWeight: "var(--font-bold)",
+            }}
           >
-            {review.rating}/5
+            {review.rating}
           </span>
         </div>
       </div>
@@ -227,11 +244,11 @@ const ReviewCard = ({ review, renderStars }) => (
       <div className="">
         <div>
           <h3
-            className="h-16 rounded-lg p-4 border font-bold text-lg transition-colors line-clamp-2"
+            className="h-12 flex items-center transition-colors line-clamp-2"
             style={{
-              backgroundColor: "var(--color-bg)",
-              borderColor: "var(--color-border)",
+              fontSize: "var(--text-base)",
               color: "var(--color-text-primary)",
+              fontWeight: "var(--font-bold)",
             }}
           >
             {review.review_title}
@@ -240,11 +257,10 @@ const ReviewCard = ({ review, renderStars }) => (
       </div>
 
       <p
-        className="h-30 leading-relaxed text-base mb-4 rounded-lg p-4 border line-clamp-4"
+        className="h-24 leading-relaxed mb-2 line-clamp-4"
         style={{
+          fontSize: "var(--text-sm)",
           color: "var(--color-text-secondary)",
-          backgroundColor: "var(--color-bg)",
-          borderColor: "var(--color-border)",
         }}
       >
         {review.review_text}

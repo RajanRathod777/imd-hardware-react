@@ -48,20 +48,23 @@ const FilterDropdown = ({ title, options, selectedValues, onToggle }) => {
     >
       <button
         onClick={() => setIsOpen(!isOpen)}
-        className="flex items-center gap-2 px-4 py-2 border rounded-lg text-sm font-medium transition-all"
+        className="flex items-center gap-2 px-4 py-2 border rounded-lg transition-all"
         style={{
+          fontSize: "var(--text-sm)",
           backgroundColor: isOpen
             ? "var(--color-bg-alt)"
             : "var(--color-surface)",
           borderColor: isOpen ? "var(--color-primary)" : "var(--color-border)",
           color: isOpen ? "var(--color-primary)" : "var(--color-text-primary)",
+          fontWeight: "var(--font-medium)",
         }}
       >
         {title}
         {selectedValues.length > 0 && (
           <span
-            className="flex items-center justify-center w-5 h-5 text-xs rounded-full"
+            className="flex items-center justify-center w-5 h-5 rounded-full"
             style={{
+              fontSize: "var(--text-xs)",
               backgroundColor: "var(--color-primary)",
               color: "var(--color-text-on-primary)",
             }}
@@ -111,8 +114,10 @@ const FilterDropdown = ({ title, options, selectedValues, onToggle }) => {
                   )}
                 </div>
                 <span
-                  className="text-sm"
-                  style={{ color: "var(--color-text-primary)" }}
+                  style={{
+                    fontSize: "var(--text-sm)",
+                    color: "var(--color-text-primary)",
+                  }}
                 >
                   {option}
                 </span>
@@ -120,7 +125,13 @@ const FilterDropdown = ({ title, options, selectedValues, onToggle }) => {
             );
           })}
           {options.length === 0 && (
-            <div className="p-2 text-center text-sm text-gray-500">
+            <div
+              className="p-2 text-center"
+              style={{
+                fontSize: "var(--text-sm)",
+                color: "var(--color-text-muted)",
+              }}
+            >
               No options available
             </div>
           )}
@@ -129,6 +140,8 @@ const FilterDropdown = ({ title, options, selectedValues, onToggle }) => {
     </div>
   );
 };
+
+// ... (skipping lines 143-267)
 
 const Products = () => {
   const apiUrl = import.meta.env.VITE_SERVER_API_URL;
@@ -238,7 +251,7 @@ const Products = () => {
 
   return (
     <div
-      className="min-h-screen"
+      className="min-h-100%"
       style={{
         backgroundColor: "var(--color-bg)",
         fontFamily: "var(--font-body)",
@@ -250,7 +263,7 @@ const Products = () => {
           backgroundColor: "var(--color-surface)",
           borderBottom: `1px solid var(--color-border)`,
         }}
-        className="sticky top-0 z-40 shadow-sm"
+        className="z-40 shadow-sm"
       >
         <div className="container mx-auto px-4 py-4 flex flex-col md:flex-row gap-4 items-center justify-between">
           <div className="flex items-center gap-4 flex-wrap w-full md:w-auto">
@@ -260,8 +273,12 @@ const Products = () => {
                 style={{ color: "var(--color-text-secondary)" }}
               />
               <span
-                className="font-semibold text-sm"
-                style={{ color: "var(--color-text-primary)" }}
+                className=""
+                style={{
+                  fontSize: "var(--text-sm)",
+                  color: "var(--color-text-primary)",
+                  fontWeight: "var(--font-semibold)",
+                }}
               >
                 Filters
               </span>
@@ -287,8 +304,11 @@ const Products = () => {
               selectedMaterials.length > 0) && (
               <button
                 onClick={clearFilters}
-                className="text-sm underline underline-offset-4 hover:opacity-80 transition-opacity"
-                style={{ color: "var(--color-danger)" }}
+                className="underline underline-offset-4 hover:opacity-80 transition-opacity"
+                style={{
+                  fontSize: "var(--text-sm)",
+                  color: "var(--color-danger)",
+                }}
               >
                 Clear All
               </button>
@@ -302,8 +322,12 @@ const Products = () => {
           >
             <div className="flex justify-between mb-1">
               <span
-                className="text-xs font-medium"
-                style={{ color: "var(--color-text-secondary)" }}
+                className=""
+                style={{
+                  fontSize: "var(--text-xs)",
+                  color: "var(--color-text-secondary)",
+                  fontWeight: "var(--font-medium)",
+                }}
               >
                 Price Range
               </span>
@@ -352,14 +376,22 @@ const Products = () => {
             </div>
             <div className="flex justify-between">
               <div
-                className="text-[10px] font-semibold"
-                style={{ color: "var(--color-text-primary)" }}
+                className=""
+                style={{
+                  color: "var(--color-text-primary)",
+                  fontSize: "var(--text-xs)",
+                  fontWeight: "var(--font-semibold)",
+                }}
               >
                 ₹{priceRange[0]}
               </div>
               <div
-                className="text-[12px] font-semibold"
-                style={{ color: "var(--color-text-primary)" }}
+                className=""
+                style={{
+                  color: "var(--color-text-primary)",
+                  fontSize: "var(--text-xs)",
+                  fontWeight: "var(--font-semibold)",
+                }}
               >
                 - ₹{priceRange[1]}
               </div>
@@ -374,10 +406,11 @@ const Products = () => {
         <div className="flex flex-col md:flex-row md:items-center justify-between mb-8">
           <div>
             <h2
-              className="text-3xl font-bold"
               style={{
+                fontSize: "var(--text-3xl)",
                 color: "var(--color-text-primary)",
                 fontFamily: "var(--font-heading)",
+                fontWeight: "var(--font-bold)",
               }}
             >
               {selectedCategories.length === 1
@@ -420,7 +453,12 @@ const Products = () => {
                     color: "var(--color-text-on-primary)",
                   }}
                 >
-                  <span className="text-sm font-bold">
+                  <span
+                    style={{
+                      fontSize: "var(--text-sm)",
+                      fontWeight: "var(--font-bold)",
+                    }}
+                  >
                     ₹ {product.price.toFixed(2)}
                   </span>
                 </div>
@@ -431,7 +469,7 @@ const Products = () => {
                   style={{ width: "100%", aspectRatio: "1/1" }}
                 >
                   <Link
-                    href={`/product/${product.product_id}`}
+                    to={`/product/${product.product_id}`}
                     className="block w-full h-full hover:opacity-95 transition-opacity duration-200"
                   >
                     <Swiper
@@ -471,7 +509,9 @@ const Products = () => {
                           >
                             <div className="text-center p-4">
                               <ImageIcon className="h-10 w-10 mx-auto mb-2 opacity-40" />
-                              <p className="text-sm">No Image</p>
+                              <p style={{ fontSize: "var(--text-sm)" }}>
+                                No Image
+                              </p>
                             </div>
                           </div>
                         </SwiperSlide>
@@ -492,7 +532,7 @@ const Products = () => {
                       className="group"
                     >
                       <h2
-                        className="truncate font-bold text-sm  mb-1 transition-colors duration-200 group-hover:text-opacity-80"
+                        className="truncate mb-1 transition-colors duration-200 group-hover:text-opacity-80"
                         style={{
                           color: "var(--color-text-primary)",
                           fontSize: "var(--text-sm)",
@@ -504,7 +544,7 @@ const Products = () => {
                     </Link>
 
                     <div
-                      className=" truncate text-xs "
+                      className=" truncate"
                       style={{
                         color: "var(--color-text-secondary)",
                         fontSize: "var(--text-xs)",
@@ -549,8 +589,12 @@ const Products = () => {
                           </button>
 
                           <span
-                            className="font-bold min-w-8 text-center text-sm"
-                            style={{ color: "var(--color-text-primary)" }}
+                            className="min-w-8 text-center"
+                            style={{
+                              fontSize: "var(--text-sm)",
+                              color: "var(--color-text-primary)",
+                              fontWeight: "var(--font-bold)",
+                            }}
                           >
                             {inCart.quantity}
                           </span>
@@ -591,7 +635,7 @@ const Products = () => {
                       // Add to cart button
                       <button
                         onClick={() => addToCart(product)}
-                        className="rounded-lg px-3 py-2 font-semibold flex items-center justify-center gap-2 transition-all duration-200 hover:scale-[1.02] active:scale-95 w-full group/add"
+                        className="rounded-lg px-3 py-2 flex items-center justify-center gap-2 transition-all duration-200 hover:scale-[1.02] active:scale-95 w-full group/add"
                         style={{
                           backgroundColor: "var(--color-primary)",
                           color: "var(--color-text-on-primary)",
@@ -601,7 +645,7 @@ const Products = () => {
                       >
                         <ShoppingCart className="h-4 w-4 transition-transform duration-200 group-hover/add:scale-110" />
                         <span
-                          className="text-sm"
+                          className=""
                           style={{ fontSize: "var(--text-xs)" }}
                         >
                           Add to Cart
@@ -621,10 +665,11 @@ const Products = () => {
             {visibleCount < filteredProducts.length && (
               <button
                 onClick={() => setVisibleCount((prev) => prev + 8)}
-                className="px-8 py-3 transition-colors font-semibold flex items-center gap-2 rounded-lg"
+                className="px-8 py-3 transition-colors flex items-center gap-2 rounded-lg"
                 style={{
                   backgroundColor: "var(--color-primary)",
                   color: "var(--color-text-on-primary)",
+                  fontWeight: "var(--font-semibold)",
                 }}
               >
                 Load More Products
@@ -634,10 +679,11 @@ const Products = () => {
             {visibleCount > 8 && (
               <button
                 onClick={() => setVisibleCount(8)}
-                className="border px-8 py-3 transition-colors font-semibold hover:bg-[var(--color-bg-alt)] rounded-lg"
+                className="border px-8 py-3 transition-colors hover:bg-[var(--color-bg-alt)] rounded-lg"
                 style={{
                   borderColor: "var(--color-border)",
                   color: "var(--color-text-primary)",
+                  fontWeight: "var(--font-semibold)",
                 }}
               >
                 Show Less
@@ -653,8 +699,12 @@ const Products = () => {
               style={{ color: "var(--color-text-muted)" }}
             />
             <h3
-              className="text-xl font-semibold mb-2"
-              style={{ color: "var(--color-text-primary)" }}
+              className="mb-2"
+              style={{
+                fontSize: "var(--text-xl)",
+                color: "var(--color-text-primary)",
+                fontWeight: "var(--font-semibold)",
+              }}
             >
               No products found
             </h3>
@@ -663,10 +713,11 @@ const Products = () => {
             </p>
             <button
               onClick={clearFilters}
-              className="mt-4 px-6 py-2 rounded-full font-medium transition-colors"
+              className="mt-4 px-6 py-2 rounded-full transition-colors"
               style={{
                 backgroundColor: "var(--color-surface-alt)",
                 color: "var(--color-primary)",
+                fontWeight: "var(--font-medium)",
               }}
             >
               Clear all filters

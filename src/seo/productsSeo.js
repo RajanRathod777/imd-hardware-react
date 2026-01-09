@@ -30,4 +30,34 @@ export const productsPageMetadata = {
       "Browse our extensive collection of locks, handles, screws, bolts, and premium hardware products.",
     images: ["https://imdhardware.com/images/logo.jpeg"],
   },
+  robots: "index, follow",
+  schema: [
+    {
+      "@context": "https://schema.org",
+      "@type": "CollectionPage",
+      "@id": "https://imdhardware.com/products/#collection",
+      mainEntityOfPage: "https://imdhardware.com/products",
+      name: "Hardware Products Catalog",
+      description:
+        "Expesive collection of hardware products manufactured by IMD Hardware.",
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      itemListElement: [
+        {
+          "@type": "ListItem",
+          position: 1,
+          name: "Home",
+          item: "https://imdhardware.com",
+        },
+        {
+          "@type": "ListItem",
+          position: 2,
+          name: "Products",
+          item: "https://imdhardware.com/products",
+        },
+      ],
+    },
+  ],
 };

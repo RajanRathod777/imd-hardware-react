@@ -1,4 +1,3 @@
- 
 import { useState, useEffect } from "react";
 import Cookies from "js-cookie";
 import {
@@ -275,17 +274,20 @@ export default function RegistrationPage() {
             </div>
             <div>
               <h1
-                className="text-xl font-semibold"
                 style={{
+                  fontSize: "var(--text-xl)",
                   color: "var(--color-text-primary)",
                   fontFamily: "var(--font-heading)",
+                  fontWeight: "var(--font-semibold)",
                 }}
               >
                 Create Account
               </h1>
               <p
-                className="text-sm"
-                style={{ color: "var(--color-text-secondary)" }}
+                style={{
+                  fontSize: "var(--text-sm)",
+                  color: "var(--color-text-secondary)",
+                }}
               >
                 Join us in just a few steps
               </p>
@@ -308,14 +310,18 @@ export default function RegistrationPage() {
                   style={{ color: "var(--color-primary)" }}
                 />
                 <span
-                  className="text-sm"
-                  style={{ color: "var(--color-text-primary)" }}
+                  style={{
+                    fontSize: "var(--text-sm)",
+                    color: "var(--color-text-primary)",
+                  }}
                 >
                   Verified
                 </span>
                 <span
-                  className="text-xs"
-                  style={{ color: "var(--color-text-secondary)" }}
+                  style={{
+                    fontSize: "var(--text-xs)",
+                    color: "var(--color-text-secondary)",
+                  }}
                 >
                   ({formatTimer(countdown)})
                 </span>
@@ -323,8 +329,11 @@ export default function RegistrationPage() {
               <button
                 onClick={handleResend}
                 disabled={resendCooldown > 0}
-                className="text-xs disabled:opacity-50 flex items-center gap-1 hover:opacity-80"
-                style={{ color: "var(--color-primary)" }}
+                className="disabled:opacity-50 flex items-center gap-1 hover:opacity-80"
+                style={{
+                  fontSize: "var(--text-xs)",
+                  color: "var(--color-primary)",
+                }}
               >
                 <RefreshCw className="h-3 w-3" />
                 {resendCooldown > 0 ? `${resendCooldown}s` : "Resend"}
@@ -343,14 +352,24 @@ export default function RegistrationPage() {
                 style={{ color: "var(--color-text-primary)" }}
               >
                 <Mail className="h-4 w-4" />
-                <span className="text-sm font-medium">Contact Information</span>
+                <span
+                  style={{
+                    fontSize: "var(--text-sm)",
+                    fontWeight: "var(--font-medium)",
+                  }}
+                >
+                  Contact Information
+                </span>
               </div>
 
               {/* Email */}
               <div>
                 <label
-                  className="block text-sm mb-1"
-                  style={{ color: "var(--color-text-secondary)" }}
+                  className="block mb-1"
+                  style={{
+                    fontSize: "var(--text-sm)",
+                    color: "var(--color-text-secondary)",
+                  }}
                 >
                   Email Address
                 </label>
@@ -381,8 +400,11 @@ export default function RegistrationPage() {
               {/* Phone */}
               <div>
                 <label
-                  className="block text-sm mb-1"
-                  style={{ color: "var(--color-text-secondary)" }}
+                  className="block mb-1"
+                  style={{
+                    fontSize: "var(--text-sm)",
+                    color: "var(--color-text-secondary)",
+                  }}
                 >
                   Phone Number
                 </label>
@@ -458,19 +480,40 @@ export default function RegistrationPage() {
                     style={{ color: "var(--color-text-primary)" }}
                   >
                     <User className="h-4 w-4" />
-                    <span className="text-sm font-medium">Account Details</span>
+                    <span
+                      style={{
+                        fontSize: "var(--text-sm)",
+                        fontWeight: "var(--font-medium)",
+                      }}
+                    >
+                      Account Details
+                    </span>
                   </div>
 
                   <div>
-                    <label className="block text-sm text-gray-600 mb-1">
+                    <label
+                      className="block mb-1"
+                      style={{
+                        fontSize: "var(--text-sm)",
+                        color: "var(--color-text-secondary)",
+                      }}
+                    >
                       Username
                     </label>
                     <div className="relative">
-                      <User className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-gray-400" />
+                      <User
+                        className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4"
+                        style={{ color: "var(--color-text-muted)" }}
+                      />
                       <input
                         type="text"
                         name="username"
-                        className="w-full pl-10 pr-3 py-2 border rounded-lg border-gray-300 focus:ring- transition-all duration-200"
+                        className="w-full pl-10 pr-3 py-2 border rounded-lg transition-all duration-200"
+                        style={{
+                          borderColor: "var(--color-border)",
+                          backgroundColor: "var(--color-surface)",
+                          color: "var(--color-text-primary)",
+                        }}
                         placeholder="Choose username"
                         value={formData.username}
                         onChange={handleInputChange}
@@ -480,13 +523,24 @@ export default function RegistrationPage() {
                   </div>
 
                   <div>
-                    <label className="block text-sm text-gray-600 mb-1">
+                    <label
+                      className="block mb-1"
+                      style={{
+                        fontSize: "var(--text-sm)",
+                        color: "var(--color-text-secondary)",
+                      }}
+                    >
                       OTP Code
                     </label>
                     <input
                       type="text"
                       name="otp"
-                      className="w-full py-2 px-2 border rounded-lg border-gray-300 focus:ring-1 transition-all duration-200"
+                      className="w-full py-2 px-2 border rounded-lg transition-all duration-200"
+                      style={{
+                        borderColor: "var(--color-border)",
+                        backgroundColor: "var(--color-surface)",
+                        color: "var(--color-text-primary)",
+                      }}
                       placeholder="Enter OTP"
                       value={formData.otp}
                       onChange={handleInputChange}
@@ -495,13 +549,24 @@ export default function RegistrationPage() {
                   </div>
 
                   <div>
-                    <label className="block text-sm text-gray-600 mb-1">
+                    <label
+                      className="block mb-1"
+                      style={{
+                        fontSize: "var(--text-sm)",
+                        color: "var(--color-text-secondary)",
+                      }}
+                    >
                       Password
                     </label>
                     <input
                       type="password"
                       name="password"
-                      className="w-full py-2 px-2 border rounded-lg border-gray-300 focus:ring-1 transition-all duration-200"
+                      className="w-full py-2 px-2 border rounded-lg transition-all duration-200"
+                      style={{
+                        borderColor: "var(--color-border)",
+                        backgroundColor: "var(--color-surface)",
+                        color: "var(--color-text-primary)",
+                      }}
                       placeholder="Create password"
                       value={formData.password}
                       onChange={handleInputChange}
@@ -510,13 +575,24 @@ export default function RegistrationPage() {
                   </div>
 
                   <div>
-                    <label className="block text-sm text-gray-600 mb-1">
+                    <label
+                      className="block mb-1"
+                      style={{
+                        fontSize: "var(--text-sm)",
+                        color: "var(--color-text-secondary)",
+                      }}
+                    >
                       Confirm Password
                     </label>
                     <input
                       type="password"
                       name="confirmPassword"
-                      className="w-full py-2 px-2 border rounded-lg border-gray-300 focus:ring-1 transition-all duration-200"
+                      className="w-full py-2 px-2 border rounded-lg transition-all duration-200"
+                      style={{
+                        borderColor: "var(--color-border)",
+                        backgroundColor: "var(--color-surface)",
+                        color: "var(--color-text-primary)",
+                      }}
                       placeholder="Confirm password"
                       value={formData.confirmPassword}
                       onChange={handleInputChange}
@@ -525,14 +601,23 @@ export default function RegistrationPage() {
                   </div>
 
                   <div>
-                    <label className="block text-sm text-gray-600 mb-1">
+                    <label
+                      className="block mb-1"
+                      style={{
+                        fontSize: "var(--text-sm)",
+                        color: "var(--color-text-secondary)",
+                      }}
+                    >
                       Profile Image (optional)
                     </label>
 
                     {/* Image Preview */}
                     {imagePreview && (
                       <div className="mb-4 relative inline-block">
-                        <div className="mt-4 w-24 h-24 border border-gray-300 overflow-hidden">
+                        <div
+                          className="mt-4 w-24 h-24 border overflow-hidden"
+                          style={{ borderColor: "var(--color-border)" }}
+                        >
                           <img
                             src={imagePreview}
                             alt="Profile preview"
@@ -542,7 +627,11 @@ export default function RegistrationPage() {
                         <button
                           type="button"
                           onClick={handleRemoveImage}
-                          className="absolute top-1 -right-2 bg-black text-white p-1 hover:bg-gray-800 transition-colors"
+                          className="absolute top-1 -right-2 p-1 transition-colors"
+                          style={{
+                            backgroundColor: "var(--color-text-primary)",
+                            color: "var(--color-text-on-primary)",
+                          }}
                         >
                           <X className="h-3 w-3" />
                         </button>
@@ -555,17 +644,38 @@ export default function RegistrationPage() {
                         type="file"
                         accept="image/*"
                         onChange={handleImageChange}
-                        className="w-full py-1 text-sm opacity-0 absolute z-10 cursor-pointer"
+                        className="w-full py-1 opacity-0 absolute z-10 cursor-pointer"
+                        style={{ fontSize: "var(--text-sm)" }}
                         id="profile-image"
                       />
-                      <div className="rounded-lg border border-gray-300 p-2 text-center bg-gray-50 hover:bg-gray-100 transition-colors">
-                        <Camera className="h-4 w-4 text-gray-400 mx-auto mb-1" />
-                        <span className="text-sm text-gray-600">
+                      <div
+                        className="rounded-lg border p-2 text-center transition-colors"
+                        style={{
+                          borderColor: "var(--color-border)",
+                          backgroundColor: "var(--color-bg-alt)",
+                        }}
+                      >
+                        <Camera
+                          className="h-4 w-4 mx-auto mb-1"
+                          style={{ color: "var(--color-text-muted)" }}
+                        />
+                        <span
+                          style={{
+                            fontSize: "var(--text-sm)",
+                            color: "var(--color-text-secondary)",
+                          }}
+                        >
                           {image ? "Change Image" : "Choose Profile Image"}
                         </span>
                       </div>
                     </div>
-                    <p className="text-xs text-gray-500 mt-1">
+                    <p
+                      className="mt-1"
+                      style={{
+                        fontSize: "var(--text-xs)",
+                        color: "var(--color-text-muted)",
+                      }}
+                    >
                       Supported formats: JPG, PNG, JPEG Max size: 5MB
                     </p>
                   </div>
@@ -581,19 +691,35 @@ export default function RegistrationPage() {
                     style={{ color: "var(--color-text-primary)" }}
                   >
                     <MapPin className="h-4 w-4" />
-                    <span className="text-sm font-medium">
+                    <span
+                      style={{
+                        fontSize: "var(--text-sm)",
+                        fontWeight: "var(--font-medium)",
+                      }}
+                    >
                       Personal Information
                     </span>
                   </div>
 
                   <div>
-                    <label className="block text-sm text-gray-600 mb-1">
+                    <label
+                      className="block mb-1"
+                      style={{
+                        fontSize: "var(--text-sm)",
+                        color: "var(--color-text-secondary)",
+                      }}
+                    >
                       Address
                     </label>
                     <input
                       type="text"
                       name="address"
-                      className="w-full py-2.5 px-2 border rounded-lg border-gray-300 focus:ring-1 transition-all duration-200"
+                      className="w-full py-2.5 px-2 border rounded-lg transition-all duration-200"
+                      style={{
+                        borderColor: "var(--color-border)",
+                        backgroundColor: "var(--color-surface)",
+                        color: "var(--color-text-primary)",
+                      }}
                       placeholder="Your address"
                       value={formData.address}
                       onChange={handleInputChange}
@@ -602,28 +728,50 @@ export default function RegistrationPage() {
 
                   <div className="grid grid-cols-2 gap-3">
                     <div>
-                      <label className="block text-sm text-gray-600 mb-1">
+                      <label
+                        className="block mb-1"
+                        style={{
+                          fontSize: "var(--text-sm)",
+                          color: "var(--color-text-secondary)",
+                        }}
+                      >
                         Country
                       </label>
                       <select
                         name="country"
                         value={formData.country}
                         onChange={handleInputChange}
-                        className="rounded-lg w-full py-2.5 px-2 border border-gray-300 focus:ring-1"
+                        className="rounded-lg w-full py-2.5 px-2 border"
+                        style={{
+                          borderColor: "var(--color-border)",
+                          backgroundColor: "var(--color-surface)",
+                          color: "var(--color-text-primary)",
+                        }}
                       >
                         <option value="India">India</option>
                       </select>
                     </div>
 
                     <div>
-                      <label className="block text-sm text-gray-600 mb-1">
+                      <label
+                        className="block mb-1"
+                        style={{
+                          fontSize: "var(--text-sm)",
+                          color: "var(--color-text-secondary)",
+                        }}
+                      >
                         State
                       </label>
                       <select
                         name="state"
                         value={formData.state}
                         onChange={handleInputChange}
-                        className="rounded-lg w-full py-2.5 px-2 border border-gray-300 focus:ring-1"
+                        className="rounded-lg w-full py-2.5 px-2 border"
+                        style={{
+                          borderColor: "var(--color-border)",
+                          backgroundColor: "var(--color-surface)",
+                          color: "var(--color-text-primary)",
+                        }}
                       >
                         <option value="">Select State</option>
                         {stateOptions.map((s) => (
@@ -637,14 +785,25 @@ export default function RegistrationPage() {
 
                   <div className="grid grid-cols-2 gap-3">
                     <div>
-                      <label className="block text-sm text-gray-600 mb-1">
+                      <label
+                        className="block mb-1"
+                        style={{
+                          fontSize: "var(--text-sm)",
+                          color: "var(--color-text-secondary)",
+                        }}
+                      >
                         City
                       </label>
                       <select
                         name="city"
                         value={formData.city}
                         onChange={handleInputChange}
-                        className="rounded-lg w-full py-2.5 px-2 border border-gray-300 focus:ring-1"
+                        className="rounded-lg w-full py-2.5 px-2 border"
+                        style={{
+                          borderColor: "var(--color-border)",
+                          backgroundColor: "var(--color-surface)",
+                          color: "var(--color-text-primary)",
+                        }}
                       >
                         <option value="">Select City</option>
                         {cityOptions.map((c) => (
@@ -656,13 +815,24 @@ export default function RegistrationPage() {
                     </div>
 
                     <div>
-                      <label className="block text-sm text-gray-600 mb-1">
+                      <label
+                        className="block mb-1"
+                        style={{
+                          fontSize: "var(--text-sm)",
+                          color: "var(--color-text-secondary)",
+                        }}
+                      >
                         Pincode (6 digits)
                       </label>
                       <input
                         type="text"
                         name="pincode"
-                        className="rounded-lg w-full py-2 px-2 border border-gray-300 focus:ring-1"
+                        className="rounded-lg w-full py-2 px-2 border"
+                        style={{
+                          borderColor: "var(--color-border)",
+                          backgroundColor: "var(--color-surface)",
+                          color: "var(--color-text-primary)",
+                        }}
                         placeholder="Enter 6-digit pincode"
                         value={formData.pincode}
                         onChange={handleInputChange}
@@ -695,8 +865,9 @@ export default function RegistrationPage() {
 
           {message && (
             <div
-              className={`mt-4 p-3 text-sm border`}
+              className="mt-4 p-3 border"
               style={{
+                fontSize: "var(--text-sm)",
                 backgroundColor:
                   messageType === "success"
                     ? "var(--color-success-light)"
@@ -716,8 +887,9 @@ export default function RegistrationPage() {
           )}
         </div>
         <div
-          className="p-4 border-t text-center text-xs"
+          className="p-4 border-t text-center"
           style={{
+            fontSize: "var(--text-xs)",
             borderColor: "var(--color-border)",
             color: "var(--color-text-secondary)",
           }}
@@ -725,8 +897,11 @@ export default function RegistrationPage() {
           All ready have an account?{" "}
           <Link
             href="/login"
-            className="hover:underline font-medium"
-            style={{ color: "var(--color-primary)" }}
+            className="hover:underline"
+            style={{
+              color: "var(--color-primary)",
+              fontWeight: "var(--font-medium)",
+            }}
           >
             login
           </Link>

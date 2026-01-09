@@ -10,7 +10,6 @@ import { ShoppingCart, Play, Image, Clock } from "lucide-react";
 const AdvertiseSlider = () => {
   const apiUrl =
     import.meta.env.VITE_SERVER_API_URL || "https://imd.imdhardware.com";
-  console.log("NEXT_PUBLIC_SERVER_API_URL", apiUrl);
   const { products } = useStore();
   const [AdvertisedProducts, setAdvertisedProducts] = useState([]);
   const swiperRef = useRef(null);
@@ -123,7 +122,10 @@ const AdvertiseSlider = () => {
                     />
 
                     {/* Image Slide Indicator */}
-                    <div className="absolute bottom-4 left-4 flex items-center gap-2 px-3 py-1 rounded-full bg-black bg-opacity-50 text-white text-sm">
+                    <div
+                      className="absolute bottom-4 left-4 flex items-center gap-2 px-3 py-1 rounded-full bg-black bg-opacity-50 text-white"
+                      style={{ fontSize: "var(--text-sm)" }}
+                    >
                       <Image size={16} />
                       <span>Image Ad</span>
                     </div>

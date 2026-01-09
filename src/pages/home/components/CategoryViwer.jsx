@@ -14,10 +14,12 @@ const CategoryViewer = () => {
     <section className="p-2">
       {/* Name */}
       <h3
-        className="text-2xl font-bold py-3 text-left "
+        className="py-3 text-left "
         style={{
           color: "var(--color-text-primary)",
           fontFamily: "var(--font-heading)",
+          fontSize: "var(--text-2xl)",
+          fontWeight: "var(--font-bold)",
         }}
       >
         Popular Categories
@@ -54,11 +56,12 @@ const CategoryViewer = () => {
 
                   {/* Name */}
                   <h3
-                    className="absolute bottom-0 text-[var(--text-base)] text-center w-full py-1 rounded-full"
+                    className="absolute bottom-0 text-center w-full py-1 rounded-full"
                     style={{
                       color: "var(--color-text-on-primary)",
                       backgroundColor: "var(--color-text-primary)",
                       opacity: 0.8,
+                      fontSize: "var(--text-base)",
                     }}
                   >
                     {category.name}

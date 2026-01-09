@@ -4,7 +4,7 @@ import RootLayout from "./layout";
 
 import RegistrationForm from "./pages/register/RegisterPage";
 import LoginForm from "./pages/login/LoginPage";
-import HomePage from "./pages/home/HomepPage";
+import HomePage from "./pages/home/HomePage";
 import UpdatePassword from "./pages/updatepassword/UpdatePasswordPage";
 import ResetPasswordPage from "./pages/resetpassword/ResetpasswordPage";
 import CartProductViewer from "./pages/cart/CartPage";
@@ -22,6 +22,7 @@ import TermsConditionsPage from "./pages/terms-conditions/TermsConditionsPage";
 import ReturnPolicyPage from "./pages/return-policy/ReturnPolicyPage";
 import ShippingPolicyPage from "./pages/shipping-policy/ShippingPolicyPage";
 import CancellationPolicyPage from "./pages/cancellation-policy/CancellationPolicyPage";
+import NotFoundPage from "./pages/not-found/NotFoundPage";
 
 function App() {
   const router = createBrowserRouter([
@@ -182,6 +183,14 @@ function App() {
       element: (
         <RootLayout>
           <CancellationPolicyPage />
+        </RootLayout>
+      ),
+    },
+    {
+      path: "*",
+      element: (
+        <RootLayout>
+          <NotFoundPage />
         </RootLayout>
       ),
     },

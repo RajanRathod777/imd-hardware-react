@@ -1,4 +1,3 @@
- 
 import { useState } from "react";
 import {
   ShoppingCart,
@@ -17,22 +16,17 @@ import "swiper/css/pagination";
 const ProductsViewer = () => {
   const apiUrl = import.meta.env.VITE_SERVER_API_URL;
 
-  // Get products and cart actions from store
   const { products, cart, addToCart, updateCartQuantity, removeFromCart } =
     useStore();
 
   const initialShowProduct = 4;
   const [visibleCount, setVisibleCount] = useState(initialShowProduct);
 
-  // Optional chaining for safety if products is initially undefined/null
   const visibleProducts = products?.slice(0, visibleCount) || [];
-
-  // Calculate if there are more products to show
   const hasMoreProducts = products && products.length > visibleCount;
   const hasMoreThanInitial = visibleCount > initialShowProduct;
 
   const handleLoadMore = () => {
-    // Load next 4 products or remaining products if less than 4
     const nextCount = Math.min(
       visibleCount + 4,
       products?.length || visibleCount
@@ -41,30 +35,30 @@ const ProductsViewer = () => {
   };
 
   const handleShowLess = () => {
-    // Show 4 less products, but not less than initial count
     const prevCount = Math.max(visibleCount - 4, initialShowProduct);
     setVisibleCount(prevCount);
   };
 
   return (
     <div>
-      {/* Products Grid */}
       <div className="container w-full p-2">
         {/* Header */}
         <div className="flex flex-col md:flex-row md:items-center justify-between">
-          <div className="flex items-center gap-2 md:mt-0">
-            {/* Name */}
-            <h3
-              className="text-2xl font-bold py-3 text-left"
+          <div className="flex items-center gap-2">
+            <h2
+              className="py-3 text-left"
               style={{
                 color: "var(--color-text-primary)",
                 fontFamily: "var(--font-heading)",
+                fontSize: "var(--text-2xl)",
+                fontWeight: "var(--font-bold)",
               }}
             >
               Popular Products
-            </h3>
+            </h2>
           </div>
         </div>
+
         {/* Products Grid */}
         <div className="grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-4">
           {visibleProducts.map((product) => {
@@ -89,7 +83,12 @@ const ProductsViewer = () => {
                     color: "var(--color-text-on-primary)",
                   }}
                 >
-                  <span className="text-sm font-bold">
+                  <span
+                    style={{
+                      fontSize: "var(--text-sm)",
+                      fontWeight: "var(--font-bold)",
+                    }}
+                  >
                     ₹ {product.price.toFixed(2)}
                   </span>
                 </div>
@@ -97,7 +96,7 @@ const ProductsViewer = () => {
                 {/* Image Container */}
                 <div
                   className="relative overflow-hidden"
-                  style={{ width: "100%", aspectRatio: "1/1" }}
+                  style={{ aspectRatio: "1/1" }}
                 >
                   <Link
                     to={`/product/${product.product_id}`}
@@ -107,11 +106,8 @@ const ProductsViewer = () => {
                       modules={[Pagination]}
                       spaceBetween={0}
                       slidesPerView={1}
-                      pagination={{
-                        clickable: true,
-                        dynamicBullets: true,
-                      }}
-                      className="!overflow-hidden !w-full !h-full "
+                      pagination={{ clickable: true, dynamicBullets: true }}
+                      className="!overflow-hidden !w-full !h-full"
                     >
                       {product.images && product.images.length > 0 ? (
                         product.images.map((image, index) => (
@@ -121,11 +117,9 @@ const ProductsViewer = () => {
                                 src={`${apiUrl}/image/product/${image}`}
                                 alt={product.title}
                                 loading="lazy"
-                                className=" rounded-md  w-full h-full object-cover"
-                                style={{ aspectRatio: "1/1" }}
+                                className="rounded-md w-full h-full object-cover"
                               />
-                              {/* Image overlay on hover */}
-                              <div className="absolute inset-0 bg-black/0 group-hover:bg-black/5 transition-all duration-300"></div>
+                              <div className="absolute inset-0 bg-black/0 hover:bg-black/5 transition-all duration-300" />
                             </div>
                           </SwiperSlide>
                         ))
@@ -140,7 +134,9 @@ const ProductsViewer = () => {
                           >
                             <div className="text-center p-4">
                               <ImageIcon className="h-10 w-10 mx-auto mb-2 opacity-40" />
-                              <p className="text-sm">No Image</p>
+                              <p style={{ fontSize: "var(--text-sm)" }}>
+                                No Image
+                              </p>
                             </div>
                           </div>
                         </SwiperSlide>
@@ -150,18 +146,14 @@ const ProductsViewer = () => {
                 </div>
 
                 {/* Product Info */}
-                <div
-                  className="pt-2 flex flex-col"
-                  style={{ backgroundColor: "var(--color-surface)" }}
-                >
-                  {/* Product Name */}
+                <div className="pt-2 flex flex-col">
                   <div className="min-h-12">
                     <Link
                       to={`/product/${product.product_id}`}
                       className="group"
                     >
-                      <h2
-                        className="truncate font-bold text-sm  mb-1 transition-colors duration-200 group-hover:text-opacity-80"
+                      <h3
+                        className="truncate mb-1 transition-colors duration-200 group-hover:opacity-80"
                         style={{
                           color: "var(--color-text-primary)",
                           fontSize: "var(--text-sm)",
@@ -169,11 +161,11 @@ const ProductsViewer = () => {
                         }}
                       >
                         {product.name}
-                      </h2>
+                      </h3>
                     </Link>
 
                     <div
-                      className=" truncate text-xs "
+                      className="truncate"
                       style={{
                         color: "var(--color-text-secondary)",
                         fontSize: "var(--text-xs)",
@@ -185,10 +177,10 @@ const ProductsViewer = () => {
                   </div>
 
                   {/* Cart Controls */}
-                  <div className="flex w-full items-center gap-2 ">
+                  <div className="flex w-full items-center gap-2 mt-3">
                     {inCart ? (
                       <>
-                        {/* Quantity controls - Compact version */}
+                        {/* Quantity Controls */}
                         <div
                           className="flex-1 flex items-center justify-between p-1 rounded-lg border"
                           style={{
@@ -203,12 +195,11 @@ const ProductsViewer = () => {
                                 inCart.quantity - 1
                               )
                             }
-                            className="w-7 h-7 flex items-center justify-center rounded-md transition-all duration-200 hover:bg-gray-50 active:scale-95 disabled:opacity-30 disabled:cursor-not-allowed"
+                            disabled={inCart.quantity <= 1}
+                            className="w-7 h-7 flex items-center justify-center rounded-md transition-all duration-200 hover:bg-[var(--color-surface-alt)] active:scale-95 disabled:opacity-30 disabled:cursor-not-allowed"
                             style={{
-                              backgroundColor: "var(--color-surface-alt)",
                               border: "1px solid var(--color-border-light)",
                             }}
-                            disabled={inCart.quantity <= 1}
                             aria-label="Decrease quantity"
                           >
                             <Minus
@@ -218,8 +209,12 @@ const ProductsViewer = () => {
                           </button>
 
                           <span
-                            className="font-bold min-w-8 text-center text-sm"
-                            style={{ color: "var(--color-text-primary)" }}
+                            className="min-w-8 text-center"
+                            style={{
+                              color: "var(--color-text-primary)",
+                              fontSize: "var(--text-sm)",
+                              fontWeight: "var(--font-bold)",
+                            }}
                           >
                             {inCart.quantity}
                           </span>
@@ -231,7 +226,7 @@ const ProductsViewer = () => {
                                 inCart.quantity + 1
                               )
                             }
-                            className="w-7 h-7 flex items-center justify-center rounded-md transition-all duration-200 hover:opacity-90 active:scale-95"
+                            className="w-7 h-7 flex items-center justify-center rounded-md transition-all duration-200 active:scale-95"
                             style={{
                               backgroundColor: "var(--color-primary)",
                               color: "var(--color-text-on-primary)",
@@ -242,13 +237,13 @@ const ProductsViewer = () => {
                           </button>
                         </div>
 
-                        {/* Remove button */}
+                        {/* Remove Button */}
                         <button
                           onClick={() => removeFromCart(product.product_id)}
                           className="flex items-center justify-center p-2 rounded-lg transition-all duration-200 hover:scale-105 active:scale-95"
                           style={{
-                            color: "var(--color-danger)",
                             backgroundColor: "var(--color-surface-alt)",
+                            color: "var(--color-danger)",
                             border: "1px solid var(--color-border-light)",
                           }}
                           aria-label="Remove from cart"
@@ -257,10 +252,9 @@ const ProductsViewer = () => {
                         </button>
                       </>
                     ) : (
-                      // Add to cart button
                       <button
                         onClick={() => addToCart(product)}
-                        className="rounded-lg px-3 py-2 font-semibold flex items-center justify-center gap-2 transition-all duration-200 hover:scale-[1.02] active:scale-95 w-full group/add"
+                        className="rounded-lg px-3 py-2 flex items-center justify-center gap-2 transition-all duration-200 hover:scale-[1.02] active:scale-95 w-full group/add"
                         style={{
                           backgroundColor: "var(--color-primary)",
                           color: "var(--color-text-on-primary)",
@@ -270,8 +264,10 @@ const ProductsViewer = () => {
                       >
                         <ShoppingCart className="h-4 w-4 transition-transform duration-200 group-hover/add:scale-110" />
                         <span
-                          className="text-sm"
-                          style={{ fontSize: "var(--text-xs)" }}
+                          style={{
+                            fontSize: "var(--text-xs)",
+                            fontWeight: "var(--font-semibold)",
+                          }}
                         >
                           Add to Cart
                         </span>
@@ -283,13 +279,13 @@ const ProductsViewer = () => {
             );
           })}
         </div>
-        {/* Load More Controls - Minimal Text */}
+
+        {/* Load More / Show Less */}
         <div className="flex justify-center gap-6 mt-6">
-          {/* Show Less Button - Only show when we have more than initial products */}
           {hasMoreThanInitial && (
             <button
               onClick={handleShowLess}
-              className="px-4 py-2 transition-all duration-200 font-medium underline-offset-4 hover:underline"
+              className="px-4 py-2 transition-all duration-200 underline-offset-4 hover:underline"
               style={{
                 color: "var(--color-text-muted)",
                 fontWeight: "var(--font-medium)",
@@ -300,11 +296,10 @@ const ProductsViewer = () => {
             </button>
           )}
 
-          {/* Load More Button - Only show when there are more products to load */}
           {hasMoreProducts && (
             <button
               onClick={handleLoadMore}
-              className="px-4 py-2 transition-all duration-200 font-medium underline-offset-4 hover:underline"
+              className="px-4 py-2 transition-all duration-200 underline-offset-4 hover:underline"
               style={{
                 color: "var(--color-primary)",
                 fontWeight: "var(--font-medium)",

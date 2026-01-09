@@ -1,4 +1,3 @@
- 
 import React, { useState, useEffect } from "react";
 import Cookies from "js-cookie";
 import Loading from "../../../components/Loading";
@@ -123,20 +122,44 @@ const RewardPaymentRequest = () => {
     });
   };
 
-  const getStatusClass = (status) => {
-    let classes = "px-2 py-1 rounded-lg border text-sm font-semibold";
+  const getStatusStyle = (status) => {
+    const baseStyle = {
+      padding: "0.25rem 0.5rem",
+      borderRadius: "0.5rem",
+      border: "1px solid",
+      fontSize: "var(--text-sm)",
+      fontWeight: "var(--font-semibold)",
+    };
 
     if (status === "Pending") {
-      classes += " bg-yellow-100 border-yellow-400 text-yellow-600";
+      return {
+        ...baseStyle,
+        backgroundColor: "var(--color-warning-light)",
+        borderColor: "var(--color-border-warning)",
+        color: "var(--color-warning)",
+      };
     } else if (status === "Completed") {
-      classes += " bg-green-100 border-green-400 text-green-600";
+      return {
+        ...baseStyle,
+        backgroundColor: "var(--color-success-light)",
+        borderColor: "var(--color-border-success)",
+        color: "var(--color-success)",
+      };
     } else if (status === "Rejected") {
-      classes += " bg-red-100 border-red-400 text-red-600";
+      return {
+        ...baseStyle,
+        backgroundColor: "var(--color-danger-light)",
+        borderColor: "var(--color-border-danger)",
+        color: "var(--color-danger)",
+      };
     } else {
-      classes += " bg-gray-100 border-gray-300 text-gray-700";
+      return {
+        ...baseStyle,
+        backgroundColor: "var(--color-bg-alt)",
+        borderColor: "var(--color-border)",
+        color: "var(--color-text-secondary)",
+      };
     }
-
-    return classes;
   };
 
   // Simple arrow icons component (replace with your actual icons)
@@ -172,34 +195,68 @@ const RewardPaymentRequest = () => {
   }
 
   return (
-    <div className="  max-w-4xl mx-auto  bg-orange-50 text-gray-900 text-base">
+    <div
+      className="max-w-4xl mx-auto"
+      style={{
+        backgroundColor: "var(--color-bg-alt)",
+        color: "var(--color-text-primary)",
+      }}
+    >
       {/* Requests List */}
       <div className="h-[calc(100vh-135px)] max-[1035px]:h-[calc(100vh-230px)] overflow-y-auto  space-y-1 ">
         {requests.length === 0 ? (
-          <div className="text-center py-10 border border-orange-200 bg-white text-gray-500 text-base font-normal">
+          <div
+            className="text-center py-10 border"
+            style={{
+              fontSize: "var(--text-base)",
+              borderColor: "var(--color-border)",
+              backgroundColor: "var(--color-surface)",
+              color: "var(--color-text-muted)",
+              fontWeight: "var(--font-normal)",
+            }}
+          >
             No payment requests found
           </div>
         ) : (
           requests.map((request) => (
             <div
               key={request.reward_payment_request_id}
-              className="border border-orange-200 rounded-lg p-2 bg-white"
+              className="border rounded-lg p-2"
+              style={{
+                borderColor: "var(--color-border)",
+                backgroundColor: "var(--color-surface)",
+              }}
             >
               {/* Request Header */}
-              <div className="flex justify-between items-center mb-1 pb-2 border-b border-orange-200">
+              <div
+                className="flex justify-between items-center mb-1 pb-2 border-b"
+                style={{ borderColor: "var(--color-border)" }}
+              >
                 <div className="flex items-center gap-3">
                   <span
-                    className="text-sm font-semibold"
-                    style={{ color: "var(--color-text-primary)" }}
+                    style={{
+                      fontSize: "var(--text-sm)",
+                      fontWeight: "var(--font-semibold)",
+                      color: "var(--color-text-primary)",
+                    }}
                   >
                     ${request.amount}
                   </span>
-                  <span className="text-sm text-gray-800 border border-orange-400 bg-orange-100 px-2 py-1 font-medium">
+                  <span
+                    className="border px-2 py-1"
+                    style={{
+                      fontSize: "var(--text-sm)",
+                      fontWeight: "var(--font-medium)",
+                      color: "var(--color-text-primary)",
+                      borderColor: "var(--color-border-primary)",
+                      backgroundColor: "var(--color-primary-soft)",
+                    }}
+                  >
                     {request.payment_method}
                   </span>
                 </div>
 
-                <div className={getStatusClass(request.status)}>
+                <div style={getStatusStyle(request.status)}>
                   {request.status}
                 </div>
               </div>
@@ -209,37 +266,89 @@ const RewardPaymentRequest = () => {
                 {request.payment_method === "BankTransfer" && (
                   <>
                     <div className="flex items-center justify-between gap-3">
-                      <span className="font-semibold min-w-[120px] text-gray-800 text-sm">
+                      <span
+                        className="min-w-[120px]"
+                        style={{
+                          fontSize: "var(--text-sm)",
+                          fontWeight: "var(--font-semibold)",
+                          color: "var(--color-text-primary)",
+                        }}
+                      >
                         Account Holder Name :
                       </span>
-                      <span className="text-right text-gray-600 text-sm">
+                      <span
+                        className="text-right"
+                        style={{
+                          fontSize: "var(--text-sm)",
+                          color: "var(--color-text-secondary)",
+                        }}
+                      >
                         {request.payment_info.account_holder_name}
                       </span>
                     </div>
 
                     <div className="flex items-center justify-between gap-3">
-                      <span className="font-semibold min-w-[120px] text-gray-800 text-sm">
+                      <span
+                        className="min-w-[120px]"
+                        style={{
+                          fontSize: "var(--text-sm)",
+                          fontWeight: "var(--font-semibold)",
+                          color: "var(--color-text-primary)",
+                        }}
+                      >
                         Bank Name :
                       </span>
-                      <span className="text-right text-gray-600 text-sm">
+                      <span
+                        className="text-right"
+                        style={{
+                          fontSize: "var(--text-sm)",
+                          color: "var(--color-text-secondary)",
+                        }}
+                      >
                         {request.payment_info.bank_name}
                       </span>
                     </div>
 
                     <div className="flex items-center justify-between gap-3">
-                      <span className="font-semibold min-w-[120px] text-gray-800 text-sm">
+                      <span
+                        className="min-w-[120px]"
+                        style={{
+                          fontSize: "var(--text-sm)",
+                          fontWeight: "var(--font-semibold)",
+                          color: "var(--color-text-primary)",
+                        }}
+                      >
                         Account Number :
                       </span>
-                      <span className="text-right text-gray-600 text-sm">
+                      <span
+                        className="text-right"
+                        style={{
+                          fontSize: "var(--text-sm)",
+                          color: "var(--color-text-secondary)",
+                        }}
+                      >
                         {request.payment_info.account_number}
                       </span>
                     </div>
 
                     <div className="flex items-center justify-between gap-3">
-                      <span className="font-semibold min-w-[120px] text-gray-800 text-sm">
+                      <span
+                        className="min-w-[120px]"
+                        style={{
+                          fontSize: "var(--text-sm)",
+                          fontWeight: "var(--font-semibold)",
+                          color: "var(--color-text-primary)",
+                        }}
+                      >
                         Bank IFC Code :
                       </span>
-                      <span className="text-right text-gray-600 text-sm">
+                      <span
+                        className="text-right"
+                        style={{
+                          fontSize: "var(--text-sm)",
+                          color: "var(--color-text-secondary)",
+                        }}
+                      >
                         {request.payment_info.bank_IFC_code}
                       </span>
                     </div>
@@ -249,10 +358,23 @@ const RewardPaymentRequest = () => {
                 {request.payment_method === "UPI" && (
                   <div>
                     <div className="flex items-center justify-between gap-3">
-                      <span className="font-semibold min-w-[120px] text-gray-800 text-sm">
+                      <span
+                        className="min-w-[120px]"
+                        style={{
+                          fontSize: "var(--text-sm)",
+                          fontWeight: "var(--font-semibold)",
+                          color: "var(--color-text-primary)",
+                        }}
+                      >
                         UPI ID:
                       </span>
-                      <span className="text-right text-gray-600 text-sm">
+                      <span
+                        className="text-right"
+                        style={{
+                          fontSize: "var(--text-sm)",
+                          color: "var(--color-text-secondary)",
+                        }}
+                      >
                         {request.payment_info.upi_id}
                       </span>
                     </div>
@@ -260,23 +382,56 @@ const RewardPaymentRequest = () => {
                 )}
 
                 <div className="flex justify-between items-start">
-                  <span className="font-semibold min-w-[120px] text-gray-800 text-sm">
+                  <span
+                    className="min-w-[120px]"
+                    style={{
+                      fontSize: "var(--text-sm)",
+                      fontWeight: "var(--font-semibold)",
+                      color: "var(--color-text-primary)",
+                    }}
+                  >
                     Request Date :
                   </span>
-                  <span className="text-right text-gray-600 text-sm">
+                  <span
+                    className="text-right"
+                    style={{
+                      fontSize: "var(--text-sm)",
+                      color: "var(--color-text-secondary)",
+                    }}
+                  >
                     {formatDate(request.request_date)}
                   </span>
                 </div>
 
-                <p className="py-2 text-sm text-gray-600 flex  border-y border-orange-200 ">
+                <p
+                  className="py-2 flex border-y"
+                  style={{
+                    fontSize: "var(--text-sm)",
+                    color: "var(--color-text-secondary)",
+                    borderColor: "var(--color-border)",
+                  }}
+                >
                   Company message
                 </p>
 
                 <div className="flex justify-between items-start">
-                  <span className="font-semibold min-w-[120px] text-gray-800 text-sm">
+                  <span
+                    className="min-w-[120px]"
+                    style={{
+                      fontSize: "var(--text-sm)",
+                      fontWeight: "var(--font-semibold)",
+                      color: "var(--color-text-primary)",
+                    }}
+                  >
                     Verified :
                   </span>
-                  <span className="text-right text-gray-600 text-sm">
+                  <span
+                    className="text-right"
+                    style={{
+                      fontSize: "var(--text-sm)",
+                      color: "var(--color-text-secondary)",
+                    }}
+                  >
                     {request.is_verified
                       ? request.rejection_reason
                         ? "No"
@@ -287,10 +442,23 @@ const RewardPaymentRequest = () => {
 
                 {request.transaction_id && request.processed_date && (
                   <div className="flex justify-between items-start">
-                    <span className="font-semibold min-w-[120px] text-gray-800 text-sm">
+                    <span
+                      className="min-w-[120px]"
+                      style={{
+                        fontSize: "var(--text-sm)",
+                        fontWeight: "var(--font-semibold)",
+                        color: "var(--color-text-primary)",
+                      }}
+                    >
                       Processed Date :
                     </span>
-                    <span className="text-right text-gray-600 text-sm">
+                    <span
+                      className="text-right"
+                      style={{
+                        fontSize: "var(--text-sm)",
+                        color: "var(--color-text-secondary)",
+                      }}
+                    >
                       {formatDate(request.processed_date)}
                     </span>
                   </div>
@@ -298,10 +466,23 @@ const RewardPaymentRequest = () => {
 
                 {request.transaction_id && request.processed_date && (
                   <div className="flex justify-between items-start">
-                    <span className="font-semibold min-w-[120px] text-gray-800 text-sm">
+                    <span
+                      className="min-w-[120px]"
+                      style={{
+                        fontSize: "var(--text-sm)",
+                        fontWeight: "var(--font-semibold)",
+                        color: "var(--color-text-primary)",
+                      }}
+                    >
                       Transaction ID :
                     </span>
-                    <span className="text-right text-gray-600 text-sm">
+                    <span
+                      className="text-right"
+                      style={{
+                        fontSize: "var(--text-sm)",
+                        color: "var(--color-text-secondary)",
+                      }}
+                    >
                       {request.transaction_id}
                     </span>
                   </div>
@@ -309,10 +490,23 @@ const RewardPaymentRequest = () => {
 
                 {request.is_verified === false && request.rejection_reason && (
                   <div className="flex justify-between items-start border border-red-400 bg-red-100 p-2">
-                    <span className="font-semibold min-w-[120px] text-red-600 text-sm">
+                    <span
+                      className="min-w-[120px]"
+                      style={{
+                        fontSize: "var(--text-sm)",
+                        color: "var(--color-danger)",
+                        fontWeight: "var(--font-semibold)",
+                      }}
+                    >
                       Rejection Reason :
                     </span>
-                    <span className="text-right text-red-600 text-sm">
+                    <span
+                      className="text-right"
+                      style={{
+                        fontSize: "var(--text-sm)",
+                        color: "var(--color-danger)",
+                      }}
+                    >
                       {request.rejection_reason}
                     </span>
                   </div>
@@ -320,10 +514,23 @@ const RewardPaymentRequest = () => {
 
                 {request.admin_comment && (
                   <div className="flex justify-between items-start">
-                    <span className="font-semibold min-w-[120px] text-gray-800 text-sm">
+                    <span
+                      className="min-w-[120px]"
+                      style={{
+                        fontSize: "var(--text-sm)",
+                        fontWeight: "var(--font-semibold)",
+                        color: "var(--color-text-primary)",
+                      }}
+                    >
                       Comment :
                     </span>
-                    <span className="text-right text-gray-600 text-sm">
+                    <span
+                      className="text-right"
+                      style={{
+                        fontSize: "var(--text-sm)",
+                        color: "var(--color-text-secondary)",
+                      }}
+                    >
                       {request.admin_comment}
                     </span>
                   </div>
@@ -340,11 +547,22 @@ const RewardPaymentRequest = () => {
           <button
             onClick={handlePrevPage}
             disabled={!pagination.hasPrev || loading}
-            className={`w-8 h-8 items-center justify-center border text-sm font-medium flex items-center gap-2 ${
-              pagination.hasPrev && !loading
-                ? "bg-white text-gray-700 hover:bg-gray-50 border-gray-300"
-                : "bg-gray-100 text-gray-400 cursor-not-allowed border-gray-200"
-            }`}
+            className="w-8 h-8 items-center justify-center border flex items-center gap-2"
+            style={{
+              fontSize: "var(--text-sm)",
+              backgroundColor:
+                pagination.hasPrev && !loading
+                  ? "var(--color-surface)"
+                  : "var(--color-bg-alt)",
+              color:
+                pagination.hasPrev && !loading
+                  ? "var(--color-text-primary)"
+                  : "var(--color-text-muted)",
+              borderColor: "var(--color-border)",
+              cursor:
+                pagination.hasPrev && !loading ? "pointer" : "not-allowed",
+              fontWeight: "var(--font-medium)",
+            }}
           >
             <ChevronLeft />
           </button>
@@ -359,10 +577,21 @@ const RewardPaymentRequest = () => {
               onChange={handlePageInputChange}
               onKeyPress={handlePageInputSubmit}
               onBlur={handleInputBlur}
-              className="h-8 border border-gray-300  text-center text-md"
+              className="h-8 border text-center"
+              style={{
+                fontSize: "var(--text-base)",
+                borderColor: "var(--color-border)",
+                backgroundColor: "var(--color-surface)",
+                color: "var(--color-text-primary)",
+              }}
               disabled={loading}
             />
-            <span className="text-sm text-gray-600">
+            <span
+              style={{
+                fontSize: "var(--text-sm)",
+                color: "var(--color-text-secondary)",
+              }}
+            >
               / {pagination.totalPages}
             </span>
           </div>
@@ -371,19 +600,24 @@ const RewardPaymentRequest = () => {
           <button
             onClick={handleNextPage}
             disabled={!pagination.hasNext || loading}
-            className={`w-8 h-8 border items-center justify-center  text-sm font-medium flex items-center gap-2 ${
-              pagination.hasNext && !loading
-                ? "bg-white text-gray-700 hover:bg-gray-50 border-gray-300"
-                : "bg-gray-100 text-gray-400 cursor-not-allowed border-gray-200"
-            }`}
+            className="w-8 h-8 border items-center justify-center flex items-center gap-2"
+            style={{
+              fontSize: "var(--text-sm)",
+              backgroundColor:
+                pagination.hasNext && !loading
+                  ? "var(--color-surface)"
+                  : "var(--color-bg-alt)",
+              color:
+                pagination.hasNext && !loading
+                  ? "var(--color-text-primary)"
+                  : "var(--color-text-muted)",
+              borderColor: "var(--color-border)",
+              cursor:
+                pagination.hasNext && !loading ? "pointer" : "not-allowed",
+              fontWeight: "var(--font-medium)",
+            }}
           >
-            <ChevronRight
-              className="w-4 h-4"
-              style={{
-                width: "1rem",
-                height: "1rem",
-              }}
-            />
+            <ChevronRight className="w-4 h-4" />
           </button>
         </div>
       )}

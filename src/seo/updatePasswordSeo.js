@@ -19,4 +19,22 @@ export const updatePasswordPageMetadata = {
     title: "Update Password | IMD Hardware",
     description: "Update your IMD Hardware account password securely.",
   },
+  schema: {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      {
+        "@type": "ListItem",
+        position: 1,
+        name: "Home",
+        item: "https://imdhardware.com",
+      },
+      {
+        "@type": "ListItem",
+        position: 2,
+        name: "Update Password",
+        item: "https://imdhardware.com/update-password",
+      },
+    ],
+  },
 };

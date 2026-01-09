@@ -53,9 +53,11 @@ const DownloadBill = ({ data }) => {
     <>
       <button
         onClick={handleDownloadPDF}
-        className="inline-flex items-center gap-2 px-0 py-1 text-sm font-medium transition-colors duration-200  hover:opacity-90 active:scale-95"
+        className="inline-flex items-center gap-2 px-0 py-1 transition-colors duration-200  hover:opacity-90 active:scale-95"
         style={{
+          fontSize: "var(--text-sm)",
           color: "var(--color-text-primary)",
+          fontWeight: "var(--font-medium)",
         }}
       >
         <Download className="w-4 h-4" />
@@ -71,8 +73,8 @@ const DownloadBill = ({ data }) => {
           ref={invoiceRef}
           style={{
             fontFamily: "Helvetica, Arial, sans-serif",
-            backgroundColor: "#ffffff",
-            color: "#1f2937",
+            backgroundColor: "var(--color-surface)",
+            color: "var(--color-text-primary)",
             minHeight: "297mm", // A4 Height - Critical for html2canvas
             height: "auto", // Allow it to grow if content exceeds A4
             padding: "0", // Ensure padding is handled by inner elements
@@ -81,24 +83,49 @@ const DownloadBill = ({ data }) => {
           {/* 1. HEADER */}
           <div
             className="flex justify-between px-[15mm] py-[6mm]"
-            style={{ backgroundColor: "#164E63", color: "#ffffff" }}
+            style={{
+              backgroundColor: "var(--color-primary-dark)",
+              color: "var(--color-text-on-primary)",
+            }}
           >
             <div>
-              <h1 className="text-2xl font-bold leading-none mb-1">
+              <h1
+                className="leading-none mb-1"
+                style={{
+                  fontSize: "var(--text-2xl)",
+                  fontWeight: "var(--font-bold)",
+                }}
+              >
                 IMD Hardware
               </h1>
-              <p className="text-xs opacity-90">www.imdhardware.com</p>
-              <p className="text-xs opacity-90">GST NO: 24BPYPR7738J1ZU</p>
+              <p className="opacity-90" style={{ fontSize: "var(--text-xs)" }}>
+                Near Vaikunthdham Temple,
+                <br />
+                Himatnagar Shamlaji Road,
+                <br />
+                Sabarkantha, Gujarat - 383001
+              </p>
             </div>
             <div className="text-right">
-              <h2 className="text-3xl font-bold leading-none mb-1">INVOICE</h2>
-              <p className="text-xs">
+              <h2
+                className="leading-none mb-1"
+                style={{
+                  fontSize: "var(--text-3xl)",
+                  fontWeight: "var(--font-bold)",
+                }}
+              >
+                INVOICE
+              </h2>
+              <p style={{ fontSize: "var(--text-xs)" }}>
+                GSTIN: 24BPYPR7738J1ZU
+              </p>
+              <p style={{ fontSize: "var(--text-xs)" }}>
                 Invoice No: {data.tracking_number || `ORD-${data.order_id}`}
               </p>
-              <p className="text-xs">
+              <p style={{ fontSize: "var(--text-xs)" }}>
                 Date: {new Date(data.created_at).toLocaleDateString("en-IN")}
               </p>
-              <p className="text-xs">
+              <p style={{ fontSize: "var(--text-xs)" }}>
                 Status:{" "}
                 <span style={{ textTransform: "uppercase" }}>
                   {data.order_status}
@@ -108,39 +135,67 @@ const DownloadBill = ({ data }) => {
           </div>
 
           {/* 2. ADDRESSES */}
-          <div className="px-[15mm] py-4 border-b-2 border-[#164E63]">
-            <h3 className="text-sm font-bold text-[#164E63] mb-2">
+          <div
+            className="px-[15mm] py-4 border-b-2"
+            style={{ borderColor: "var(--color-primary-dark)" }}
+          >
+            <h3
+              className="mb-2"
+              style={{
+                fontSize: "var(--text-sm)",
+                color: "var(--color-primary-dark)",
+                fontWeight: "var(--font-bold)",
+              }}
+            >
               BILL TO & SHIP TO
             </h3>
 
-            <div className="flex justify-between text-sm">
+            <div
+              className="flex justify-between"
+              style={{ fontSize: "var(--text-sm)" }}
+            >
               <div>
-                <p style={{ color: "#6b7280", fontSize: "0.75rem" }}>
+                <p
+                  style={{
+                    color: "var(--color-text-muted)",
+                    fontSize: "var(--text-xs)",
+                  }}
+                >
                   Customer Phone:
                 </p>
-                <p className="font-medium">
+                <p style={{ fontWeight: "var(--font-medium)" }}>
                   {data.phone_code} {data.phone}
                 </p>
 
                 <p
                   style={{
-                    color: "#6b7280",
-                    fontSize: "0.75rem",
+                    color: "var(--color-text-muted)",
+                    fontSize: "var(--text-xs)",
                     marginTop: "0.5rem",
                   }}
                 >
                   Payment Method:
                 </p>
-                <p className="font-medium">{data.payment_method}</p>
+                <p style={{ fontWeight: "var(--font-medium)" }}>
+                  {data.payment_method}
+                </p>
               </div>
 
               <div className="text-right w-1/2">
-                <p className="font-bold" style={{ color: "#1f2937" }}>
+                <p
+                  style={{
+                    fontWeight: "var(--font-bold)",
+                    color: "var(--color-text-primary)",
+                  }}
+                >
                   Shipping Address:
                 </p>
                 <p
-                  className="text-xs mt-1 leading-tight"
-                  style={{ color: "#4b5563" }} // gray-600
+                  className="mt-1 leading-tight"
+                  style={{
+                    fontSize: "var(--text-xs)",
+                    color: "var(--color-text-secondary)",
+                  }} // gray-600
                 >
                   {data.shipping_address}
                   <br />
@@ -152,24 +207,28 @@ const DownloadBill = ({ data }) => {
 
           {/* 3. ITEMS TABLE */}
           <div className="px-[15mm] mt-4">
-            <table className="w-full text-sm text-left border-collapse">
+            <table
+              className="w-full text-left border-collapse"
+              style={{ fontSize: "var(--text-sm)" }}
+            >
               <thead>
                 <tr
                   style={{
-                    backgroundColor: "#164E63",
-                    color: "#ffffff",
+                    backgroundColor: "var(--color-primary-dark)",
+                    color: "var(--color-text-on-primary)",
                     textTransform: "uppercase",
-                    fontSize: "0.75rem",
+                    fontSize: "var(--text-xs)",
+                    fontWeight: "var(--font-bold)",
                   }}
                 >
-                  <th className="py-2 px-1 font-bold w-1/2 text-left">
+                  <th className="py-2 px-1 w-1/2 text-left">
                     Item Description
                   </th>
-                  <th className="py-2 px-1 font-bold text-center w-12">Qty</th>
-                  <th className="py-2 px-1 font-bold text-right w-16">Rate</th>
-                  <th className="py-2 px-1 font-bold text-right w-16">Tax</th>
+                  <th className="py-2 px-1 text-center w-12">Qty</th>
+                  <th className="py-2 px-1 text-right w-16">Rate</th>
+                  <th className="py-2 px-1 text-right w-16">Tax</th>
                   <th
-                    className="py-2 px-1 font-bold text-right w-20"
+                    className="py-2 px-1 text-right w-20"
                     style={{ paddingRight: "1rem" }}
                   >
                     Amount
@@ -181,10 +240,13 @@ const DownloadBill = ({ data }) => {
                   data.items.map((item, index) => (
                     <tr
                       key={index}
-                      className="text-xs"
+                      className=""
                       style={{
+                        fontSize: "var(--text-xs)",
                         backgroundColor:
-                          index % 2 === 0 ? "#f3f4f6" : "#ffffff",
+                          index % 2 === 0
+                            ? "var(--color-bg-alt)"
+                            : "var(--color-surface)",
                       }}
                     >
                       <td className="py-2 px-1 align-top pt-3">
@@ -200,8 +262,11 @@ const DownloadBill = ({ data }) => {
                         {formatCurrency(item.gst_amount || 0)}
                       </td>
                       <td
-                        className="py-2 px-1 text-right font-medium align-top pt-3"
-                        style={{ paddingRight: "1rem" }}
+                        className="py-2 px-1 text-right align-top pt-3"
+                        style={{
+                          paddingRight: "1rem",
+                          fontWeight: "var(--font-medium)",
+                        }}
                       >
                         {formatCurrency(item.total)}
                       </td>
@@ -209,7 +274,11 @@ const DownloadBill = ({ data }) => {
                   ))
                 ) : (
                   <tr>
-                    <td colSpan="5" className="py-4 text-center text-gray-500">
+                    <td
+                      colSpan="5"
+                      className="py-4 text-center"
+                      style={{ color: "var(--color-text-muted)" }}
+                    >
                       No items found in this invoice.
                     </td>
                   </tr>
@@ -222,8 +291,13 @@ const DownloadBill = ({ data }) => {
           <div className="px-[15mm] mt-6 flex justify-end">
             <div className="w-[80mm]">
               {/* Subtotal & Tax Calculations */}
-              <div className="flex justify-between text-xs mb-1">
-                <span style={{ color: "#4b5563" }}>Subtotal:</span>
+              <div
+                className="flex justify-between mb-1"
+                style={{ fontSize: "var(--text-xs)" }}
+              >
+                <span style={{ color: "var(--color-text-secondary)" }}>
+                  Subtotal:
+                </span>
                 <span className="text-right w-24">
                   {formatCurrency(
                     data.items
@@ -239,8 +313,13 @@ const DownloadBill = ({ data }) => {
                 </span>
               </div>
 
-              <div className="flex justify-between text-xs mb-1">
-                <span style={{ color: "#4b5563" }}>Total Tax (GST):</span>
+              <div
+                className="flex justify-between mb-1"
+                style={{ fontSize: "var(--text-xs)" }}
+              >
+                <span style={{ color: "var(--color-text-secondary)" }}>
+                  Total Tax (GST):
+                </span>
                 <span className="text-right w-24">
                   {formatCurrency(
                     data.items
@@ -256,8 +335,11 @@ const DownloadBill = ({ data }) => {
 
               {data.discount_value > 0 && (
                 <div
-                  className="flex justify-between text-xs mb-1"
-                  style={{ color: "#dc2626" }}
+                  className="flex justify-between mb-1"
+                  style={{
+                    fontSize: "var(--text-xs)",
+                    color: "var(--color-danger)",
+                  }}
                 >
                   <span>Discount (-):</span>
                   <span className="text-right w-24">
@@ -269,17 +351,25 @@ const DownloadBill = ({ data }) => {
               {/* GRAND TOTAL BLOCK */}
               <div
                 className="flex justify-between items-center mt-3 pt-3"
-                style={{ borderTop: "2px solid #d1d5db" }}
+                style={{ borderTop: "2px solid var(--color-border-dark)" }}
               >
                 <span
-                  className="text-lg font-normal tracking-wide"
-                  style={{ color: "#000000" }}
+                  className="tracking-wide"
+                  style={{
+                    fontSize: "var(--text-lg)",
+                    color: "var(--color-text-primary)",
+                    fontWeight: "var(--font-normal)",
+                  }}
                 >
                   GRAND TOTAL:
                 </span>
                 <span
-                  className="text-xl font-normal w-24 text-right pr-2"
-                  style={{ color: "#000000" }}
+                  className="w-24 text-right pr-2"
+                  style={{
+                    fontSize: "var(--text-xl)",
+                    color: "var(--color-text-primary)",
+                    fontWeight: "var(--font-normal)",
+                  }}
                 >
                   {formatCurrency(data.final_amount)}
                 </span>
@@ -289,21 +379,39 @@ const DownloadBill = ({ data }) => {
 
           {/* 5. FOOTER */}
           <div className="absolute bottom-[15mm] left-[15mm] right-[15mm]">
-            <div className="text-xs mb-4" style={{ color: "#9ca3af" }}>
-              <p className="font-bold" style={{ color: "#6b7280" }}>
+            <div
+              className="mb-4"
+              style={{
+                fontSize: "var(--text-xs)",
+                color: "var(--color-text-muted)",
+              }}
+            >
+              <p
+                style={{
+                  fontSize: "var(--text-xs)",
+                  color: "var(--color-text-secondary)",
+                  fontWeight: "var(--font-bold)",
+                }}
+              >
                 Terms & Conditions:
               </p>
               <p>1. Goods once sold will not be taken back.</p>
-              <p>2. Subject to jurisdiction of Mizoram, India.</p>
+              <p>2. Subject to jurisdiction of Gujarat, India.</p>
             </div>
 
             <div className="flex justify-end">
               <div className="text-center">
                 <div
                   className="w-[40mm] mb-1"
-                  style={{ borderBottom: "1px solid #9ca3af" }}
+                  style={{ borderBottom: "1px solid var(--color-border)" }}
                 ></div>
-                <p className="text-xs font-bold" style={{ color: "#4b5563" }}>
+                <p
+                  style={{
+                    fontSize: "var(--text-xs)",
+                    color: "var(--color-text-secondary)",
+                    fontWeight: "var(--font-bold)",
+                  }}
+                >
                   Authorized Signatory
                 </p>
               </div>

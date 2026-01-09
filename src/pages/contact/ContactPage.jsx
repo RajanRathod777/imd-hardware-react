@@ -1,4 +1,4 @@
-import ContactPage from "./components/ContactPage";
+import ContactPage from "./components/ContactViewer";
 import { contactPageMetadata } from "../../seo/contactSeo";
 import SEO from "../../components/SEO";
 

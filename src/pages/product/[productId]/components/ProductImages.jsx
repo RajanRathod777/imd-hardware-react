@@ -60,10 +60,12 @@ const ProductImages = ({ product, apiUrl }) => {
         {/* Image Counter */}
         {product.images?.length > 1 && (
           <div
-            className="absolute top-3 left-3 z-10 px-2 py-1 rounded-full text-xs font-medium"
+            className="absolute top-3 left-3 z-10 px-2 py-1 rounded-full"
             style={{
               backgroundColor: "rgba(0,0,0,0.7)",
               color: "var(--color-surface)",
+              fontSize: "var(--text-xs)",
+              fontWeight: "var(--font-medium)",
             }}
           >
             {activeImageIndex + 1} / {product.images.length}

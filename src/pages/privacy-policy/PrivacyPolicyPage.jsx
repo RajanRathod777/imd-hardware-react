@@ -1,113 +1,285 @@
 import React from "react";
+import { Shield, User, Mail, CreditCard, Lock, Phone } from "lucide-react";
 
 const PrivacyPolicy = () => {
-  return (
-    <div
-      className="container mx-auto px-4 py-8 max-w-4xl"
-      style={{
-        fontFamily: "var(--font-body)",
-        color: "var(--color-text-primary)",
-      }}
-    >
-      <h1
-        className="text-3xl font-bold mb-6"
-        style={{ fontFamily: "var(--font-heading)" }}
-      >
-        Privacy Policy
-      </h1>
-      <p className="mb-4 text-sm text-gray-500">
-        Last updated: {new Date().toLocaleDateString()}
-      </p>
+  const lastUpdated = new Date().toLocaleDateString("en-IN", {
+    day: "numeric",
+    month: "long",
+    year: "numeric",
+  });
 
-      <section className="mb-8">
-        <h2 className="text-xl font-semibold mb-3">1. Introduction</h2>
-        <p className="mb-4 leading-relaxed">
-          Welcome to IMD Hardware ("we," "our," or "us"). We respect your
-          privacy and are committed to protecting your personal data. This
-          privacy policy will inform you as to how we look after your personal
-          data when you visit our website (regardless of where you visit it
-          from) and tell you about your privacy rights and how the law protects
-          you.
+  const policySections = [
+    {
+      icon: Shield,
+      title: "Introduction",
+      content: (
+        <p style={{ lineHeight: "var(--leading-relaxed)" }}>
+          Welcome to <strong>IMD Hardware</strong> ("we," "our," or "us"). We
+          deeply respect your privacy and are fully committed to protecting your
+          personal information. This Privacy Policy explains how we collect,
+          use, store, and safeguard your data when you visit our website or make
+          a purchase — regardless of your location. It also outlines your
+          privacy rights and the legal protections available to you.
         </p>
-      </section>
-
-      <section className="mb-8">
-        <h2 className="text-xl font-semibold mb-3">2. Data We Collect</h2>
-        <p className="mb-4 leading-relaxed">
-          We may collect, use, store and transfer different kinds of personal
-          data about you which we have grouped together follows:
-        </p>
-        <ul className="list-disc pl-6 space-y-2 mb-4">
-          <li>
-            <strong>Identity Data:</strong> includes first name, last name,
-            username or similar identifier.
-          </li>
-          <li>
-            <strong>Contact Data:</strong> includes billing address, delivery
-            address, email address and telephone numbers.
-          </li>
-          <li>
-            <strong>Transaction Data:</strong> includes details about payments
-            to and from you and other details of products and services you have
-            purchased from us.
-          </li>
-          <li>
-            <strong>Technical Data:</strong> includes internet protocol (IP)
-            address, your login data, browser type and version, time zone
-            setting and location, browser plug-in types and versions, operating
-            system and platform and other technology on the devices you use to
-            access this website.
-          </li>
-        </ul>
-      </section>
-
-      <section className="mb-8">
-        <h2 className="text-xl font-semibold mb-3">3. How We Use Your Data</h2>
-        <p className="mb-4 leading-relaxed">
-          We will only use your personal data when the law allows us to. Most
-          commonly, we will use your personal data in the following
-          circumstances:
-        </p>
-        <ul className="list-disc pl-6 space-y-2 mb-4">
-          <li>
-            Where we need to perform the contract we are about to enter into or
-            have entered into with you.
-          </li>
-          <li>
-            Where it is necessary for our legitimate interests (or those of a
-            third party) and your interests and fundamental rights do not
-            override those interests.
-          </li>
-          <li>
-            Where we need to comply with a legal or regulatory obligation.
-          </li>
-        </ul>
-      </section>
-
-      <section className="mb-8">
-        <h2 className="text-xl font-semibold mb-3">4. Data Security</h2>
-        <p className="mb-4 leading-relaxed">
-          We have put in place appropriate security measures to prevent your
-          personal data from being accidentally lost, used or accessed in an
-          unauthorized way, altered or disclosed. In addition, we limit access
-          to your personal data to those employees, agents, contractors and
-          other third parties who have a business need to know.
-        </p>
-      </section>
-
-      <section className="mb-8">
-        <h2 className="text-xl font-semibold mb-3">5. Contact Us</h2>
-        <p className="mb-4 leading-relaxed">
-          If you have any questions about this privacy policy or our privacy
-          practices, please contact us at:{" "}
+      ),
+    },
+    {
+      icon: User,
+      title: "Data We Collect",
+      content: (
+        <>
+          <p className="mb-4" style={{ lineHeight: "var(--leading-relaxed)" }}>
+            We collect only the information necessary to provide you with the
+            best possible service. The personal data we may collect includes:
+          </p>
+          <ul className="list-disc pl-6 space-y-3">
+            <li>
+              <strong>Identity Data:</strong> First name, last name, username,
+              or similar identifiers
+            </li>
+            <li>
+              <strong>Contact Data:</strong> Billing/delivery address, email
+              address, and phone numbers
+            </li>
+            <li>
+              <strong>Transaction Data:</strong> Details of payments and
+              products/services purchased
+            </li>
+            <li>
+              <strong>Technical Data:</strong> IP address, login data, browser
+              type/version, time zone, operating system, and device information
+            </li>
+            <li>
+              <strong>Usage Data:</strong> Information about how you use our
+              website, products, and services
+            </li>
+          </ul>
+          <p className="mt-4" style={{ lineHeight: "var(--leading-relaxed)" }}>
+            We do <strong>not</strong> collect sensitive personal data (e.g.,
+            racial/ethnic origin, political opinions, health, or religious
+            beliefs).
+          </p>
+        </>
+      ),
+    },
+    {
+      icon: CreditCard,
+      title: "How We Use Your Data",
+      content: (
+        <>
+          <p className="mb-4" style={{ lineHeight: "var(--leading-relaxed)" }}>
+            We use your personal data only when permitted by law. Most commonly,
+            we process your data for the following purposes:
+          </p>
+          <ul className="list-disc pl-6 space-y-3">
+            <li>To fulfill and manage your orders and contracts</li>
+            <li>
+              To communicate with you about orders, products, and services
+            </li>
+            <li>To improve our website, products, and customer experience</li>
+            <li>To comply with legal obligations</li>
+            <li>
+              For legitimate business interests (e.g., fraud prevention and
+              security)
+            </li>
+          </ul>
+          <p className="mt-4" style={{ lineHeight: "var(--leading-relaxed)" }}>
+            We will always balance our legitimate interests against your rights
+            and freedoms.
+          </p>
+        </>
+      ),
+    },
+    {
+      icon: Lock,
+      title: "Data Security",
+      content: (
+        <>
+          <p className="mb-4" style={{ lineHeight: "var(--leading-relaxed)" }}>
+            We implement robust technical and organizational security measures
+            to protect your data from unauthorized access, loss, alteration, or
+            disclosure.
+          </p>
+          <p className="mb-4" style={{ lineHeight: "var(--leading-relaxed)" }}>
+            Access to your personal information is strictly limited to
+            employees, contractors, and third parties who need it for legitimate
+            business purposes. All such parties are bound by confidentiality
+            obligations.
+          </p>
+          <p style={{ lineHeight: "var(--leading-relaxed)" }}>
+            We regularly review and update our security practices to maintain
+            the highest standards of data protection.
+          </p>
+        </>
+      ),
+    },
+    {
+      icon: Mail,
+      title: "Your Rights",
+      content: (
+        <>
+          <p className="mb-4" style={{ lineHeight: "var(--leading-relaxed)" }}>
+            You have important rights over your personal data, including:
+          </p>
+          <ul className="list-disc pl-6 space-y-3">
+            <li>The right to access your personal data</li>
+            <li>The right to request correction of inaccurate data</li>
+            <li>The right to request deletion of your data</li>
+            <li>The right to restrict or object to processing</li>
+            <li>The right to data portability</li>
+          </ul>
+          <p className="mt-4" style={{ lineHeight: "var(--leading-relaxed)" }}>
+            To exercise any of these rights, please contact us using the details
+            below.
+          </p>
+        </>
+      ),
+    },
+    {
+      icon: Phone,
+      title: "Contact Us",
+      content: (
+        <p style={{ lineHeight: "var(--leading-relaxed)" }}>
+          If you have any questions, concerns, or requests regarding this
+          Privacy Policy or our data practices, please reach out to us at:
+          <br />
+          <br />
+          <strong>Email:</strong>{" "}
           <a
             href="mailto:imd@imdhardware.com"
-            className="text-blue-600 hover:underline"
+            className="hover:underline transition"
+            style={{
+              color: "var(--color-primary)",
+              fontWeight: "var(--font-semibold)",
+            }}
           >
             imd@imdhardware.com
           </a>
+          <br />
+          <strong>Phone:</strong>{" "}
+          <a
+            href="tel:+919427893121"
+            className="hover:underline transition"
+            style={{
+              color: "var(--color-primary)",
+              fontWeight: "var(--font-semibold)",
+            }}
+          >
+            +91 9427893121
+          </a>
         </p>
-      </section>
+      ),
+    },
+  ];
+
+  return (
+    <div
+      className="min-h-screen py-12 px-4"
+      style={{
+        backgroundColor: "var(--color-bg)",
+        fontFamily: "var(--font-body)",
+      }}
+    >
+      <div className="max-w-4xl mx-auto">
+        {/* Header */}
+        <div className="text-center mb-12">
+          <h1
+            className="mb-4"
+            style={{
+              fontSize: "var(--text-4xl)",
+              fontFamily: "var(--font-heading)",
+              color: "var(--color-text-primary)",
+              fontWeight: "var(--font-bold)",
+            }}
+          >
+            Privacy Policy
+          </h1>
+          <div
+            className="w-24 h-1 mx-auto mb-6 rounded-full"
+            style={{ backgroundColor: "var(--color-primary)" }}
+          />
+          <p
+            style={{
+              fontSize: "var(--text-sm)",
+              color: "var(--color-text-muted)",
+            }}
+          >
+            Last updated: {lastUpdated}
+          </p>
+        </div>
+
+        {/* Policy Sections */}
+        <div className="space-y-12">
+          {policySections.map(({ icon: Icon, title, content }, index) => (
+            <section
+              key={index}
+              className="p-8 rounded-2xl border transition-all duration-300 hover:shadow-lg"
+              style={{
+                backgroundColor: "var(--color-surface)",
+                borderColor: "var(--color-border-light)",
+              }}
+            >
+              <div className="flex items-start gap-6">
+                <div
+                  className="w-14 h-14 rounded-xl flex items-center justify-center flex-shrink-0 shadow-md"
+                  style={{
+                    backgroundColor: "var(--color-primary)",
+                    color: "var(--color-text-on-primary)",
+                  }}
+                >
+                  <Icon className="w-7 h-7" />
+                </div>
+                <div className="flex-1">
+                  <h2
+                    className="mb-5"
+                    style={{
+                      fontSize: "var(--text-2xl)",
+                      fontFamily: "var(--font-heading)",
+                      color: "var(--color-text-primary)",
+                      fontWeight: "var(--font-bold)",
+                    }}
+                  >
+                    {index + 1}. {title}
+                  </h2>
+                  <div
+                    className="space-y-4"
+                    style={{
+                      fontSize: "var(--text-base)",
+                      color: "var(--color-text-secondary)",
+                      lineHeight: "var(--leading-relaxed)",
+                    }}
+                  >
+                    {content}
+                  </div>
+                </div>
+              </div>
+            </section>
+          ))}
+        </div>
+
+        {/* Final Note */}
+        <div
+          className="mt-16 p-8 rounded-2xl text-center"
+          style={{
+            backgroundColor: "var(--color-surface-alt)",
+            border: "1px dashed var(--color-border-light)",
+          }}
+        >
+          <p
+            style={{
+              fontSize: "var(--text-lg)",
+              color: "var(--color-text-primary)",
+              fontWeight: "var(--font-medium)",
+            }}
+          >
+            Your privacy matters to us.
+          </p>
+          <p style={{ color: "var(--color-text-secondary)" }}>
+            We are committed to transparency and responsible data handling at
+            every step.
+          </p>
+        </div>
+      </div>
     </div>
   );
 };

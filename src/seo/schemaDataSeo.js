@@ -30,9 +30,9 @@ export const schemaData = [
     },
     contactPoint: {
       "@type": "ContactPoint",
-      telephone: "+91-XXXXXXXXXX",
+      telephone: "+91-6355953543",
       contactType: "customer service",
-      email: "info@imdhardware.com",
+      email: "imd@imdhardware.com",
       availableLanguage: ["English", "Hindi", "Marathi"],
       areaServed: "IN",
       contactOption: "TollFree",
@@ -265,113 +265,6 @@ export const schemaData = [
         },
       ],
     },
-  },
-
-  // ---------------------------------------------------
-  // 5. INDIVIDUAL PRODUCT SCHEMA EXAMPLE (NEW)
-  // ---------------------------------------------------
-  {
-    "@context": "https://schema.org",
-    "@type": "Product",
-    "@id": "https://imdhardware.com/products/heavy-duty-padlock#product",
-    name: "IMD Heavy Duty Security Padlock",
-    description:
-      "Industrial grade padlock with hardened boron steel shackle, anti-drill protection, and waterproof design. Ideal for warehouses, lockers, and industrial gates.",
-    image: [
-      "https://imdhardware.com/images/padlock-main.jpg",
-      "https://imdhardware.com/images/padlock-side.jpg",
-      "https://imdhardware.com/images/padlock-packaging.jpg",
-    ],
-    sku: "IMD-PADLOCK-HD50",
-    mpn: "PD-HD50-2024",
-    brand: {
-      "@type": "Brand",
-      name: "IMD Hardware",
-      logo: "https://imdhardware.com/images/logo.jpeg",
-    },
-    manufacturer: {
-      "@type": "Organization",
-      name: "IMD Hardware",
-    },
-    category: "Security Locks/Padlocks",
-    releaseDate: "2024-01-15",
-    model: "HD-50",
-    offers: {
-      "@type": "Offer",
-      url: "https://imdhardware.com/products/heavy-duty-padlock",
-      priceCurrency: "INR",
-      price: "650",
-      priceValidUntil: "2024-12-31",
-      availability: "https://schema.org/InStock",
-      itemCondition: "https://schema.org/NewCondition",
-      seller: {
-        "@type": "Organization",
-        name: "IMD Hardware",
-        url: "https://imdhardware.com",
-      },
-      eligibleQuantity: {
-        "@type": "QuantitativeValue",
-        minValue: 1,
-        maxValue: 500,
-      },
-      eligibleRegion: {
-        "@type": "Country",
-        name: "India",
-      },
-    },
-    aggregateRating: {
-      "@type": "AggregateRating",
-      ratingValue: "4.7",
-      bestRating: "5",
-      worstRating: "1",
-      ratingCount: "320",
-      reviewCount: "89",
-    },
-    review: {
-      "@type": "Review",
-      author: {
-        "@type": "Person",
-        name: "Ramesh Patel",
-      },
-      datePublished: "2024-03-15",
-      reviewRating: {
-        "@type": "Rating",
-        ratingValue: "5",
-        bestRating: "5",
-      },
-      reviewBody:
-        "Excellent quality padlock. Using it for our warehouse, very sturdy and reliable.",
-    },
-    additionalProperty: [
-      {
-        "@type": "PropertyValue",
-        name: "Material",
-        value: "Hardened Boron Steel",
-      },
-      {
-        "@type": "PropertyValue",
-        name: "Shackle Diameter",
-        value: "12mm",
-        unitCode: "mm",
-      },
-      {
-        "@type": "PropertyValue",
-        name: "Weather Resistance",
-        value: "IP67 Waterproof",
-      },
-      {
-        "@type": "PropertyValue",
-        name: "Weight",
-        value: "450",
-        unitCode: "GRM",
-      },
-    ],
-    keywords:
-      "imd , imd hardware , padlock, security lock, heavy duty lock, industrial padlock, warehouse lock",
-    countryOfAssembly: "India",
-    countryOfOrigin: "India",
-    inProductGroupWithID: "Hardware-Locks",
-    isRelatedTo: "https://imdhardware.com/products/locks",
   },
 
   // ---------------------------------------------------

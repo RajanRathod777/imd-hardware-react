@@ -21,4 +21,22 @@ export const cartPageMetadata = {
     description:
       "Review your selected hardware products and proceed to checkout.",
   },
+  schema: {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      {
+        "@type": "ListItem",
+        position: 1,
+        name: "Home",
+        item: "https://imdhardware.com",
+      },
+      {
+        "@type": "ListItem",
+        position: 2,
+        name: "Cart",
+        item: "https://imdhardware.com/cart",
+      },
+    ],
+  },
 };

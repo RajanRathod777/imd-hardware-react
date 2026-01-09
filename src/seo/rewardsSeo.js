@@ -30,4 +30,33 @@ export const rewardsPageMetadata = {
       "Scan QR codes to earn points. Redeem for discounts and free products.",
     images: ["https://imdhardware.com/images/logo.jpeg"],
   },
+  robots: "index, follow",
+  schema: [
+    {
+      "@context": "https://schema.org",
+      "@type": "WebPage",
+      "@id": "https://imdhardware.com/rewards/#rewards",
+      mainEntityOfPage: "https://imdhardware.com/rewards",
+      name: "IMD Hardware Rewards Program",
+      description: "Information about IMD Hardware loyalty program.",
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      itemListElement: [
+        {
+          "@type": "ListItem",
+          position: 1,
+          name: "Home",
+          item: "https://imdhardware.com",
+        },
+        {
+          "@type": "ListItem",
+          position: 2,
+          name: "Rewards",
+          item: "https://imdhardware.com/rewards",
+        },
+      ],
+    },
+  ],
 };

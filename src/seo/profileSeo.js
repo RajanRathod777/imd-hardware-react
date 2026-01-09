@@ -21,4 +21,22 @@ export const profilePageMetadata = {
     description:
       "Manage your account settings, track orders, and view rewards.",
   },
+  schema: {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      {
+        "@type": "ListItem",
+        position: 1,
+        name: "Home",
+        item: "https://imdhardware.com",
+      },
+      {
+        "@type": "ListItem",
+        position: 2,
+        name: "Profile",
+        item: "https://imdhardware.com/profile",
+      },
+    ],
+  },
 };

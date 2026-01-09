@@ -81,10 +81,11 @@ const ProductReviewCarousel = () => {
   if (error && reviews.length === 0)
     return (
       <div
-        className="text-center py-10 text-lg"
+        className="text-center py-10"
         style={{
           color: "var(--color-danger)",
           fontFamily: "var(--font-body)",
+          fontSize: "var(--text-lg)",
         }}
       >
         {error}
@@ -94,10 +95,12 @@ const ProductReviewCarousel = () => {
   return (
     <div className="p-2 relative slider-out-pagination">
       <h3
-        className="text-2xl font-bold py-3 text-left"
+        className="py-3 text-left"
         style={{
           color: "var(--color-text-primary)",
           fontFamily: "var(--font-heading)",
+          fontSize: "var(--text-2xl)",
+          fontWeight: "var(--font-bold)",
         }}
       >
         Customer Review
@@ -168,20 +171,23 @@ const ProductReviewCarousel = () => {
               </div>
 
               <h3
-                className="text-lg font-semibold mb-2 line-clamp-1"
+                className="mb-2 line-clamp-1"
                 style={{
                   color: "var(--color-text-primary)",
                   fontFamily: "var(--font-heading)",
+                  fontSize: "var(--text-lg)",
+                  fontWeight: "var(--font-semibold)",
                 }}
               >
                 {review.review_title}
               </h3>
 
               <p
-                className="text-sm leading-relaxed flex-grow overflow-hidden"
+                className="leading-relaxed flex-grow overflow-hidden"
                 style={{
                   color: "var(--color-text-secondary)",
                   fontFamily: "var(--font-body)",
+                  fontSize: "var(--text-sm)",
                 }}
               >
                 {review.review_text && review.review_text.length > 150

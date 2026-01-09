@@ -31,4 +31,38 @@ export const homePageMetadata = {
     creator: "@imdhardware",
     images: ["https://imdhardware.com/images/logo.jpeg"],
   },
+  robots: "index, follow",
+  schema: [
+    {
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      "@id": "https://imdhardware.com/#organization",
+      name: "IMD Hardware",
+      url: "https://imdhardware.com",
+      logo: "https://imdhardware.com/images/logo.jpeg",
+      contactPoint: {
+        "@type": "ContactPoint",
+        telephone: "+91-6355953543",
+        contactType: "customer service",
+        areaServed: "IN",
+      },
+      sameAs: [
+        "https://facebook.com/imdhardware",
+        "https://instagram.com/imdhardware",
+        "https://linkedin.com/company/imdhardware",
+      ],
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "WebSite",
+      "@id": "https://imdhardware.com/#website",
+      name: "IMD Hardware",
+      url: "https://imdhardware.com",
+      potentialAction: {
+        "@type": "SearchAction",
+        target: "https://imdhardware.com/search?q={search_term_string}",
+        "query-input": "required name=search_term_string",
+      },
+    },
+  ],
 };

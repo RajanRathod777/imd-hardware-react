@@ -21,4 +21,22 @@ export const registerPageMetadata = {
     description:
       "Create an account to access IMD Hardware rewards program and exclusive benefits.",
   },
+  schema: {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      {
+        "@type": "ListItem",
+        position: 1,
+        name: "Home",
+        item: "https://imdhardware.com",
+      },
+      {
+        "@type": "ListItem",
+        position: 2,
+        name: "Register",
+        item: "https://imdhardware.com/register",
+      },
+    ],
+  },
 };

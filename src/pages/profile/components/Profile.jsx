@@ -309,8 +309,8 @@ export default function ProfilePage() {
                 </div>
                 <div>
                   <h1
-                    className="text-xl font-semibold"
                     style={{
+                      fontSize: "var(--text-xl)",
                       color: "var(--color-text-primary)",
                       fontFamily: "var(--font-heading)",
                     }}
@@ -318,8 +318,10 @@ export default function ProfilePage() {
                     Profile Information
                   </h1>
                   <p
-                    className="text-sm"
-                    style={{ color: "var(--color-text-secondary)" }}
+                    style={{
+                      fontSize: "var(--text-sm)",
+                      color: "var(--color-text-secondary)",
+                    }}
                   >
                     Update your personal details
                   </p>
@@ -391,8 +393,11 @@ export default function ProfilePage() {
                 </div>
                 <div>
                   <label
-                    className="block text-sm"
-                    style={{ color: "var(--color-text-secondary)" }}
+                    className="block"
+                    style={{
+                      fontSize: "var(--text-sm)",
+                      color: "var(--color-text-secondary)",
+                    }}
                   >
                     Email Address
                   </label>
@@ -408,8 +413,11 @@ export default function ProfilePage() {
                   </div>
 
                   <label
-                    className="block text-sm mt-2"
-                    style={{ color: "var(--color-text-secondary)" }}
+                    className="block mt-2"
+                    style={{
+                      fontSize: "var(--text-sm)",
+                      color: "var(--color-text-secondary)",
+                    }}
                   >
                     point
                   </label>
@@ -433,7 +441,7 @@ export default function ProfilePage() {
                   style={{ color: "var(--color-text-primary)" }}
                 >
                   <User className="h-4 w-4" />
-                  <span className="text-sm font-medium">
+                  <span style={{ fontSize: "var(--text-sm)" }}>
                     Personal Information
                   </span>
                 </div>
@@ -442,8 +450,11 @@ export default function ProfilePage() {
                 <div className="grid grid-cols-1 gap-3">
                   <div>
                     <label
-                      className="block text-sm mb-1"
-                      style={{ color: "var(--color-text-secondary)" }}
+                      className="block mb-1"
+                      style={{
+                        fontSize: "var(--text-sm)",
+                        color: "var(--color-text-secondary)",
+                      }}
                     >
                       Username
                     </label>
@@ -496,7 +507,7 @@ export default function ProfilePage() {
                   style={{ color: "var(--color-text-primary)" }}
                 >
                   <Phone className="h-4 w-4" />
-                  <span className="text-sm font-medium">
+                  <span style={{ fontSize: "var(--text-sm)" }}>
                     Contact Information
                   </span>
                 </div>
@@ -504,8 +515,11 @@ export default function ProfilePage() {
                 <div className="grid grid-cols-1 gap-3">
                   <div>
                     <label
-                      className="block text-sm mb-1"
-                      style={{ color: "var(--color-text-secondary)" }}
+                      className="block mb-1"
+                      style={{
+                        fontSize: "var(--text-sm)",
+                        color: "var(--color-text-secondary)",
+                      }}
                     >
                       Phone Number
                     </label>
@@ -596,15 +610,18 @@ export default function ProfilePage() {
                   style={{ color: "var(--color-text-primary)" }}
                 >
                   <MapPin className="h-4 w-4" />
-                  <span className="text-sm font-medium">
+                  <span style={{ fontSize: "var(--text-sm)" }}>
                     Address Information
                   </span>
                 </div>
 
                 <div>
                   <label
-                    className="block text-sm mb-1"
-                    style={{ color: "var(--color-text-secondary)" }}
+                    className="block mb-1"
+                    style={{
+                      fontSize: "var(--text-sm)",
+                      color: "var(--color-text-secondary)",
+                    }}
                   >
                     Address
                   </label>
@@ -648,8 +665,11 @@ export default function ProfilePage() {
                 <div className="grid grid-cols-2 gap-3">
                   <div>
                     <label
-                      className="block text-sm mb-1"
-                      style={{ color: "var(--color-text-secondary)" }}
+                      className="block mb-1"
+                      style={{
+                        fontSize: "var(--text-sm)",
+                        color: "var(--color-text-secondary)",
+                      }}
                     >
                       Country
                     </label>
@@ -691,8 +711,11 @@ export default function ProfilePage() {
 
                   <div>
                     <label
-                      className="block text-sm mb-1"
-                      style={{ color: "var(--color-text-secondary)" }}
+                      className="block mb-1"
+                      style={{
+                        fontSize: "var(--text-sm)",
+                        color: "var(--color-text-secondary)",
+                      }}
                     >
                       State
                     </label>
@@ -741,8 +764,11 @@ export default function ProfilePage() {
                 <div className="grid grid-cols-2 gap-3">
                   <div>
                     <label
-                      className="block text-sm mb-1"
-                      style={{ color: "var(--color-text-secondary)" }}
+                      className="block mb-1"
+                      style={{
+                        fontSize: "var(--text-sm)",
+                        color: "var(--color-text-secondary)",
+                      }}
                     >
                       City
                     </label>
@@ -792,8 +818,11 @@ export default function ProfilePage() {
 
                   <div>
                     <label
-                      className="block text-sm mb-1"
-                      style={{ color: "var(--color-text-secondary)" }}
+                      className="block mb-1"
+                      style={{
+                        color: "var(--color-text-secondary)",
+                        fontSize: "var(--text-sm)",
+                      }}
                     >
                       Pincode (6 digits)
                     </label>
@@ -863,11 +892,12 @@ export default function ProfilePage() {
             {/* Message */}
             {message && (
               <div
-                className={`mb-4 p-3 text-sm border`}
+                className={`mb-4 p-3 border`}
                 style={{
                   backgroundColor: "var(--color-surface)",
                   color: "var(--color-text-primary)",
                   borderColor: "var(--color-border)",
+                  fontSize: "var(--text-sm)",
                 }}
               >
                 {message}
@@ -875,17 +905,21 @@ export default function ProfilePage() {
             )}
           </div>
           <div
-            className="p-4 border-t text-center text-xs"
+            className="p-4 border-t text-center"
             style={{
               borderColor: "var(--color-border)",
               color: "var(--color-text-secondary)",
+              fontSize: "var(--text-xs)",
             }}
           >
             Update Password{" "}
             <Link
               href="/updatepassword"
-              className="hover:underline font-medium"
-              style={{ color: "var(--color-primary)" }}
+              className="hover:underline"
+              style={{
+                color: "var(--color-primary)",
+                fontWeight: "var(--font-medium)",
+              }}
             >
               Update Password
             </Link>

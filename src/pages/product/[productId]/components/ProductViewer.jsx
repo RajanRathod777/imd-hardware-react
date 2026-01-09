@@ -3,6 +3,7 @@ import { useParams, useNavigate } from "react-router";
 import { useStore } from "../../../../stores/useStore";
 import Cookies from "js-cookie";
 import Loading from "../../../../components/Loading";
+import SEO from "../../../../components/SEO";
 
 // Lazy load heavy 3D component - defer model-viewer import
 const ModelViewer3D = lazy(() => import("./ModelViewer3D"));
@@ -14,6 +15,9 @@ import ProductReviews from "./ProductReviews";
 import MediaGallery from "./MediaGallery";
 import BackButton from "./BackButton";
 import ExtraProductInfo from "./ExtraProductInfo";
+import NotFoundPage from "../../../not-found/NotFoundPage";
+
+import { generateProductSchema } from "../../../../seo/singleProductSeo";
 
 const ProductViewer = () => {
   const params = useParams();
@@ -31,12 +35,23 @@ const ProductViewer = () => {
   const [reviewsLoading, setReviewsLoading] = useState(false);
   const [modelViewerReady, setModelViewerReady] = useState(false);
 
-  // Get product from store (may be undefined initially)
-  const product = getProductById(Number(productId));
+  // Get product from store or local state
+  const storeProduct = getProductById(Number(productId));
+  const product = storeProduct;
 
   // ------------------------------------------------------------------
   // All hooks must be at the top – NO early returns before this point!
   // ------------------------------------------------------------------
+
+  // Effect to fetch product if not in store
+  useEffect(() => {
+    if (!productId || storeProduct) {
+      return;
+    }
+  }, [productId, storeProduct, apiUrl]);
+
+  // No longer needed: Inject Dynamic Structured Data (JSON-LD) via SEO component in render
+  // useEffect(() => { ... }) has been removed
 
   // Lazy load model-viewer only when product has 3D model
   useEffect(() => {
@@ -108,19 +123,22 @@ const ProductViewer = () => {
   // ------------------------------------------------------------------
   // Early return AFTER all hooks
   // ------------------------------------------------------------------
+
   if (!product) {
     return <Loading />;
   }
-
-  // ------------------------------------------------------------------
   // Main render
   // ------------------------------------------------------------------
 
   return (
-    <div
-      className="min-h-screen"
-      style={{ backgroundColor: "var(--color-bg)" }}
-    >
+    <div className="min-h-screen bg-[var(--color-bg)]">
+      {product && (
+        <SEO
+          metadata={{
+            schema: generateProductSchema(product),
+          }}
+        />
+      )}
       <div className="max-w-7xl mx-auto p-4">
         <BackButton navigate={() => navigate(-1)} />
 
@@ -133,14 +151,24 @@ const ProductViewer = () => {
           />
         </div>
 
-        <ExtraProductInfo extraDetails={extraDetails} loading={loadingExtra} />
-        <MediaGallery product={product} apiUrl={apiUrl} />
+        <div className="mt-12">
+          <ExtraProductInfo
+            extraDetails={extraDetails}
+            loading={loadingExtra}
+          />
+        </div>
+
+        <div className="mt-12">
+          <MediaGallery product={product} apiUrl={apiUrl} />
+        </div>
 
         {/* Lazy load 3D model viewer - only show when product has 3D model and it's ready */}
         {product?.models_3d?.[0] && modelViewerReady && (
-          <Suspense fallback={<Loading />}>
-            <ModelViewer3D product={product} apiUrl={apiUrl} />
-          </Suspense>
+          <div className="mt-12">
+            <Suspense fallback={<Loading />}>
+              <ModelViewer3D product={product} apiUrl={apiUrl} />
+            </Suspense>
+          </div>
         )}
 
         <ProductReviews

@@ -19,4 +19,22 @@ export const resetPasswordPageMetadata = {
     title: "Reset Password | IMD Hardware",
     description: "Reset your IMD Hardware account password securely.",
   },
+  schema: {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      {
+        "@type": "ListItem",
+        position: 1,
+        name: "Home",
+        item: "https://imdhardware.com",
+      },
+      {
+        "@type": "ListItem",
+        position: 2,
+        name: "Reset Password",
+        item: "https://imdhardware.com/reset-password",
+      },
+    ],
+  },
 };

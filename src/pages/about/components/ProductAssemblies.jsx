@@ -1,118 +1,208 @@
-import { DoorOpen, Package, Shield } from "lucide-react";
+import { DoorOpen, Package, Shield, Clock, ArrowRight } from "lucide-react";
 
 const ProductAssemblies = () => {
   const productAssemblies = [
     {
       id: 1,
       title: "Complete Door Lock System",
-      components: ["Mortise Lock", "Handle Set", "Strike Plate", "Keys"],
+      description:
+        "Everything needed for a secure and stylish door installation.",
+      components: [
+        "Mortise Lock Body",
+        "Premium Handle Set",
+        "Reinforced Strike Plate",
+        "Duplicate Keys",
+      ],
       icon: DoorOpen,
-      time: "15-20 mins",
+      time: "15–20 mins",
     },
     {
       id: 2,
       title: "Cabinet Hardware Kit",
-      components: ["Hinges", "Handles", "Drawer Slides", "Mounting Screws"],
+      description:
+        "Upgrade your cabinets with smooth functionality and modern design.",
+      components: [
+        "Soft-Close Hinges",
+        "Ergonomic Handles",
+        "Heavy-Duty Drawer Slides",
+        "Mounting Screws",
+      ],
       icon: Package,
-      time: "10-15 mins",
+      time: "10–15 mins",
     },
     {
       id: 3,
       title: "Security System Bundle",
+      description:
+        "Maximum protection with professional-grade locking solutions.",
       components: [
-        "Main Lock",
-        "Additional Deadbolt",
-        "Security Bolts",
-        "Installation Tools",
+        "Main Cylinder Lock",
+        "High-Security Deadbolt",
+        "Tamper-Proof Bolts",
+        "Installation Tool Kit",
       ],
       icon: Shield,
-      time: "25-30 mins",
+      time: "25–30 mins",
     },
   ];
 
   return (
-    <section className="mb-24">
+    <section className="py-20 px-4">
       <div className="max-w-7xl mx-auto">
-        <h2
-          className="text-3xl font-bold text-center mb-12"
-          style={{
-            color: "var(--color-text-primary)",
-            fontFamily: "var(--font-heading)",
-          }}
-        >
-          Complete Product Assemblies
-        </h2>
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+        {/* Section Header */}
+        <div className="text-center mb-16">
+          <h2
+            className="mb-6"
+            style={{
+              fontSize: "var(--text-4xl)",
+              fontFamily: "var(--font-heading)",
+              color: "var(--color-text-primary)",
+              fontWeight: "var(--font-bold)",
+            }}
+          >
+            Ready-to-Install Product Assemblies
+          </h2>
+          <div
+            className="w-24 h-1 mx-auto mb-8 rounded-full"
+            style={{ backgroundColor: "var(--color-primary)" }}
+          />
+          <p
+            className="mx-auto max-w-3xl"
+            style={{
+              fontSize: "var(--text-lg)",
+              color: "var(--color-text-secondary)",
+              fontFamily: "var(--font-body)",
+              lineHeight: "var(--leading-relaxed)",
+            }}
+          >
+            Our complete hardware kits include everything you need for quick,
+            professional installation — saving you time and ensuring perfect
+            results every time.
+          </p>
+        </div>
+
+        {/* Assembly Cards */}
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-10">
           {productAssemblies.map((assembly) => {
             const IconComponent = assembly.icon;
+
             return (
               <div
                 key={assembly.id}
-                className="group shadow-md border p-8 hover:shadow-xl transition-shadow bg-white"
-                style={{
-                  borderColor: "var(--color-border-light)",
-                }}
+                className="group relative bg-[var(--color-surface)] rounded-2xl border overflow-hidden transition-all duration-500 hover:shadow-2xl hover:-translate-y-4"
+                style={{ borderColor: "var(--color-border-light)" }}
               >
-                <div className="flex justify-center mb-6">
-                  <div className="p-4 bg-gray-50 group-hover:bg-[var(--color-primary)] transition-colors duration-300">
-                    <IconComponent
-                      className="w-10 h-10 group-hover:text-white transition-colors duration-300"
-                      style={{ color: "var(--color-primary)" }}
-                    />
-                  </div>
-                </div>
-                <h3
-                  className="text-xl font-bold mb-6 text-center"
-                  style={{
-                    color: "var(--color-text-primary)",
-                    fontFamily: "var(--font-heading)",
-                  }}
-                >
-                  {assembly.title}
-                </h3>
-                <div className="mb-6">
-                  <h4
-                    className="font-bold text-sm uppercase tracking-wider mb-4 border-b pb-2"
-                    style={{
-                      color: "var(--color-text-secondary)",
-                      fontFamily: "var(--font-body)",
-                      borderColor: "var(--color-border-light)",
-                    }}
-                  >
-                    Includes:
-                  </h4>
-                  <ul className="space-y-3">
-                    {assembly.components.map((component, index) => (
-                      <li
-                        key={index}
-                        className="flex items-center text-sm"
-                        style={{ color: "var(--color-text-muted)" }}
-                      >
-                        <span
-                          className="w-1.5 h-1.5 mr-3"
-                          style={{ backgroundColor: "var(--color-primary)" }}
-                        ></span>
-                        {component}
-                      </li>
-                    ))}
-                  </ul>
-                </div>
+                {/* Subtle hover glow */}
                 <div
-                  className="flex justify-between items-center mt-6 pt-6 border-t"
-                  style={{ borderColor: "var(--color-border-light)" }}
-                >
-                  <span
-                    className="text-sm font-medium"
-                    style={{ color: "var(--color-text-muted)" }}
+                  className="absolute inset-0 opacity-0 group-hover:opacity-20 transition-opacity duration-500 rounded-2xl"
+                  style={{ backgroundColor: "var(--color-primary)" }}
+                />
+
+                <div className="relative p-10">
+                  {/* Icon */}
+                  <div className="flex justify-center mb-8">
+                    <div
+                      className="p-6 rounded-3xl shadow-xl transition-all duration-500 group-hover:scale-110"
+                      style={{
+                        backgroundColor: "var(--color-surface-alt)",
+                        color: "var(--color-primary)",
+                      }}
+                    >
+                      <IconComponent className="w-12 h-12 transition-colors duration-300 group-hover:text-[var(--color-primary)]" />
+                    </div>
+                  </div>
+
+                  {/* Title & Description */}
+                  <div className="text-center mb-8">
+                    <h3
+                      className="mb-3"
+                      style={{
+                        fontSize: "var(--text-2xl)",
+                        fontFamily: "var(--font-heading)",
+                        color: "var(--color-text-primary)",
+                        fontWeight: "var(--font-bold)",
+                      }}
+                    >
+                      {assembly.title}
+                    </h3>
+                    <p
+                      style={{
+                        fontSize: "var(--text-base)",
+                        color: "var(--color-text-secondary)",
+                        lineHeight: "var(--leading-relaxed)",
+                      }}
+                    >
+                      {assembly.description}
+                    </p>
+                  </div>
+
+                  {/* Components List */}
+                  <div className="mb-8">
+                    <h4
+                      className="mb-5 pb-3 border-b uppercase tracking-wider"
+                      style={{
+                        fontSize: "var(--text-xs)",
+                        borderColor: "var(--color-border-light)",
+                        color: "var(--color-text-muted)",
+                        letterSpacing: "var(--tracking-wide)",
+                        fontWeight: "var(--font-bold)",
+                      }}
+                    >
+                      Kit Includes
+                    </h4>
+                    <ul className="space-y-4">
+                      {assembly.components.map((component, index) => (
+                        <li
+                          key={index}
+                          className="flex items-center gap-4"
+                          style={{
+                            fontSize: "var(--text-sm)",
+                            color: "var(--color-text-primary)",
+                          }}
+                        >
+                          <div
+                            className="w-2 h-2 rounded-full flex-shrink-0"
+                            style={{ backgroundColor: "var(--color-primary)" }}
+                          />
+                          <span>{component}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+
+                  {/* Footer */}
+                  <div
+                    className="pt-6 border-t flex items-center justify-between"
+                    style={{ borderColor: "var(--color-border-light)" }}
                   >
-                    ⏱ {assembly.time}
-                  </span>
-                  <button
-                    className="font-bold text-sm uppercase tracking-wide hover:underline"
-                    style={{ color: "var(--color-primary)" }}
-                  >
-                    View Guide
-                  </button>
+                    <div className="flex items-center gap-2">
+                      <Clock
+                        className="w-5 h-5"
+                        style={{ color: "var(--color-primary)" }}
+                      />
+                      <span
+                        style={{
+                          fontSize: "var(--text-sm)",
+                          color: "var(--color-text-muted)",
+                          fontWeight: "var(--font-medium)",
+                        }}
+                      >
+                        Est. Install: {assembly.time}
+                      </span>
+                    </div>
+
+                    <button
+                      className="group/btn inline-flex items-center gap-2 uppercase tracking-wide transition-all duration-300 hover:gap-3"
+                      style={{
+                        fontSize: "var(--text-sm)",
+                        color: "var(--color-primary)",
+                        fontWeight: "var(--font-bold)",
+                      }}
+                    >
+                      View Guide
+                      <ArrowRight className="w-4 h-4 transition-transform duration-300 group-hover/btn:translate-x-1" />
+                    </button>
+                  </div>
                 </div>
               </div>
             );

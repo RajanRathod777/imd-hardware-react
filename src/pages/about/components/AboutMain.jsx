@@ -9,7 +9,7 @@ import CTASection from "./CTASection";
 import AboutContent from "./AboutContent";
 import ManufacturingProduct from "./ManufacturingProduct";
 
-const AboutPage = () => {
+const AboutMain = () => {
   return (
     <div className="bg-white">
       <AboutHero />
@@ -28,4 +28,4 @@ const AboutPage = () => {
   );
 };
 
-export default AboutPage;
+export default AboutMain;

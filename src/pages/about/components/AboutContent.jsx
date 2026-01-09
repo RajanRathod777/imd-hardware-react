@@ -1,38 +1,46 @@
 const AboutContent = () => {
   return (
-    <div className="max-w-3xl mx-auto mb-24 space-y-24">
-      {/* Header Section */}
-      <div className="text-center">
-        <h2
-          className="text-3xl md:text-4xl font-bold mb-6"
-          style={{
-            color: "var(--color-text-primary)",
-            fontFamily: "var(--font-heading)",
-          }}
-        >
-          About Our Hardware Solutions
-        </h2>
-        <div
-          className="w-16 h-1 mx-auto mb-8"
-          style={{ backgroundColor: "var(--color-primary)" }}
-        ></div>
-        <p
-          className="text-lg md:text-xl leading-relaxed text-center"
-          style={{
-            color: "var(--color-text-secondary)",
-            fontFamily: "var(--font-body)",
-          }}
-        >
-          Your trusted partner for premium hardware tools and accessories that
-          stand the test of time. We believe in quality, durability, and
-          innovation.
-        </p>
-      </div>
-
-      <MissionStatement />
-      <HardwareImportance />
-      <SelectionGuide />
+    <div
+      className="max-w-4xl mx-auto py-16 px-4"
+      style={{ fontFamily: "var(--font-body)" }}
+    >
       <div className="space-y-24">
+        {/* Hero Header */}
+        <div className="text-center">
+          <h1
+            className="mb-6"
+            style={{
+              fontSize: "var(--text-4xl)",
+              fontFamily: "var(--font-heading)",
+              color: "var(--color-text-primary)",
+              fontWeight: "var(--font-bold)",
+            }}
+          >
+            About Our Hardware Solutions
+          </h1>
+
+          <div
+            className="w-20 h-1 mx-auto mb-8 rounded-full"
+            style={{ backgroundColor: "var(--color-primary)" }}
+          />
+
+          <p
+            className="max-w-2xl mx-auto"
+            style={{
+              fontSize: "var(--text-xl)",
+              color: "var(--color-text-muted)",
+              lineHeight: "1.625",
+            }}
+          >
+            Your trusted partner for premium hardware tools and accessories that
+            stand the test of time. We believe in quality, durability, and
+            innovation.
+          </p>
+        </div>
+
+        <MissionStatement />
+        <HardwareImportance />
+        <SelectionGuide />
         <ProductCategories />
         <WhyChooseUs />
       </div>
@@ -42,24 +50,37 @@ const AboutContent = () => {
 
 const MissionStatement = () => (
   <section
-    className="p-8 md:p-12 border-l-4 rounded-lg"
+    className="p-10 md:p-14 rounded-2xl border-l-8 relative overflow-hidden"
     style={{
       backgroundColor: "var(--color-bg-alt)",
-      borderColor: "var(--color-primary)",
+      borderLeftColor: "var(--color-primary)",
     }}
   >
-    <h3
-      className="text-2xl font-bold mb-4"
+    <div className="absolute inset-0 opacity-5 pointer-events-none">
+      <div
+        className="absolute -top-10 -right-10 w-64 h-64 rounded-full"
+        style={{ backgroundColor: "var(--color-primary)" }}
+      />
+    </div>
+
+    <h2
+      className="relative mb-6"
       style={{
-        color: "var(--color-text-primary)",
+        fontSize: "var(--text-3xl)",
         fontFamily: "var(--font-heading)",
+        color: "var(--color-text-primary)",
+        fontWeight: "var(--font-bold)",
       }}
     >
       Our Commitment to Excellence
-    </h3>
+    </h2>
     <p
-      className="text-lg leading-relaxed"
-      style={{ color: "var(--color-text-secondary)" }}
+      className="relative"
+      style={{
+        fontSize: "var(--text-lg)",
+        color: "var(--color-text-muted)",
+        lineHeight: "1.625",
+      }}
     >
       We are dedicated to providing our customers with the highest quality
       hardware products at the most competitive prices. Our experienced team is
@@ -70,137 +91,180 @@ const MissionStatement = () => (
 );
 
 const HardwareImportance = () => (
-  <section>
-    <h3
-      className="text-2xl font-bold mb-6"
+  <section className="space-y-8">
+    <h2
       style={{
-        color: "var(--color-text-primary)",
+        fontSize: "var(--text-3xl)",
         fontFamily: "var(--font-heading)",
+        color: "var(--color-text-primary)",
+        fontWeight: "var(--font-bold)",
       }}
     >
       Essential Hardware for Modern Living
-    </h3>
-    <div className="space-y-6 text-lg leading-relaxed">
-      <p style={{ color: "var(--color-text-secondary)" }}>
+    </h2>
+
+    <div
+      className="space-y-6"
+      style={{
+        fontSize: "var(--text-lg)",
+        color: "var(--color-text-muted)",
+        lineHeight: "1.625",
+      }}
+    >
+      <p>
         Hardware tools form the foundation of every construction and repair
-        project. From basic household tools like hammers and screwdrivers to
-        specialized equipment, these instruments are indispensable for
-        technicians, builders, and DIY enthusiasts alike.
+        project. From basic household tools to specialized equipment, these
+        instruments are indispensable.
       </p>
-      <p style={{ color: "var(--color-text-secondary)" }}>
+      <p>
         The right hardware tools ensure precision, efficiency, and safety in
-        every task. They connect components securely and enable complex assembly
-        work with professional results.
+        every task — whether you're a professional contractor or a dedicated DIY
+        enthusiast.
       </p>
     </div>
   </section>
 );
 
-const SelectionGuide = () => (
-  <section
-    className="p-8 border rounded-lg"
-    style={{
-      backgroundColor: "var(--color-surface)",
-      borderColor: "var(--color-border-light)",
-    }}
-  >
-    <h3
-      className="text-2xl font-bold mb-6"
+const SelectionGuide = () => {
+  const tips = [
+    "Material Quality: Opt for stainless steel or corrosion-resistant materials for longevity",
+    "Safety Features: Prioritize tools with built-in safety mechanisms and non-slip grips",
+    "Ergonomic Design: Choose comfortable, user-friendly tools to reduce fatigue",
+    "Long-term Durability: Invest in robust construction that withstands heavy use",
+    "Value Proposition: Balance cost with long-term benefits and warranty coverage",
+  ];
+
+  return (
+    <section
+      className="p-10 rounded-2xl border"
       style={{
-        color: "var(--color-text-primary)",
-        fontFamily: "var(--font-heading)",
+        backgroundColor: "var(--color-surface)",
+        borderColor: "var(--color-border-light)",
       }}
     >
-      Choosing the Right Hardware
-    </h3>
-    <div className="mb-6">
-      <p
-        className="font-semibold mb-4 text-lg"
-        style={{ color: "var(--color-text-primary)" }}
+      <h2
+        className="mb-8"
+        style={{
+          fontSize: "var(--text-3xl)",
+          fontFamily: "var(--font-heading)",
+          color: "var(--color-text-primary)",
+          fontWeight: "var(--font-bold)",
+        }}
       >
-        Key considerations for selecting optimal hardware tools:
-      </p>
-      <ul className="space-y-4">
-        {[
-          "Material Quality: Opt for stainless steel or corrosion-resistant materials",
-          "Safety Features: Prioritize tools with built-in safety mechanisms",
-          "Ergonomic Design: Choose comfortable, user-friendly tools",
-          "Long-term Durability: Invest in robust construction",
-          "Value Proposition: Balance cost with long-term benefits",
-        ].map((item, index) => (
-          <li key={index} className="flex items-start">
-            <span
-              className="font-bold mr-4 text-xl"
-              style={{ color: "var(--color-primary)" }}
-            >
-              •
-            </span>
-            <span style={{ color: "var(--color-text-secondary)" }}>
-              <strong style={{ color: "var(--color-text-primary)" }}>
-                {item.split(":")[0]}:
-              </strong>{" "}
-              {item.split(":")[1]}
-            </span>
-          </li>
-        ))}
+        Choosing the Right Hardware
+      </h2>
+
+      <ul className="space-y-6">
+        {tips.map((tip, index) => {
+          const [title, description] = tip.split(": ");
+          return (
+            <li key={index} className="flex items-start gap-5">
+              <div
+                className="flex-shrink-0 w-8 h-8 rounded-full flex items-center justify-center"
+                style={{
+                  backgroundColor: "var(--color-primary)",
+                  color: "var(--color-text-on-primary)",
+                  fontWeight: "var(--font-bold)",
+                }}
+              >
+                {index + 1}
+              </div>
+              <div>
+                <strong
+                  style={{
+                    color: "var(--color-text-primary)",
+                    fontWeight: "var(--font-semibold)",
+                  }}
+                >
+                  {title}:
+                </strong>
+                <span
+                  style={{
+                    color: "var(--color-text-muted)",
+                    fontSize: "var(--text-base)",
+                  }}
+                >
+                  {" "}
+                  {description}
+                </span>
+              </div>
+            </li>
+          );
+        })}
       </ul>
-    </div>
-  </section>
-);
+    </section>
+  );
+};
 
 const ProductCategories = () => {
   const categories = [
     {
       title: "Security & Lock Systems",
       description:
-        "Protect your property with our extensive range of security solutions.",
+        "Protect your property with our extensive range of advanced security solutions and reliable locks.",
     },
     {
       title: "Door Hardware Collection",
       description:
-        "Enhance functionality and aesthetics with our complete door hardware selection.",
+        "Enhance functionality and aesthetics with our complete selection of premium door hardware.",
     },
     {
       title: "Cabinet & Storage Solutions",
       description:
-        "Transform your storage spaces with our premium cabinet hardware.",
+        "Transform your storage spaces with high-quality hinges, pulls, and organizational hardware.",
     },
     {
       title: "Glass Fittings & Accessories",
       description:
-        "Add elegance and sophistication with our glass hardware solutions.",
+        "Add elegance and modern sophistication with our specialized glass hardware and fittings.",
     },
   ];
 
   return (
-    <section>
-      <h3
-        className="text-2xl font-bold mb-8 text-center"
+    <section className="text-center">
+      <h2
+        className="mb-12"
         style={{
-          color: "var(--color-text-primary)",
+          fontSize: "var(--text-3xl)",
           fontFamily: "var(--font-heading)",
+          color: "var(--color-text-primary)",
+          fontWeight: "var(--font-bold)",
         }}
       >
         Comprehensive Hardware Categories
-      </h3>
-      <div className="grid md:grid-cols-2 gap-6">
+      </h2>
+
+      <div className="grid md:grid-cols-2 gap-8">
         {categories.map((category, index) => (
           <div
             key={index}
-            className="border p-8 rounded-lg transition-all duration-300 hover:shadow-lg hover:scale-[1.02]"
-            style={{ borderColor: "var(--color-border)" }}
+            className="p-8 rounded-2xl border transition-all duration-300 hover:shadow-xl hover:-translate-y-1"
+            style={{
+              backgroundColor: "var(--color-surface)",
+              borderColor: "var(--color-border-light)",
+            }}
           >
-            <h4
-              className="text-xl font-semibold mb-3 flex items-center"
-              style={{ color: "var(--color-text-primary)" }}
-            >
-              <span
-                className="w-1 h-6 mr-3"
+            <div className="flex items-center mb-4">
+              <div
+                className="w-1 h-8 mr-4 rounded-full"
                 style={{ backgroundColor: "var(--color-primary)" }}
-              ></span>
-              {category.title}
-            </h4>
-            <p style={{ color: "var(--color-text-secondary)" }}>
+              />
+              <h3
+                style={{
+                  fontSize: "var(--text-xl)",
+                  color: "var(--color-text-primary)",
+                  fontWeight: "var(--font-semibold)",
+                }}
+              >
+                {category.title}
+              </h3>
+            </div>
+            <p
+              style={{
+                color: "var(--color-text-muted)",
+                fontSize: "var(--text-base)",
+              }}
+            >
               {category.description}
             </p>
           </div>
@@ -211,51 +275,53 @@ const ProductCategories = () => {
 };
 
 const WhyChooseUs = () => {
-  const features = [
+  const reasons = [
     "Premium Quality Products",
     "Expert Technical Support",
     "Competitive Pricing",
-    "Fast Delivery",
+    "Fast & Reliable Delivery",
   ];
 
   return (
     <section
-      className="p-12 text-center"
-      style={{
-        backgroundColor: "var(--color-bg-alt)",
-      }}
+      className="py-16 px-10 text-center rounded-2xl"
+      style={{ backgroundColor: "var(--color-bg-alt)" }}
     >
-      <h3
-        className="text-2xl font-bold mb-8"
+      <h2
+        className="mb-12"
         style={{
-          color: "var(--color-text-primary)",
+          fontSize: "var(--text-3xl)",
           fontFamily: "var(--font-heading)",
+          color: "var(--color-text-primary)",
+          fontWeight: "var(--font-bold)",
         }}
       >
-        Why Choose Us?
-      </h3>
-      <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
-        {features.map((feature, index) => (
-          <div
-            key={index}
-            className="flex flex-col items-center p-4 border rounded-lg transition-all duration-300 hover:shadow-md"
-            style={{
-              borderColor: "var(--color-border-light)",
-              backgroundColor: "var(--color-surface)",
-            }}
-          >
+        Why Choose IMD Hardware?
+      </h2>
+
+      <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-8 max-w-5xl mx-auto">
+        {reasons.map((reason, index) => (
+          <div key={index} className="flex flex-col items-center">
             <div
-              className="w-10 h-10 flex items-center justify-center mb-3 rounded-lg"
-              style={{ backgroundColor: "var(--color-primary)" }}
+              className="w-16 h-16 mb-5 rounded-2xl flex items-center justify-center shadow-lg"
+              style={{
+                backgroundColor: "var(--color-primary)",
+                color: "var(--color-text-on-primary)",
+                fontSize: "var(--text-3xl)",
+                fontWeight: "var(--font-bold)",
+              }}
             >
-              <span className="text-white font-bold text-lg">✓</span>
+              ✓
             </div>
-            <span
-              className="font-medium"
-              style={{ color: "var(--color-text-secondary)" }}
+            <p
+              style={{
+                fontSize: "var(--text-lg)",
+                color: "var(--color-text-primary)",
+                fontWeight: "var(--font-medium)",
+              }}
             >
-              {feature}
-            </span>
+              {reason}
+            </p>
           </div>
         ))}
       </div>

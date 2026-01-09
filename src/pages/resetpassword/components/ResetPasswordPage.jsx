@@ -160,8 +160,12 @@ export default function ResetPasswordPage() {
             style={{ color: "var(--color-success)" }}
           />
           <h3
-            className="text-lg font-semibold mb-2"
-            style={{ color: "var(--color-text-primary)" }}
+            className="mb-2"
+            style={{
+              fontSize: "var(--text-lg)",
+              fontWeight: "var(--font-semibold)",
+              color: "var(--color-text-primary)",
+            }}
           >
             Password Reset Successful!
           </h3>
@@ -213,8 +217,10 @@ export default function ResetPasswordPage() {
             </div>
             <div>
               <h1
-                className="text-xl font-semibold"
+                className=""
                 style={{
+                  fontSize: "var(--text-xl)",
+                  fontWeight: "var(--font-semibold)",
                   color: "var(--color-text-primary)",
                   fontFamily: "var(--font-heading)",
                 }}
@@ -222,8 +228,11 @@ export default function ResetPasswordPage() {
                 Reset Password
               </h1>
               <p
-                className="text-sm"
-                style={{ color: "var(--color-text-secondary)" }}
+                className=""
+                style={{
+                  fontSize: "var(--text-sm)",
+                  color: "var(--color-text-secondary)",
+                }}
               >
                 Enter your email to receive an OTP
               </p>
@@ -234,7 +243,7 @@ export default function ResetPasswordPage() {
         {/* Message */}
         {message && (
           <div
-            className={`mx-6 my-2 p-3 text-sm flex items-center gap-2 border rounded-lg`}
+            className={`mx-6 my-2 p-3 flex items-center gap-2 border rounded-lg`}
             style={{
               backgroundColor:
                 messageType === "success"
@@ -248,12 +257,16 @@ export default function ResetPasswordPage() {
                 messageType === "success"
                   ? "var(--color-success)"
                   : "var(--color-danger)",
+              fontSize: "var(--text-sm)",
             }}
           >
             {messageType === "success" ? (
               <CheckCircle className="h-4 w-4" />
             ) : (
-              <div className="h-4 w-4 rounded-full border border-current flex items-center justify-center text-xs">
+              <div
+                className="h-4 w-4 rounded-full border border-current flex items-center justify-center"
+                style={{ fontSize: "var(--text-xs)" }}
+              >
                 !
               </div>
             )}
@@ -269,8 +282,11 @@ export default function ResetPasswordPage() {
             {/* Email Input - Always visible */}
             <div>
               <label
-                className="block text-sm mb-1"
-                style={{ color: "var(--color-text-secondary)" }}
+                className="block mb-1"
+                style={{
+                  fontSize: "var(--text-sm)",
+                  color: "var(--color-text-secondary)",
+                }}
               >
                 Email
               </label>
@@ -302,16 +318,22 @@ export default function ResetPasswordPage() {
             {otpSent && (
               <>
                 <div
-                  className="mb-2 text-sm flex items-center justify-between"
-                  style={{ color: "var(--color-text-secondary)" }}
+                  className="mb-2 flex items-center justify-between"
+                  style={{
+                    fontSize: "var(--text-sm)",
+                    color: "var(--color-text-secondary)",
+                  }}
                 >
                   <span>OTP sent to {formData.email}</span>
                   <button
                     type="button"
                     onClick={handleResendOtp}
                     disabled={resendCooldown > 0}
-                    className="text-sm disabled:opacity-50 flex items-center gap-1 hover:opacity-80"
-                    style={{ color: "var(--color-primary)" }}
+                    className="disabled:opacity-50 flex items-center gap-1 hover:opacity-80"
+                    style={{
+                      fontSize: "var(--text-sm)",
+                      color: "var(--color-primary)",
+                    }}
                   >
                     <RefreshCw className="h-4 w-4" />
                     {resendCooldown > 0 ? `${resendCooldown}s` : "Resend"}
@@ -320,8 +342,11 @@ export default function ResetPasswordPage() {
 
                 <div>
                   <label
-                    className="block text-sm mb-1"
-                    style={{ color: "var(--color-text-secondary)" }}
+                    className="block mb-1"
+                    style={{
+                      fontSize: "var(--text-sm)",
+                      color: "var(--color-text-secondary)",
+                    }}
                   >
                     OTP
                   </label>
@@ -342,8 +367,11 @@ export default function ResetPasswordPage() {
                   />
                   {countdown > 0 && (
                     <p
-                      className="text-xs mt-1"
-                      style={{ color: "var(--color-text-muted)" }}
+                      className="mt-1"
+                      style={{
+                        fontSize: "var(--text-xs)",
+                        color: "var(--color-text-muted)",
+                      }}
                     >
                       OTP expires in: {formatTimer(countdown)}
                     </p>
@@ -352,8 +380,11 @@ export default function ResetPasswordPage() {
 
                 <div>
                   <label
-                    className="block text-sm mb-1"
-                    style={{ color: "var(--color-text-secondary)" }}
+                    className="block mb-1"
+                    style={{
+                      fontSize: "var(--text-sm)",
+                      color: "var(--color-text-secondary)",
+                    }}
                   >
                     New Password
                   </label>
@@ -382,8 +413,11 @@ export default function ResetPasswordPage() {
 
                 <div>
                   <label
-                    className="block text-sm mb-1"
-                    style={{ color: "var(--color-text-secondary)" }}
+                    className="block mb-1"
+                    style={{
+                      fontSize: "var(--text-sm)",
+                      color: "var(--color-text-secondary)",
+                    }}
                   >
                     Confirm Password
                   </label>
@@ -441,8 +475,9 @@ export default function ResetPasswordPage() {
         </div>
         {/* Back to login */}
         <div
-          className="p-4 border-t text-center text-xs"
+          className="p-4 border-t text-center"
           style={{
+            fontSize: "var(--text-xs)",
             borderColor: "var(--color-border)",
             color: "var(--color-text-secondary)",
           }}
@@ -450,8 +485,12 @@ export default function ResetPasswordPage() {
           Remember your password?{" "}
           <Link
             href="/login"
-            className="hover:underline font-medium"
-            style={{ color: "var(--color-primary)" }}
+            className="hover:underline"
+            style={{
+              fontSize: "var(--text-xs)",
+              fontWeight: "var(--font-medium)",
+              color: "var(--color-primary)",
+            }}
           >
             Login
           </Link>

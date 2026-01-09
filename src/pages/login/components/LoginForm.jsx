@@ -91,17 +91,20 @@ export default function LoginForm() {
             </div>
             <div>
               <h1
-                className="text-xl font-semibold"
                 style={{
+                  fontSize: "var(--text-xl)",
                   color: "var(--color-text-primary)",
                   fontFamily: "var(--font-heading)",
+                  fontWeight: "var(--font-semibold)",
                 }}
               >
                 Login
               </h1>
               <p
-                className="text-sm"
-                style={{ color: "var(--color-text-secondary)" }}
+                style={{
+                  fontSize: "var(--text-sm)",
+                  color: "var(--color-text-secondary)",
+                }}
               >
                 Welcome back to your account
               </p>
@@ -113,8 +116,11 @@ export default function LoginForm() {
           <form onSubmit={handleLogin} className="space-y-4">
             <div>
               <label
-                className="block text-sm mb-1"
-                style={{ color: "var(--color-text-primary)" }}
+                className="block mb-1"
+                style={{
+                  fontSize: "var(--text-sm)",
+                  color: "var(--color-text-primary)",
+                }}
               >
                 Email Address
               </label>
@@ -144,8 +150,11 @@ export default function LoginForm() {
 
             <div>
               <label
-                className="block text-sm mb-1"
-                style={{ color: "var(--color-text-primary)" }}
+                className="block mb-1"
+                style={{
+                  fontSize: "var(--text-sm)",
+                  color: "var(--color-text-primary)",
+                }}
               >
                 Password
               </label>
@@ -175,8 +184,11 @@ export default function LoginForm() {
             <div className="text-right">
               <Link
                 to="/resetpassword"
-                className="text-sm hover:underline"
-                style={{ color: "var(--color-primary)" }}
+                className="hover:underline"
+                style={{
+                  fontSize: "var(--text-sm)",
+                  color: "var(--color-primary)",
+                }}
               >
                 Reset Password?
               </Link>
@@ -185,7 +197,7 @@ export default function LoginForm() {
             <button
               type="submit"
               disabled={loading}
-              className="w-full py-2 rounded-lg text-white disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2 transition-all duration-200 hover:opacity-90 hover:scale-[1.02] active:scale-95"
+              className="w-full py-2 rounded-lg  disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2 transition-all duration-200 hover:opacity-90 hover:scale-[1.02] active:scale-95"
               style={{
                 backgroundColor: "var(--color-primary)",
                 color: "var(--color-text-on-primary)",
@@ -197,8 +209,9 @@ export default function LoginForm() {
 
           {message && (
             <div
-              className={`mt-4 p-3 text-sm flex items-center gap-2 border rounded-lg`}
+              className="mt-4 p-3 flex items-center gap-2 border rounded-lg"
               style={{
+                fontSize: "var(--text-sm)",
                 backgroundColor:
                   messageType === "success"
                     ? "var(--color-success-light)"
@@ -220,7 +233,7 @@ export default function LoginForm() {
                   className="h-4 w-4 border flex items-center justify-center"
                   style={{ borderColor: "currentColor" }}
                 >
-                  <span className="text-xs">!</span>
+                  <span style={{ fontSize: "var(--text-xs)" }}>!</span>
                 </div>
               )}
               {message}
@@ -229,8 +242,9 @@ export default function LoginForm() {
         </div>
 
         <div
-          className="p-4 border-t text-center text-xs"
+          className="p-4 border-t text-center"
           style={{
+            fontSize: "var(--text-xs)",
             borderColor: "var(--color-border)",
             color: "var(--color-text-secondary)",
           }}
@@ -238,8 +252,11 @@ export default function LoginForm() {
           Don't have an account?{" "}
           <Link
             to="/register"
-            className="hover:underline font-medium"
-            style={{ color: "var(--color-primary)" }}
+            className="hover:underline"
+            style={{
+              color: "var(--color-primary)",
+              fontWeight: "var(--font-medium)",
+            }}
           >
             Register
           </Link>

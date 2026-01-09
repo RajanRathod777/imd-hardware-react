@@ -36,20 +36,23 @@ const TrendingProducts = () => {
 
   return (
     <section className="mb-24">
-      <div className="max-w-7xl mx-auto">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        {/* Header */}
         <div className="flex justify-between items-end mb-12">
           <h2
-            className="text-3xl font-bold"
             style={{
-              color: "var(--color-text-primary)",
+              fontWeight: "var(--font-bold)",
               fontFamily: "var(--font-heading)",
+              fontSize: "var(--text-3xl)",
+              color: "var(--color-text-primary)",
             }}
           >
             Trending Products
           </h2>
           <button
-            className="font-bold border-b-2 pb-1 transition-colors hover:opacity-80"
+            className="border-b-2 pb-1 transition-opacity hover:opacity-80"
             style={{
+              fontWeight: "var(--font-bold)",
               color: "var(--color-primary)",
               borderColor: "var(--color-primary)",
             }}
@@ -57,65 +60,74 @@ const TrendingProducts = () => {
             View All Collection
           </button>
         </div>
+
+        {/* Products Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
           {trendingProducts.map((product) => {
             const IconComponent = product.icon;
             return (
               <div
-                key={product.id}
-                className="group shadow-md border p-8 hover:shadow-xl transition-all duration-300 bg-white"
+                className="group p-8 shadow-md hover:shadow-xl transition-all duration-300 rounded-lg border"
                 style={{
+                  backgroundColor: "var(--color-surface)",
                   borderColor: "var(--color-border-light)",
                 }}
               >
+                {/* Icon */}
                 <div className="flex mb-6">
                   <IconComponent
                     className="w-10 h-10"
                     style={{ color: "var(--color-primary)" }}
                   />
                 </div>
+
+                {/* Category */}
                 <div
-                  className="text-xs font-bold uppercase tracking-wider mb-2"
+                  className="mb-2 uppercase tracking-wider"
                   style={{
+                    fontWeight: "var(--font-bold)",
+                    fontSize: "var(--text-xs)",
                     color: "var(--color-primary)",
                     fontFamily: "var(--font-body)",
                   }}
                 >
                   {product.category}
                 </div>
+
+                {/* Name */}
                 <h3
-                  className="text-xl font-bold mb-3"
+                  className="mb-3"
                   style={{
-                    color: "var(--color-text-primary)",
+                    fontWeight: "var(--font-bold)",
                     fontFamily: "var(--font-heading)",
+                    fontSize: "var(--text-xl)",
+                    color: "var(--color-text-primary)",
                   }}
                 >
                   {product.name}
                 </h3>
+
+                {/* Description */}
                 <p
-                  className="mb-6 text-sm leading-relaxed"
+                  className="mb-6"
                   style={{
-                    color: "var(--color-text-secondary)",
                     fontFamily: "var(--font-body)",
+                    fontSize: "var(--text-sm)",
+                    color: "var(--color-text-secondary)",
+                    lineHeight: "1.625",
                   }}
                 >
                   {product.description}
                 </p>
+
+                {/* Add to Cart Button */}
                 <button
-                  className="w-full py-3 font-semibold transition-colors border block text-center hover:text-white"
+                  className="w-full py-3 text-center transition-colors duration-300 hover:bg-[var(--color-primary)] hover:text-[var(--color-text-on-primary)] rounded border"
                   style={{
+                    fontWeight: "var(--font-semibold)",
                     borderColor: "var(--color-primary)",
                     color: "var(--color-primary)",
                     fontFamily: "var(--font-primary)",
-                  }}
-                  onMouseOver={(e) => {
-                    e.currentTarget.style.backgroundColor =
-                      "var(--color-primary)";
-                    e.currentTarget.style.color = "white";
-                  }}
-                  onMouseOut={(e) => {
-                    e.currentTarget.style.backgroundColor = "transparent";
-                    e.currentTarget.style.color = "var(--color-primary)";
                   }}
                 >
                   Add to Cart

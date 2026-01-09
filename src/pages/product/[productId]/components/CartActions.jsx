@@ -1,4 +1,4 @@
-import { Plus, Minus, Trash2 } from "lucide-react";
+import { Plus, Minus, Trash2, ShoppingCart } from "lucide-react";
 import { useStore } from "../../../../stores/useStore";
 import { useState } from "react";
 
@@ -52,10 +52,10 @@ const CartActions = ({ product, inCart }) => {
 
 const QuantityControls = ({ product, inCart, onUpdateQuantity }) => (
   <div
-    className="flex items-center gap-2 border rounded-xl p-1 shadow-sm"
+    className="flex items-center gap-1 border rounded-lg p-1"
     style={{
       backgroundColor: "var(--color-surface)",
-      borderColor: "var(--color-border)",
+      borderColor: "var(--color-border-light)",
     }}
   >
     <button
@@ -67,12 +67,16 @@ const QuantityControls = ({ product, inCart, onUpdateQuantity }) => (
       }}
       disabled={inCart.quantity <= 1}
     >
-      <Minus size={20} />
+      <Minus size={14} />
     </button>
 
     <span
-      className="min-w-12 text-center font-bold text-lg"
-      style={{ color: "var(--color-text-primary)" }}
+      className="min-w-8 text-center"
+      style={{
+        color: "var(--color-text-primary)",
+        fontWeight: "var(--font-bold)",
+        fontSize: "var(--text-base)",
+      }}
     >
       {inCart.quantity}
     </span>
@@ -86,41 +90,47 @@ const QuantityControls = ({ product, inCart, onUpdateQuantity }) => (
       }}
       disabled={inCart.quantity >= product.max_quantity}
     >
-      <Plus size={20} />
+      <Plus size={14} />
     </button>
   </div>
 );
 
 const RemoveButton = ({ productId, onRemove }) => (
   <button
-    className="flex items-center gap-3 px-6 py-3 rounded-xl font-semibold text-lg shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105"
+    className="flex items-center gap-2 px-6 py-3 rounded-lg transition-all duration-200 hover:opacity-90 active:scale-95"
     style={{
       backgroundColor: "var(--color-danger)",
       color: "var(--color-text-on-primary)",
+      fontWeight: "var(--font-semibold)",
+      fontSize: "var(--text-sm)",
     }}
     onClick={(e) => {
       e.preventDefault();
       onRemove(productId);
     }}
   >
-    <Trash2 size={20} />
+    <Trash2 size={16} />
     Remove
   </button>
 );
 
 const AddToCartButton = ({ product, onAddToCart, isAdding }) => (
   <button
-    className={`w-full flex items-center justify-center gap-3 py-4 px-8 rounded-xl font-semibold text-lg shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-101 ${
-      product.max_quantity === 0 ? "opacity-50 cursor-not-allowed" : ""
+    className={`w-full flex items-center justify-center gap-2 py-3.5 px-8 rounded-lg transition-all duration-300 active:scale-98 ${
+      product.max_quantity === 0
+        ? "opacity-50 cursor-not-allowed"
+        : "hover:opacity-90"
     } ${isAdding ? "opacity-75 cursor-wait" : ""}`}
     style={{
       backgroundColor: "var(--color-text-primary)",
       color: "var(--color-text-on-primary)",
+      fontWeight: "var(--font-semibold)",
+      fontSize: "var(--text-base)",
     }}
     onClick={onAddToCart}
     disabled={isAdding || product.max_quantity === 0}
   >
-    <ShoppingCart size={24} />
+    <ShoppingCart size={18} />
     {product.max_quantity === 0 ? "Out of Stock" : "Add to Cart"}
   </button>
 );
