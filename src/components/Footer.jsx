@@ -274,14 +274,14 @@ const Footer = () => {
                   style={{ color: "var(--color-primary)" }}
                 />
                 <a
-                  href="tel:+919427893121"
+                  href="tel:+919484555666"
                   className="hover:underline transition"
                   style={{
                     fontSize: "var(--text-sm)",
                     color: "var(--color-text-secondary)",
                   }}
                 >
-                  +91 9427893121
+                  +91 9484555666
                 </a>
               </div>
 

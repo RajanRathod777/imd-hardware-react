@@ -29,7 +29,7 @@ const ContactViewer = () => {
     {
       icon: Phone,
       title: "Call Us",
-      details: "+91 9427893121",
+      details: "+91 9484555666",
       description: "Mon to Fri from 9am to 6pm",
     },
     {

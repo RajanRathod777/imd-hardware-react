@@ -5,9 +5,9 @@ const ContactInfo = () => {
     {
       icon: Phone,
       title: "Call Us",
-      details: "+91 9427893121",
+      details: "+91 9484555666",
       sub: "Mon–Sat: 9am–6pm IST",
-      href: "tel:+919427893121",
+      href: "tel:+919484555666",
     },
     {
       icon: Mail,

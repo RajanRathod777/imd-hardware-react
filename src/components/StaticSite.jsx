@@ -630,7 +630,7 @@ const StaticSite = () => {
         <div className="top-bar">
           <div className="container">
             <div className="contact-mini">
-              <i className="fas fa-phone-alt"></i> +91 9427893121 |
+              <i className="fas fa-phone-alt"></i> +91 9484555666 |
               <i className="fas fa-envelope"></i> support@imdhardware.com
             </div>
             <div className="social-mini">
@@ -1159,7 +1159,7 @@ const StaticSite = () => {
                   <div>
                     <h4>Phone Support</h4>
                     <p>+1 (555) 123-4567</p>
-                    <p>+91 9427893121</p>
+                    <p>+91 9484555666</p>
                   </div>
                 </div>
                 <div className="contact-card">
@@ -1335,7 +1335,7 @@ const StaticSite = () => {
                   Himatnagar Shamlaji Road, Sabarkantha, Gujarat - 383001
                 </p>
                 <p style={{ marginTop: "10px" }}>
-                  <i className="fas fa-phone text-orange"></i> +91 9427893121
+                  <i className="fas fa-phone text-orange"></i> +91 9484555666
                 </p>
                 <p style={{ marginTop: "10px" }}>
                   <i className="fas fa-envelope text-orange"></i>{" "}

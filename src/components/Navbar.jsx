@@ -100,7 +100,7 @@ const Navbar = () => {
 
                 <NavLink
                   to="/cart"
-                  className="flex items-center gap-1 relative"
+                  className="px-4 py-2 flex items-center gap-1 relative"
                   style={({ isActive }) => ({
                     color: isActive
                       ? "var(--color-primary)"
@@ -125,7 +125,7 @@ const Navbar = () => {
               <>
                 <NavLink
                   to="/login"
-                  className="flex items-center gap-1"
+                  className="px-4 py-2 flex items-center gap-1"
                   style={({ isActive }) => ({
                     color: isActive
                       ? "var(--color-primary)"
@@ -140,7 +140,7 @@ const Navbar = () => {
 
                 <NavLink
                   to="/register"
-                  className="flex items-center gap-1"
+                  className="px-4 py-2 flex items-center gap-1"
                   style={({ isActive }) => ({
                     color: isActive
                       ? "var(--color-primary)"
@@ -240,14 +240,14 @@ const Navbar = () => {
 
           {/* Desktop Nav */}
           <div
-            className="flex justify-center gap-8 max-[1035px]:hidden"
+            className="flex justify-center  max-[1035px]:hidden"
             style={{ fontSize: "var(--text-sm)" }}
           >
             {navItems.map(({ to, label, icon: Icon }) => (
               <NavLink
                 key={to}
                 to={to}
-                className="flex items-center gap-1"
+                className="px-4 py-2 flex items-center gap-1"
                 style={({ isActive }) => ({
                   color: isActive
                     ? "var(--color-primary)"

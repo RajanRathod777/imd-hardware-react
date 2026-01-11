@@ -228,14 +228,14 @@ const ShippingPolicy = () => {
             </a>{" "}
             or call{" "}
             <a
-              href="tel:+919427893121"
+              href="tel:+919484555666"
               className="hover:underline transition"
               style={{
                 color: "var(--color-primary)",
                 fontWeight: "var(--font-semibold)",
               }}
             >
-              +91 9427893121
+              +91 9484555666
             </a>
           </p>
         </div>
