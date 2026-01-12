@@ -44,11 +44,8 @@ export default function LoginForm() {
 
       if (data.status) {
         showMessage("Login successful!", "success");
-        console.log("Login complete data = ", data);
-
         Cookies.set("auth_token", data.token, { expires: 7, secure: true });
         localStorage.setItem("user", JSON.stringify(data.user));
-
         navigate("/");
       } else {
         showMessage(data.message || "Login failed", "error");

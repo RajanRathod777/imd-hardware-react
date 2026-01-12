@@ -114,10 +114,9 @@ export default function ProfilePage() {
   // Logout function
   const handleLogout = () => {
     // Clear all cookies
-    Cookies.remove("admin_token");
+    Cookies.remove("auth_token");
 
     // Clear localStorage
-    localStorage.removeItem("authToken");
     localStorage.removeItem("user");
 
     // Show logout message
