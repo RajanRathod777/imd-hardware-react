@@ -94,7 +94,7 @@ const FilterDropdown = ({ title, options, selectedValues, onToggle }) => {
               <div
                 key={option}
                 onClick={() => onToggle(option)}
-                className="flex items-center gap-3 p-2 rounded-md cursor-pointer transition-colors hover:bg-black/5 dark:hover:bg-white/5"
+                className="flex items-center gap-3 p-2 rounded-md cursor-pointer transition-colors hover:bg-[var(--color-surface-alt)]"
               >
                 <div
                   className={`w-4 h-4 rounded border flex items-center justify-center transition-colors ${
@@ -189,7 +189,7 @@ const Products = () => {
       }
       setSearchParams(params);
     },
-    [searchParams, setSearchParams]
+    [searchParams, setSearchParams],
   );
 
   const handleCategoryToggle = (category) => {
@@ -226,11 +226,11 @@ const Products = () => {
   // --- Unique categories and materials from products ---
   const categories = useMemo(
     () => [...new Set(products.map((p) => p.category_name))].filter(Boolean),
-    [products]
+    [products],
   );
   const materials = useMemo(
     () => [...new Set(products.map((p) => p.material))].filter(Boolean),
-    [products]
+    [products],
   );
 
   // --- Filtered products ---
@@ -251,8 +251,8 @@ const Products = () => {
 
   return (
     <div
-      className="min-h-100%"
       style={{
+        minHeight: "100%",
         backgroundColor: "var(--color-bg)",
         fontFamily: "var(--font-body)",
       }}
@@ -433,7 +433,7 @@ const Products = () => {
         <div className="grid grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
           {visibleProducts.map((product) => {
             const inCart = cart.find(
-              (p) => p.product_id === product.product_id
+              (p) => p.product_id === product.product_id,
             );
 
             return (
@@ -494,7 +494,7 @@ const Products = () => {
                                 style={{ aspectRatio: "1/1" }}
                               />
                               {/* Image overlay on hover */}
-                              <div className="absolute inset-0 bg-black/0 group-hover:bg-black/5 transition-all duration-300"></div>
+                              <div className="absolute inset-0 bg-transparent group-hover:bg-[var(--color-surface-alt)]/10 transition-all duration-300"></div>
                             </div>
                           </SwiperSlide>
                         ))
@@ -571,7 +571,7 @@ const Products = () => {
                             onClick={() =>
                               updateCartQuantity(
                                 product.product_id,
-                                inCart.quantity - 1
+                                inCart.quantity - 1,
                               )
                             }
                             className="w-7 h-7 flex items-center justify-center rounded-md transition-all duration-200 hover:bg-gray-50 active:scale-95 disabled:opacity-30 disabled:cursor-not-allowed"
@@ -603,7 +603,7 @@ const Products = () => {
                             onClick={() =>
                               updateCartQuantity(
                                 product.product_id,
-                                inCart.quantity + 1
+                                inCart.quantity + 1,
                               )
                             }
                             className="w-7 h-7 flex items-center justify-center rounded-md transition-all duration-200 hover:opacity-90 active:scale-95"

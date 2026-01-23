@@ -126,7 +126,7 @@ const RewardsList = () => {
           {rewards.map((reward) => (
             <div
               key={reward.reward_id}
-              className="rounded-xl border overflow-hidden transition-all duration-300 hover:shadow-md hover:border-[var(--color-primary-light)]"
+              className="rounded-xl border overflow-hidden transition-all duration-300 hover:shadow-md"
               style={{
                 backgroundColor: "var(--color-surface)",
                 borderColor: "var(--color-border-light)",

@@ -32,7 +32,7 @@ export default function ResetPasswordPage() {
     if (resendCooldown <= 0) return;
     const t = setInterval(
       () => setResendCooldown((s) => Math.max(0, s - 1)),
-      1000
+      1000,
     );
     return () => clearInterval(t);
   }, [resendCooldown]);
@@ -208,7 +208,7 @@ export default function ResetPasswordPage() {
           <div className="flex items-center gap-3">
             <div
               className="w-10 h-10 flex items-center justify-center rounded-lg"
-              style={{ backgroundColor: "var(--color-primary-soft)" }}
+              style={{ backgroundColor: "var(--color-surface-alt)" }}
             >
               <Lock
                 className="h-5 w-5"
@@ -468,8 +468,8 @@ export default function ResetPasswordPage() {
                   ? "Resetting..."
                   : "Sending OTP..."
                 : otpSent
-                ? "Reset Password"
-                : "Send OTP"}
+                  ? "Reset Password"
+                  : "Send OTP"}
             </button>
           </form>
         </div>
@@ -484,7 +484,7 @@ export default function ResetPasswordPage() {
         >
           Remember your password?{" "}
           <Link
-            href="/login"
+            to="/login"
             className="hover:underline"
             style={{
               fontSize: "var(--text-xs)",

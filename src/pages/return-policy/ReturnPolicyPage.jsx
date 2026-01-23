@@ -1,5 +1,7 @@
 import React from "react";
 import { Package, RefreshCw, Shield, Mail } from "lucide-react";
+import { Helmet } from "react-helmet-async";
+import { returnPolicyMetadata } from "../../seo/returnPolicySeo";
 
 const ReturnPolicy = () => {
   const lastUpdated = new Date().toLocaleDateString("en-IN", {
@@ -41,7 +43,7 @@ const ReturnPolicy = () => {
             . Once approved, we'll provide a return shipping label and clear
             instructions.
             <br />
-            <strong className="text-[var(--color-danger)]">
+            <strong style={{ color: "var(--color-danger)" }}>
               Note: Items sent without prior approval will not be accepted.
             </strong>
           </p>
@@ -103,6 +105,15 @@ const ReturnPolicy = () => {
       }}
     >
       <div className="max-w-4xl mx-auto">
+        <Helmet>
+          <title>{returnPolicyMetadata.title}</title>
+          <meta name="description" content={returnPolicyMetadata.description} />
+          <meta name="keywords" content={returnPolicyMetadata.keywords} />
+          <link
+            rel="canonical"
+            href={returnPolicyMetadata.alternates.canonical}
+          />
+        </Helmet>
         {/* Header */}
         <div className="text-center mb-12">
           <h1

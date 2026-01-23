@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import Cookies from "js-cookie";
 import Loading from "../../../components/Loading";
+import { ChevronLeft, ChevronRight } from "lucide-react";
 
 const RewardPaymentRequest = () => {
   const token = Cookies.get("auth_token");
@@ -38,7 +39,7 @@ const RewardPaymentRequest = () => {
 
       const response = await fetch(
         `${apiUrl}/api/v1/reward-payment-request/user/my-requests?page=${page}&limit=${limit}`,
-        requestOptions
+        requestOptions,
       );
       const result = await response.json();
 
@@ -52,7 +53,7 @@ const RewardPaymentRequest = () => {
             totalRecords: result.requests.length,
             hasNext: false,
             hasPrev: page > 1,
-          }
+          },
         );
         setCurrentPageInput(page); // Sync input with current page
       } else {
@@ -138,7 +139,7 @@ const RewardPaymentRequest = () => {
         borderColor: "var(--color-border-warning)",
         color: "var(--color-warning)",
       };
-    } else if (status === "Completed") {
+    } else if (status === "Completed" || status === "Approved") {
       return {
         ...baseStyle,
         backgroundColor: "var(--color-success-light)",
@@ -161,10 +162,6 @@ const RewardPaymentRequest = () => {
       };
     }
   };
-
-  // Simple arrow icons component (replace with your actual icons)
-  const ChevronLeft = () => <span>‹</span>;
-  const ChevronRight = () => <span>›</span>;
 
   if (loading) {
     return <Loading />;
@@ -198,7 +195,7 @@ const RewardPaymentRequest = () => {
     <div
       className="max-w-4xl mx-auto"
       style={{
-        backgroundColor: "var(--color-bg-alt)",
+        backgroundColor: "var(--color-bg)",
         color: "var(--color-text-primary)",
       }}
     >
@@ -247,7 +244,7 @@ const RewardPaymentRequest = () => {
                     style={{
                       fontSize: "var(--text-sm)",
                       fontWeight: "var(--font-medium)",
-                      color: "var(--color-text-primary)",
+                      color: "var(--color-primary)",
                       borderColor: "var(--color-border-primary)",
                       backgroundColor: "var(--color-primary-soft)",
                     }}
@@ -489,7 +486,13 @@ const RewardPaymentRequest = () => {
                 )}
 
                 {request.is_verified === false && request.rejection_reason && (
-                  <div className="flex justify-between items-start border border-red-400 bg-red-100 p-2">
+                  <div
+                    className="flex justify-between items-start border p-2"
+                    style={{
+                      borderColor: "var(--color-danger)",
+                      backgroundColor: "var(--color-danger-light)",
+                    }}
+                  >
                     <span
                       className="min-w-[120px]"
                       style={{
@@ -617,7 +620,7 @@ const RewardPaymentRequest = () => {
               fontWeight: "var(--font-medium)",
             }}
           >
-            <ChevronRight className="w-4 h-4" />
+            <ChevronRight />
           </button>
         </div>
       )}

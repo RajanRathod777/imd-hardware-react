@@ -1,4 +1,6 @@
 import React from "react";
+import { Helmet } from "react-helmet-async";
+import { privacyPolicyMetadata } from "../../seo/privacyPolicySeo";
 import { Shield, User, Mail, CreditCard, Lock, Phone } from "lucide-react";
 
 const PrivacyPolicy = () => {
@@ -181,6 +183,19 @@ const PrivacyPolicy = () => {
       }}
     >
       <div className="max-w-4xl mx-auto">
+        <Helmet>
+          <title>{privacyPolicyMetadata.title}</title>
+          <meta
+            name="description"
+            content={privacyPolicyMetadata.description}
+          />
+          <meta name="keywords" content={privacyPolicyMetadata.keywords} />
+          <link
+            rel="canonical"
+            href={privacyPolicyMetadata.alternates.canonical}
+          />
+          <meta name="robots" content={privacyPolicyMetadata.robots} />
+        </Helmet>
         {/* Header */}
         <div className="text-center mb-12">
           <h1

@@ -58,10 +58,12 @@ const CategoryViewer = () => {
                   <h3
                     className="absolute bottom-0 text-center w-full py-1 rounded-full"
                     style={{
-                      color: "var(--color-text-on-primary)",
-                      backgroundColor: "var(--color-text-primary)",
-                      opacity: 0.8,
+                      color: "var(--color-text-primary)",
+                      backgroundColor: "var(--color-surface)",
+                      border: "1px solid var(--color-border)",
+                      opacity: 0.9,
                       fontSize: "var(--text-base)",
+                      fontWeight: "var(--font-medium)",
                     }}
                   >
                     {category.name}

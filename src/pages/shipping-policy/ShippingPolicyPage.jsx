@@ -6,6 +6,8 @@ import {
   PackageCheck,
   AlertTriangle,
 } from "lucide-react";
+import { Helmet } from "react-helmet-async";
+import { shippingPolicyMetadata } from "../../seo/shippingPolicy";
 
 const ShippingPolicy = () => {
   const lastUpdated = new Date().toLocaleDateString("en-IN", {
@@ -120,6 +122,18 @@ const ShippingPolicy = () => {
       }}
     >
       <div className="max-w-4xl mx-auto">
+        <Helmet>
+          <title>{shippingPolicyMetadata.title}</title>
+          <meta
+            name="description"
+            content={shippingPolicyMetadata.description}
+          />
+          <meta name="keywords" content={shippingPolicyMetadata.keywords} />
+          <link
+            rel="canonical"
+            href={shippingPolicyMetadata.alternates.canonical}
+          />
+        </Helmet>
         {/* Header */}
         <div className="text-center mb-12">
           <h1

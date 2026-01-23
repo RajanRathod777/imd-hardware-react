@@ -1,120 +1,67 @@
-
- @import "tailwindcss";
+@import "tailwindcss";
 
 :root {
+
+  --blue:true;
+  --white:false;
   /* ---------- BRAND COLORS ---------- */
-  --color-primary: #FF7A00;
-  /* Vibrant Orange */
-  --color-primary-light: #FF9F40;
-  /* Soft Orange */
-  --color-primary-dark: #CC6200;
-  /* Deep Orange */
-  --color-primary-soft: #FFE2C4;
-  /* Light Creamy Orange */
+  --color-primary: #1f4fd8;
+  --color-primary-light: #4f7dff;
+  --color-primary-dark: #0b2a6f;
+  --color-primary-soft: #e6ecff;
 
   /* ---------- SECONDARY COLORS ---------- */
-  --color-secondary: #FFB200;
-  /* Gold Orange */
-  --color-secondary-dark: #E89A00;
-  /* Golden Deep Orange */
-  --color-secondary-light: #FFE6A8;
-  /* Soft Gold */
+  --color-secondary: #9fb4cc;
+  --color-secondary-dark: #6f849b;
+  --color-secondary-light: #eef3f8;
 
   /* ---------- ACCENT COLORS ---------- */
-  --color-accent-1: #FF8C1A;
-  /* Bright Orange Hover */
-  --color-accent-2: #FF6B35;
-  /* Reddish Orange */
-  --color-accent-3: #FFC48B;
-  /* Light Accent Orange */
-  --color-accent-4: #FF5400;
-  /* Flame Orange */
+  --color-accent-1: #5fa8ff;
+  --color-accent-2: #2d6cdf;
+  --color-accent-3: #c7d9ff;
+  --color-accent-4: #00c2ff;
 
   /* ---------- NEUTRALS ---------- */
-  --color-bg: #FFF8F2;
-  /* Warm Soft Background */
-  --color-bg-alt: #FFF3E6;
-  /* Slightly Warmer Background */
-  --color-surface: #FFFFFF;
-  /* White Surface */
-  --color-surface-alt: #FDF0E1;
-  /* Subtle Tinted Surface */
-  --color-border: #E3D2C8;
-  /* Soft Warm Border */
-  --color-border-strong: #C9B5A8;
-  /* Stronger Border */
+  --color-bg: #0f172a;
+  --color-bg-alt: #1a254a;
+  --color-surface: #1e293b;
+  --color-surface-alt: #334155;
+  
+  /* ---------- BORDER COLORS ---------- */
+  --color-border: #475569;
+  --color-border-light: #334155;
+  --color-border-strong: #64748b;
+  --color-border-primary: #1f4fd8;
+  --color-border-accent: #00c2ff;
+  --color-border-dark: #334155; /* Mapped to surface-alt for dark theme consistency */
 
   /* ---------- TEXT COLORS ---------- */
-  --color-text-primary: #1A1A1A;
-  /* Strong Text */
-  --color-text-secondary: #444444;
-  /* Medium Text */
-  --color-text-muted: #7A7A7A;
-  /* Muted Text */
-  --color-text-light: #AFAFAF;
-  /* Very Soft Text */
-  --color-text-on-primary: #FFFFFF;
-  /* Text on Orange Buttons */
+  --color-text-primary: #ffffff;
+  --color-text-secondary: #cbd5e1;
+  --color-text-muted: #94a3b8;
+  --color-text-light: #64748b;
+  --color-text-on-primary: #ffffff;
 
   /* ---------- STATUS COLORS ---------- */
-  --color-success: #28A745;
-  /* Green */
-  --color-success-light: #DFF5E6;
-  /* Light Success */
-  --color-warning: #FFC107;
-  /* Yellow Warning */
-  --color-warning-light: #FFF3CD;
-  /* Light Warning */
-  --color-danger: #DC3545;
-  /* Error */
-  --color-danger-light: #F8D7DA;
-  /* Light Error */
+  --color-success: #22c55e;
+  --color-success-light: #dcfce7;
+  --color-warning: #facc15;
+  --color-warning-light: #fef9c3; /* Adjusted for better contrast on dark if needed, but keeping standard */
+  --color-danger: #ef4444;
+  --color-danger-light: #fee2e2;
+  
+  --color-info: #06b6d4;
+  --color-info-light: #cffafe;
 
+  /* ---------- STATUS BORDERS ---------- */
+  --color-border-success: #22c55e;
+  --color-border-warning: #facc15;
+  --color-border-danger: #ef4444;
 
-  /* ---------- BORDER COLORS (EXPANDED) ---------- */
-  --color-border: #c5c5c5;
-  /* Soft Warm Border */
-  --color-border-strong: #424242;
-  /* Stronger Border */
-
-  --color-border-light: #F0E4DC;
-  /* Very Light Warm Border */
-  --color-border-lighter: #F7EFE9;
-  /* Ultra Light Border */
-
-  --color-border-dark: #8d8d8d;
-  /* Medium Dark Border */
-  --color-border-darker: #4d4d4d;
-  /* Deep Warm Border */
-
-  --color-border-primary: #FF7A00;
-  /* Orange Primary Border */
-  --color-border-primary-light: #FF9F40;
-  /* Soft Primary Border */
-  --color-border-primary-dark: #CC6200;
-  /* Deep Primary Border */
-
-  --color-border-accent: #FF5400;
-  /* Accent Flame Border */
-  --color-border-accent-light: #FFC48B;
-  /* Accent Soft Border */
-
-  --color-border-warning: #FFC107;
-  /* Yellow Warning Border */
-  --color-border-success: #28A745;
-  /* Green Success Border */
-  --color-border-danger: #DC3545;
-  /* Red Error Border */
-
-
-  /* ---------- GRADIENTS ---------- */
-  --gradient-primary: linear-gradient(45deg, #FF7A00, #FF9F40);
-  --gradient-secondary: linear-gradient(45deg, #FF5400, #FF8C1A);
-
-  /* ---------- SHADOW COLORS ---------- */
-  --shadow-soft: rgba(0, 0, 0, 0.07);
-  --shadow-medium: rgba(0, 0, 0, 0.15);
-  --shadow-strong: rgba(0, 0, 0, 0.25);
+   /* ---------- SHADOW COLORS ---------- */
+  --shadow-soft: rgba(0, 0, 0, 0.2);
+  --shadow-medium: rgba(0, 0, 0, 0.4);
+  --shadow-strong: rgba(0, 0, 0, 0.6);
 
   /* ---------- FONT FAMILY ---------- */
   --font-primary: "Inter", "Poppins", "Roboto", sans-serif;
@@ -135,25 +82,15 @@
 
   /* ---------- FONT SIZES ---------- */
   --text-xs: 0.75rem;
-  /* 12px */
   --text-sm: 0.875rem;
-  /* 14px */
   --text-base: 1rem;
-  /* 16px */
   --text-lg: 1.125rem;
-  /* 18px */
   --text-xl: 1.25rem;
-  /* 20px */
   --text-2xl: 1.5rem;
-  /* 24px */
   --text-3xl: 1.875rem;
-  /* 30px */
   --text-4xl: 2.25rem;
-  /* 36px */
   --text-5xl: 3rem;
-  /* 48px */
   --text-6xl: 4rem;
-  /* 64px */
 
   /* ---------- LETTER SPACING ---------- */
   --tracking-tight: -0.02em;
@@ -164,9 +101,11 @@
   --leading-tight: 1.1;
   --leading-normal: 1.5;
   --leading-relaxed: 1.7;
+  
+   /* ---------- GRADIENTS ---------- */
+  --gradient-primary: linear-gradient(45deg, #1f4fd8, #4f7dff);
+  --gradient-secondary: linear-gradient(45deg, #1f4fd8, #2d6cdf);
 }
-
-
 
 .swiper-pagination-bullet {
   background: var(--color-text-secondary) !important;
@@ -178,34 +117,25 @@
   border-radius: 5px !important;
 }
 
-.swiper-button-next {
-  position: absolute;
-  top: var(--swiper-navigation-top-offset, 99%) !important;
-  right: calc(50% - 100px) !important;
-  padding: 3px;
-
-  color: var(--color-text-primary) !important;
-  height: 23px !important;
-  width: 23px !important;
-
-  /* Border using theme color */
-  border: 1px solid var(--color-border-dark) !important;
-  background: var(--color-surface) !important;
-}
-
+.swiper-button-next,
 .swiper-button-prev {
   position: absolute;
   top: var(--swiper-navigation-top-offset, 99%) !important;
-  right: auto !important;
-  left: calc(50% - 100px) !important;
   padding: 3px;
-
   color: var(--color-text-primary) !important;
   height: 23px !important;
   width: 23px !important;
-
-  border: 1px solid var(--color-border-dark) !important;
+  border: 1px solid var(--color-border) !important;
   background: var(--color-surface) !important;
+}
+
+.swiper-button-next {
+  right: calc(50% - 100px) !important;
+}
+
+.swiper-button-prev {
+  right: auto !important;
+  left: calc(50% - 100px) !important;
 }
 
 body {
@@ -215,10 +145,9 @@ body {
   background-color: var(--color-bg);
 }
 
-
 @media screen and (max-width: 1035px) {
   body {
-   padding-top: 73px;
-   padding-bottom: 69px;
+   padding-top: 83px;
+   padding-bottom: 70px;
   }
 }

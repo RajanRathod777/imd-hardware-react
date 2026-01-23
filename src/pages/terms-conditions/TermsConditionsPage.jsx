@@ -1,4 +1,6 @@
 import React from "react";
+import { Helmet } from "react-helmet-async";
+import { termsConditionsMetadata } from "../../seo/termsConditionsSeo";
 import {
   FileText,
   Scale,
@@ -180,6 +182,19 @@ const TermsConditionsPage = () => {
       }}
     >
       <div className="max-w-4xl mx-auto">
+        <Helmet>
+          <title>{termsConditionsMetadata.title}</title>
+          <meta
+            name="description"
+            content={termsConditionsMetadata.description}
+          />
+          <meta name="keywords" content={termsConditionsMetadata.keywords} />
+          <link
+            rel="canonical"
+            href={termsConditionsMetadata.alternates.canonical}
+          />
+          <meta name="robots" content={termsConditionsMetadata.robots} />
+        </Helmet>
         {/* Header */}
         <div className="text-center mb-12">
           <h1

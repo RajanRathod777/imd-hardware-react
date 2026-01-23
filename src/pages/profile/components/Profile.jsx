@@ -299,7 +299,7 @@ export default function ProfilePage() {
               <div className="flex items-center gap-3">
                 <div
                   className="w-10 h-10 flex items-center justify-center rounded-lg"
-                  style={{ backgroundColor: "var(--color-primary-soft)" }}
+                  style={{ backgroundColor: "var(--color-surface-alt)" }}
                 >
                   <User
                     className="h-5 w-5"
@@ -913,7 +913,7 @@ export default function ProfilePage() {
           >
             Update Password{" "}
             <Link
-              href="/updatepassword"
+              to="/updatepassword"
               className="hover:underline"
               style={{
                 color: "var(--color-primary)",

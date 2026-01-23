@@ -119,7 +119,7 @@ export default function RegistrationPage() {
     if (resendCooldown <= 0) return;
     const t = setInterval(
       () => setResendCooldown((s) => Math.max(0, s - 1)),
-      1000
+      1000,
     );
     return () => clearInterval(t);
   }, [resendCooldown]);
@@ -265,7 +265,7 @@ export default function RegistrationPage() {
           <div className="flex items-center gap-3">
             <div
               className="w-10 h-10 flex items-center justify-center rounded-lg"
-              style={{ backgroundColor: "var(--color-primary-soft)" }}
+              style={{ backgroundColor: "var(--color-surface-alt)" }}
             >
               <User
                 className="h-5 w-5 "

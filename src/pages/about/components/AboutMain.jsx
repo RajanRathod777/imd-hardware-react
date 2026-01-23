@@ -11,7 +11,7 @@ import ManufacturingProduct from "./ManufacturingProduct";
 
 const AboutMain = () => {
   return (
-    <div className="bg-white">
+    <div>
       <AboutHero />
       <div className="px-4 sm:px-6 lg:px-8">
         <AboutContent />

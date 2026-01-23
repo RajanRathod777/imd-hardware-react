@@ -43,50 +43,50 @@ const ShareButton = ({ product }) => {
       case "facebook":
         window.open(
           `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(
-            url
+            url,
           )}&quote=${encodeURIComponent(title)}`,
           "_blank",
-          "width=600,height=400"
+          "width=600,height=400",
         );
         break;
       case "twitter":
         window.open(
           `https://twitter.com/intent/tweet?url=${encodeURIComponent(
-            url
+            url,
           )}&text=${encodeURIComponent(text)}`,
           "_blank",
-          "width=600,height=400"
+          "width=600,height=400",
         );
         break;
       case "linkedin":
         window.open(
           `https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(
-            url
+            url,
           )}`,
           "_blank",
-          "width=600,height=400"
+          "width=600,height=400",
         );
         break;
       case "whatsapp":
         window.open(
           `https://wa.me/?text=${encodeURIComponent(`${text} - ${url}`)}`,
-          "_blank"
+          "_blank",
         );
         break;
       case "telegram":
         window.open(
           `https://t.me/share/url?url=${encodeURIComponent(
-            url
+            url,
           )}&text=${encodeURIComponent(text)}`,
-          "_blank"
+          "_blank",
         );
         break;
       case "email":
         window.open(
           `mailto:?subject=${encodeURIComponent(
-            title
+            title,
           )}&body=${encodeURIComponent(`${text}\n\n${url}`)}`,
-          "_blank"
+          "_blank",
         );
         break;
       case "copy":
@@ -204,7 +204,7 @@ const ShareButton = ({ product }) => {
             </div>
             <button
               onClick={() => setShowSharePopup(false)}
-              className="p-1.5 rounded-lg transition-colors duration-200 hover:bg-gray-100"
+              className="p-1.5 rounded-lg transition-colors duration-200 hover:bg-[var(--color-surface-alt)]"
               aria-label="Close share menu"
             >
               <X size={14} style={{ color: "var(--color-text-muted)" }} />
@@ -312,7 +312,7 @@ const SharePlatformButton = ({
 }) => (
   <button
     onClick={() => onShare(platform)}
-    className="flex flex-col items-center gap-2 p-3 rounded-xl transition-all duration-200 group hover:bg-gray-50"
+    className="flex flex-col items-center gap-2 p-3 rounded-xl transition-all duration-200 group hover:bg-[var(--color-surface-alt)]"
     aria-label={`Share on ${label}`}
   >
     <div

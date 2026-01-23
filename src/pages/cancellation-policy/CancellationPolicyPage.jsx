@@ -7,6 +7,8 @@ import {
   Phone,
   CheckCircle,
 } from "lucide-react";
+import { Helmet } from "react-helmet-async";
+import { cancellationPolicyMetadata } from "../../seo/cancellationPolicySeo";
 
 const CancellationPolicy = () => {
   const lastUpdated = new Date().toLocaleDateString("en-IN", {
@@ -142,6 +144,18 @@ const CancellationPolicy = () => {
       }}
     >
       <div className="max-w-4xl mx-auto">
+        <Helmet>
+          <title>{cancellationPolicyMetadata.title}</title>
+          <meta
+            name="description"
+            content={cancellationPolicyMetadata.description}
+          />
+          <meta name="keywords" content={cancellationPolicyMetadata.keywords} />
+          <link
+            rel="canonical"
+            href={cancellationPolicyMetadata.alternates.canonical}
+          />
+        </Helmet>
         {/* Header */}
         <div className="text-center mb-12">
           <h1

@@ -90,7 +90,7 @@ export default function UpdatePassword() {
           <div className="flex items-center gap-3">
             <div
               className="w-10 h-10 flex items-center justify-center rounded-full"
-              style={{ backgroundColor: "var(--color-primary-soft)" }}
+              style={{ backgroundColor: "var(--color-surface-alt)" }}
             >
               <Lock
                 className="h-5 w-5"
@@ -219,7 +219,7 @@ export default function UpdatePassword() {
           >
             Profile{" "}
             <Link
-              href="/profile"
+              to="/profile"
               className="hover:underline"
               style={{
                 color: "var(--color-primary)",
