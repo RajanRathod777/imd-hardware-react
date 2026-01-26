@@ -30,7 +30,7 @@ export default function DoorLockAldrop() {
           }}
         >
           {/* Top Section */}
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+          <div className="grid grid-cols-1  gap-8">
             {/* Video Section */}
             <div className="space-y-4">
               <div>
@@ -104,7 +104,7 @@ export default function DoorLockAldrop() {
                     className="text-xl font-bold"
                     style={{ color: "var(--color-primary-dark)" }}
                   >
-                    ₹2,151
+                    ₹ 2,199
                   </p>
                 </div>
               </div>
@@ -128,8 +128,8 @@ export default function DoorLockAldrop() {
                     className="text-base mt-2"
                     style={{ color: "var(--color-text-secondary)" }}
                   >
-                    Premium door lock with slider locking system and branded
-                    cylinder mechanism
+                    Premium door lock with a slider locking system and an
+                    innovative cylinder lock mechanism
                   </p>
                 </div>
 
@@ -152,7 +152,7 @@ export default function DoorLockAldrop() {
                       className="text-2xl font-bold"
                       style={{ color: "var(--color-primary-dark)" }}
                     >
-                      ₹2,151
+                      ₹2,199
                     </p>
                   </div>
                 </div>
@@ -161,10 +161,22 @@ export default function DoorLockAldrop() {
               {/* Features */}
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 {[
-                  { title: "High-Quality Steel", desc: "Manufactured using premium steel for maximum durability" },
-                  { title: "Inside Handle", desc: "Convenient locking and unlocking from inside" },
-                  { title: "Slider System", desc: "Firm grip with reliable daily operation" },
-                  { title: "Branded Cylinder", desc: "Smooth key operation with enhanced security" },
+                  {
+                    title: "High-Quality Steel",
+                    desc: "Manufactured using premium steel for maximum durability",
+                  },
+                  {
+                    title: "Inside Handle",
+                    desc: "Convenient locking and unlocking from inside",
+                  },
+                  {
+                    title: "Slider System",
+                    desc: "Firm grip with reliable daily operation",
+                  },
+                  {
+                    title: "Innovative Cylinder",
+                    desc: "Smooth key operation with enhanced security",
+                  },
                 ].map((feature, i) => (
                   <div
                     key={i}
@@ -249,9 +261,47 @@ export default function DoorLockAldrop() {
                       className="leading-relaxed"
                       style={{ color: "var(--color-text-secondary)" }}
                     >
-                      Fitted with a <strong>branded cylinder lock</strong>{" "}
-                      ensuring smooth key operation and enhanced security.
-                      Suitable for both residential and commercial doors.
+                      Fitted with a{" "}
+                      <strong>new innovative cylinder lock</strong> ensuring
+                      smooth key operation and enhanced security. Suitable for
+                      both residential and commercial doors.
+                    </p>
+                  </div>
+
+                  <div
+                    className="p-4 rounded-lg"
+                    style={{
+                      backgroundColor: "var(--color-bg-alt)",
+                      borderLeft: "4px solid var(--color-accent-1)",
+                    }}
+                  >
+                    <p
+                      className="leading-relaxed"
+                      style={{ color: "var(--color-text-secondary)" }}
+                    >
+                      Built with a{" "}
+                      <strong>high-efficiency internal mechanism</strong>, the
+                      Door Lock Aldrop delivers consistently smooth performance
+                      with minimal wear. Engineered for a{" "}
+                      <strong>long operational life</strong>, it maintains
+                      reliable locking strength even after years of frequent
+                      use.
+                    </p>
+                  </div>
+
+                  <div
+                    className="p-4 rounded-lg"
+                    style={{
+                      backgroundColor: "var(--color-bg-alt)",
+                      borderLeft: "4px solid var(--color-accent-2)",
+                    }}
+                  >
+                    <p
+                      className="leading-relaxed"
+                      style={{ color: "var(--color-text-secondary)" }}
+                    >
+                      
+                     Door Lock Aldrop is manufactured using all high-quality premium metals.
                     </p>
                   </div>
                 </div>
