@@ -11,7 +11,7 @@
   "lang": "en-IN",
   "dir": "ltr",
   "categories": ["business", "shopping", "utilities"],
-  "logo": "/favicon/favicon-512x512.png",
+  "logo": "/favicon/favicon-512x512.png?v=2",
   "icons": [
     {
       "src": "/favicon/favicon-16x16.png",
