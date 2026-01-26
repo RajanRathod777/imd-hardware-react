@@ -1,153 +1,148 @@
 @import "tailwindcss";
 
 :root {
+    /* ---------- BLUE THEME (DEFAULT) ---------- */
+    /* Blue Primary Colors */
+    --color-primary: #2563eb;
+    --color-primary-light: #60a5fa;
+    --color-primary-dark: #1e40af;
+    --color-primary-soft: #e0ecff;
 
-  --blue:true;
-  --white:false;
-  /* ---------- BRAND COLORS ---------- */
-  --color-primary: #1f4fd8;
-  --color-primary-light: #4f7dff;
-  --color-primary-dark: #0b2a6f;
-  --color-primary-soft: #e6ecff;
+    /* Adjust Accents to Blue */
+    --color-accent-1: #2563eb;
+    --color-accent-2: #1e40af;
+    --color-accent-3: #d1d5db;
+    --color-accent-4: #9ca3af;
 
-  /* ---------- SECONDARY COLORS ---------- */
-  --color-secondary: #9fb4cc;
-  --color-secondary-dark: #6f849b;
-  --color-secondary-light: #eef3f8;
+    /* ---------- BACKGROUNDS ---------- */
+    --color-bg: #ffffff;
+    --color-bg-alt: #f9fafb;
+    --color-surface: #f3f4f6;
+    --color-surface-alt: #e5e7eb;
 
-  /* ---------- ACCENT COLORS ---------- */
-  --color-accent-1: #5fa8ff;
-  --color-accent-2: #2d6cdf;
-  --color-accent-3: #c7d9ff;
-  --color-accent-4: #00c2ff;
+    /* ---------- BORDERS ---------- */
+    --color-border: #d1d5db;
+    --color-border-light: #e5e7eb;
+    --color-border-strong: #9ca3af;
+    --color-border-primary: #2563eb;
+    --color-border-accent: #60a5fa;
+    --color-border-dark: #374151;
 
-  /* ---------- NEUTRALS ---------- */
-  --color-bg: #0f172a;
-  --color-bg-alt: #1a254a;
-  --color-surface: #1e293b;
-  --color-surface-alt: #334155;
-  
-  /* ---------- BORDER COLORS ---------- */
-  --color-border: #475569;
-  --color-border-light: #334155;
-  --color-border-strong: #64748b;
-  --color-border-primary: #1f4fd8;
-  --color-border-accent: #00c2ff;
-  --color-border-dark: #334155; /* Mapped to surface-alt for dark theme consistency */
+    /* ---------- TEXT ---------- */
+    --color-text-primary: #111827;
+    --color-text-secondary: #374151;
+    --color-text-muted: #6b7280;
+    --color-text-light: #9ca3af;
+    --color-text-on-primary: #ffffff;
 
-  /* ---------- TEXT COLORS ---------- */
-  --color-text-primary: #ffffff;
-  --color-text-secondary: #cbd5e1;
-  --color-text-muted: #94a3b8;
-  --color-text-light: #64748b;
-  --color-text-on-primary: #ffffff;
+    /* ---------- STATUS ---------- */
+    --color-success: #16a34a;
+    --color-success-light: #dcfce7;
 
-  /* ---------- STATUS COLORS ---------- */
-  --color-success: #22c55e;
-  --color-success-light: #dcfce7;
-  --color-warning: #facc15;
-  --color-warning-light: #fef9c3; /* Adjusted for better contrast on dark if needed, but keeping standard */
-  --color-danger: #ef4444;
-  --color-danger-light: #fee2e2;
-  
-  --color-info: #06b6d4;
-  --color-info-light: #cffafe;
+    --color-warning: #ca8a04;
+    --color-warning-light: #fef9c3;
 
-  /* ---------- STATUS BORDERS ---------- */
-  --color-border-success: #22c55e;
-  --color-border-warning: #facc15;
-  --color-border-danger: #ef4444;
+    --color-danger: #dc2626;
+    --color-danger-light: #fee2e2;
 
-   /* ---------- SHADOW COLORS ---------- */
-  --shadow-soft: rgba(0, 0, 0, 0.2);
-  --shadow-medium: rgba(0, 0, 0, 0.4);
-  --shadow-strong: rgba(0, 0, 0, 0.6);
+    --color-info: #2563eb;
+    --color-info-light: #e0ecff;
 
-  /* ---------- FONT FAMILY ---------- */
-  --font-primary: "Inter", "Poppins", "Roboto", sans-serif;
-  --font-heading: "Poppins", "Inter", "Montserrat", sans-serif;
-  --font-body: "Inter", "Roboto", sans-serif;
-  --font-mono: "JetBrains Mono", "Fira Code", monospace;
+    /* ---------- STATUS BORDERS ---------- */
+    --color-border-success: #16a34a;
+    --color-border-warning: #ca8a04;
+    --color-border-danger: #dc2626;
 
-  /* ---------- FONT WEIGHTS ---------- */
-  --font-thin: 100;
-  --font-extralight: 200;
-  --font-light: 300;
-  --font-regular: 400;
-  --font-medium: 500;
-  --font-semibold: 600;
-  --font-bold: 700;
-  --font-extrabold: 800;
-  --font-black: 900;
+    /* ---------- SHADOWS ---------- */
+    --shadow-soft: rgba(0, 0, 0, 0.08);
+    --shadow-medium: rgba(0, 0, 0, 0.15);
+    --shadow-strong: rgba(0, 0, 0, 0.25);
 
-  /* ---------- FONT SIZES ---------- */
-  --text-xs: 0.75rem;
-  --text-sm: 0.875rem;
-  --text-base: 1rem;
-  --text-lg: 1.125rem;
-  --text-xl: 1.25rem;
-  --text-2xl: 1.5rem;
-  --text-3xl: 1.875rem;
-  --text-4xl: 2.25rem;
-  --text-5xl: 3rem;
-  --text-6xl: 4rem;
+    /* ---------- GRADIENTS ---------- */
+    --gradient-primary: linear-gradient(45deg, #1e40af, #2563eb);
+    --gradient-secondary: linear-gradient(45deg, #374151, #9ca3af);
 
-  /* ---------- LETTER SPACING ---------- */
-  --tracking-tight: -0.02em;
-  --tracking-normal: 0em;
-  --tracking-wide: 0.05em;
+    /* ---------- FONT FAMILY ---------- */
+    --font-primary: "Inter", "Poppins", "Roboto", sans-serif;
+    --font-heading: "Poppins", "Inter", "Montserrat", sans-serif;
+    --font-body: "Inter", "Roboto", sans-serif;
+    --font-mono: "JetBrains Mono", "Fira Code", monospace;
 
-  /* ---------- LINE HEIGHT ---------- */
-  --leading-tight: 1.1;
-  --leading-normal: 1.5;
-  --leading-relaxed: 1.7;
-  
-   /* ---------- GRADIENTS ---------- */
-  --gradient-primary: linear-gradient(45deg, #1f4fd8, #4f7dff);
-  --gradient-secondary: linear-gradient(45deg, #1f4fd8, #2d6cdf);
+    /* ---------- FONT WEIGHTS ---------- */
+    --font-thin: 100;
+    --font-extralight: 200;
+    --font-light: 300;
+    --font-regular: 400;
+    --font-medium: 500;
+    --font-semibold: 600;
+    --font-bold: 700;
+    --font-extrabold: 800;
+    --font-black: 900;
+
+    /* ---------- FONT SIZES ---------- */
+    --text-xs: 0.75rem;
+    --text-sm: 0.875rem;
+    --text-base: 1rem;
+    --text-lg: 1.125rem;
+    --text-xl: 1.25rem;
+    --text-2xl: 1.5rem;
+    --text-3xl: 1.875rem;
+    --text-4xl: 2.25rem;
+    --text-5xl: 3rem;
+    --text-6xl: 4rem;
+
+    /* ---------- LETTER SPACING ---------- */
+    --tracking-tight: -0.02em;
+    --tracking-normal: 0em;
+    --tracking-wide: 0.05em;
+
+    /* ---------- LINE HEIGHT ---------- */
+    --leading-tight: 1.1;
+    --leading-normal: 1.5;
+    --leading-relaxed: 1.7;
 }
 
 .swiper-pagination-bullet {
-  background: var(--color-text-secondary) !important;
+    background: var(--color-text-secondary) !important;
 }
 
 .swiper-pagination-bullet.swiper-pagination-bullet-active {
-  background: var(--color-primary) !important;
-  width: 20px !important;
-  border-radius: 5px !important;
+    background: var(--color-primary) !important;
+    width: 20px !important;
+    border-radius: 5px !important;
 }
 
 .swiper-button-next,
 .swiper-button-prev {
-  position: absolute;
-  top: var(--swiper-navigation-top-offset, 99%) !important;
-  padding: 3px;
-  color: var(--color-text-primary) !important;
-  height: 23px !important;
-  width: 23px !important;
-  border: 1px solid var(--color-border) !important;
-  background: var(--color-surface) !important;
+    position: absolute;
+    top: var(--swiper-navigation-top-offset, 99%) !important;
+    padding: 3px;
+    color: var(--color-text-primary) !important;
+    height: 23px !important;
+    width: 23px !important;
+    border: 1px solid var(--color-border) !important;
+    background: var(--color-surface) !important;
 }
 
 .swiper-button-next {
-  right: calc(50% - 100px) !important;
+    right: calc(50% - 100px) !important;
 }
 
 .swiper-button-prev {
-  right: auto !important;
-  left: calc(50% - 100px) !important;
+    right: auto !important;
+    left: calc(50% - 100px) !important;
 }
 
 body {
-  padding-top: 45px;
-  font-family: var(--font-primary);
-  color: var(--color-text-primary);
-  background-color: var(--color-bg);
+    padding-top: 45px;
+    font-family: var(--font-primary);
+    color: var(--color-text-primary);
+    background-color: var(--color-bg);
 }
 
 @media screen and (max-width: 1035px) {
-  body {
-   padding-top: 83px;
-   padding-bottom: 70px;
-  }
+    body {
+        padding-top: 83px;
+        padding-bottom: 70px;
+    }
 }
