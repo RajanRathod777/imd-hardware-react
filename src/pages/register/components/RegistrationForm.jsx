@@ -896,7 +896,7 @@ export default function RegistrationPage() {
         >
           All ready have an account?{" "}
           <Link
-            href="/login"
+            to="/login"
             className="hover:underline"
             style={{
               color: "var(--color-primary)",

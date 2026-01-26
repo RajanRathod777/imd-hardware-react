@@ -25,7 +25,7 @@ const Footer = () => {
     {
       icon: Shield,
       title: "Quality Guarantee",
-      desc: "30-Day Return Policy",
+      desc: "Return Policy",
     },
     {
       icon: Headphones,

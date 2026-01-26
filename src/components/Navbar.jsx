@@ -60,10 +60,10 @@ const Navbar = () => {
                         <img
                             src="/images/logo.jpeg"
                             alt="Logo"
-                            className="h-6 w-10"
+                            className="h-8 w-8"
                         />
                         <p
-                            className="mt-1"
+                           
                             style={{
                                 fontWeight: "var(--font-semibold)",
                                 color: "var(--color-text-primary)",

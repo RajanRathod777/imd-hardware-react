@@ -12,7 +12,7 @@ export default function DoorLockAldrop() {
 
   return (
     <div
-      className="w-full min-h-screen py-6 px-4"
+      className="w-full min-h-screen py-6 px-2"
       style={{
         backgroundColor: "var(--color-bg)",
         fontFamily: "var(--font-body)",
@@ -22,7 +22,7 @@ export default function DoorLockAldrop() {
       <div className="max-w-6xl mx-auto">
         {/* Main Product Container */}
         <div
-          className="rounded-lg p-4 sm:p-8"
+          className="rounded-lg p-3 sm:p-8"
           style={{
             backgroundColor: "var(--color-surface)",
             border: "1px solid var(--color-border-light)",
