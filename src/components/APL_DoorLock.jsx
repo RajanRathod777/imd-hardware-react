@@ -1,6 +1,15 @@
-import React from "react";
+import { Play } from "lucide-react";
+import { useRef } from "react";
 
 export default function DoorLockAldrop() {
+  const videoRef = useRef(null);
+
+  const handlePlay = () => {
+    if (videoRef.current) {
+      videoRef.current.play();
+    }
+  };
+
   return (
     <div
       className="w-full min-h-screen py-6 px-4"
@@ -27,25 +36,51 @@ export default function DoorLockAldrop() {
               <div>
                 <h3
                   className="text-lg font-semibold mb-3"
-                  style={{ 
+                  style={{
                     color: "var(--color-text-primary)",
-                    fontFamily: "var(--font-heading)"
+                    fontFamily: "var(--font-heading)",
                   }}
                 >
                   Product Video
                 </h3>
+
+                {/* Video Container */}
                 <div
-                  className="w-full aspect-video rounded-lg overflow-hidden"
+                  className="w-full aspect-video rounded-lg overflow-hidden relative"
                   style={{
                     backgroundColor: "var(--color-surface-alt)",
                     border: "1px solid var(--color-border)",
                     boxShadow: "0 2px 8px var(--shadow-soft)",
                   }}
                 >
-                  <video 
-                    controls 
-                    className="w-full h-full object-cover"
-                    poster="/images/APL_Door_Lock_Aldrop/thumbnail.png"
+                  {/* Thumbnail */}
+                  <img
+                    src="/images/APL_Door_Lock_Aldrop/video-thum.jpeg"
+                    className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
+                    alt="Door Lock Aldrop"
+                  />
+
+                  {/* Play Button */}
+                  <button
+                    onClick={handlePlay}
+                    className="absolute inset-0 flex items-center justify-center bg-black/20 hover:bg-black/30 transition"
+                  >
+                    <div className="w-16 h-16 md:w-20 md:h-20 rounded-full bg-white/90 flex items-center justify-center shadow-lg">
+                      <Play className="w-8 h-8 md:w-10 md:h-10 text-black ml-1" />
+                    </div>
+                  </button>
+
+                  {/* Video */}
+                  <video
+                    ref={videoRef}
+                    className="absolute inset-0 w-full h-full object-cover opacity-0 pointer-events-none"
+                    controls
+                    poster="/images/APL_Door_Lock_Aldrop/video-thum.jpeg"
+                    onPlay={(e) => {
+                      e.target.classList.remove("opacity-0");
+                      e.target.classList.add("opacity-100");
+                      e.target.classList.remove("pointer-events-none");
+                    }}
                   >
                     <source
                       src="/videos/Apl_Door_Lock_Aldrop.mp4"
@@ -82,9 +117,9 @@ export default function DoorLockAldrop() {
                 <div className="flex-1">
                   <h1
                     className="text-2xl sm:text-3xl font-bold"
-                    style={{ 
+                    style={{
                       color: "var(--color-text-primary)",
-                      fontFamily: "var(--font-heading)"
+                      fontFamily: "var(--font-heading)",
                     }}
                   >
                     Door Lock Aldrop
@@ -93,10 +128,11 @@ export default function DoorLockAldrop() {
                     className="text-base mt-2"
                     style={{ color: "var(--color-text-secondary)" }}
                   >
-                    Premium door lock with slider locking system and branded cylinder mechanism
+                    Premium door lock with slider locking system and branded
+                    cylinder mechanism
                   </p>
                 </div>
-                
+
                 {/* Price for Desktop */}
                 <div className="hidden lg:block">
                   <div
@@ -106,7 +142,10 @@ export default function DoorLockAldrop() {
                       border: "2px solid var(--color-primary-light)",
                     }}
                   >
-                    <p className="text-sm mb-1" style={{ color: "var(--color-text-secondary)" }}>
+                    <p
+                      className="text-sm mb-1"
+                      style={{ color: "var(--color-text-secondary)" }}
+                    >
                       Price
                     </p>
                     <p
@@ -121,79 +160,48 @@ export default function DoorLockAldrop() {
 
               {/* Features */}
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                <div
-                  className="p-4 rounded-lg"
-                  style={{
-                    backgroundColor: "var(--color-bg-alt)",
-                    border: "1px solid var(--color-border-light)",
-                  }}
-                >
-                  <p className="font-semibold mb-2" style={{ color: "var(--color-primary)" }}>
-                    High-Quality Steel
-                  </p>
-                  <p className="text-sm" style={{ color: "var(--color-text-secondary)" }}>
-                    Manufactured using premium steel for maximum durability
-                  </p>
-                </div>
-                
-                <div
-                  className="p-4 rounded-lg"
-                  style={{
-                    backgroundColor: "var(--color-bg-alt)",
-                    border: "1px solid var(--color-border-light)",
-                  }}
-                >
-                  <p className="font-semibold mb-2" style={{ color: "var(--color-primary)" }}>
-                    Inside Handle
-                  </p>
-                  <p className="text-sm" style={{ color: "var(--color-text-secondary)" }}>
-                    Convenient locking and unlocking from inside
-                  </p>
-                </div>
-                
-                <div
-                  className="p-4 rounded-lg"
-                  style={{
-                    backgroundColor: "var(--color-bg-alt)",
-                    border: "1px solid var(--color-border-light)",
-                  }}
-                >
-                  <p className="font-semibold mb-2" style={{ color: "var(--color-primary)" }}>
-                    Slider System
-                  </p>
-                  <p className="text-sm" style={{ color: "var(--color-text-secondary)" }}>
-                    Firm grip with reliable daily operation
-                  </p>
-                </div>
-                
-                <div
-                  className="p-4 rounded-lg"
-                  style={{
-                    backgroundColor: "var(--color-bg-alt)",
-                    border: "1px solid var(--color-border-light)",
-                  }}
-                >
-                  <p className="font-semibold mb-2" style={{ color: "var(--color-primary)" }}>
-                    Branded Cylinder
-                  </p>
-                  <p className="text-sm" style={{ color: "var(--color-text-secondary)" }}>
-                    Smooth key operation with enhanced security
-                  </p>
-                </div>
+                {[
+                  { title: "High-Quality Steel", desc: "Manufactured using premium steel for maximum durability" },
+                  { title: "Inside Handle", desc: "Convenient locking and unlocking from inside" },
+                  { title: "Slider System", desc: "Firm grip with reliable daily operation" },
+                  { title: "Branded Cylinder", desc: "Smooth key operation with enhanced security" },
+                ].map((feature, i) => (
+                  <div
+                    key={i}
+                    className="p-4 rounded-lg"
+                    style={{
+                      backgroundColor: "var(--color-bg-alt)",
+                      border: "1px solid var(--color-border-light)",
+                    }}
+                  >
+                    <p
+                      className="font-semibold mb-2"
+                      style={{ color: "var(--color-primary)" }}
+                    >
+                      {feature.title}
+                    </p>
+                    <p
+                      className="text-sm"
+                      style={{ color: "var(--color-text-secondary)" }}
+                    >
+                      {feature.desc}
+                    </p>
+                  </div>
+                ))}
               </div>
 
               {/* Description */}
               <div className="space-y-4">
                 <h3
                   className="text-lg font-semibold"
-                  style={{ 
+                  style={{
                     color: "var(--color-text-primary)",
-                    fontFamily: "var(--font-heading)"
+                    fontFamily: "var(--font-heading)",
                   }}
                 >
                   Product Description
                 </h3>
-                
+
                 <div className="space-y-4">
                   <div
                     className="p-4 rounded-lg"
@@ -206,9 +214,10 @@ export default function DoorLockAldrop() {
                       className="leading-relaxed"
                       style={{ color: "var(--color-text-secondary)" }}
                     >
-                      The <strong>Door Lock Aldrop</strong> is manufactured using{" "}
-                      <strong>high-quality steel</strong>, ensuring strength, durability, and long-term 
-                      performance. Designed for secure locking while maintaining smooth operation.
+                      The <strong>Door Lock Aldrop</strong> is manufactured
+                      using <strong>high-quality steel</strong>, ensuring
+                      strength, durability, and long-term performance. Designed
+                      for secure locking while maintaining smooth operation.
                     </p>
                   </div>
 
@@ -223,9 +232,9 @@ export default function DoorLockAldrop() {
                       className="leading-relaxed"
                       style={{ color: "var(--color-text-secondary)" }}
                     >
-                      Features an <strong>inside handle</strong> for convenient access and a{" "}
-                      <strong>slider-based locking system</strong> that provides firm grip and 
-                      reliable daily usage.
+                      Features an <strong>inside handle</strong> for convenient
+                      access and a <strong>slider-based locking system</strong>{" "}
+                      that provides firm grip and reliable daily usage.
                     </p>
                   </div>
 
@@ -240,9 +249,9 @@ export default function DoorLockAldrop() {
                       className="leading-relaxed"
                       style={{ color: "var(--color-text-secondary)" }}
                     >
-                      Fitted with a <strong>branded cylinder lock</strong> ensuring smooth key 
-                      operation and enhanced security. Suitable for both residential and commercial 
-                      doors.
+                      Fitted with a <strong>branded cylinder lock</strong>{" "}
+                      ensuring smooth key operation and enhanced security.
+                      Suitable for both residential and commercial doors.
                     </p>
                   </div>
                 </div>
@@ -255,9 +264,9 @@ export default function DoorLockAldrop() {
             <div className="flex items-center justify-between mb-6">
               <h3
                 className="text-lg font-semibold"
-                style={{ 
+                style={{
                   color: "var(--color-text-primary)",
-                  fontFamily: "var(--font-heading)"
+                  fontFamily: "var(--font-heading)",
                 }}
               >
                 Product Images
@@ -269,13 +278,10 @@ export default function DoorLockAldrop() {
                 {["1", "2", "3", "4"].length} images
               </span>
             </div>
-            
+
             <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4">
               {["1", "2", "3", "4"].map((item, index) => (
-                <div
-                  key={index}
-                  className="group cursor-pointer"
-                >
+                <div key={index} className="group cursor-pointer">
                   <div
                     className="aspect-square rounded-lg overflow-hidden relative"
                     style={{
@@ -293,7 +299,8 @@ export default function DoorLockAldrop() {
                     <div
                       className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300"
                       style={{
-                        background: "linear-gradient(to top, var(--shadow-medium), transparent)",
+                        background:
+                          "linear-gradient(to top, var(--shadow-medium), transparent)",
                       }}
                     />
                   </div>
@@ -307,166 +314,8 @@ export default function DoorLockAldrop() {
               ))}
             </div>
           </div>
-
-       
         </div>
       </div>
     </div>
   );
 }
-
-
-
-
-
-
-// ==============================================================================================
-
-
-
-// import React from "react";
-
-// export default function DoorLockAldrop() {
-//   return (
-//     <div
-//       className="w-full py-6 px-4"
-//       style={{
-//         backgroundColor: "var(--color-bg)",
-//         fontFamily: "var(--font-body)",
-//       }}
-//     >
-//       <div
-//         className="max-w-6xl mx-auto rounded-lg p-4 sm:p-6"
-//         style={{
-//           backgroundColor: "var(--color-surface)",
-//           border: "1px solid var(--color-border-light)",
-//         }}
-//       >
-//         {/* Top Section */}
-//         <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-//           {/* Video */}
-//           <div>
-//             <h3
-//               className="text-lg font-semibold mb-2"
-//               style={{ color: "var(--color-text-primary)" }}
-//             >
-//               Product Video
-//             </h3>
-
-//             <div
-//               className="w-full aspect-video rounded-md overflow-hidden"
-//               style={{
-//                 backgroundColor: "var(--color-surface-alt)",
-//                 border: "1px solid var(--color-border)",
-//               }}
-//             >
-//               {/* Replace src with real video */}
-//               <video controls className="w-full h-full object-cover">
-//                 <source
-//                   src="/videos/Apl_Door_Lock_Aldrop.mp4"
-//                   type="video/mp4"
-//                 />
-//               </video>
-//             </div>
-//           </div>
-
-//           {/* Product Info */}
-//           <div>
-//             <h1
-//               className="text-2xl sm:text-3xl font-bold mb-2"
-//               style={{ color: "var(--color-text-primary)" }}
-//             >
-//               Door Lock Aldrop
-//             </h1>
-
-//             <p
-//               className="text-base mb-3"
-//               style={{ color: "var(--color-text-secondary)" }}
-//             >
-//               Door lock aldrop with inside handle, slider locking system, and
-//               branded cylinder lock mechanism.
-//             </p>
-
-//             {/* Price */}
-//             <p
-//               className="text-xl sm:text-2xl font-semibold mb-4"
-//               style={{ color: "var(--color-primary)" }}
-//             >
-//               Price: ₹2151
-//             </p>
-
-//             {/* Description */}
-//             <div className="space-y-3">
-//               <p
-//                 style={{
-//                   color: "var(--color-text-secondary)",
-//                   lineHeight: "1.6",
-//                 }}
-//               >
-//                 The <strong>Door Lock Aldrop</strong> is manufactured using
-//                 <strong> high-quality steel</strong>, ensuring strength,
-//                 durability, and long-term performance. It is designed for secure
-//                 locking while maintaining smooth and easy operation.
-//               </p>
-
-//               <p
-//                 style={{
-//                   color: "var(--color-text-secondary)",
-//                   lineHeight: "1.6",
-//                 }}
-//               >
-//                 This aldrop lock features an <strong>inside handle</strong> that
-//                 allows convenient locking and unlocking from inside. The
-//                 <strong> slider-based locking system</strong> provides firm grip
-//                 and reliable daily usage.
-//               </p>
-
-//               <p
-//                 style={{
-//                   color: "var(--color-text-secondary)",
-//                   lineHeight: "1.6",
-//                 }}
-//               >
-//                 The lock is fitted with a{" "}
-//                 <strong>branded make cylinder lock</strong>, ensuring smooth key
-//                 operation and enhanced security. Suitable for both residential
-//                 and commercial doors, this product offers a balanced combination
-//                 of strength, functionality, and quality construction.
-//               </p>
-//             </div>
-//           </div>
-//         </div>
-
-//         {/* Image Gallery */}
-//         <div className="mt-8">
-//           <h3
-//             className="text-lg font-semibold mb-4"
-//             style={{ color: "var(--color-text-primary)" }}
-//           >
-//             Product Images
-//           </h3>
-
-//           <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4">
-//             {["1", "2", "3", "4"].map((item, index) => (
-//               <div
-//                 key={index}
-//                 className="aspect-square rounded-md overflow-hidden flex items-center justify-center"
-//                 style={{
-//                   backgroundColor: "var(--color-surface-alt)",
-//                   border: "1px solid var(--color-border)",
-//                 }}
-//               >
-//                 {/* Replace with real images */}
-//                 <img
-//                   src={`/images/APL_Door_Lock_Aldrop/APL_Door_Lock_Aldrop-${item}.png`}
-//                   alt={`Door Lock Aldrop ${item}`}
-//                   className="w-full h-full object-cover"
-//                 />
-//               </div>
-//             ))}
-//           </div>
-//         </div>
-//       </div>
-//     </div>
-//   );
-// }
