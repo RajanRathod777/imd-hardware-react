@@ -173,7 +173,7 @@ export default function DoorLockAldrop() {
                                                 color: "var(--color-primary-dark)",
                                             }}
                                         >
-                                            ₹2,199
+                                            ₹ 2,199
                                         </p>
                                     </div>
                                 </div>

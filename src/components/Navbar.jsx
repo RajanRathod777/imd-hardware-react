@@ -30,7 +30,6 @@ const Navbar = () => {
     const [searchQuery, setSearchQuery] = useState("");
     const { products, cart } = useStore();
 
-
     const filteredProducts = useMemo(() => {
         if (!searchQuery.trim()) return [];
         const q = searchQuery.toLowerCase();
@@ -63,7 +62,6 @@ const Navbar = () => {
                             className="h-8 w-8"
                         />
                         <p
-                           
                             style={{
                                 fontWeight: "var(--font-semibold)",
                                 color: "var(--color-text-primary)",
@@ -219,7 +217,7 @@ const Navbar = () => {
                                                                 "var(--text-sm)",
                                                         }}
                                                     >
-                                                        {p.name}
+                                                        {p.name?.slice(0, 30)}
                                                     </p>
                                                     <p
                                                         style={{
@@ -230,7 +228,7 @@ const Navbar = () => {
                                                                 "var(--text-sm)",
                                                         }}
                                                     >
-                                                        ₱{p.price}
+                                                        ₹{p.price}
                                                     </p>
                                                 </div>
                                                 <p
@@ -241,7 +239,10 @@ const Navbar = () => {
                                                             "var(--text-xs)",
                                                     }}
                                                 >
-                                                    {p.title || p.category_name}
+                                                    {(
+                                                        p.title ||
+                                                        p.category_name
+                                                    )?.slice(0, 30)}
                                                 </p>
                                             </div>
                                         </div>

@@ -148,7 +148,7 @@ const ProductHeader = ({ product, inCart, renderStars }) => (
             fontWeight: "var(--font-bold)",
           }}
         >
-          ${product.price}
+          ₹{product.price}
         </span>
         {product.original_price && product.original_price > product.price && (
           <span
@@ -158,7 +158,7 @@ const ProductHeader = ({ product, inCart, renderStars }) => (
               color: "var(--color-text-light)",
             }}
           >
-            ${product.original_price}
+            ₹{product.original_price}
           </span>
         )}
       </div>
