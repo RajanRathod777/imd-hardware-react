@@ -141,7 +141,6 @@ const FilterDropdown = ({ title, options, selectedValues, onToggle }) => {
   );
 };
 
-// ... (skipping lines 143-267)
 
 const Products = () => {
   const apiUrl = import.meta.env.VITE_SERVER_API_URL;
@@ -393,7 +392,7 @@ const Products = () => {
                   fontWeight: "var(--font-semibold)",
                 }}
               >
-                - ₹{priceRange[1]}
+                ₹{priceRange[1]}
               </div>
             </div>
           </div>

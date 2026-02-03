@@ -102,6 +102,192 @@
     --leading-relaxed: 1.7;
 }
 
+
+/* =================================== */
+/*          Read theme */
+/* ===================================== */
+/* :root {
+    --color-primary: #d62828;
+    --color-primary-light: #ff6b6b;
+    --color-primary-dark: #9d0208;
+    --color-primary-soft: #ffe5e5;
+
+    --color-accent-1: #f77f00;
+    --color-accent-2: #fcbf49;
+    --color-accent-3: #d1d5db;
+    --color-accent-4: #9ca3af;
+
+    --color-bg: #ffffff;
+    --color-bg-alt: #fff7f5;
+    --color-surface: #fef2f2;
+    --color-surface-alt: #fde2e4;
+
+    --color-border: #e5b4b4;
+    --color-border-light: #f8d7da;
+    --color-border-strong: #c1121f;
+    --color-border-primary: #d62828;
+    --color-border-accent: #f77f00;
+    --color-border-dark: #6a040f;
+
+    --color-text-primary: #2b2b2b;
+    --color-text-secondary: #4a4a4a;
+    --color-text-muted: #6b7280;
+    --color-text-light: #9ca3af;
+    --color-text-on-primary: #ffffff;
+
+    --color-success: #2e7d32;
+    --color-success-light: #e8f5e9;
+
+    --color-warning: #f77f00;
+    --color-warning-light: #fff3cd;
+
+    --color-danger: #d62828;
+    --color-danger-light: #fdecea;
+
+    --color-info: #fcbf49;
+    --color-info-light: #fff8e1;
+
+    --color-border-success: #2e7d32;
+    --color-border-warning: #f77f00;
+    --color-border-danger: #d62828;
+
+    --shadow-soft: rgba(214, 40, 40, 0.08);
+    --shadow-medium: rgba(214, 40, 40, 0.15);
+    --shadow-strong: rgba(214, 40, 40, 0.25);
+
+    --gradient-primary: linear-gradient(45deg, #9d0208, #d62828);
+    --gradient-secondary: linear-gradient(45deg, #f77f00, #fcbf49);
+
+    --font-primary: "Inter", "Poppins", "Roboto", sans-serif;
+    --font-heading: "Poppins", "Inter", "Montserrat", sans-serif;
+    --font-body: "Inter", "Roboto", sans-serif;
+    --font-mono: "JetBrains Mono", "Fira Code", monospace;
+
+    --font-thin: 100;
+    --font-extralight: 200;
+    --font-light: 300;
+    --font-regular: 400;
+    --font-medium: 500;
+    --font-semibold: 600;
+    --font-bold: 700;
+    --font-extrabold: 800;
+    --font-black: 900;
+
+    --text-xs: 0.75rem;
+    --text-sm: 0.875rem;
+    --text-base: 1rem;
+    --text-lg: 1.125rem;
+    --text-xl: 1.25rem;
+    --text-2xl: 1.5rem;
+    --text-3xl: 1.875rem;
+    --text-4xl: 2.25rem;
+    --text-5xl: 3rem;
+    --text-6xl: 4rem;
+
+    --tracking-tight: -0.02em;
+    --tracking-normal: 0em;
+    --tracking-wide: 0.05em;
+
+    --leading-tight: 1.1;
+    --leading-normal: 1.5;
+    --leading-relaxed: 1.7;
+} */
+
+
+
+/* ---------------------------------------- */
+
+/*       white , gray , black */
+
+/* ------------------------------------------- */
+
+/* :root {
+    --color-primary: #000000;
+    --color-primary-light: #333333;
+    --color-primary-dark: #111111;
+    --color-primary-soft: #f5f5f5;
+
+    --color-accent-1: #666666;
+    --color-accent-2: #999999;
+    --color-accent-3: #cccccc;
+    --color-accent-4: #e0e0e0;
+
+    --color-bg: #ffffff;
+    --color-bg-alt: #f9f9f9;
+    --color-surface: #f5f5f5;
+    --color-surface-alt: #eeeeee;
+
+    --color-border: #cccccc;
+    --color-border-light: #e0e0e0;
+    --color-border-strong: #444444;
+    --color-border-primary: #000000;
+    --color-border-accent: #666666;
+    --color-border-dark: #111111;
+
+    --color-text-primary: #000000;
+    --color-text-secondary: #333333;
+    --color-text-muted: #666666;
+    --color-text-light: #999999;
+    --color-text-on-primary: #ffffff;
+
+    --color-success: #333333;
+    --color-success-light: #e0e0e0;
+
+    --color-warning: #666666;
+    --color-warning-light: #f5f5f5;
+
+    --color-danger: #111111;
+    --color-danger-light: #f0f0f0;
+
+    --color-info: #999999;
+    --color-info-light: #f9f9f9;
+
+    --color-border-success: #333333;
+    --color-border-warning: #666666;
+    --color-border-danger: #111111;
+
+    --shadow-soft: rgba(0, 0, 0, 0.05);
+    --shadow-medium: rgba(0, 0, 0, 0.1);
+    --shadow-strong: rgba(0, 0, 0, 0.2);
+
+    --gradient-primary: linear-gradient(45deg, #111111, #000000);
+    --gradient-secondary: linear-gradient(45deg, #666666, #999999);
+
+    --font-primary: "Inter", "Poppins", "Roboto", sans-serif;
+    --font-heading: "Poppins", "Inter", "Montserrat", sans-serif;
+    --font-body: "Inter", "Roboto", sans-serif;
+    --font-mono: "JetBrains Mono", "Fira Code", monospace;
+
+    --font-thin: 100;
+    --font-extralight: 200;
+    --font-light: 300;
+    --font-regular: 400;
+    --font-medium: 500;
+    --font-semibold: 600;
+    --font-bold: 700;
+    --font-extrabold: 800;
+    --font-black: 900;
+
+    --text-xs: 0.75rem;
+    --text-sm: 0.875rem;
+    --text-base: 1rem;
+    --text-lg: 1.125rem;
+    --text-xl: 1.25rem;
+    --text-2xl: 1.5rem;
+    --text-3xl: 1.875rem;
+    --text-4xl: 2.25rem;
+    --text-5xl: 3rem;
+    --text-6xl: 4rem;
+
+    --tracking-tight: -0.02em;
+    --tracking-normal: 0em;
+    --tracking-wide: 0.05em;
+
+    --leading-tight: 1.1;
+    --leading-normal: 1.5;
+    --leading-relaxed: 1.7;
+} */
+
 .swiper-pagination-bullet {
     background: var(--color-text-secondary) !important;
 }
