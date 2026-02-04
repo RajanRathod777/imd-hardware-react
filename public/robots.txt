@@ -10,6 +10,7 @@ Disallow: /checkout
 Disallow: /cart
 Disallow: /reset-password
 Disallow: /update-password
+Crawl-delay: 1
 
 User-agent: GPTBot
 Allow: /
@@ -19,8 +20,5 @@ Allow: /
 
 User-agent: Google-Extended
 Allow: /
-
-User-agent: *
-Crawl-delay: 1
 
 Sitemap: https://imdhardware.com/sitemap.xml
