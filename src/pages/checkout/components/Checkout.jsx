@@ -10,7 +10,7 @@ import {
     Phone,
     Home,
     Mail,
-    RefreshCw,
+    Loader,
     CheckCircle,
     AlertCircle,
 } from "lucide-react";
@@ -22,7 +22,6 @@ const Checkout = () => {
     const navigate = useNavigate();
     const { cart, checkedOrder, signOrder, clearCart, signAmount } = useStore();
     const apiUrl = import.meta.env.VITE_SERVER_API_URL;
-
     const [form, setForm] = useState({
         name: "",
         email: "",
@@ -34,6 +33,7 @@ const Checkout = () => {
         country: "India",
         pincode: "",
         notes: "",
+        payment_method: "ONLINE",
     });
 
     const [error, setError] = useState("");
@@ -109,6 +109,7 @@ const Checkout = () => {
             "state",
             "pincode",
         ];
+
         const missing = required.filter((f) => !form[f]?.trim());
         if (missing.length > 0) {
             setError(`Please complete: ${missing.join(", ")}`);
@@ -131,13 +132,24 @@ const Checkout = () => {
         setError("");
 
         try {
-            const formData = new FormData();
-            Object.keys(form).forEach((key) => formData.append(key, form[key]));
-            formData.append("billing_address", form.shipping_address);
-            formData.append("shipping_method", "standard");
-            formData.append("payment_method", "ONLINE");
-            if (signOrder) formData.append("order", signOrder);
+            const orderPayload = {
+                name: form.name,
+                email: form.email,
+                phone_code: form.phone_code,
+                phone: form.phone,
+                shipping_address: form.shipping_address,
+                billing_address: form.shipping_address,
+                city: form.city,
+                state: form.state,
+                country: form.country,
+                pincode: form.pincode,
+                notes: form.notes || "",
+                shipping_method: "standard",
+                payment_method: "ONLINE",
+                order: signOrder,
+            };
 
+            // ---- CREATE RAZORPAY ORDER ----
             const resRazorpay = await fetch(
                 `${apiUrl}/api/v1/payment/razorpay`,
                 {
@@ -151,14 +163,16 @@ const Checkout = () => {
             );
 
             const dataRazorpay = await resRazorpay.json();
-            if (!dataRazorpay.status)
+            if (!dataRazorpay.status) {
                 throw new Error(
                     dataRazorpay.message || "Payment initiation failed",
                 );
+            }
 
             const razorpayKey = import.meta.env.VITE_RAZORPAY_KEY_ID;
             if (!razorpayKey) throw new Error("Razorpay configuration missing");
 
+            // ---- LOAD SDK ----
             if (!window.Razorpay) {
                 const script = document.createElement("script");
                 script.src = "https://checkout.razorpay.com/v1/checkout.js";
@@ -179,25 +193,32 @@ const Checkout = () => {
                 name: "IMD Hardware",
                 description: "Secure Hardware Purchase",
                 order_id: dataRazorpay.order.id,
+
                 handler: async (response) => {
                     try {
-                        formData.append(
-                            "payment_gateway_data",
-                            JSON.stringify(response),
-                        );
+                        // ---- MERGE PAYMENT DATA ----
+                        const confirmPayload = {
+                            ...orderPayload,
+                            payment_gateway_data: response, // object directly
+                        };
 
                         const resConfirm = await fetch(
                             `${apiUrl}/api/v1/order/confirm`,
                             {
                                 method: "POST",
-                                headers: { Authorization: `Bearer ${token}` },
-                                body: formData,
+                                headers: {
+                                    Authorization: `Bearer ${token}`,
+                                    "Content-Type": "application/json",
+                                },
+                                body: JSON.stringify(confirmPayload),
                             },
                         );
 
                         const confirmData = await resConfirm.json();
+
                         if (confirmData?.status) {
                             clearCart();
+                            setLoading(false);
                             navigate("/order-success", {
                                 state: { orderId: confirmData.order_id },
                             });
@@ -206,35 +227,39 @@ const Checkout = () => {
                                 confirmData?.message ||
                                     "Order confirmation failed",
                             );
+                            setLoading(false);
                         }
                     } catch (err) {
+                        console.error(err);
                         setError(
                             "Payment succeeded but order failed. Contact support with payment ID.",
                         );
+                        setLoading(false);
                     }
                 },
+
                 prefill: {
                     name: form.name,
                     email: form.email,
                     contact: form.phone_code + form.phone,
                 },
-                theme: {
-                    color: getComputedStyle(document.documentElement)
-                        .getPropertyValue("--color-primary")
-                        .trim(),
-                },
+
                 modal: {
                     ondismiss: () => setLoading(false),
                 },
             };
 
             const rzp = new window.Razorpay(options);
+
             rzp.on("payment.failed", (response) => {
                 setError(
-                    `Payment failed: ${response.error.description || "Unknown error"}`,
+                    `Payment failed: ${
+                        response.error.description || "Unknown error"
+                    }`,
                 );
                 setLoading(false);
             });
+
             rzp.open();
         } catch (err) {
             console.error(err);
@@ -1014,7 +1039,7 @@ const Checkout = () => {
                                 >
                                     {loading ? (
                                         <>
-                                            <RefreshCw className="w-6 h-6 animate-spin" />
+                                            <Loader className="w-6 h-6 animate-spin" />
                                             Processing...
                                         </>
                                     ) : (

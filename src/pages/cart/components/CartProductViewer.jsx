@@ -10,7 +10,7 @@ import {
     ShoppingCart,
     Shield,
     Truck,
-    RefreshCw,
+    Loader,
     CheckCircle,
     AlertCircle,
 } from "lucide-react";
@@ -571,7 +571,7 @@ const CartProductViewer = () => {
                                                 }}
                                             >
                                                 {loading ? (
-                                                    <RefreshCw className="w-5 h-5 animate-spin" />
+                                                    <Loader className="w-5 h-5 animate-spin" />
                                                 ) : (
                                                     "Apply"
                                                 )}
@@ -762,7 +762,7 @@ const CartProductViewer = () => {
                                     }}
                                 >
                                     {loading ? (
-                                        <RefreshCw className="w-7 h-7 animate-spin mx-auto" />
+                                        <Loader className="w-7 h-7 animate-spin mx-auto" />
                                     ) : (
                                         `Proceed to Checkout →`
                                     )}
