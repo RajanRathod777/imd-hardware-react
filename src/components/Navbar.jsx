@@ -160,7 +160,7 @@ const Navbar = () => {
                     </div>
 
                     {/* Search */}
-                    <div className="relative max-[1035px]:col-span-2 max-[1035px]:order-3">
+                    <div className="relative max-[1035px]:col-span-2 max-[1035px]:order-3 max-[1035px]:mt-1">
                         <Search
                             className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4"
                             style={{ color: "var(--color-text-muted)" }}

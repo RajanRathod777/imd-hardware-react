@@ -1,8 +1,5 @@
-import React from "react";
-import { useParams } from "react-router";
-import ProductViewer from "./[productId]/components/ProductViewer";
+import SingleProductManager from "./[productId]/SingleProductManager";
 
 export default function ProductPage() {
-  const { productId } = useParams();
-  return <ProductViewer productId={productId} />;
+    return <SingleProductManager />;
 }

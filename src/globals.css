@@ -102,7 +102,6 @@
     --leading-relaxed: 1.7;
 }
 
-
 /* =================================== */
 /*          Read theme */
 /* ===================================== */
@@ -192,8 +191,6 @@
     --leading-normal: 1.5;
     --leading-relaxed: 1.7;
 } */
-
-
 
 /* ---------------------------------------- */
 
@@ -328,7 +325,7 @@ body {
 
 @media screen and (max-width: 1035px) {
     body {
-        padding-top: 83px;
+        padding-top: 86px;
         padding-bottom: 70px;
     }
 }

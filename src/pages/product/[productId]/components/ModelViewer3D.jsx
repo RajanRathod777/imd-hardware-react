@@ -1,160 +1,39 @@
 import { Box, RotateCcw, Smartphone } from "lucide-react";
 
 const ModelViewer3D = ({ product, apiUrl }) => {
-  if (!product?.models_3d?.[0]) return null;
+    if (!product?.models_3d?.[0]) return null;
 
-  return (
-    <div className="mt-8 space-y-4">
-      {/* Header */}
-      <div className="flex items-center gap-3">
-        <div
-          className="w-8 h-8 rounded-lg flex items-center justify-center bg-[var(--color-bg-alt)] border"
-          style={{ borderColor: "var(--color-border-light)" }}
-        >
-          <Box size={16} style={{ color: "var(--color-primary)" }} />
-        </div>
-        <h3
-          className=""
-          style={{
-            color: "var(--color-text-primary)",
-            fontFamily: "var(--font-heading)",
-            fontSize: "var(--text-xl)",
-            fontWeight: "var(--font-bold)",
-          }}
-        >
-          3D Model Viewer
-        </h3>
-      </div>
-
-      {/* Model Viewer Container */}
-      <div
-        className="group relative rounded-lg border transition-all duration-300 overflow-hidden"
-        style={{
-          backgroundColor: "var(--color-surface)",
-          borderColor: "var(--color-border-light)",
-        }}
-      >
-        {/* Controls Info */}
-        <div
-          className="absolute top-4 left-4 z-10 px-3 py-1.5 rounded-lg border border-[var(--color-border-dark)]"
-          style={{
-            backgroundColor: "rgba(0,0,0,0.7)",
-            color: "var(--color-surface)",
-          }}
-        >
-          <div
-            className="flex items-center gap-2"
-            style={{ fontSize: "var(--text-sm)" }}
-          >
-            <RotateCcw
-              size={16}
-              style={{ color: "var(--color-primary-light)" }}
-            />
-            <span>Drag to rotate • Scroll to zoom</span>
-          </div>
-        </div>
-
-        {/* AR Button Info */}
-        <div
-          className="absolute top-4 right-4 z-10 px-3 py-1.5 rounded-lg border border-[var(--color-border-dark)]"
-          style={{
-            backgroundColor: "rgba(0,0,0,0.7)",
-            color: "var(--color-surface)",
-          }}
-        >
-          <div
-            className="flex items-center gap-2"
-            style={{ fontSize: "var(--text-sm)" }}
-          >
-            <Smartphone
-              size={16}
-              style={{ color: "var(--color-success-light)" }}
-            />
-            <span>View in AR</span>
-          </div>
-        </div>
-
-        {/* Model Viewer */}
-        <div
-          className="w-full aspect-video"
-          style={{
-            backgroundColor: "var(--color-bg-alt)",
-          }}
-        >
-          <model-viewer
-            src={`${apiUrl}/image/product/${product.models_3d[0]}`}
-            alt={`3D Model of ${product.title}`}
-            auto-rotate
-            camera-controls
-            ar
-            ar-modes="webxr scene-viewer quick-look"
-            shadow-intensity="1"
-            environment-image="neutral"
-            exposure="1"
-            camera-orbit="0deg 75deg 105%"
-            className="w-full h-full"
-            style={{
-              backgroundColor: "var(--color-bg)",
-            }}
-          >
-            {/* Loading Progress */}
-            <div
-              slot="progress-bar"
-              className="absolute top-0 left-0 w-full h-1"
-              style={{ backgroundColor: "var(--color-border)" }}
-            >
-              <div
-                className="h-full transition-all duration-300"
-                style={{ background: "var(--gradient-primary)" }}
-              ></div>
+    return (
+        <div className="h-full space-y-4">
+            {/* Model Viewer Container */}
+            <div className="group relative rounded-lg overflow-hidden">
+                {/* Model Viewer */}
+                <div
+                    className="w-full aspect-square"
+                    style={{
+                        backgroundColor: "var(--color-bg-alt)",
+                    }}
+                >
+                    <model-viewer
+                        src={`${apiUrl}/image/product/${product.models_3d[0]}`}
+                        alt={`3D Model of ${product.title}`}
+                        auto-rotate
+                        camera-controls
+                        ar
+                        ar-modes="webxr scene-viewer quick-look"
+                        shadow-intensity="1"
+                        environment-image="neutral"
+                        exposure="1"
+                        camera-orbit="0deg 75deg 105%"
+                        className="w-full h-full aspect-square"
+                        style={{
+                            backgroundColor: "var(--color-bg)",
+                        }}
+                    ></model-viewer>
+                </div>
             </div>
-          </model-viewer>
         </div>
-
-        {/* Features Footer */}
-        <div
-          className="absolute bottom-4 left-1/2 transform -translate-x-1/2 border rounded-full px-4 py-2"
-          style={{
-            backgroundColor: "rgba(255, 255, 255, 0.95)",
-            borderColor: "var(--color-border-light)",
-          }}
-        >
-          <div
-            className="flex items-center gap-4"
-            style={{
-              color: "var(--color-text-secondary)",
-              fontSize: "var(--text-xs)",
-              fontWeight: "var(--font-medium)",
-            }}
-          >
-            <div className="flex items-center gap-1">
-              <RotateCcw size={12} />
-              <span>360° View</span>
-            </div>
-            <div
-              className="w-px h-4"
-              style={{ backgroundColor: "var(--color-border-strong)" }}
-            ></div>
-            <div className="flex  items-center gap-1">
-              <Smartphone size={12} />
-              <span>AR Ready</span>
-            </div>
-            <div
-              className="w-px h-4"
-              style={{ backgroundColor: "var(--color-border-strong)" }}
-            ></div>
-            <div className="flex items-center gap-1">
-              <Box size={12} />
-              <span>Interactive</span>
-            </div>
-          </div>
-        </div>
-
-        {/* Hover Effect Border */}
-        <div className="absolute inset-0 border-2 border-transparent rounded-2xl pointer-events-none transition-all duration-300 group-hover:border-[var(--color-primary-soft)]"></div>
-      </div>
-    </div>
-  );
+    );
 };
 
 export default ModelViewer3D;
