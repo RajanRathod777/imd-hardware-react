@@ -22,6 +22,7 @@ const Checkout = () => {
     const navigate = useNavigate();
     const { cart, checkedOrder, signOrder, clearCart, signAmount } = useStore();
     const apiUrl = import.meta.env.VITE_SERVER_API_URL;
+
     const [form, setForm] = useState({
         name: "",
         email: "",
@@ -37,13 +38,13 @@ const Checkout = () => {
     });
 
     const [error, setError] = useState("");
+    const [fieldErrors, setFieldErrors] = useState({});
     const [totals, setTotals] = useState({
         subtotal: 0,
         gst: 0,
         discount: 0,
         finalAmount: 0,
     });
-
     const [stateOptions, setStateOptions] = useState([]);
     const [cityOptions, setCityOptions] = useState([]);
     const [loading, setLoading] = useState(false);
@@ -88,18 +89,81 @@ const Checkout = () => {
         }
     }, [checkedOrder]);
 
+    const validateField = (name, value) => {
+        switch (name) {
+            case "email":
+                const emailRegex = /^\S+@\S+\.\S+$/;
+                return emailRegex.test(value) ? "" : "Invalid email address";
+
+            case "phone":
+                const phoneRegex = /^[6-9]\d{9}$/;
+                return phoneRegex.test(value)
+                    ? ""
+                    : "Invalid Indian phone number (10 digits starting with 6-9)";
+
+            case "pincode":
+                // Pincode validation: exactly 6 digits, numbers only
+                const pincodeRegex = /^\d{6}$/;
+                if (!value) return "Pincode is required";
+                if (!/^\d*$/.test(value))
+                    return "Pincode must contain only numbers";
+                if (value.length !== 6)
+                    return "Pincode must be exactly 6 digits";
+                return pincodeRegex.test(value) ? "" : "Invalid pincode format";
+
+            case "name":
+                return value.trim() ? "" : "Name is required";
+
+            case "shipping_address":
+                return value.trim() ? "" : "Address is required";
+
+            case "city":
+                return value.trim() ? "" : "City is required";
+
+            case "state":
+                return value.trim() ? "" : "State is required";
+
+            default:
+                return "";
+        }
+    };
+
     const handleChange = (e) => {
         const { name, value } = e.target;
 
+        // Pincode validation - only digits and max 6
         if (name === "pincode") {
-            if (value && (!/^\d*$/.test(value) || value.length > 6)) return;
+            // Allow only digits and limit to 6 characters
+            if (value && !/^\d*$/.test(value)) return;
+            if (value.length > 6) return;
+        }
+
+        // Phone validation - only digits and max 10
+        if (name === "phone") {
+            if (value && !/^\d*$/.test(value)) return;
+            if (value.length > 10) return;
         }
 
         setForm((prev) => ({ ...prev, [name]: value }));
+
+        // Clear field error when user starts typing
+        if (fieldErrors[name]) {
+            setFieldErrors((prev) => ({ ...prev, [name]: "" }));
+        }
+
+        // Clear general error
         setError("");
     };
 
-    const handlePlaceOrder = async () => {
+    const handleBlur = (e) => {
+        const { name, value } = e.target;
+        if (name !== "notes" && name !== "phone_code") {
+            const error = validateField(name, value);
+            setFieldErrors((prev) => ({ ...prev, [name]: error }));
+        }
+    };
+
+    const validateForm = () => {
         const required = [
             "name",
             "email",
@@ -110,21 +174,30 @@ const Checkout = () => {
             "pincode",
         ];
 
-        const missing = required.filter((f) => !form[f]?.trim());
-        if (missing.length > 0) {
-            setError(`Please complete: ${missing.join(", ")}`);
-            return;
-        }
+        const newFieldErrors = {};
+        let isValid = true;
 
-        const emailRegex = /^\S+@\S+\.\S+$/;
-        if (!emailRegex.test(form.email)) {
-            setError("Invalid email address");
-            return;
-        }
+        // Check required fields
+        required.forEach((field) => {
+            if (!form[field]?.trim()) {
+                newFieldErrors[field] = "This field is required";
+                isValid = false;
+            } else {
+                const error = validateField(field, form[field]);
+                if (error) {
+                    newFieldErrors[field] = error;
+                    isValid = false;
+                }
+            }
+        });
 
-        const phoneRegex = /^[6-9]\d{9}$/;
-        if (!phoneRegex.test(form.phone)) {
-            setError("Invalid Indian phone number");
+        setFieldErrors(newFieldErrors);
+        return isValid;
+    };
+
+    const handlePlaceOrder = async () => {
+        if (!validateForm()) {
+            setError("Please fix the errors in the form");
             return;
         }
 
@@ -149,7 +222,7 @@ const Checkout = () => {
                 order: signOrder,
             };
 
-            // ---- CREATE RAZORPAY ORDER ----
+            // CREATE RAZORPAY ORDER
             const resRazorpay = await fetch(
                 `${apiUrl}/api/v1/payment/razorpay`,
                 {
@@ -162,7 +235,12 @@ const Checkout = () => {
                 },
             );
 
+            if (!resRazorpay.ok) {
+                throw new Error(`Payment API error: ${resRazorpay.status}`);
+            }
+
             const dataRazorpay = await resRazorpay.json();
+
             if (!dataRazorpay.status) {
                 throw new Error(
                     dataRazorpay.message || "Payment initiation failed",
@@ -172,13 +250,12 @@ const Checkout = () => {
             const razorpayKey = import.meta.env.VITE_RAZORPAY_KEY_ID;
             if (!razorpayKey) throw new Error("Razorpay configuration missing");
 
-            // ---- LOAD SDK ----
+            // LOAD SDK if not already loaded
             if (!window.Razorpay) {
                 const script = document.createElement("script");
                 script.src = "https://checkout.razorpay.com/v1/checkout.js";
                 script.async = true;
                 document.body.appendChild(script);
-
                 await new Promise((resolve, reject) => {
                     script.onload = resolve;
                     script.onerror = () =>
@@ -193,13 +270,12 @@ const Checkout = () => {
                 name: "IMD Hardware",
                 description: "Secure Hardware Purchase",
                 order_id: dataRazorpay.order.id,
-
                 handler: async (response) => {
                     try {
-                        // ---- MERGE PAYMENT DATA ----
+                        // MERGE PAYMENT DATA
                         const confirmPayload = {
                             ...orderPayload,
-                            payment_gateway_data: response, // object directly
+                            payment_gateway_data: response,
                         };
 
                         const resConfirm = await fetch(
@@ -214,6 +290,12 @@ const Checkout = () => {
                             },
                         );
 
+                        if (!resConfirm.ok) {
+                            throw new Error(
+                                `Order confirmation failed: ${resConfirm.status}`,
+                            );
+                        }
+
                         const confirmData = await resConfirm.json();
 
                         if (confirmData?.status) {
@@ -223,35 +305,36 @@ const Checkout = () => {
                                 state: { orderId: confirmData.order_id },
                             });
                         } else {
-                            setError(
+                            throw new Error(
                                 confirmData?.message ||
                                     "Order confirmation failed",
                             );
-                            setLoading(false);
                         }
                     } catch (err) {
-                        console.error(err);
+                        console.error("Order confirmation error:", err);
                         setError(
-                            "Payment succeeded but order failed. Contact support with payment ID.",
+                            "Payment succeeded but order failed. Please contact support with payment ID.",
                         );
                         setLoading(false);
                     }
                 },
-
                 prefill: {
                     name: form.name,
                     email: form.email,
                     contact: form.phone_code + form.phone,
                 },
-
                 modal: {
-                    ondismiss: () => setLoading(false),
+                    ondismiss: () => {
+                        setLoading(false);
+                        setError("Payment cancelled");
+                    },
                 },
             };
 
             const rzp = new window.Razorpay(options);
 
             rzp.on("payment.failed", (response) => {
+                console.error("Payment failed:", response.error);
                 setError(
                     `Payment failed: ${
                         response.error.description || "Unknown error"
@@ -262,7 +345,7 @@ const Checkout = () => {
 
             rzp.open();
         } catch (err) {
-            console.error(err);
+            console.error("Checkout error:", err);
             setError(err.message || "Something went wrong. Please try again.");
             setLoading(false);
         }
@@ -296,7 +379,7 @@ const Checkout = () => {
                     </p>
                     <button
                         onClick={() => navigate("/cart")}
-                        className="mt-6 px-8 py-3 rounded-xl transition-all hover:scale-105"
+                        className="mt-6 px-8 py-3 rounded-lg  hover:scale-101"
                         style={{
                             backgroundColor: "var(--color-primary)",
                             color: "var(--color-text-on-primary)",
@@ -310,9 +393,22 @@ const Checkout = () => {
         );
     }
 
+    const getInputBorderStyle = (fieldName) => {
+        if (fieldErrors[fieldName]) {
+            return {
+                borderColor: "var(--color-danger)",
+                borderWidth: "2px",
+            };
+        }
+        return {
+            borderColor: "var(--color-border-light)",
+            borderWidth: "1px",
+        };
+    };
+
     return (
         <div
-            className="min-h-screen p-2 "
+            className="min-h-screen p-2"
             style={{ backgroundColor: "var(--color-bg)" }}
         >
             <div className="max-w-7xl mx-auto">
@@ -321,7 +417,7 @@ const Checkout = () => {
                         className="max-w-4xl mx-auto mb-8 p-5 rounded-lg flex items-start gap-4"
                         style={{
                             backgroundColor: "var(--color-danger-light)",
-                            border: "1px solid var(--color-danger)",
+                            border: "2px solid var(--color-danger)",
                         }}
                     >
                         <AlertCircle
@@ -412,11 +508,13 @@ const Checkout = () => {
                                                     name="name"
                                                     value={form.name}
                                                     onChange={handleChange}
+                                                    onBlur={handleBlur}
                                                     required
-                                                    className="w-full pl-12 pr-4 py-3 rounded-xl border focus:outline-none focus:ring-2 transition-all"
+                                                    className="w-full pl-12 pr-4 py-3 rounded-lg border focus:outline-none focus:ring-2 "
                                                     style={{
-                                                        borderColor:
-                                                            "var(--color-border-light)",
+                                                        ...getInputBorderStyle(
+                                                            "name",
+                                                        ),
                                                         "--tw-ring-color":
                                                             "var(--color-primary)",
                                                         backgroundColor:
@@ -425,6 +523,16 @@ const Checkout = () => {
                                                     placeholder="John Doe"
                                                 />
                                             </div>
+                                            {fieldErrors.name && (
+                                                <p
+                                                    className="mt-1 text-sm"
+                                                    style={{
+                                                        color: "var(--color-danger)",
+                                                    }}
+                                                >
+                                                    {fieldErrors.name}
+                                                </p>
+                                            )}
                                         </div>
 
                                         <div>
@@ -449,11 +557,13 @@ const Checkout = () => {
                                                     name="email"
                                                     value={form.email}
                                                     onChange={handleChange}
+                                                    onBlur={handleBlur}
                                                     required
-                                                    className="w-full pl-12 pr-4 py-3 rounded-xl border focus:outline-none focus:ring-2 transition-all"
+                                                    className="w-full pl-12 pr-4 py-3 rounded-lg border focus:outline-none focus:ring-2 "
                                                     style={{
-                                                        borderColor:
-                                                            "var(--color-border-light)",
+                                                        ...getInputBorderStyle(
+                                                            "email",
+                                                        ),
                                                         "--tw-ring-color":
                                                             "var(--color-primary)",
                                                         backgroundColor:
@@ -462,6 +572,16 @@ const Checkout = () => {
                                                     placeholder="you@example.com"
                                                 />
                                             </div>
+                                            {fieldErrors.email && (
+                                                <p
+                                                    className="mt-1 text-sm"
+                                                    style={{
+                                                        color: "var(--color-danger)",
+                                                    }}
+                                                >
+                                                    {fieldErrors.email}
+                                                </p>
+                                            )}
                                         </div>
                                     </div>
 
@@ -488,33 +608,48 @@ const Checkout = () => {
                                                     name="phone_code"
                                                     value={form.phone_code}
                                                     onChange={handleChange}
-                                                    className="w-full pl-12 pr-3 py-3 rounded-xl border"
+                                                    className="w-full pl-12 pr-3 py-3 rounded-lg border"
                                                     style={{
                                                         borderColor:
                                                             "var(--color-border-light)",
                                                         backgroundColor:
                                                             "var(--color-surface)",
                                                     }}
+                                                    readOnly
                                                 />
                                             </div>
-                                            <input
-                                                type="tel"
-                                                name="phone"
-                                                value={form.phone}
-                                                onChange={handleChange}
-                                                required
-                                                className="flex-1 px-4 py-3 rounded-xl border focus:outline-none focus:ring-2 transition-all"
-                                                style={{
-                                                    borderColor:
-                                                        "var(--color-border-light)",
-                                                    "--tw-ring-color":
-                                                        "var(--color-primary)",
-                                                    backgroundColor:
-                                                        "var(--color-surface)",
-                                                }}
-                                                placeholder="9876543210"
-                                            />
+                                            <div className="flex-1">
+                                                <input
+                                                    type="tel"
+                                                    name="phone"
+                                                    value={form.phone}
+                                                    onChange={handleChange}
+                                                    onBlur={handleBlur}
+                                                    required
+                                                    className="w-full px-4 py-3 rounded-lg border focus:outline-none focus:ring-2 "
+                                                    style={{
+                                                        ...getInputBorderStyle(
+                                                            "phone",
+                                                        ),
+                                                        "--tw-ring-color":
+                                                            "var(--color-primary)",
+                                                        backgroundColor:
+                                                            "var(--color-surface)",
+                                                    }}
+                                                    placeholder="9876543210"
+                                                />
+                                            </div>
                                         </div>
+                                        {fieldErrors.phone && (
+                                            <p
+                                                className="mt-1 text-sm"
+                                                style={{
+                                                    color: "var(--color-danger)",
+                                                }}
+                                            >
+                                                {fieldErrors.phone}
+                                            </p>
+                                        )}
                                     </div>
                                 </div>
 
@@ -565,12 +700,14 @@ const Checkout = () => {
                                                 name="shipping_address"
                                                 value={form.shipping_address}
                                                 onChange={handleChange}
+                                                onBlur={handleBlur}
                                                 required
                                                 rows="3"
-                                                className="w-full pl-12 pr-4 py-3 rounded-xl border focus:outline-none focus:ring-2 transition-all resize-none"
+                                                className="w-full pl-12 pr-4 py-3 rounded-lg border focus:outline-none focus:ring-2  resize-none"
                                                 style={{
-                                                    borderColor:
-                                                        "var(--color-border-light)",
+                                                    ...getInputBorderStyle(
+                                                        "shipping_address",
+                                                    ),
                                                     "--tw-ring-color":
                                                         "var(--color-primary)",
                                                     backgroundColor:
@@ -579,6 +716,16 @@ const Checkout = () => {
                                                 placeholder="House no., street, landmark..."
                                             />
                                         </div>
+                                        {fieldErrors.shipping_address && (
+                                            <p
+                                                className="mt-1 text-sm"
+                                                style={{
+                                                    color: "var(--color-danger)",
+                                                }}
+                                            >
+                                                {fieldErrors.shipping_address}
+                                            </p>
+                                        )}
                                     </div>
 
                                     <div className="grid sm:grid-cols-2 gap-5">
@@ -596,11 +743,13 @@ const Checkout = () => {
                                                 name="state"
                                                 value={form.state}
                                                 onChange={handleChange}
+                                                onBlur={handleBlur}
                                                 required
-                                                className="w-full px-4 py-3 rounded-xl border focus:outline-none focus:ring-2 transition-all"
+                                                className="w-full px-4 py-3 rounded-lg border focus:outline-none focus:ring-2 "
                                                 style={{
-                                                    borderColor:
-                                                        "var(--color-border-light)",
+                                                    ...getInputBorderStyle(
+                                                        "state",
+                                                    ),
                                                     "--tw-ring-color":
                                                         "var(--color-primary)",
                                                     backgroundColor:
@@ -619,6 +768,16 @@ const Checkout = () => {
                                                     </option>
                                                 ))}
                                             </select>
+                                            {fieldErrors.state && (
+                                                <p
+                                                    className="mt-1 text-sm"
+                                                    style={{
+                                                        color: "var(--color-danger)",
+                                                    }}
+                                                >
+                                                    {fieldErrors.state}
+                                                </p>
+                                            )}
                                         </div>
 
                                         <div>
@@ -635,16 +794,21 @@ const Checkout = () => {
                                                 name="city"
                                                 value={form.city}
                                                 onChange={handleChange}
+                                                onBlur={handleBlur}
                                                 required
                                                 disabled={!form.state}
-                                                className="w-full px-4 py-3 rounded-xl border focus:outline-none focus:ring-2 transition-all"
+                                                className="w-full px-4 py-3 rounded-lg border focus:outline-none focus:ring-2"
                                                 style={{
-                                                    borderColor:
-                                                        "var(--color-border-light)",
+                                                    ...getInputBorderStyle(
+                                                        "city",
+                                                    ),
                                                     "--tw-ring-color":
                                                         "var(--color-primary)",
                                                     backgroundColor:
                                                         "var(--color-surface)",
+                                                    opacity: !form.state
+                                                        ? 0.6
+                                                        : 1,
                                                 }}
                                             >
                                                 <option value="">
@@ -661,6 +825,16 @@ const Checkout = () => {
                                                     </option>
                                                 ))}
                                             </select>
+                                            {fieldErrors.city && (
+                                                <p
+                                                    className="mt-1 text-sm"
+                                                    style={{
+                                                        color: "var(--color-danger)",
+                                                    }}
+                                                >
+                                                    {fieldErrors.city}
+                                                </p>
+                                            )}
                                         </div>
                                     </div>
 
@@ -672,26 +846,60 @@ const Checkout = () => {
                                                 fontSize: "var(--text-sm)",
                                             }}
                                         >
-                                            Pincode *
+                                            Pincode *{" "}
+                                            <span
+                                                style={{
+                                                    color: "var(--color-text-muted)",
+                                                    fontSize: "var(--text-xs)",
+                                                }}
+                                            >
+                                                (6 digits)
+                                            </span>
                                         </label>
                                         <input
                                             type="text"
                                             name="pincode"
                                             value={form.pincode}
                                             onChange={handleChange}
+                                            onBlur={handleBlur}
                                             required
                                             maxLength="6"
-                                            className="w-full px-4 py-3 rounded-xl border focus:outline-none focus:ring-2 transition-all"
+                                            className="w-full px-4 py-3 rounded-lg border focus:outline-none focus:ring-2 "
                                             style={{
-                                                borderColor:
-                                                    "var(--color-border-light)",
+                                                ...getInputBorderStyle(
+                                                    "pincode",
+                                                ),
                                                 "--tw-ring-color":
                                                     "var(--color-primary)",
                                                 backgroundColor:
                                                     "var(--color-surface)",
                                             }}
                                             placeholder="380001"
+                                            inputMode="numeric"
+                                            pattern="\d*"
                                         />
+                                        {fieldErrors.pincode && (
+                                            <p
+                                                className="mt-1 text-sm"
+                                                style={{
+                                                    color: "var(--color-danger)",
+                                                }}
+                                            >
+                                                {fieldErrors.pincode}
+                                            </p>
+                                        )}
+                                        {form.pincode &&
+                                            form.pincode.length === 6 &&
+                                            !fieldErrors.pincode && (
+                                                <p
+                                                    className="mt-1 text-sm"
+                                                    style={{
+                                                        color: "var(--color-success)",
+                                                    }}
+                                                >
+                                                    ✓ Valid pincode
+                                                </p>
+                                            )}
                                     </div>
                                 </div>
 
@@ -717,7 +925,7 @@ const Checkout = () => {
                                         value={form.notes}
                                         onChange={handleChange}
                                         rows="3"
-                                        className="w-full px-4 py-3 rounded-xl border focus:outline-none focus:ring-2 transition-all resize-none"
+                                        className="w-full px-4 py-3 rounded-lg border focus:outline-none focus:ring-2  resize-none"
                                         style={{
                                             borderColor:
                                                 "var(--color-border-light)",
@@ -733,7 +941,7 @@ const Checkout = () => {
                         </div>
                     </div>
 
-                    {/* Order Summary - Unified Style for Mobile & Desktop */}
+                    {/* Order Summary */}
                     <div className="lg:col-span-1">
                         <div
                             className="sticky top-6 rounded-lg overflow-hidden"
@@ -760,7 +968,7 @@ const Checkout = () => {
                             </div>
 
                             <div className="p-3 space-y-4">
-                                {/* Unified Item List - Same Style on All Screens */}
+                                {/* Item List */}
                                 <div className="space-y-3">
                                     {checkedOrder.items.map((item) => (
                                         <div
@@ -774,7 +982,11 @@ const Checkout = () => {
                                             <img
                                                 src={`${apiUrl}/image/product/${item.images[0]}`}
                                                 alt={item.name}
-                                                className="w-20 h-20 object-cover rounded-xl flex-shrink-0 shadow-md"
+                                                className="w-20 h-20 object-cover rounded-lg flex-shrink-0 shadow-md"
+                                                onError={(e) => {
+                                                    e.target.src =
+                                                        "/placeholder-image.jpg";
+                                                }}
                                             />
                                             <div className="flex-1">
                                                 <h4
@@ -1045,7 +1257,7 @@ const Checkout = () => {
                                     ) : (
                                         <>
                                             <CheckCircle className="w-6 h-6" />
-                                            Place Order → ₹
+                                            Place Order · ₹
                                             {totals.finalAmount.toFixed(2)}
                                         </>
                                     )}
