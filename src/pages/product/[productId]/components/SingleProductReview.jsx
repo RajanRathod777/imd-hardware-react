@@ -1,326 +1,276 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { useParams } from "react-router";
 import { Swiper, SwiperSlide } from "swiper/react";
-import { Pagination, Navigation } from "swiper/modules";
+import { Pagination } from "swiper/modules";
 import { Star } from "lucide-react";
 import "swiper/css";
 import "swiper/css/pagination";
-import "swiper/css/navigation";
 
 const SingleProductReview = () => {
-    const params = useParams();
-    const productId = params?.productId;
+    const { productId } = useParams();
     const apiUrl = import.meta.env.VITE_SERVER_API_URL;
 
     const [reviews, setReviews] = useState([]);
+    const [error, setError] = useState("");
+
     const [pagination, setPagination] = useState(null);
-    const [loading, setLoading] = useState(false);
     const [currentPage, setCurrentPage] = useState(1);
+    const limit = 3;
 
-    // Fetch reviews on mount and when page changes
-    useEffect(() => {
+    const isFetching = useRef(false);
+    const swiperRef = useRef(null);
+
+    // ---------------- FETCH REVIEWS ----------------
+    const fetchProductReviews = async (pageNumber = 1) => {
         if (!productId) return;
+        if (isFetching.current) {
+            console.log("Already fetching, skipping...");
+            return;
+        }
 
-        const fetchProductReviews = async (page = 1) => {
-            try {
-                setLoading(true);
-                const res = await fetch(
-                    `${apiUrl}/api/v1/product-review/?page=${page}&limit=3&product_id=${productId}`,
+        try {
+            console.log("FETCH PAGE:", pageNumber);
+            isFetching.current = true;
+            setError("");
+
+            const res = await fetch(
+                `${apiUrl}/api/v1/product-review/?page=${pageNumber}&limit=${limit}&product_id=${productId}`,
+            );
+
+            if (!res.ok) throw new Error("Failed to fetch reviews");
+
+            const data = await res.json();
+
+            const responseData = data.data || data;
+            const newReviews = responseData.reviews || [];
+            const newPagination = responseData.pagination || {};
+
+            if (data.status && newReviews.length) {
+                setReviews((prev) =>
+                    pageNumber === 1 ? newReviews : [...prev, ...newReviews],
                 );
-
-                if (!res.ok) throw new Error("Failed to fetch reviews");
-                const data = await res.json();
-                setReviews(data.reviews || []);
-                setPagination(data.pagination || null);
-            } catch (err) {
-                console.error("Error fetching product reviews:", err);
-            } finally {
-                setLoading(false);
+                setPagination(newPagination);
+                setCurrentPage(pageNumber);
+            } else if (pageNumber === 1) {
+                setReviews([]);
+                setError(data.message || "No reviews found");
             }
-        };
-
-        fetchProductReviews(currentPage);
-    }, [productId, apiUrl, currentPage]);
-
-    const handlePageChange = (page) => {
-        if (page >= 1 && page <= pagination?.totalPages) {
-            setCurrentPage(page);
+        } catch (err) {
+            console.error("Error fetching reviews:", err);
+            setError("Failed to fetch reviews. Please try again later.");
+        } finally {
+            isFetching.current = false;
         }
     };
 
-    const renderStars = (rating) => {
-        return Array.from({ length: 5 }, (_, index) => (
+    // ---------------- TRIGGER NEXT PAGE ON SLIDE CHANGE ----------------
+    const handleSlideChange = (swiper) => {
+        const index = swiper.activeIndex;
+        const slidesPerView = swiper.params.slidesPerView || 1;
+        const totalSlides = reviews.length;
+        const isNearEnd = index >= totalSlides - slidesPerView - 1;
+
+        if (isNearEnd && pagination?.hasNextPage && !isFetching.current) {
+            console.log("Fetching next page via swipe...");
+            fetchProductReviews(currentPage + 1);
+        }
+    };
+
+    // ---------------- INITIAL LOAD ----------------
+    useEffect(() => {
+        if (productId) {
+            setReviews([]);
+            setCurrentPage(1);
+            fetchProductReviews(1);
+        }
+    }, [productId]);
+
+    // ---------------- STAR RENDER ----------------
+    const renderStars = (rating) =>
+        Array.from({ length: 5 }, (_, index) => (
             <Star
                 key={index}
                 size={16}
-                style={
-                    index < rating
-                        ? {
-                              fill: "var(--color-secondary)",
-                              color: "var(--color-secondary)",
-                          }
-                        : { color: "var(--color-border-strong)" }
-                }
+                className={index < rating ? "fill-current" : ""}
+                style={{
+                    color:
+                        index < rating
+                            ? "var(--color-secondary)"
+                            : "var(--color-border)",
+                    strokeWidth: index < rating ? 0 : 2,
+                }}
             />
         ));
-    };
 
-    // Loading State
-    if (loading) {
+    // ---------------- ERROR ----------------
+    if (error && reviews.length === 0) {
         return (
-            <div className="flex items-center justify-center p-8">
-                <div
-                    className="animate-spin rounded-full h-8 w-8 border-2"
-                    style={{
-                        borderColor: "var(--color-border)",
-                        borderTopColor: "var(--color-primary)",
-                    }}
-                ></div>
+            <div
+                className="text-center py-10 px-4"
+                style={{
+                    color: "var(--color-danger)",
+                    fontSize: "var(--text-lg)",
+                }}
+            >
+                {error}
             </div>
         );
     }
 
     return (
-        <div className="mt-6">
-            <div className="flex items-center justify-between mb-8">
+        <div className="p-2 relative slider-out-pagination mt-6">
+            {/* HEADER */}
+            <div className="flex items-center justify-between mb-6">
                 <div>
                     <h2
-                        className="mb-2"
+                        className="text-3xl font-bold"
                         style={{
-                            fontSize: "var(--text-3xl)",
                             color: "var(--color-text-primary)",
                             fontFamily: "var(--font-heading)",
+                            fontSize: "var(--text-2xl)",
                             fontWeight: "var(--font-bold)",
                         }}
                     >
                         Customer Reviews
                     </h2>
-                    {pagination && (
+                    {pagination?.totalReviews > 0 && (
                         <p
-                            className="flex items-center gap-2"
+                            className="text-sm mt-1"
                             style={{ color: "var(--color-text-secondary)" }}
                         >
-                            <span>Total reviews</span>
-                            <span
-                                style={{
-                                    color: "var(--color-text-primary)",
-                                    fontWeight: "var(--font-semibold)",
-                                }}
-                            >
+                            Total reviews:{" "}
+                            <span className="font-semibold">
                                 {pagination.totalReviews}
                             </span>
                         </p>
                     )}
                 </div>
+
+                {pagination?.totalPages > 1 && (
+                    <div
+                        className="px-3 py-1 rounded-lg text-sm"
+                        style={{
+                            backgroundColor: "var(--color-bg-alt)",
+                            color: "var(--color-text-secondary)",
+                            border: "1px solid var(--color-border-light)",
+                        }}
+                    >
+                        Page {currentPage} of {pagination.totalPages}
+                    </div>
+                )}
             </div>
 
-            {/* Empty State */}
-            {!reviews || reviews.length === 0 ? (
+            {/* EMPTY STATE */}
+            {reviews.length === 0 ? (
                 <div
-                    className="text-center py-16 rounded-lg border"
+                    className="text-center py-16 rounded-lg"
                     style={{
+                        border: "1px solid var(--color-border-light)",
                         backgroundColor: "var(--color-surface)",
-                        borderColor: "var(--color-border-light)",
                     }}
                 >
                     <Star
                         size={48}
-                        className="mx-auto mb-4"
-                        style={{ color: "var(--color-border-strong)" }}
+                        style={{
+                            color: "var(--color-border-strong)",
+                            margin: "0 auto 1rem",
+                        }}
                     />
                     <p
-                        className="mb-2"
-                        style={{
-                            fontSize: "var(--text-xl)",
-                            color: "var(--color-text-secondary)",
-                            fontWeight: "var(--font-semibold)",
-                        }}
+                        className="text-xl font-semibold"
+                        style={{ color: "var(--color-text-primary)" }}
                     >
                         No reviews yet
                     </p>
                     <p
-                        className="max-w-md mx-auto"
-                        style={{ color: "var(--color-text-muted)" }}
+                        className="text-sm mt-2"
+                        style={{ color: "var(--color-text-secondary)" }}
                     >
-                        Be the first to share your experience with this product
-                        and help other customers make informed decisions.
+                        Be the first to review this product
                     </p>
                 </div>
             ) : (
                 <div className="relative">
-                    {/* Reviews Carousel */}
                     <Swiper
-                        modules={[Pagination, Navigation]}
+                        onSwiper={(swiper) => {
+                            swiperRef.current = swiper;
+                        }}
+                        modules={[Pagination]}
                         spaceBetween={24}
                         slidesPerView={3}
-                        pagination={{ clickable: true }}
-                        navigation={true}
-                        breakpoints={{
-                            640: { slidesPerView: 1 },
-                            768: { slidesPerView: 2 },
-                            1024: { slidesPerView: 3 },
-                            1280: { slidesPerView: 3 },
+                        pagination={{
+                            clickable: true,
+                            dynamicBullets: true,
                         }}
-                        className="pb-12"
+                        onSlideChange={handleSlideChange}
+                        breakpoints={{
+                            320: { slidesPerView: 1, spaceBetween: 16 },
+                            640: { slidesPerView: 1.5, spaceBetween: 16 },
+                            768: { slidesPerView: 2, spaceBetween: 20 },
+                            1024: { slidesPerView: 3, spaceBetween: 24 },
+                            1280: { slidesPerView: 3, spaceBetween: 24 },
+                        }}
+                        className="py-4 !pb-8"
                     >
-                        {reviews.map((review) => (
-                            <SwiperSlide key={review.review_id}>
-                                {/* Review Card */}
+                        {reviews.map((review, index) => (
+                            <SwiperSlide
+                                key={`${review.review_id || index}`}
+                                className="flex flex-col !h-auto"
+                            >
                                 <div
-                                    className="rounded-lg border p-5 transition-all duration-300 group h-full flex flex-col"
+                                    className="p-6 rounded-xl h-full flex flex-col transition-all duration-300 hover:shadow-lg"
                                     style={{
                                         backgroundColor: "var(--color-surface)",
-                                        borderColor:
-                                            "var(--color-border-light)",
+                                        border: "1px solid var(--color-border-light)",
                                     }}
                                 >
-                                    <div className="flex flex-col gap-4 flex-1">
-                                        <div className="w-full">
-                                            <div
-                                                className="flex items-center gap-1.5 border rounded-lg px-2 py-1 w-fit"
-                                                style={{
-                                                    backgroundColor:
-                                                        "var(--color-bg)",
-                                                    borderColor:
-                                                        "var(--color-border-light)",
-                                                }}
-                                            >
-                                                <div className="flex items-center gap-0.5">
-                                                    {renderStars(review.rating)}
-                                                </div>
-                                                <span
-                                                    style={{
-                                                        fontSize:
-                                                            "var(--text-xs)",
-                                                        color: "var(--color-text-secondary)",
-                                                        fontWeight:
-                                                            "var(--font-bold)",
-                                                    }}
-                                                >
-                                                    {review.rating}
-                                                </span>
-                                            </div>
-                                        </div>
+                                    <div className="flex items-center gap-0.5 mb-4">
+                                        {renderStars(review.rating)}
+                                    </div>
 
-                                        <div>
-                                            <h3
-                                                className="flex items-center transition-colors line-clamp-2"
-                                                style={{
-                                                    fontSize:
-                                                        "var(--text-base)",
-                                                    color: "var(--color-text-primary)",
-                                                    fontWeight:
-                                                        "var(--font-bold)",
-                                                    minHeight: "3rem",
-                                                }}
-                                            >
-                                                {review.review_title}
-                                            </h3>
-                                        </div>
+                                    <h3
+                                        className="mb-2 line-clamp-1"
+                                        style={{
+                                            color: "var(--color-text-primary)",
+                                            fontFamily: "var(--font-heading)",
+                                            fontSize: "var(--text-lg)",
+                                            fontWeight: "var(--font-semibold)",
+                                        }}
+                                    >
+                                        {review.review_title || "No Title"}
+                                    </h3>
 
-                                        <p
-                                            className="leading-relaxed line-clamp-4 flex-1"
+                                    <p
+                                        className="leading-relaxed flex-grow overflow-hidden"
+                                        style={{
+                                            color: "var(--color-text-secondary)",
+                                            fontFamily: "var(--font-body)",
+                                            fontSize: "var(--text-sm)",
+                                            lineHeight: "1.6",
+                                        }}
+                                    >
+                                        {review.review_text &&
+                                        review.review_text.length > 150
+                                            ? `${review.review_text.substring(0, 150)}...`
+                                            : review.review_text ||
+                                              "No review text provided"}
+                                    </p>
+
+                                    {review.reviewer_name && (
+                                        <span
+                                            className="text-xs mt-4 block"
                                             style={{
-                                                fontSize: "var(--text-sm)",
-                                                color: "var(--color-text-secondary)",
+                                                color: "var(--color-text-tertiary)",
+                                                fontStyle: "italic",
                                             }}
                                         >
-                                            {review.review_text}
-                                        </p>
-
-                                        {review.reviewer_name && (
-                                            <div
-                                                className="pt-3 mt-auto border-t"
-                                                style={{
-                                                    borderColor:
-                                                        "var(--color-border-light)",
-                                                }}
-                                            >
-                                                <span
-                                                    style={{
-                                                        fontSize:
-                                                            "var(--text-xs)",
-                                                        color: "var(--color-text-muted)",
-                                                        fontWeight:
-                                                            "var(--font-medium)",
-                                                    }}
-                                                >
-                                                    — {review.reviewer_name}
-                                                </span>
-                                            </div>
-                                        )}
-                                    </div>
+                                            — {review.reviewer_name}
+                                        </span>
+                                    )}
                                 </div>
                             </SwiperSlide>
                         ))}
                     </Swiper>
-
-                    {/* Pagination Info */}
-                    {pagination && pagination.totalPages > 1 && (
-                        <div
-                            className="flex items-center justify-center mt-12 pt-6 border-t"
-                            style={{ borderColor: "var(--color-border)" }}
-                        >
-                            <div
-                                className="px-4 py-2 rounded-lg border flex items-center gap-2"
-                                style={{
-                                    fontSize: "var(--text-sm)",
-                                    color: "var(--color-text-secondary)",
-                                    backgroundColor: "var(--color-bg)",
-                                    borderColor: "var(--color-border)",
-                                }}
-                            >
-                                <button
-                                    onClick={() =>
-                                        handlePageChange(currentPage - 1)
-                                    }
-                                    disabled={currentPage === 1}
-                                    className="px-2 py-1 rounded disabled:opacity-50 disabled:cursor-not-allowed hover:bg-[var(--color-surface-alt)] transition-colors"
-                                    style={{
-                                        color: "var(--color-text-primary)",
-                                    }}
-                                >
-                                    ←
-                                </button>
-
-                                <span>
-                                    Page{" "}
-                                    <span
-                                        style={{
-                                            color: "var(--color-text-primary)",
-                                            fontWeight: "var(--font-semibold)",
-                                        }}
-                                    >
-                                        {currentPage}
-                                    </span>{" "}
-                                    of{" "}
-                                    <span
-                                        style={{
-                                            color: "var(--color-text-primary)",
-                                            fontWeight: "var(--font-semibold)",
-                                        }}
-                                    >
-                                        {pagination.totalPages}
-                                    </span>
-                                </span>
-
-                                <button
-                                    onClick={() =>
-                                        handlePageChange(currentPage + 1)
-                                    }
-                                    disabled={
-                                        currentPage === pagination.totalPages
-                                    }
-                                    className="px-2 py-1 rounded disabled:opacity-50 disabled:cursor-not-allowed hover:bg-[var(--color-surface-alt)] transition-colors"
-                                    style={{
-                                        color: "var(--color-text-primary)",
-                                    }}
-                                >
-                                    →
-                                </button>
-                            </div>
-                        </div>
-                    )}
                 </div>
             )}
         </div>

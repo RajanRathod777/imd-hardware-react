@@ -9,17 +9,17 @@ import SEO from "../../components/SEO";
 import { homePageMetadata } from "../../seo/homeSeo";
 
 const Home = () => {
-  return (
-    <div>
-      <SEO metadata={homePageMetadata} />
-      {/* <HeroSection />
-      <CategoryViewer />
-      <ProductViewer />
-      <AdvertiseSlider />
-      <ProductReviewCarousel /> */}
-      <APL_DoorLock/>
-    </div>
-  );
+    return (
+        <div>
+            <SEO metadata={homePageMetadata} />
+            {/* <HeroSection />
+            <CategoryViewer />
+            <ProductViewer />
+            <AdvertiseSlider />
+            <ProductReviewCarousel />*/}
+            <APL_DoorLock />
+        </div>
+    );
 };
 
 export default Home;

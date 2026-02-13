@@ -311,7 +311,7 @@ export default function DoorLockAldrop() {
                                         desc: "Manufactured using premium steel for maximum durability",
                                     },
                                     {
-                                        title: "Inside Handle",
+                                        title: "Inside Lock",
                                         desc: "Convenient locking and unlocking from inside",
                                     },
                                     {
@@ -407,7 +407,7 @@ export default function DoorLockAldrop() {
                                             }}
                                         >
                                             Features an{" "}
-                                            <strong>inside handle</strong> for
+                                            <strong>inside Lock</strong> for
                                             convenient access and a{" "}
                                             <strong>
                                                 slider-based locking system

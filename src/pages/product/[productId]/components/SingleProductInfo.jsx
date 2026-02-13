@@ -76,19 +76,13 @@ const SingleProductInfo = () => {
     return (
         <div className="mt-6 space-y-6">
             {extraDetails.short_description && (
-                <div
-                    className="rounded-lg p-1 sm:p-6 border"
-                    style={{
-                        backgroundColor: "var(--color-surface)",
-                        borderColor: "var(--color-border-light)",
-                    }}
-                >
+                <div>
                     <div className="flex items-center gap-3 mb-4">
                         <div className="w-8 h-8 rounded-lg flex items-center justify-center bg-[var(--color-bg-alt)]">
                             <FileText
                                 size={16}
                                 style={{
-                                    color: "var(--color-primary)",
+                                    color: "var(--color-text-secondary)",
                                 }}
                             />
                         </div>
@@ -105,7 +99,7 @@ const SingleProductInfo = () => {
                             </h3>
                             <p
                                 style={{
-                                    color: "var(--color-primary)",
+                                    color: "var(--color-text-secondary)",
                                     fontSize: "var(--text-sm)",
                                     fontWeight: "var(--font-medium)",
                                 }}
@@ -115,7 +109,7 @@ const SingleProductInfo = () => {
                         </div>
                     </div>
                     <div
-                        className="rounded-lg p-4 border"
+                        className="prose max-w-none rounded-lg p-4 border"
                         style={{
                             color: "var(--color-text-secondary)",
                             backgroundColor: "var(--color-bg)",
@@ -131,13 +125,7 @@ const SingleProductInfo = () => {
             )}
 
             {extraDetails.description && (
-                <div
-                    className="rounded-lg p-1 sm:p-6 border"
-                    style={{
-                        backgroundColor: "var(--color-surface)",
-                        borderColor: "var(--color-border-light)",
-                    }}
-                >
+                <div>
                     <div className="flex items-center gap-3 mb-4">
                         <div className="w-8 h-8 rounded-lg flex items-center justify-center bg-[var(--color-bg-alt)]">
                             <FileText

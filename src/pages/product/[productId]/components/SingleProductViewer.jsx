@@ -191,8 +191,6 @@ const SingleProductViewer = () => {
                 );
                 break;
             case "instagram":
-                // Instagram doesn't have a direct share URL API
-                // Show a message that it's not supported or copy to clipboard
                 try {
                     await navigator.clipboard.writeText(url);
                     alert("Link copied! You can share it on Instagram.");
@@ -285,7 +283,6 @@ const SingleProductViewer = () => {
                                 }`}
                                 style={{
                                     borderColor: "var(--color-border)",
-
                                     color:
                                         activeGalleryTab === "images"
                                             ? "var(--color-text-primary)"
@@ -338,7 +335,7 @@ const SingleProductViewer = () => {
                             {activeGalleryTab === "images" && (
                                 <>
                                     <Swiper
-                                        key="main-swiper" // Add key to force re-render
+                                        key="main-swiper"
                                         modules={[FreeMode, Navigation, Thumbs]}
                                         spaceBetween={0}
                                         slidesPerView={1}
@@ -372,7 +369,7 @@ const SingleProductViewer = () => {
                                                     <img
                                                         src={`${apiUrl}/image/product/${img}`}
                                                         alt={`${product.title} - Image ${idx + 1}`}
-                                                        className="w-full h-full aspect-square rounded-lg  object-contain transition-all duration-500 hover:scale-105"
+                                                        className="w-full h-full aspect-square rounded-lg object-contain transition-all duration-500 hover:scale-105"
                                                         loading="eager"
                                                     />
                                                 </div>
@@ -456,9 +453,7 @@ const SingleProductViewer = () => {
                                     />
                                 </button>
 
-                                {/* Share Popup */}
-                                {/* Share Popup */}
-                                {/* Share Popup - Compact Version */}
+                                {/* Share Popup - No Names */}
                                 {showSharePopup && (
                                     <div
                                         className="absolute right-0 top-14 rounded-xl shadow-2xl border p-3 min-w-48 z-50"
@@ -501,44 +496,51 @@ const SingleProductViewer = () => {
                                             </button>
                                         </div>
 
-                                        {/* Share Icons - 3x2 Grid */}
+                                        {/* Share Icons - 3x2 Grid - No Text Labels */}
                                         <div className="grid grid-cols-3 gap-1">
                                             {[
                                                 {
                                                     platform: "facebook",
                                                     icon: Facebook,
                                                     color: "bg-[#1877F2]",
+                                                    title: "Share on Facebook",
                                                 },
                                                 {
                                                     platform: "twitter",
                                                     icon: X,
                                                     color: "bg-black",
+                                                    title: "Share on X (Twitter)",
                                                 },
                                                 {
                                                     platform: "linkedin",
                                                     icon: Linkedin,
                                                     color: "bg-[#0A66C2]",
+                                                    title: "Share on LinkedIn",
                                                 },
                                                 {
                                                     platform: "whatsapp",
                                                     icon: MessageCircle,
                                                     color: "bg-[#25D366]",
+                                                    title: "Share on WhatsApp",
                                                 },
                                                 {
                                                     platform: "email",
                                                     icon: Mail,
                                                     color: "bg-gray-600",
+                                                    title: "Share via Email",
                                                 },
                                                 {
                                                     platform: "copy",
                                                     icon: Link,
                                                     color: "bg-[var(--color-text-primary)]",
+                                                    title: "Copy Link",
                                                 },
                                             ].map(
                                                 ({
                                                     platform,
                                                     icon: Icon,
                                                     color,
+                                                    title,
                                                 }) => (
                                                     <button
                                                         key={platform}
@@ -547,44 +549,17 @@ const SingleProductViewer = () => {
                                                                 platform,
                                                             )
                                                         }
-                                                        className="flex flex-col items-center gap-1 p-2 rounded-lg transition-all duration-200 hover:bg-[var(--color-surface-alt)] group"
-                                                        title={
-                                                            platform ===
-                                                            "twitter"
-                                                                ? "X (Twitter)"
-                                                                : platform
-                                                                      .charAt(0)
-                                                                      .toUpperCase() +
-                                                                  platform.slice(
-                                                                      1,
-                                                                  )
-                                                        }
+                                                        className="flex items-center justify-center p-2 rounded-lg transition-all duration-200 hover:bg-[var(--color-surface-alt)] group"
+                                                        title={title}
                                                     >
                                                         <div
-                                                            className={`w-8 h-8 rounded-lg flex items-center justify-center transition-all duration-200 group-hover:scale-110 shadow-sm ${color}`}
+                                                            className={`w-10 h-10 rounded-lg flex items-center justify-center transition-all duration-200 group-hover:scale-110 shadow-sm ${color}`}
                                                         >
                                                             <Icon
-                                                                size={14}
+                                                                size={18}
                                                                 className="text-white"
                                                             />
                                                         </div>
-                                                        <span
-                                                            style={{
-                                                                fontSize:
-                                                                    "var(--text-2xs)",
-                                                                color: "var(--color-text-secondary)",
-                                                            }}
-                                                        >
-                                                            {platform === "copy"
-                                                                ? "Copy"
-                                                                : platform ===
-                                                                    "twitter"
-                                                                  ? "X"
-                                                                  : platform.slice(
-                                                                        0,
-                                                                        3,
-                                                                    )}
-                                                        </span>
                                                     </button>
                                                 ),
                                             )}
@@ -613,7 +588,7 @@ const SingleProductViewer = () => {
                             product.images?.length > 1 && (
                                 <div className="px-2">
                                     <Swiper
-                                        key="thumbs-swiper" // Add key to force re-render
+                                        key="thumbs-swiper"
                                         modules={[FreeMode, Navigation, Thumbs]}
                                         onSwiper={(swiper) => {
                                             setThumbsSwiper(swiper);
@@ -665,7 +640,7 @@ const SingleProductViewer = () => {
                                                         <img
                                                             src={`${apiUrl}/image/product/${img}`}
                                                             alt={`Thumbnail ${idx + 1}`}
-                                                            className="w-full h-full aspect-square object-cover rounded-lg  transition-transform duration-200 hover:scale-110"
+                                                            className="w-full h-full aspect-square object-cover rounded-lg transition-transform duration-200 hover:scale-110"
                                                             loading="lazy"
                                                         />
                                                     </div>
@@ -1084,7 +1059,7 @@ const SingleProductViewer = () => {
                                     >
                                         <div className="relative">
                                             {isVideo ? (
-                                                <div className="relative  bg-black overflow-hidden">
+                                                <div className="relative bg-black overflow-hidden">
                                                     <video
                                                         autoPlay
                                                         muted
