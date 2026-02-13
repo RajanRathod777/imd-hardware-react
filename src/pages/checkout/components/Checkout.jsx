@@ -318,7 +318,7 @@ const Checkout = () => {
             <div className="max-w-7xl mx-auto">
                 {error && (
                     <div
-                        className="max-w-4xl mx-auto mb-8 p-5 rounded-2xl flex items-start gap-4"
+                        className="max-w-4xl mx-auto mb-8 p-5 rounded-lg flex items-start gap-4"
                         style={{
                             backgroundColor: "var(--color-danger-light)",
                             border: "1px solid var(--color-danger)",
@@ -343,7 +343,7 @@ const Checkout = () => {
                     {/* Shipping Form */}
                     <div className="lg:col-span-2">
                         <div
-                            className="rounded-2xl shadow-xl overflow-hidden"
+                            className="rounded-lg overflow-hidden"
                             style={{
                                 backgroundColor: "var(--color-surface)",
                                 border: "1px solid var(--color-border-light)",
@@ -736,7 +736,7 @@ const Checkout = () => {
                     {/* Order Summary - Unified Style for Mobile & Desktop */}
                     <div className="lg:col-span-1">
                         <div
-                            className="sticky top-6 rounded-2xl shadow-2xl overflow-hidden"
+                            className="sticky top-6 rounded-lg overflow-hidden"
                             style={{
                                 backgroundColor: "var(--color-surface)",
                                 border: "1px solid var(--color-border-light)",
@@ -765,7 +765,7 @@ const Checkout = () => {
                                     {checkedOrder.items.map((item) => (
                                         <div
                                             key={item.product_id}
-                                            className="flex gap-5 p-3 rounded-2xl"
+                                            className="flex gap-5 p-3 rounded-lg"
                                             style={{
                                                 backgroundColor:
                                                     "var(--color-bg-alt)",
@@ -1029,7 +1029,7 @@ const Checkout = () => {
                                 <button
                                     onClick={handlePlaceOrder}
                                     disabled={loading}
-                                    className="w-full py-5 rounded-2xl transition-all duration-300 hover:scale-105 hover:shadow-2xl disabled:opacity-60 disabled:cursor-not-allowed flex items-center justify-center gap-3"
+                                    className="w-full py-5 rounded-lg hover:scale-101 disabled:opacity-60 disabled:cursor-not-allowed flex items-center justify-center gap-3"
                                     style={{
                                         backgroundColor: "var(--color-primary)",
                                         color: "var(--color-text-on-primary)",

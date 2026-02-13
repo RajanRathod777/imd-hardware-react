@@ -249,7 +249,7 @@ const CartProductViewer = () => {
                     </p>
                     <button
                         onClick={() => navigate("/products")}
-                        className="px-10 py-4 rounded-xl transition-all duration-300 hover:scale-105 hover:shadow-xl"
+                        className="px-10 py-4 rounded-lg hover:scale-105 "
                         style={{
                             backgroundColor: "var(--color-primary)",
                             color: "var(--color-text-on-primary)",
@@ -296,24 +296,23 @@ const CartProductViewer = () => {
                     {/* Cart Items */}
                     <div className="lg:col-span-2">
                         <div
-                            className="rounded-2xl overflow-hidden shadow-xl"
+                            className="rounded-lg overflow-hidden"
                             style={{
                                 backgroundColor: "var(--color-surface)",
                                 border: "1px solid var(--color-border-light)",
                             }}
                         >
                             <div
-                                className="px-8 py-5"
+                                className="px-8 py-6"
                                 style={{
-                                    backgroundColor: "var(--color-bg-alt)",
-                                    borderBottom:
-                                        "1px solid var(--color-border-light)",
+                                    background: "var(--gradient-primary)",
+                                    color: "var(--color-text-on-primary)",
                                 }}
                             >
                                 <h2
                                     style={{
                                         fontSize: "var(--text-xl)",
-                                        color: "var(--color-text-primary)",
+
                                         fontWeight: "var(--font-bold)",
                                     }}
                                 >
@@ -482,7 +481,7 @@ const CartProductViewer = () => {
                     {/* Order Summary Sidebar */}
                     <div className="lg:col-span-1">
                         <div
-                            className="sticky top-6 rounded-2xl shadow-2xl overflow-hidden"
+                            className="sticky top-6 rounded-lg  overflow-hidden"
                             style={{
                                 backgroundColor: "var(--color-surface)",
                                 border: "1px solid var(--color-border-light)",
@@ -559,7 +558,7 @@ const CartProductViewer = () => {
                                                     loading ||
                                                     !hasDiscountEligibleProducts
                                                 }
-                                                className="px-6 py-3 rounded-xl transition-all hover:scale-105"
+                                                className="px-6 py-3 rounded-xl  hover:scale-101"
                                                 style={{
                                                     backgroundColor:
                                                         "var(--color-primary)",
@@ -592,7 +591,7 @@ const CartProductViewer = () => {
                                     </div>
                                 ) : (
                                     <div
-                                        className="p-5 rounded-2xl flex items-center justify-between"
+                                        className="p-5 rounded-lg flex items-center justify-between"
                                         style={{
                                             backgroundColor:
                                                 "var(--color-success-light)",
@@ -753,7 +752,7 @@ const CartProductViewer = () => {
                                 <button
                                     onClick={handleCheckout}
                                     disabled={loading}
-                                    className="w-full py-5 rounded-2xl transition-all duration-300 hover:scale-105 hover:shadow-2xl disabled:opacity-60"
+                                    className="w-full py-5  rounded-lg  hover:scale-101 disabled:opacity-60"
                                     style={{
                                         backgroundColor: "var(--color-primary)",
                                         color: "var(--color-text-on-primary)",
@@ -770,7 +769,7 @@ const CartProductViewer = () => {
 
                                 <button
                                     onClick={() => navigate("/products")}
-                                    className="w-full py-4 rounded-xl border-2 transition-all hover:bg-[var(--color-surface-alt)]"
+                                    className="w-full py-4 rounded-lg   border-2  hover:bg-[var(--color-surface-alt)]"
                                     style={{
                                         borderColor: "var(--color-primary)",
                                         color: "var(--color-primary)",
@@ -805,9 +804,7 @@ const CartProductViewer = () => {
                                                 color: "var(--color-primary)",
                                             }}
                                         />
-                                        <span>
-                                            Free Shipping on orders above ₹999
-                                        </span>
+                                        <span>Valid on all orders</span>
                                     </div>
                                 </div>
                             </div>
