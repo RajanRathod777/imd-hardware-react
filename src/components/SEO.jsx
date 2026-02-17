@@ -7,7 +7,7 @@ const SEO = ({ metadata }) => {
   const defaultDescription =
     "IMD Hardware offers a complete range of high-quality door locking systems and hardware accessories including main door locks, room locks, smart digital locks, mortise locks, designer handles, aldrops, and security fittings. Built for strength, elegance, and reliability, our hardware solutions are ideal for residential and commercial use, ensuring protection with modern aesthetics.";
   const defaultKeywords =
-    "door locks, main door lock, mortise lock, cylinder lock, digital door lock, smart lock, security locks, luxury door handles, door handle set, aldrops, architectural hardware, hardware accessories, premium locks, home hardware, office hardware, commercial door hardware, stainless steel handles, modern door locks, IMD hardware locks";
+    "door lock , door locks, door lock handle , door lock aldrop ,door lock panel , door lock plate , door lock pan ,   main door lock, mortise lock, cylinder lock, digital door lock, smart lock, security locks, luxury door handles, door handle set, aldrops, architectural hardware, hardware accessories, premium locks, home hardware, office hardware, commercial door hardware, stainless steel handles, modern door locks, IMD hardware locks";
   const siteUrl = "https://imdhardware.com";
   const defaultImage = "https://imdhardware.com/images/logo.jpeg";
 
