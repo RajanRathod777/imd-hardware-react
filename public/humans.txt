@@ -2,8 +2,8 @@
 /* IMD Hardware - Premium Hardware Manufacturer */
 
 TEAM:
-    Founder: Rajesh Rathod
-    Web Development: IMD Tech Team
+    Founder: Rajan Rathod
+    Web Development: IMD Hardware Team
     Design: IMD Creative Team
 
 THANKS:
@@ -20,7 +20,7 @@ SITE:
 CONTACT:
     Web: https://imdhardware.com
     Email: info@imdhardware.com
-    Phone: +91-6355953543
+    Phone: +91-9484555666
     Address: 123 Industrial Area, MIDC, Mumbai, Maharashtra 400072, India
 
 /* END HUMANS.TXT */

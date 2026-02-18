@@ -1,24 +1,4 @@
 User-agent: *
 Allow: /
-Disallow: /review/*
-Disallow: /reward-claim/*
-Disallow: /api/
-Disallow: /login
-Disallow: /register
-Disallow: /profile
-Disallow: /checkout
-Disallow: /cart
-Disallow: /reset-password
-Disallow: /update-password
-Crawl-delay: 1
-
-User-agent: GPTBot
-Allow: /
-
-User-agent: CCBot
-Allow: /
-
-User-agent: Google-Extended
-Allow: /
 
 Sitemap: https://imdhardware.com/sitemap.xml

@@ -30,7 +30,7 @@ export const schemaData = [
     },
     contactPoint: {
       "@type": "ContactPoint",
-      telephone: "+91-6355953543",
+      telephone: "+91-9484555666",
       contactType: "customer service",
       email: "imd@imdhardware.com",
       availableLanguage: ["English", "Hindi", "Marathi"],
@@ -69,7 +69,7 @@ export const schemaData = [
       "https://imdhardware.com/manufacturing-unit.jpg",
     ],
     url: "https://imdhardware.com",
-    telephone: "+91-6355953543",
+    telephone: "+91-9484555666",
     email: "sales@imdhardware.com",
     priceRange: "₹₹",
     description:

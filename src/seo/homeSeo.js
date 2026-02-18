@@ -3,7 +3,7 @@ export const homePageMetadata = {
   description:
     "IMD Hardware is a leading hardware manufacturer and supplier specializing in locks, door handles, screws, bolts, basket stoppers, and high-quality hardware products.",
   keywords:
-    "IMD Hardware, hardware manufacturer, hardware supplier, locks manufacturer, door handles, screws, bolts, basket stopper, hardware exporter",
+    "door lock , door locks, door lock handle , door lock aldrop ,door lock panel , door lock plate , door lock pan , main door lock, mortise lock, cylinder lock, digital door lock, smart lock, security locks, luxury door handles, door handle set, aldrops, architectural hardware, hardware accessories, premium locks, home hardware, office hardware, commercial door hardware, stainless steel handles, modern door locks, IMD hardware locks",
   alternates: {
     canonical: "https://imdhardware.com",
   },
@@ -42,7 +42,7 @@ export const homePageMetadata = {
       logo: "https://imdhardware.com/images/logo.jpeg",
       contactPoint: {
         "@type": "ContactPoint",
-        telephone: "+91-6355953543",
+        telephone: "+91-9484555666",
         contactType: "customer service",
         areaServed: "IN",
       },
@@ -50,6 +50,9 @@ export const homePageMetadata = {
         "https://facebook.com/imdhardware",
         "https://instagram.com/imdhardware",
         "https://linkedin.com/company/imdhardware",
+        "https://youtube.com/@imdhardware",
+        "https://twitter.com/imdhardware",
+        "https://pinterest.com/imdhardware",
       ],
     },
     {
