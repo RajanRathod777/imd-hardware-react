@@ -36,11 +36,11 @@ const CompanyOverview = () => {
       <div className="max-w-7xl mx-auto">
         {/* Optional subtle top accent line */}
         <div
-          className="h-1 rounded-full mb-16 mx-auto w-32"
+          className="h-1 rounded-md mb-16 mx-auto w-32"
           style={{ background: "var(--gradient-primary)" }}
         />
 
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-12 lg:gap-16">
+        <div className="grid grid-cols-1 md:grid-cols-4 gap-12 lg:gap-16">
           {stats.map((stat, index) => {
             const displayedValue = useCounter(stat.value);
 
@@ -48,7 +48,7 @@ const CompanyOverview = () => {
               <div key={index} className="text-center group relative">
                 {/* Hover glow effect */}
                 <div
-                  className="absolute inset-0 -z-10 scale-0 rounded-3xl opacity-0 transition-all duration-700 group-hover:scale-150 group-hover:opacity-30"
+                  className="absolute inset-0 -z-10 scale-0 rounded-md opacity-0 transition-all duration-500 group-hover:scale-110 group-hover:opacity-30"
                   style={{ backgroundColor: "var(--color-primary)" }}
                 />
 

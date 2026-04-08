@@ -9,11 +9,13 @@ import {
   CheckCircle,
   AlertCircle,
   Facebook,
-  Twitter,
+  TvMinimalPlay,
   Instagram,
   Linkedin,
+  Loader,
 } from "lucide-react";
 import Cookies from "js-cookie";
+import { Link } from "react-router";
 
 const ContactViewer = () => {
   const [formData, setFormData] = useState({
@@ -43,6 +45,7 @@ const ContactViewer = () => {
       title: "Visit Us",
       details: "Near Vaikunthdham Temple, Himatnagar Shamlaji Road, NH 48",
       description: "Dist.Sabarkantha. Gujarat-383001 , India",
+      href: "https://maps.google.com/?q=Near+Vaikunthdham+Temple+Himatnagar+Shamlaji+Road+Sabarkantha+Gujarat",
     },
     {
       icon: Clock,
@@ -92,14 +95,14 @@ const ContactViewer = () => {
       } else {
         setSubmitStatus("error");
         setSubmitMessage(
-          data.message || "Failed to send message. Please try again."
+          data.message || "Failed to send message. Please try again.",
         );
       }
     } catch (error) {
       console.error("Contact form error:", error);
       setSubmitStatus("error");
       setSubmitMessage(
-        "Network error. Please check your connection and try again."
+        "Network error. Please check your connection and try again.",
       );
     } finally {
       setIsSubmitting(false);
@@ -199,7 +202,7 @@ const ContactViewer = () => {
                 <div className="flex gap-4">
                   {[
                     { icon: Facebook, label: "Facebook" },
-                    { icon: Twitter, label: "Twitter" },
+                    { icon: TvMinimalPlay, label: "Youtube" },
                     { icon: Instagram, label: "Instagram" },
                     { icon: Linkedin, label: "LinkedIn" },
                   ].map((social, index) => (
@@ -377,7 +380,7 @@ const ContactViewer = () => {
                 >
                   {isSubmitting ? (
                     <>
-                      <div className="animate-spin rounded-full h-5 w-5 border-2 border-transparent border-t-white"></div>
+                      <Loader className="h-5 w-5 animate-spin" />
                       Sending...
                     </>
                   ) : (
@@ -396,13 +399,13 @@ const ContactViewer = () => {
                   }}
                 >
                   By submitting this form, you agree to our{" "}
-                  <a
-                    href="#"
+                  <Link
+                    to="/privacy-policy"
                     className="underline hover:opacity-80 transition"
                     style={{ color: "var(--color-primary)" }}
                   >
                     privacy policy
-                  </a>
+                  </Link>
                 </p>
               </form>
 

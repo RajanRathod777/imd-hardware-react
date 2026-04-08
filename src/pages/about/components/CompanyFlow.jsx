@@ -63,7 +63,7 @@ const CompanyFlow = () => {
             Our End-to-End Process
           </h2>
           <div
-            className="w-24 h-1 mx-auto rounded-full"
+            className="w-24 h-1 mx-auto rounded-md"
             style={{ backgroundColor: "var(--color-primary)" }}
           />
         </div>
@@ -92,7 +92,7 @@ const CompanyFlow = () => {
 
                 {/* Step Card */}
                 <div
-                  className="relative p-8 rounded-2xl border overflow-hidden transition-all duration-500 hover:shadow-xl hover:-translate-y-2"
+                  className="relative p-8 rounded-md border overflow-hidden transition-all duration-500 hover:shadow-sm hover:-translate-y-2"
                   style={{
                     backgroundColor: "var(--color-surface)",
                     borderColor: "var(--color-border-light)",
@@ -115,7 +115,7 @@ const CompanyFlow = () => {
                   {/* Icon + Title */}
                   <div className="relative z-10 flex items-center mb-6">
                     <div
-                      className="w-16 h-16 rounded-2xl flex items-center justify-center mr-6 shadow-lg transition-transform duration-300 group-hover:scale-110"
+                      className="w-16 h-16 rounded-md flex items-center justify-center mr-6 shadow-sm transition-transform duration-300 group-hover:scale-102"
                       style={{
                         backgroundColor: "var(--color-primary)",
                         color: "var(--color-text-on-primary)",
@@ -172,7 +172,7 @@ const CompanyFlow = () => {
             {companyFlow.map((_, i) => (
               <div
                 key={i}
-                className="w-3 h-3 rounded-full transition-colors"
+                className="w-3 h-3 rounded-md transition-colors"
                 style={{
                   backgroundColor:
                     i < companyFlow.length - 1

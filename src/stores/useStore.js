@@ -6,8 +6,6 @@ const fetchProducts = async () => {
     const res = await fetch(`${apiUrl}/api/v1/product`);
     if (!res.ok) throw new Error("Failed to fetch products");
     const data = await res.json();
-    console.log("call fetch product", data);
-
     return data.products || [];
   } catch (err) {
     console.error(err.message);
@@ -22,7 +20,6 @@ const fetchCategories = async () => {
     if (!res.ok) throw new Error("Failed to fetch categories");
     const data = await res.json();
     if (data.status) {
-      console.log("call fetch category", data);
       return data.categories || [];
     } else {
       throw new Error(data.message || "Failed to get categories");
@@ -87,7 +84,7 @@ export const useStore = create((set, get) => ({
         cart: cart.map((p) =>
           p.product_id === product.product_id
             ? { ...p, quantity: p.quantity + 1 }
-            : p
+            : p,
         ),
       });
     } else {
@@ -107,11 +104,11 @@ export const useStore = create((set, get) => ({
     // Ensure valid quantity
     const newQuantity = Math.max(
       1,
-      Math.min(quantity, product.max_quantity || 10)
+      Math.min(quantity, product.max_quantity || 10),
     );
     set({
       cart: cart.map((p) =>
-        p.product_id === id ? { ...p, quantity: newQuantity } : p
+        p.product_id === id ? { ...p, quantity: newQuantity } : p,
       ),
     });
   },

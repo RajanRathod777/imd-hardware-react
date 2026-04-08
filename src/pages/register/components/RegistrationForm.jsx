@@ -13,11 +13,12 @@ import {
   Loader,
   X,
 } from "lucide-react";
-import { Link } from "react-router";
+import { Link, useNavigate } from "react-router";
 import { states, cities } from "../../../data/indianStatesCities";
 
 export default function RegistrationPage() {
   const apiUrl = import.meta.env.VITE_SERVER_API_URL;
+  const navigate = useNavigate();
 
   const [stage, setStage] = useState("verify"); // verify | register | done
 
@@ -229,6 +230,7 @@ export default function RegistrationPage() {
         showMessage("Registration successful!", "success");
         Cookies.set("auth_token", data.token, { expires: 7, secure: true });
         localStorage.setItem("user", JSON.stringify(data.user));
+        navigate("/");
         setStage("done");
       } else {
         showMessage(data.message || "Registration failed", "error");

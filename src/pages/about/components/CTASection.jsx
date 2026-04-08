@@ -71,7 +71,7 @@ const CTASection = () => {
             }}
           >
             <ShoppingCart className="w-6 h-6 transition-transform duration-300 group-hover:translate-x-1" />
-            Browse Catalog
+            Browse Product
           </Link>
 
           {/* Secondary Button - Contact Sales */}

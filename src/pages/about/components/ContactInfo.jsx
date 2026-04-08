@@ -21,14 +21,14 @@ const ContactInfo = () => {
       title: "Visit Our Store",
       details: "Near Vaikunthdham Temple",
       sub: "Himatnagar Shamlaji Road, NH 08, Sabarkantha, Gujarat 383001",
-      href: "https://maps.google.com/?q=Near+Vaikunthdham+Temple+Himatnagar+Shamlaji+Road+Sabarkantha+Gujarat",
+      href: "https://maps.app.goo.gl/DatMzeQusJ2ZNjEy7",
     },
   ];
 
   return (
     <section className="py-20 px-4 overflow-hidden">
       <div
-        className="max-w-7xl mx-auto rounded-3xl shadow-xl border"
+        className="max-w-7xl mx-auto rounded-md shadow-sm border"
         style={{
           backgroundColor: "var(--color-bg-alt)",
           borderColor: "var(--color-border-light)",
@@ -48,7 +48,7 @@ const ContactInfo = () => {
             Get In Touch
           </h2>
           <div
-            className="w-24 h-1 mx-auto rounded-full"
+            className="w-24 h-1 mx-auto rounded-md"
             style={{ backgroundColor: "var(--color-primary)" }}
           />
         </div>
@@ -83,14 +83,14 @@ const ContactInfo = () => {
               >
                 {/* Hover Background Glow */}
                 <div
-                  className="absolute inset-0 scale-0 rounded-3xl opacity-0 transition-all duration-700 group-hover:scale-150 group-hover:opacity-20"
+                  className="absolute inset-0 scale-0 rounded-md opacity-0 transition-all duration-700 group-hover:scale-150 group-hover:opacity-20"
                   style={{ backgroundColor: "var(--color-primary)" }}
                 />
 
                 <div className="relative z-10 flex flex-col items-center text-center">
                   {/* Icon Circle */}
                   <div
-                    className="w-20 h-20 mb-6 rounded-3xl flex items-center justify-center shadow-lg transition-all duration-500 group-hover:scale-110 group-hover:shadow-2xl"
+                    className="w-20 h-20 mb-6 rounded-md flex items-center justify-center shadow-lg transition-all duration-500 group-hover:scale-110 group-hover:shadow-2xl"
                     style={{
                       backgroundColor: "var(--color-primary)",
                       color: "var(--color-text-on-primary)",

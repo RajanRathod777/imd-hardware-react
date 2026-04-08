@@ -20,7 +20,7 @@ const AboutContent = () => {
           </h1>
 
           <div
-            className="w-20 h-1 mx-auto mb-8 rounded-full"
+            className="w-20 h-1 mx-auto mb-8 rounded-md"
             style={{ backgroundColor: "var(--color-primary)" }}
           />
 
@@ -50,7 +50,7 @@ const AboutContent = () => {
 
 const MissionStatement = () => (
   <section
-    className="p-10 md:p-14 rounded-2xl border-l-8 relative overflow-hidden"
+    className="p-10 md:p-14 rounded-md border-l-8 relative overflow-hidden"
     style={{
       backgroundColor: "var(--color-bg-alt)",
       borderLeftColor: "var(--color-primary)",
@@ -58,7 +58,7 @@ const MissionStatement = () => (
   >
     <div className="absolute inset-0 opacity-5 pointer-events-none">
       <div
-        className="absolute -top-10 -right-10 w-64 h-64 rounded-full"
+        className="absolute -top-10 -right-10 w-64 h-64 rounded-md"
         style={{ backgroundColor: "var(--color-primary)" }}
       />
     </div>
@@ -136,7 +136,7 @@ const SelectionGuide = () => {
 
   return (
     <section
-      className="p-10 rounded-2xl border"
+      className="p-10 rounded-md border"
       style={{
         backgroundColor: "var(--color-surface)",
         borderColor: "var(--color-border-light)",
@@ -160,7 +160,7 @@ const SelectionGuide = () => {
           return (
             <li key={index} className="flex items-start gap-5">
               <div
-                className="flex-shrink-0 w-8 h-8 rounded-full flex items-center justify-center"
+                className="flex-shrink-0 w-8 h-8 rounded-md flex items-center justify-center"
                 style={{
                   backgroundColor: "var(--color-primary)",
                   color: "var(--color-text-on-primary)",
@@ -238,7 +238,7 @@ const ProductCategories = () => {
         {categories.map((category, index) => (
           <div
             key={index}
-            className="p-8 rounded-2xl border transition-all duration-300 hover:shadow-xl hover:-translate-y-1"
+            className="p-8 rounded-md border transition-all duration-300 hover:shadow-xl hover:-translate-y-1"
             style={{
               backgroundColor: "var(--color-surface)",
               borderColor: "var(--color-border-light)",
@@ -246,7 +246,7 @@ const ProductCategories = () => {
           >
             <div className="flex items-center mb-4">
               <div
-                className="w-1 h-8 mr-4 rounded-full"
+                className="w-1 h-8 mr-4 rounded-md"
                 style={{ backgroundColor: "var(--color-primary)" }}
               />
               <h3
@@ -284,7 +284,7 @@ const WhyChooseUs = () => {
 
   return (
     <section
-      className="py-16 px-10 text-center rounded-2xl"
+      className="py-16 px-10 text-center rounded-md"
       style={{ backgroundColor: "var(--color-bg-alt)" }}
     >
       <h2
@@ -303,7 +303,7 @@ const WhyChooseUs = () => {
         {reasons.map((reason, index) => (
           <div key={index} className="flex flex-col items-center">
             <div
-              className="w-16 h-16 mb-5 rounded-2xl flex items-center justify-center shadow-lg"
+              className="w-16 h-16 mb-5 rounded-md flex items-center justify-center shadow-lg"
               style={{
                 backgroundColor: "var(--color-primary)",
                 color: "var(--color-text-on-primary)",

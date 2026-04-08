@@ -30,7 +30,7 @@ const ManufacturingProduct = () => {
             Future Manufacturing Products
           </h2>
           <div
-            className="w-24 h-1 mx-auto mb-8 rounded-full"
+            className="w-24 h-1 mx-auto mb-8 rounded-md"
             style={{ backgroundColor: "var(--color-primary)" }}
           />
           <p
@@ -54,7 +54,7 @@ const ManufacturingProduct = () => {
           {productImages.map((src, index) => (
             <div
               key={index}
-              className="group relative rounded-2xl overflow-hidden shadow-lg transition-all duration-500 hover:shadow-2xl hover:-translate-y-3"
+              className="group relative rounded-md overflow-hidden shadow-lg transition-all duration-500 hover:shadow-2xl hover:-translate-y-3"
               style={{
                 backgroundColor: "var(--color-surface)",
                 border: "1px solid var(--color-border-light)",

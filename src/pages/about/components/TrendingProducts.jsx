@@ -67,7 +67,8 @@ const TrendingProducts = () => {
             const IconComponent = product.icon;
             return (
               <div
-                className="group p-8 shadow-md hover:shadow-xl transition-all duration-300 rounded-lg border"
+                key={product.id}
+                className="h-full relative flex flex-col content-between justify-between  group p-8 shadow-md hover:shadow-xl transition-all duration-300 rounded-lg border"
                 style={{
                   backgroundColor: "var(--color-surface)",
                   borderColor: "var(--color-border-light)",
@@ -122,7 +123,7 @@ const TrendingProducts = () => {
 
                 {/* Add to Cart Button */}
                 <button
-                  className="w-full py-3 text-center transition-colors duration-300 hover:bg-[var(--color-primary)] hover:text-[var(--color-text-on-primary)] rounded border"
+                  className="w-full py-3 text-center transition-colors duration-300 rounded border"
                   style={{
                     fontWeight: "var(--font-semibold)",
                     borderColor: "var(--color-primary)",

@@ -6,12 +6,12 @@ import HeroSection from "./components/HeroSection";
 import APL_DoorLock from "../../components/APL_DoorLock";
 
 import SEO from "../../components/SEO";
-import { homePageMetadata } from "../../seo/homeSeo";
+import UnderDevelopment from "../../components/UnderDevelopment";
 
 const Home = () => {
   return (
     <div>
-      <SEO metadata={homePageMetadata} />
+
       {/* <HeroSection />
             <CategoryViewer />
             <ProductViewer />
@@ -19,6 +19,7 @@ const Home = () => {
             <ProductReviewCarousel />*/}
 
       <APL_DoorLock />
+      <UnderDevelopment />
     </div>
   );
 };

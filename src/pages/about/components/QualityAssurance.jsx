@@ -17,7 +17,7 @@ const TrendingProducts = () => {
       icon: Lock,
       description:
         "Advanced biometric lock with fingerprint, PIN, and mobile app control for ultimate security.",
-      link: "/products/smart-digital-lock",
+      link: "/products",
     },
     {
       id: 2,
@@ -26,7 +26,7 @@ const TrendingProducts = () => {
       icon: DoorOpen,
       description:
         "Heavy-duty, corrosion-resistant hinges built for smooth operation and lifelong durability.",
-      link: "/products/stainless-steel-hinges",
+      link: "/products",
     },
     {
       id: 3,
@@ -35,7 +35,7 @@ const TrendingProducts = () => {
       icon: Package,
       description:
         "Sleek ergonomic handles in premium finishes — easy to install, built to impress.",
-      link: "/products/cabinet-handle-set",
+      link: "/products",
     },
     {
       id: 4,
@@ -44,7 +44,7 @@ const TrendingProducts = () => {
       icon: Wrench,
       description:
         "Complete professional-grade kit for secure and elegant glass door and partition installations.",
-      link: "/products/glass-fitting-kit",
+      link: "/products",
     },
   ];
 
@@ -66,7 +66,7 @@ const TrendingProducts = () => {
               Trending Products
             </h2>
             <div
-              className="w-24 h-1 rounded-full"
+              className="w-24 h-1 rounded-md"
               style={{ backgroundColor: "var(--color-primary)" }}
             />
           </div>
@@ -94,87 +94,39 @@ const TrendingProducts = () => {
               <Link
                 to={product.link}
                 key={product.id}
-                className="group block bg-[var(--color-surface)] rounded-2xl border overflow-hidden transition-all duration-500 hover:shadow-2xl hover:-translate-y-4"
-                style={{ borderColor: "var(--color-border-light)" }}
+                className="h-full bg-[var(--color-surface)] rounded-md border border-[var(--color-border-light)] overflow-hidden transition-all duration-500 hover:shadow-md hover:-translate-y-1"
               >
-                {/* Subtle hover glow */}
-                <div
-                  className="absolute inset-0 opacity-0 group-hover:opacity-20 transition-opacity duration-500 rounded-2xl"
-                  style={{ backgroundColor: "var(--color-primary)" }}
-                />
-
-                <div className="relative p-10">
+                <div className="h-full relative flex flex-col content-between justify-between  p-10 flex flex-col content-between justify-between h-full">
                   {/* Icon */}
                   <div className="mb-8">
-                    <div
-                      className="p-5 rounded-3xl inline-block shadow-lg transition-all duration-500 group-hover:scale-110"
-                      style={{
-                        backgroundColor: "var(--color-surface-alt)",
-                      }}
-                    >
-                      <IconComponent
-                        className="w-12 h-12"
-                        style={{ color: "var(--color-primary)" }}
-                      />
+                    <div className="p-5 rounded-md inline-block shadow-sm bg-[var(--color-surface-alt)] transition-transform duration-500 group-hover:scale-105">
+                      <IconComponent className="w-12 h-12 text-[var(--color-primary)]" />
                     </div>
                   </div>
 
                   {/* Category */}
-                  <span
-                    className="block mb-3 uppercase tracking-wider"
-                    style={{
-                      fontSize: "var(--text-xs)",
-                      letterSpacing: "var(--tracking-wide)",
-                      color: "var(--color-primary)",
-                      fontWeight: "var(--font-bold)",
-                    }}
-                  >
+                  <span className="block mb-3 text-xs uppercase tracking-wider font-bold text-[var(--color-primary)]">
                     {product.category}
                   </span>
 
                   {/* Name */}
-                  <h3
-                    className="mb-4 transition-colors duration-300 group-hover:text-[var(--color-primary)]"
-                    style={{
-                      fontSize: "var(--text-xl)",
-                      fontFamily: "var(--font-heading)",
-                      color: "var(--color-text-primary)",
-                      fontWeight: "var(--font-bold)",
-                    }}
-                  >
+                  <h3 className="mb-4 text-xl font-bold font-[var(--font-heading)] text-[var(--color-text-primary)] transition-colors duration-300 group-hover:text-[var(--color-primary)]">
                     {product.name}
                   </h3>
 
                   {/* Description */}
-                  <p
-                    className="mb-8"
-                    style={{
-                      fontSize: "var(--text-base)",
-                      color: "var(--color-text-secondary)",
-                      fontFamily: "var(--font-body)",
-                      lineHeight: "var(--leading-relaxed)",
-                    }}
-                  >
+                  <p className="mb-8 text-base text-[var(--color-text-secondary)] leading-relaxed font-[var(--font-body)]">
                     {product.description}
                   </p>
 
-                  {/* CTA Button */}
+                  {/* CTA */}
                   <div className="flex items-center justify-between">
-                    <span
-                      className="uppercase tracking-wide transition-colors duration-300 group-hover:text-[var(--color-primary)]"
-                      style={{
-                        fontSize: "var(--text-sm)",
-                        color: "var(--color-text-muted)",
-                        fontWeight: "var(--font-bold)",
-                      }}
-                    >
+                    <span className="text-sm uppercase tracking-wide font-bold text-[var(--color-text-muted)] transition-colors duration-300 group-hover:text-[var(--color-primary)]">
                       Learn More
                     </span>
-                    <div className="p-3 rounded-full transition-all duration-300 group-hover:bg-[var(--color-primary)]">
-                      <ShoppingCart
-                        className="w-6 h-6 transition-colors duration-300 group-hover:text-[var(--color-text-on-primary)]"
-                        style={{ color: "var(--color-primary)" }}
-                      />
+
+                    <div className="p-3 rounded-md transition-transform duration-300 group-hover:scale-110">
+                      <ShoppingCart className="w-6 h-6 text-[var(--color-primary)]" />
                     </div>
                   </div>
                 </div>

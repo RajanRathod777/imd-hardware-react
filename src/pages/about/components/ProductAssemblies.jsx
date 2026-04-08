@@ -89,20 +89,20 @@ const ProductAssemblies = () => {
             return (
               <div
                 key={assembly.id}
-                className="group relative bg-[var(--color-surface)] rounded-2xl border overflow-hidden transition-all duration-500 hover:shadow-2xl hover:-translate-y-4"
+                className=" group relative bg-[var(--color-surface)] rounded-md border overflow-hidden transition-all duration-500 hover:shadow-md hover:-translate-y-1"
                 style={{ borderColor: "var(--color-border-light)" }}
               >
                 {/* Subtle hover glow */}
                 <div
-                  className="absolute inset-0 opacity-0 group-hover:opacity-20 transition-opacity duration-500 rounded-2xl"
+                  className="absolute inset-0 opacity-0 group-hover:opacity-20 transition-opacity duration-500 rounded-md"
                   style={{ backgroundColor: "var(--color-primary)" }}
                 />
 
-                <div className="relative p-10">
+                <div className="relative p-10 h-full  flex flex-col content-between justify-between">
                   {/* Icon */}
                   <div className="flex justify-center mb-8">
                     <div
-                      className="p-6 rounded-3xl shadow-xl transition-all duration-500 group-hover:scale-110"
+                      className="p-6 rounded-md transition-all duration-500 group-hover:scale-105"
                       style={{
                         backgroundColor: "var(--color-surface-alt)",
                         color: "var(--color-primary)",

@@ -493,7 +493,7 @@ export default function DoorLockAldrop() {
                   >
                     <img
                       src={`/images/APL_Door_Lock_Aldrop/APL_Door_Lock_Aldrop-${item}.png`}
-                      alt={`Door Lock Aldrop View ${index + 1}`}
+                      alt={`Door Lock Aldrop image ${index + 1}`}
                       className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
                       loading="lazy"
                     />
@@ -527,7 +527,7 @@ export default function DoorLockAldrop() {
                       color: "var(--color-text-secondary)",
                     }}
                   >
-                    View {index + 1}
+                    image {index + 1}
                   </p>
                 </div>
               ))}
