@@ -1,44 +1,18 @@
 {
-  "name": "IMD Hardware | Premium Door Locks & Hardware Solutions",
-  "short_name": "IMD Hardware",
-  "description": "IMD Hardware offers premium door locks, handles, and architectural hardware. Secure, elegant, and reliable solutions for residential and commercial use.",
-  "keywords": [
-    "door lock",
-    "door locks",
-    "door lock handle",
-    "door lock aldrop",
-    "door lock panel",
-    "door lock plate",
-    "door lock pan",
-    "main door lock",
-    "mortise lock",
-    "cylinder lock",
-    "digital door lock",
-    "smart lock",
-    "security locks",
-    "luxury door handles",
-    "door handle set",
-    "aldrops",
-    "architectural hardware",
-    "hardware accessories",
-    "premium locks",
-    "home hardware",
-    "office hardware",
-    "commercial door hardware",
-    "stainless steel handles",
-    "modern door locks",
-    "imd hardware locks"
-  ],
+  "id": "/",
+  "scope": "/",
   "start_url": "/",
   "display": "standalone",
-  "background_color": "#ffffff",
-  "theme_color": "#2563eb",
+  "display_override": ["window-controls-overlay", "standalone"],
   "orientation": "portrait-primary",
-  "scope": "/",
+  "theme_color": "#2563eb",
+  "background_color": "#ffffff",
   "lang": "en-IN",
   "dir": "ltr",
+  "name": "IMD Hardware | Premium Door Locks & Hardware Solutions",
+  "short_name": "IMD Hardware",
+  "description": "IMD Hardware - Best hardware manufacturer in Himatnagar, Gujarat. Premium Aldrop, Door Handles, Patented Locks & Architectural Hardware. ★ 5.0 Google Rating.",
   "categories": ["business", "shopping", "utilities"],
-  "logo": "/favicon/favicon-512x512.ico?v=2",
   "icons": [
     {
       "src": "/favicon/favicon-16x16.ico",
@@ -99,6 +73,59 @@
       "sizes": "512x512",
       "type": "image/x-icon",
       "purpose": "any maskable"
+    },
+    {
+      "src": "/favicon/android-chrome-192x192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/favicon/android-chrome-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ],
+  "shortcuts": [
+    {
+      "name": "Products",
+      "short_name": "Products",
+      "description": "Browse Aldrop, Door Handles & Locks",
+      "url": "/products",
+      "icons": [
+        {
+          "src": "/favicon/favicon-96x96.png",
+          "sizes": "96x96",
+          "type": "image/png"
+        }
+      ]
+    },
+    {
+      "name": "Contact Us",
+      "short_name": "Contact",
+      "description": "Get in touch with IMD Hardware",
+      "url": "/contact",
+      "icons": [
+        {
+          "src": "/favicon/favicon-96x96.png",
+          "sizes": "96x96",
+          "type": "image/png"
+        }
+      ]
+    },
+    {
+      "name": "Rewards",
+      "short_name": "Rewards",
+      "description": "Earn reward points with QR code",
+      "url": "/rewards",
+      "icons": [
+        {
+          "src": "/favicon/favicon-96x96.png",
+          "sizes": "96x96",
+          "type": "image/png"
+        }
+      ]
     }
   ],
   "screenshots": [
@@ -106,39 +133,15 @@
       "src": "/images/screenshot-desktop.png",
       "sizes": "1280x720",
       "type": "image/png",
-      "form_factor": "wide"
+      "form_factor": "wide",
+      "label": "IMD Hardware Desktop View"
     },
     {
       "src": "/images/screenshot-mobile.png",
       "sizes": "375x667",
       "type": "image/png",
-      "form_factor": "narrow"
-    }
-  ],
-  "shortcuts": [
-    {
-      "name": "Browse Products",
-      "short_name": "Products",
-      "description": "Browse our hardware products catalog",
-      "url": "/products",
-      "icons": [
-        {
-          "src": "/favicon/favicon-96x96.png",
-          "sizes": "96x96"
-        }
-      ]
-    },
-    {
-      "name": "Contact Us",
-      "short_name": "Contact",
-      "description": "Get in touch with our team",
-      "url": "/contact",
-      "icons": [
-        {
-          "src": "/favicon/favicon-96x96.png",
-          "sizes": "96x96"
-        }
-      ]
+      "form_factor": "narrow",
+      "label": "IMD Hardware Mobile View"
     }
   ],
   "related_applications": [],
