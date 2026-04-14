@@ -27,6 +27,29 @@ const ContactViewer = () => {
   const [submitStatus, setSubmitStatus] = useState(null);
   const [submitMessage, setSubmitMessage] = useState("");
 
+  const socialLinks = [
+    {
+      icon: Facebook,
+      label: "Facebook",
+      url: "https://www.facebook.com/share/1NFjGAir4d/",
+    },
+    {
+      icon: Instagram,
+      label: "Instagram",
+      url: "https://www.instagram.com/imdhardware?utm_source=qr&igsh=MWpmYjMxenpwc3JpNQ==",
+    },
+    {
+      icon: TvMinimalPlay,
+      label: "Youtube",
+      url: "https://youtube.com/@imdhardware?si=LI8K83iM6cJvYdyd",
+    },
+    {
+      icon: Linkedin,
+      label: "LinkedIn",
+      url: "https://www.linkedin.com/in/imdhardware",
+    },
+  ];
+
   const contactMethods = [
     {
       icon: Phone,
@@ -200,23 +223,21 @@ const ContactViewer = () => {
                   Follow Us
                 </h3>
                 <div className="flex gap-4">
-                  {[
-                    { icon: Facebook, label: "Facebook" },
-                    { icon: TvMinimalPlay, label: "Youtube" },
-                    { icon: Instagram, label: "Instagram" },
-                    { icon: Linkedin, label: "LinkedIn" },
-                  ].map((social, index) => (
+                  {socialLinks.map(({ icon: Icon, url, label }, i) => (
                     <a
-                      key={index}
-                      href="#"
-                      className="p-3 rounded-lg transition-all duration-300 hover:scale-110"
+                      key={i}
+                      href={url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      aria-label={label}
+                      className="p-3 rounded-lg border transition-all duration-300 hover:scale-110 hover:shadow-md"
                       style={{
                         backgroundColor: "var(--color-surface-alt)",
+                        borderColor: "var(--color-border-light)",
                         color: "var(--color-primary)",
                       }}
-                      aria-label={social.label}
                     >
-                      <social.icon className="h-6 w-6" />
+                      <Icon className="w-5 h-5" />
                     </a>
                   ))}
                 </div>

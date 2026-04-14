@@ -166,13 +166,13 @@ const Footer = () => {
 
             {/* Social Links */}
             <div className="flex gap-3">
-              {socialLinks.map(({ icon: Icon, url }, i) => (
+              {socialLinks.map(({ icon: Icon, url, label }, i) => (
                 <a
                   key={i}
                   href={url}
                   target="_blank"
                   rel="noopener noreferrer"
-                  aria-label="Social link"
+                  aria-label={label}
                   className="p-3 rounded-lg border transition-all duration-300 hover:scale-110 hover:shadow-md"
                   style={{
                     backgroundColor: "var(--color-surface-alt)",
