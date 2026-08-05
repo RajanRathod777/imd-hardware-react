@@ -6,7 +6,8 @@ import HeroSection from "./components/HeroSection";
 import APL_DoorLock from "../../components/APL_DoorLock";
 
 import SEO from "../../components/SEO";
-import UnderDevelopment from "../../components/UnderDevelopment";
+
+// import UnderDevelopment from "../../components/UnderDevelopment";
 
 const Home = () => {
   return (
@@ -19,7 +20,7 @@ const Home = () => {
             <ProductReviewCarousel />*/}
 
       <APL_DoorLock />
-      <UnderDevelopment />
+      {/* <UnderDevelopment /> */}
     </div>
   );
 };

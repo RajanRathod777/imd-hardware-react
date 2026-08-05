@@ -355,7 +355,7 @@ const Footer = () => {
               color: "var(--color-text-muted)",
             }}
           >
-            {/* GSTIN: 24BPYPR7738J1ZU */}
+            GSTIN: 24AALFI8827N1ZP
           </p>
         </div>
       </div>

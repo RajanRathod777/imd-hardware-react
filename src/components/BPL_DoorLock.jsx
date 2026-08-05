@@ -1,7 +1,7 @@
 import { Play, X } from "lucide-react";
 import { useRef, useState } from "react";
 
-export default function APL_DoorLock() {
+export default function BPL_DoorLock() {
   const videoRef = useRef(null);
   const [selectedImage, setSelectedImage] = useState(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -134,7 +134,7 @@ export default function APL_DoorLock() {
             onClick={(e) => e.stopPropagation()}
           >
             <img
-              src={`/images/APL_Door_Lock_Aldrop/APL_Door_Lock_Aldrop-${images[selectedImage]}.png`}
+              src={`/images/BPL_Door_Lock_Aldrop/APL_Door_Lock_Aldrop-${images[selectedImage]}.png`}
               alt={`Door Lock Aldrop View ${selectedImage + 1}`}
               className="w-full h-full object-contain"
             />
@@ -217,7 +217,7 @@ export default function APL_DoorLock() {
               </div>
 
               {/* Price Badge for Mobile */}
-              {/* <div className="lg:hidden">
+              <div className="lg:hidden">
                 <div
                   className="inline-block px-6 py-3 rounded-lg"
                   style={{
@@ -234,7 +234,7 @@ export default function APL_DoorLock() {
                     ₹ 2,199
                   </p>
                 </div>
-              </div> */}
+              </div>
             </div>
 
             {/* Product Info */}
@@ -263,7 +263,7 @@ export default function APL_DoorLock() {
                 </div>
 
                 {/* Price for Desktop */}
-                {/* <div className="hidden lg:block">
+                <div className="hidden lg:block">
                   <div
                     className="px-6 py-4 rounded-lg text-center"
                     style={{
@@ -288,7 +288,7 @@ export default function APL_DoorLock() {
                       ₹ 2,199
                     </p>
                   </div>
-                </div> */}
+                </div>
               </div>
 
               {/* Features */}
